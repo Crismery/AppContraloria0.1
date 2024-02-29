@@ -1,0 +1,23 @@
+<div>
+    <div class="container">
+        <form name="form1" class="box px-2" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+            <img class="image" src="assets/inicio.png" alt="">
+            <h4>Sistema de Gestión Documental</h4>
+            <div class="input-container mb-3">
+                <input type="text" v-model="username" placeholder="Correo Electronico" autocomplete="off"
+                    formControlName="email">
+                <input class="input-field password" type="password"
+                    v-model="password" placeholder="Contraseña" autocomplete="off" formControlName="password">
+            </div>
+            <!-- <a href="#" class="forgetpass">Forget Password?</a> -->
+            <input type="submit" value="Iniciar sesión" class="btn1">
+            <br><br>
+            <input type="submit" value="Iniciar sesión con Google" class="btn btn-info" (click)="onClick()">
+            <br>
+            <span v-on:click="togglePass"> ¿No tienes una cuenta? <a href="/registro"> <span
+                        class="underline-on-hover">Registrar</span> </a>
+                <i :class="(togglePassword) ? 'pi pi-eye eye' : 'pi pi-eye-slash eye'"></i>
+            </span>
+        </form>
+    </div>
+</div>

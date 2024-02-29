@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400');
+
+body,
+html {
+    font-family: 'Poppins', sans-serif !important;
+    background-color: #ffffff;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.input-icons {
+    position: absolute;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}
+
+.input-field {
+    padding: 10px;
+}
+
+.input-container {
+    position: relative;
+}
+
+.eye {
+    position: absolute;
+    right: 5px;
+    /* Ajusta la posición a tu gusto */
+    top: 50%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.password {
+    padding-right: 30px;
+}
+
+.image {
+    width: 200px;
+}
+
+.container {
+    margin: 0;
+    top: 50px;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    transform: translateX(-50%);
+    background-color: rgb(255, 255, 255);
+    border-radius: 9px;
+    border-top: 10px solid #002774;
+    border-bottom: 10px solid #002774;
+    width: 35% !important;
+    height: 650px;
+    box-shadow: 1px 1px 108.8px 19.2px rgb(213, 216, 230);
+    display: flex;
+    align-items: center;
+}
+
+.box {
+    width: 100%;
+}
+
+.box h4 {
+    font-family: 'Poppins', sans-serif;
+    color: #112386;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+
+.box h5 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #a1a4ad;
+    letter-spacing: 1.5px;
+    margin-top: -15px;
+    margin-bottom: 70px;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+    display: block;
+    margin: 20px 8px;
+    background: #f1eded;
+    border: 0;
+    border-radius: 5px;
+    padding: 14px 10px;
+    width: 90%;
+    outline: none;
+    color: #000000;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-input-placeholder {
+    color: #565f79;
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+    border: 1px solid #072879;
+
+}
+
+a {
+    color: #072879;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+label input[type="checkbox"] {
+    display: none;
+    /* hide the default checkbox */
+}
+
+/* style the artificial checkbox */
+label span {
+    height: 13px;
+    width: 13px;
+    border: 2px solid #072879;
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    left: 7.5%;
+}
+
+.btn1 {
+    border: 0;
+    background: #072879;
+    color: #dfdeee;
+    border-radius: 100px !important;
+    width: 60%;
+    height: 49px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn1:hover {
+    background: #ffffff;
+    color: #072879;
+    border: 1px solid #072879;
+    font-weight: 600;
+}
+
+.rmb {
+    margin-left: -24%;
+    margin-top: 0px;
+    color: #dfdeee;
+    font-size: 13px;
+}
+
+.forgetpass {
+    position: relative;
+    float: right;
+    right: 28px;
+}
+
+.error {
+    background: #ff4e5d;
+    text-align: center;
+    height: 22px;
+    width: 337px;
+    padding: 2px;
+    border: 0;
+    border-radius: 5px;
+    margin: 3% auto 0;
+    color: white;
+    display: none;
+}
+
+@media (max-width: 840px) {
+    .container {
+        margin: 0;
+        top: 50px;
+        left: 50%;
+        text-align: center;
+        transform: translateX(-50%);
+        background-color: rgb(255, 255, 255);
+        border-radius: 9px;
+        border-top: 10px solid #002774;
+        border-bottom: 10px solid #002774;
+        width: 100% !important;
+        height: 500px;
+        box-shadow: 1px 1px 108.8px 19.2px rgb(213, 216, 230);
+        display: flex;
+        align-items: center;
+    }
+
+    .box input[type="text"],
+    .box input[type="password"] {
+        display: block;
+        margin: 20px auto;
+        background: #f1eded;
+        border: 0;
+        border-radius: 5px;
+        padding: 14px 10px;
+        outline: none;
+        color: #000000;
+        -webkit-transition: all .2s ease-out;
+        -moz-transition: all .2s ease-out;
+        -ms-transition: all .2s ease-out;
+        -o-transition: all .2s ease-out;
+        transition: all .2s ease-out;
+
+    }
+
+    .btn1 {
+        border: 0;
+        background: #072879;
+        color: #dfdeee;
+        border-radius: 100px;
+        width: 70%;
+        height: 49px;
+        font-size: 16px;
+        font-weight: 500;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+}

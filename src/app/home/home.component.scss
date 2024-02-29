@@ -1,0 +1,107 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: none;
+  margin-bottom: 3rem;
+  gap: 2rem;
+  }
+  
+  .left {
+    width: 40%;
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #072879;
+  
+  }
+  
+  .right {
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 1rem;
+  }
+  .image {
+    width: 200px;
+    margin: 40% 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+h2 {
+  font-size: 2.125rem;
+  color: var(--black-900);
+  font-weight: 400;
+  line-height: 90%;
+  letter-spacing: -0.125rem;
+  margin: 0;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+a{
+  display: block;
+  width: 80px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: 16px;
+  background-color: #072879;
+  border-radius: 100px !important;
+  padding: 15px 30px;
+  margin: 1rem 0;
+  color: #dfdeee;
+  text-decoration: none;
+  border: 0;
+  height: 39px;
+  transition: 0.3s;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+a:hover {
+  background: #ffffff;
+  color: #072879;
+  border: 1px solid #072879;
+  font-weight: 600;
+}
+.img1{
+  width: 30px;
+}
+.page1{
+  position: relative;
+  display: flex;
+  width: 200px;
+  height: 180px;
+  border-radius: 10px;
+  background-color: #072879 ;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+  color: #dfdeee;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+}
+.page1 img{
+  position: relative;
+  top: 10px;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.page1:hover{
+  background: #ffffff;
+  color: #072879;
+  border: 1px solid #072879;
+  font-weight: 600;
+  box-shadow: 0 0 10px #072879 ;
+}

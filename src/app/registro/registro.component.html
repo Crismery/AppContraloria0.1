@@ -1,0 +1,29 @@
+<div>
+<div class="container w-full max-w-xs login">
+  <form name="form1" class="box px-2" [formGroup]="formReg" (ngSubmit)="onSubmit()">
+    <img class="image" src="assets/inicio.png" alt="">
+    <h4 class="text-gray-600 font-bold">Crear una cuenta</h4>
+      <div class="input-container">
+  
+        <input type="text" v-model="username" placeholder="Nombre de Usuario" autocomplete="off" formControlName="usuario">
+      
+        <input type="text" v-model="username" formControlName="email" autocomplete="off" 
+         placeholder="Correo Electrónico">
+      
+        <input type="password" formControlName="password" class="input-field password"  v-model="password"
+        placeholder="Contraseña" autocomplete="off">
+      
+        <input type="text" v-model="confirmarC" name="confirmarC" id="confirmarC" formControlName="confirmarC" placeholder="Confirmar Contraseña" autocomplete="off">
+        <div class="accion">
+          <input type="submit" value="Registrarse" class="btn1">
+          <br>
+          <span v-on:click="togglePass"> Regresar al login. <a href="/login"> <span
+                      class="underline-on-hover">Login</span> </a>
+              <i :class="(togglePassword) ? 'pi pi-eye eye' : 'pi pi-eye-slash eye'"></i>
+          </span>
+        </div>
+      </div>
+     
+  </form>
+</div>
+</div>
