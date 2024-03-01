@@ -12,13 +12,14 @@ import { MantenimientoComponent } from './mantenimiento/mantenimiento.component'
 import { ReporteComponent } from './reporte/reporte.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { RegistrosComponent } from './registros/registros.component';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'login', component: LoginComponent},
     {path: 'registro', component: RegistroComponent},
-    {path: 'home', component: HomeComponent},
+    {path: 'home', component: HomeComponent,  ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
     {path: 'registros', component: RegistrosComponent},
     {path: 'entrada', component: EntradaComponent},
     {path: 'asignacion', component: AsignacionComponent},
