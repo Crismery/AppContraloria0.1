@@ -21,7 +21,10 @@ import { ReporteComponent } from './reporte/reporte.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { DescargobnComponent } from './descargobn/descargobn.component';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,10 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     ReactiveFormsModule,
     FormsModule,
     ButtonModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
     provideFirebaseApp(() => initializeApp({"projectId":"app-contraloria-4e461","appId":"1:773014821815:web:25693680a61efc7fe0a632","storageBucket":"app-contraloria-4e461.appspot.com","apiKey":"AIzaSyDQ-4H7L3V8acBlSqClBLPeXasvpSQ2p8c","authDomain":"app-contraloria-4e461.firebaseapp.com","messagingSenderId":"773014821815"})),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())

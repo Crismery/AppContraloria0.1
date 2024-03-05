@@ -5,8 +5,8 @@
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button-->
-        <button [routerLink]="'/home'">
-            <img src="assets/regresar.png" >
+        <button [routerLink]="'/home'" class="boton">
+            <img src="assets/salir.png" >
             <i class="pi pi-cog"></i>
             <span>Home</span>
         </button>
@@ -15,6 +15,64 @@
   </div>
   
   <div class="content">
-    <!-- Contenido principal aquí -->
+    <br>
+    <mat-toolbar color="primary" class="example-spacer">
+      <span >Asignacion</span>
+    </mat-toolbar>
+    <!--div class="mainbody">
+      <mat-form-field appearance="outline">
+        <mat-label>Filtro</mat-label>
+        <input matInput [formControl]="filtro" placeholder="ej. Laptop" #input>
+      </mat-form-field-->
+      <table>
+        <thead>
+          <tr>
+            <th>Dispositivo</th>
+            <th>Serial</th>
+            <th>ID Usuario</th>
+            <th>Usuario</th>
+            <th>Departamento</th>
+            <th>Nombre Equipo</th>
+            <th>OS</th>
+            <th>Version</th>
+            <th>CPU</th>
+            <th>Memoria</th>
+            <th>Almacenamiento</th>
+            <th>Tipo</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>hsks</td>
+            <td>jshs</td>
+            <td>jdls</td>
+            <td>dleo</td>
+            <td>owkl</td>
+            <td>iksw</td>
+            <td>jajs</td>
+            <td>jlals</td>
+            <td>jlals</td>
+            <td>jlals</td>
+            <td>jlals</td>
+            <td>jlals</td>
+            <td>jlals</td>
+          </tr>
+        </tbody>
+      </table>
+      <!--mat-paginator [pageSizeOptions]="[ 5, 10, 25, 100]" aria-label="Seleccione el numero de registros"></mat-paginator-->
+      <div class="pagination">
+        <label for="itemsPerPage">Items per page:</label>
+        <select id="itemsPerPage" name="itemsPerPage">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <!-- Agrega más opciones según sea necesario -->
+        </select>
+        <span>0 of 0</span>
+        <button>&lt;</button>
+        <button>&gt;</button>
+        
+      </div>
+      <!--/div-->
   </div>
   

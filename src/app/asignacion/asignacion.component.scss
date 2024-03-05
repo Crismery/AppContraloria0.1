@@ -21,33 +21,68 @@ img{
     align-items: center;
     text-align: center;
 }
-button{
-    display: inline-flex; 
-    align-items: center;
-    justify-content: center;
-    width: 100px; 
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 700;
-    font-size: 18px; 
-    background-color: #007BFF;
-    border-radius: 100px !important;
-    padding: 20px 30px; 
-    margin-right: 10px;
-    color: #dfdeee;
-    text-decoration: none;
-    border: 0;
-    height: 60px; 
-    transition: 0.3s;
-    cursor: pointer; 
-  }
-  button:hover{
-    background: #ffffff;
-    color: #072879;
-    border: 1px solid #072879;
-    font-weight: 600;
-  }
-  
-  .content {
-    border-top: 2px solid black; 
-  }
-  
+.boton{
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  width: 100px; 
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: 18px; 
+  background-color: #007BFF;
+  border-radius: 100px !important;
+  padding: 20px 30px; 
+  margin-right: 10px;
+  color: #dfdeee;
+  text-decoration: none;
+  border: 0;
+  height: 60px; 
+  transition: 0.3s;
+  cursor: pointer; 
+}
+.boton:hover{
+  background: #ffffff;
+  color: #072879;
+  border: 1px solid #072879;
+  font-weight: 600;
+}
+
+.content {
+  border-top: 3px solid lightgray; 
+  margin: auto;
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td{
+  text-align: left;
+  padding: 8px;
+  border:  1px solid #fdfcfc;
+}
+th{
+  background-color: #f2f2f2;
+}
+
+.example-spacer {
+flex: 1 1 auto;
+height: 75px;
+background-color: #072879;
+display: flex;
+color: white;
+align-items: center;
+text-align: left;
+}
+.pagination {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+margin-right: 5cm;
+}
+
+.pagination label,
+.pagination span,
+.pagination select,
+.pagination button {
+ margin: 0 5px;
+}
