@@ -13,4 +13,5 @@ export interface Appcontraloria {
     memoria: string;
     almacenamiento: string;
     tipo: string;
+    mantenimiento: string;
 }

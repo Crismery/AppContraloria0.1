@@ -15,9 +15,10 @@
   
   <div class="content">
     <br>
-    <mat-toolbar color="primary" class="example-spacer">
-      <span >Registro General CGR</span>
-    </mat-toolbar>
+    <div class="navbar1">
+      <span >Registro General CGR </span>
+      <!--button  class="boton1">Entrada de uno más registros</button-->
+    </div>
     <!--div class="mainbody">
       <mat-form-field appearance="outline">
         <mat-label>Filtro</mat-label>
@@ -47,7 +48,10 @@
             <td>iksw</td>
             <td>jajs</td>
             <td>jlals</td>
-            <td></td>
+            <td>  
+              <button  class="boton2">Editar</button>
+              <button  class="boton2">Borrar</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -57,7 +61,6 @@
         <select id="itemsPerPage" name="itemsPerPage">
           <option value="5">5</option>
           <option value="10">10</option>
-          <!-- Agrega más opciones según sea necesario -->
         </select>
         <span>0 of 0</span>
         <button>&lt;</button>

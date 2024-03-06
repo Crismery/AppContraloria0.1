@@ -29,7 +29,7 @@ button{
     font-family: 'Times New Roman', Times, serif;
     font-weight: 700;
     font-size: 18px; 
-    background-color: #072879;
+    background-color: #4874ee;
     border-radius: 100px !important;
     padding: 20px 30px; 
     margin-right: 10px;
@@ -48,6 +48,9 @@ button{
   }
   
   .content {
-    border-top: 2px solid black; 
+    border-top: 3px solid lightgray; 
+    margin: 0 auto;
+    max-width: 1150px;
+    padding: 0 20px;
   }
   

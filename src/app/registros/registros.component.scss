@@ -50,7 +50,9 @@ img{
   
   .content {
     border-top: 3px solid lightgray; 
-    margin: auto;
+    margin: 0 auto;
+    max-width: 1150px;
+    padding: 0 20px;
   }
   table{
     border-collapse: collapse;
@@ -62,18 +64,9 @@ img{
     border:  1px solid #fdfcfc;
   }
   th{
-    background-color: #f2f2f2;
+    background-color: white#f2f2f2;
+    border-bottom: 1px solid rgb(82, 81, 81);
   }
-
-.example-spacer {
-  flex: 1 1 auto;
-  height: 75px;
-  background-color: #072879;
-  display: flex;
-  color: white;
-  align-items: center;
-  text-align: left;
-}
 .pagination {
   display: flex;
   align-items: center;
@@ -87,5 +80,35 @@ img{
 .pagination button {
    margin: 0 5px;
 }
-
-
+.navbar1 {
+  background-color: #072879;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  color: #dfdeee;
+  align-items: center;
+}
+.boton2{
+  background-color:hsl(0, 82%, 37%);
+  border-radius: 5px!important;
+  font-family: 'Times New Roman', Times, serif;
+  border: 0;
+  color: #dfdeee;
+  margin-right: 10px;
+}
+.boton2:hover{
+  background: #ffffff;
+  color: #ff000d;
+  border: 0;
+  font-weight: 600;
+}
+button{
+  background-color: white;
+  border: 0;
+}
+button:hover{
+  background: #ffffff;
+  color: #072879;
+  border: 0;
+  font-weight: 600;
+}
