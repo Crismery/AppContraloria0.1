@@ -13,6 +13,7 @@ import { ReporteComponent } from './reporte/reporte.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { RegistrosComponent } from './registros/registros.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AddEntradaComponent } from './entrada/add-entrada/add-entrada.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
     {path: 'descargobn', component: DescargobnComponent},
     {path: 'mantenimiento', component: MantenimientoComponent},
     {path: 'reporte', component: ReporteComponent},
-    {path: 'solicitudes', component: SolicitudesComponent}
+    {path: 'solicitudes', component: SolicitudesComponent},
+    {path: 'add-entrada', component: AddEntradaComponent}
 ];
 
 @NgModule({
