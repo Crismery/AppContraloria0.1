@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-entrada',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AddEntradaComponent {
 
+  constructor(public dialogRef: MatDialogRef<AddEntradaComponent>) { }
+  cerrarCentrado(){
+    this.dialogRef.close();
+  }
 }

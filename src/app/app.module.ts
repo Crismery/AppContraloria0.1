@@ -26,6 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { AddEntradaComponent } from './entrada/add-entrada/add-entrada.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { AddEntradaComponent } from './entrada/add-entrada/add-entrada.component
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatDialogModule,
     provideFirebaseApp(() => initializeApp({"projectId":"app-contraloria-4e461","appId":"1:773014821815:web:25693680a61efc7fe0a632","storageBucket":"app-contraloria-4e461.appspot.com","apiKey":"AIzaSyDQ-4H7L3V8acBlSqClBLPeXasvpSQ2p8c","authDomain":"app-contraloria-4e461.firebaseapp.com","messagingSenderId":"773014821815"})),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
