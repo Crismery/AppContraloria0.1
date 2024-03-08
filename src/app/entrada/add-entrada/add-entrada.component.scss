@@ -1,14 +1,43 @@
-.centrado{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
 .dialog-container {
     z-index: 2000;
     position: relative;
     display: flex;
     justify-content: center;
   }
-  
+  .container {
+    max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+  margin: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 20px;
+    padding-left: 20px;
+    margin-right: 20px;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.mat-form-field {
+    width: 40%; /* El 48% permite espacio para los márgenes y evita problemas de desbordamiento */
+  margin-bottom: 15px; 
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 0; /* Reinicia el margen derecho */
+    margin-top: 15px;
+    margin-bottom: 15px; 
+    cursor: pointer;
+}

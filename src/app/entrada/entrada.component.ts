@@ -14,7 +14,7 @@ export class EntradaComponent {
 
   mostrarComponente(): void {
     const dialogRef = this.dialog.open(AddEntradaComponent, {
-      width: '500px',
+      width: '550px',
       height: '500px',
       viewContainerRef: this.viewContainerRef,
       panelClass: 'dialog-container',
