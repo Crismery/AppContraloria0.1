@@ -3,6 +3,7 @@
     padding: 16px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 3px solid lightgray; 
   }
 .logo1{
   height: 50px;
@@ -48,7 +49,6 @@ button{
   }
   
   .content {
-    border-top: 3px solid lightgray; 
     margin: 0 auto;
     max-width: 1150px;
     padding: 0 20px;

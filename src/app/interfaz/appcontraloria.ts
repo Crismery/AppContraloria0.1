@@ -1,10 +1,11 @@
 export interface Appcontraloria {
     id?: string;
     dispositivo: string;
-    dodelo: string; 
+    modelo: string; 
     serial: string; 
     placa: string;
     bienes_nacionales: string;
+    cedula: string;
     usuario: string;
     Departamento: string;
     os: string;
@@ -12,6 +13,5 @@ export interface Appcontraloria {
     cpu: string; 
     memoria: string;
     almacenamiento: string;
-    tipo: string;
     mantenimiento: string;
 }

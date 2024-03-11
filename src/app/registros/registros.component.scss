@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     color: white;
+    border-bottom: 3px solid lightgray; 
   }
 .logo1{
   height: 50px;
@@ -49,7 +50,6 @@ img{
   }
   
   .content {
-    border-top: 3px solid lightgray; 
     margin: 0 auto;
     max-width: 1150px;
     padding: 0 20px;

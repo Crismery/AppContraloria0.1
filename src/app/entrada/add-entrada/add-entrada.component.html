@@ -1,64 +1,65 @@
 <div fxLayout="row" fxLayoutAlign="center center">
    <div class="container">
+    <br>
         <h1>Añadir Registro/s</h1>
 
         <div class="row">
           <mat-form-field>
-            <mat-label>Dispositivo</mat-label>
-            <mat-select [(ngModel)]="opcionSeleccionada" name="opciones">
-              <mat-option *ngFor="let opcion of opciones" [value]="opciones">{{ opcion }}</mat-option>
+            <mat-label >Dispositivo</mat-label>
+            <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones" formControlName="dispositivo">
+              <mat-option *ngFor="let opcion of formData.opciones" [value]="opcion">{{ opcion }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Modelo</mat-label>
-            <input matInput type="text" placeholder="ej. Pro Desk" formControlName="Modelo">
+            <input matInput type="text" placeholder="ej. Pro Desk" formControlName="modelo">
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Serial</mat-label>
-          <input matInput type="text" placeholder="ej. Pro Desk" formControlName="Serial">
+          <input matInput type="text" placeholder="ej. 1xcs45" formControlName="serial">
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Placa</mat-label>
-        <input matInput type="text" placeholder="ej. Pro Desk" formControlName="Placa">
+        <input matInput type="text" placeholder="ej. 1234" formControlName="placa">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Bienes Nacionales</mat-label>
-      <input matInput type="text" placeholder="ej. Pro Desk" formControlName="Bienes Nacionales">
+      <input matInput type="text" placeholder="ej. 123456" formControlName="bienes_nacionales">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field *ngIf="showSizeField()">
     <mat-label>Tamaño</mat-label>
-    <mat-select [(ngModel)]="opcionSeleccionada5" name="opciones5">
-      <mat-option *ngFor="let opcion of opciones5" [value]="opciones5">{{ opcion }}</mat-option>
+    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones5" formControlName="tamaño">
+      <mat-option *ngFor="let opcion of formData.opciones5" [value]="opcion">{{ opcion }}</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field *ngIf="showDesktopOrLaptopFields()">
     <mat-label>OS</mat-label>
-    <mat-select [(ngModel)]="opcionSeleccionada1" name="opciones1">
-      <mat-option *ngFor="let opcion of opciones1" [value]="opciones1">{{ opcion }}</mat-option>
+    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones1" formControlName="os">
+      <mat-option *ngFor="let opcion of formData.opciones1" [value]="opcion">{{ opcion }}</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field *ngIf="showDesktopOrLaptopFields()">
     <mat-label>CPU</mat-label>
-    <mat-select [(ngModel)]="opcionSeleccionada2" name="opciones2">
-      <mat-option *ngFor="let opcion of opciones2" [value]="opciones2">{{ opcion }}</mat-option>
+    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones2" formControlName="cpu">
+      <mat-option *ngFor="let opcion of formData.opciones2" [value]="opcion">{{ opcion }}</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field *ngIf="showDesktopOrLaptopFields()">
     <mat-label>Memoria RAM</mat-label>
-    <mat-select [(ngModel)]="opcionSeleccionada3" name="opciones3">
-      <mat-option *ngFor="let opcion of opciones3" [value]="opciones3">{{ opcion }}</mat-option>
+    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones3" formControlName="memoria">
+      <mat-option *ngFor="let opcion of formData.opciones3" [value]="opcion">{{ opcion }}</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field *ngIf="showDesktopOrLaptopFields()">
     <mat-label>Almacenamiento</mat-label>
-    <mat-select [(ngModel)]="opcionSeleccionada4" name="opciones4">
-      <mat-option *ngFor="let opcion of opciones4" [value]="opciones4">{{ opcion }}</mat-option>
+    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones4" formControlName="almacenamiento">
+      <mat-option *ngFor="let opcion of formData.opciones4" [value]="opcion">{{ opcion }}</mat-option>
     </mat-select>
   </mat-form-field>
-           <button  color="warn">Guardar</button>
-          <button (click)="cerrarCentrado()" color="warn">Cancelar</button>
         </div>
-   </div>
-   
+        <div fxLayout="row" fxLayoutAlign="flex-end">
+          <button type="submit">Guardar</button>
+          <button (click)="cerrarCentrado()">Cancelar</button>
+        </div>
+   </div>   
 </div>
- 

@@ -5,7 +5,7 @@
     justify-content: center;
   }
   .container {
-    max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+    max-width: 800px; 
   margin: auto;
 }
 .row{
@@ -23,21 +23,23 @@ h1 {
 }
 
 .mat-form-field {
-    width: 40%; /* El 48% permite espacio para los márgenes y evita problemas de desbordamiento */
+    width: 40%; 
   margin-bottom: 15px; 
 }
 
 button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-right: 0; /* Reinicia el margen derecho */
-    margin-top: 15px;
-    margin-bottom: 15px; 
-    cursor: pointer;
+  background-color:hsl(0, 82%, 37%);
+  border-radius: 5px!important;
+  font-family: 'Times New Roman', Times, serif;
+  border: 0;
+  color: #dfdeee;
+  margin-right: 50px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+button:hover{
+  background: #ffffff;
+  color: hsl(0, 82%, 37%);;
+  border: 0;
+  font-weight: 600;
 }
