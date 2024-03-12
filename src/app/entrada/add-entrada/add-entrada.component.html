@@ -2,14 +2,20 @@
    <div class="container">
     <br>
         <h1>Añadir Registro/s</h1>
-
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="row">
-          <mat-form-field>
-            <mat-label >Dispositivo</mat-label>
-            <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones" formControlName="dispositivo">
-              <mat-option *ngFor="let opcion of formData.opciones" [value]="opcion">{{ opcion }}</mat-option>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Dispositivo</mat-label>
+            <mat-select  placeholder="Seleccione un Dispositivo"  name="opciones" formControlName="dispositivo" >
+                <mat-option value="Desktop">Desktop</mat-option>
+                <mat-option value="Laptop">Laptop</mat-option>
+                <mat-option value="Monitor">Monitor</mat-option>
+                <mat-option value="Telefono">Telefono</mat-option>
+                <mat-option value="Printer">Printer</mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label>Modelo</mat-label>
             <input matInput type="text" placeholder="ej. Pro Desk" formControlName="modelo">
@@ -26,40 +32,64 @@
       <mat-label>Bienes Nacionales</mat-label>
       <input matInput type="text" placeholder="ej. 123456" formControlName="bienes_nacionales">
   </mat-form-field>
-  <mat-form-field *ngIf="showSizeField()">
-    <mat-label>Tamaño</mat-label>
-    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones5" formControlName="tamaño">
-      <mat-option *ngFor="let opcion of formData.opciones5" [value]="opcion">{{ opcion }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field *ngIf="showDesktopOrLaptopFields()">
-    <mat-label>OS</mat-label>
-    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones1" formControlName="os">
-      <mat-option *ngFor="let opcion of formData.opciones1" [value]="opcion">{{ opcion }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field *ngIf="showDesktopOrLaptopFields()">
-    <mat-label>CPU</mat-label>
-    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones2" formControlName="cpu">
-      <mat-option *ngFor="let opcion of formData.opciones2" [value]="opcion">{{ opcion }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field *ngIf="showDesktopOrLaptopFields()">
-    <mat-label>Memoria RAM</mat-label>
-    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones3" formControlName="memoria">
-      <mat-option *ngFor="let opcion of formData.opciones3" [value]="opcion">{{ opcion }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field *ngIf="showDesktopOrLaptopFields()">
-    <mat-label>Almacenamiento</mat-label>
-    <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones4" formControlName="almacenamiento">
-      <mat-option *ngFor="let opcion of formData.opciones4" [value]="opcion">{{ opcion }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+
+  <ng-container *ngIf="form.get('dispositivo')?.value === 'Monitor'">
+    <mat-form-field appearance="outline">
+      <mat-label>Tamaño</mat-label>
+      <mat-select placeholder="Seleccione un Tamaño" formControlName="tamaño">
+        <mat-option value="17">17''</mat-option>
+        <mat-option value="24">24''</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+
+  <ng-container *ngIf="form.get('dispositivo')?.value === 'Desktop' || form.get('dispositivo')?.value === 'Laptop'">
+    <mat-form-field appearance="outline">
+      <mat-label>OS</mat-label>
+      <mat-select placeholder="Seleccione un OS" formControlName="os">
+        <mat-option value="Windows_10">Windows 10</mat-option>
+        <mat-option value="Windows_11">Windows 11</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+
+  <ng-container *ngIf="form.get('dispositivo')?.value === 'Desktop' || form.get('dispositivo')?.value === 'Laptop'">
+    <mat-form-field appearance="outline">
+      <mat-label>CPU</mat-label>
+      <mat-select placeholder="Seleccione un CPU" formControlName="cpu">
+        <mat-option value="i3">i3</mat-option>
+        <mat-option value="i5">i5</mat-option>
+        <mat-option value="i7">i7</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+
+  <ng-container *ngIf="form.get('dispositivo')?.value === 'Desktop' || form.get('dispositivo')?.value === 'Laptop'">
+    <mat-form-field appearance="outline">
+      <mat-label>Memoria RAM</mat-label>
+      <mat-select placeholder="Seleccione un memoria" formControlName="memoria">
+        <mat-option value="8Gb">8Gb</mat-option>
+        <mat-option value="16Gb">16Gb</mat-option>
+        <mat-option value="32Gb">32Gb</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+
+  <ng-container *ngIf="form.get('dispositivo')?.value === 'Desktop' || form.get('dispositivo')?.value === 'Laptop'">
+    <mat-form-field appearance="outline">
+      <mat-label>Almacenamiento</mat-label>
+      <mat-select placeholder="Seleccione almacenamiento" formControlName="almacenamiento">
+        <mat-option value="256Gb">256Gb</mat-option>
+        <mat-option value="512Gb">512Gb</mat-option>
+        <mat-option value="1Tb">1Tb</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
         </div>
         <div fxLayout="row" fxLayoutAlign="flex-end">
           <button type="submit">Guardar</button>
           <button (click)="cerrarCentrado()">Cancelar</button>
         </div>
+        </form>
    </div>   
 </div>

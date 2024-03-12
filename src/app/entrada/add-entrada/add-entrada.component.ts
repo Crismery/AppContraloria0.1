@@ -1,19 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegistrosService } from '../../servicios/registros.service';
+import {MatSnackBar}from '@angular/material/snack-bar'
 
-
-
-interface FormData{
-  opcionSeleccionada: string;
-  opciones: string[];
-  opciones1: string[];
-  opciones2: string[];
-  opciones3: string[];
-  opciones4: string[];
-  opciones5: string[];
-}
 
 @Component({
   selector: 'app-add-entrada',
@@ -22,50 +12,85 @@ interface FormData{
 })
 export class AddEntradaComponent {
 
-  formulario: FormGroup;
+  form: FormGroup;
 
-  formData: FormData={
-    opcionSeleccionada: '',
-    opciones: ['Desktop','Laptop','Monitor','Telefono','Printer'],
-    opciones1: ['Windows 10','Windows 11'],
-    opciones2: ['i3','i5','i7'],
-    opciones3: ['8Gb','16Gb','32Gb'],
-    opciones4: ['256Gb','512Gb','1Tb'],
-    opciones5: ['17','24']
-  };
-
-  constructor(public dialogRef: MatDialogRef<AddEntradaComponent>, private registros:RegistrosService) { 
-   this.formulario = new FormGroup({
-    dispositivo: new FormControl(),
-    modelo: new FormControl(), 
-    serial: new FormControl(),
-    placa: new FormControl(),
-    bienes_nacionales: new FormControl(),
-    cedula: new FormControl(),
-    usuario: new FormControl(),
-    Departamento: new FormControl(),
-    os: new FormControl(),
-    version: new FormControl(),
-    cpu: new FormControl(),
-    memoria: new FormControl(),
-    almacenamiento: new FormControl(),
-    mantenimiento: new FormControl(),
-   })
-  }
+  constructor(public dialogRef: MatDialogRef<AddEntradaComponent>, 
+    private registros:RegistrosService, 
+    private formBuilder: FormBuilder,
+    private _snackbar: MatSnackBar) { 
   
-  showSizeField(): boolean {
-    return this.formData.opcionSeleccionada === 'Monitor';
+this.form = this.formBuilder.group({
+  dispositivo: ['', Validators.required],
+  modelo: ['', Validators.required],
+  serial: [''],
+  placa: [''],
+  bienes_nacionales: [''],
+  tamaño: [''],
+  os: ['', Validators.required],
+  cpu: [''],
+  memoria: ['',Validators.required],
+  almacenamiento: ['', Validators.required],
+  Departamento: [''],
+  mantenimiento: [''],
+  cedula: [''],
+  usuario: ['']
+});
+
+this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {
+  this.actualizarControles(selectedDispositivo);
+});
+}
+  ngOnInit() {
+    this.actualizarControles(this.form.get('dispositivo')?.value);
   }
 
-  showDesktopOrLaptopFields(): boolean {
-    return this.formData.opcionSeleccionada === 'Desktop' || this.formData.opcionSeleccionada === 'Laptop';
+  actualizarControles(selectedDispositivo: string | null): void {
+    this.form.get('tamaño')?.clearValidators();
+    this.form.get('os')?.clearValidators();
+    this.form.get('cpu')?.clearValidators();
+    this.form.get('memoria')?.clearValidators();
+    this.form.get('almacenamiento')?.clearValidators();
+
+    this.form.get('tamaño')?.setValue('');
+    this.form.get('os')?.setValue('');
+    this.form.get('cpu')?.setValue('');
+    this.form.get('memoria')?.setValue('');
+    this.form.get('almacenamiento')?.setValue('');
+
+    if (selectedDispositivo === 'Monitor') {
+      this.form.get('tamaño')?.setValidators([Validators.required]);
+    } else if (selectedDispositivo === 'Desktop' || selectedDispositivo === 'Laptop') {
+      this.form.get('os')?.setValidators([Validators.required]);
+      this.form.get('cpu')?.setValidators([Validators.required]);
+      this.form.get('memoria')?.setValidators([Validators.required]);
+      this.form.get('almacenamiento')?.setValidators([Validators.required]);
+    }
+
+    this.form.updateValueAndValidity();
   }
 
   async onSubmit(){
-    console.log(this.formulario.value)
-    const responde= await this.registros.addPlace(this.formulario.value);
-    console.log(responde);
-  }
+    if (this.form.valid) {
+      console.log(this.form.value)
+      const response = await this.registros.addPlace(this.form.value);
+      console.log(response);
+  
+      if (response) {
+        this.form.reset();
+        this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
+          duration: 3000,
+        });
+      } else {
+        this._snackbar.open('No se pudo registrar la entrada', 'Cerrar', {
+          duration: 2000,
+        });
+      }
+    } else {
+      this._snackbar.open('Por favor complete todos los campos obligatorios', 'Cerrar', {
+        duration: 2000,
+      });
+    }
+  }  
   cerrarCentrado(){
     this.dialogRef.close();
   }
