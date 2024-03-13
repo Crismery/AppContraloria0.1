@@ -30,6 +30,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AddAsignacionComponent } from './asignacion/add-asignacion/add-asignacion.component';
 import { MatSelectModule } from '@angular/material/select';
+import { AddRegistrosComponent } from './registros/add-registros/add-registros.component';
+import { EditEntradaComponent } from './entrada/edit-entrada/edit-entrada.component';
+import { EditAsignacionComponent } from './asignacion/edit-asignacion/edit-asignacion.component';
 
 
 
@@ -49,7 +52,10 @@ import { MatSelectModule } from '@angular/material/select';
     SolicitudesComponent,
     DescargobnComponent,
     AddEntradaComponent,
-    AddAsignacionComponent
+    AddAsignacionComponent,
+    AddRegistrosComponent,
+    EditEntradaComponent,
+    EditAsignacionComponent
   ],
   imports: [
     BrowserModule,

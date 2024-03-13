@@ -39,19 +39,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let Appcontraloria of appcontraloria; let i = index">
+            <td>{{Appcontraloria.dispositivo}}</td>
+            <td>{{Appcontraloria.modelo}}</td>
+            <td>{{Appcontraloria.serial}}</td>
+            <td>{{Appcontraloria.placa}}</td>
+            <td>{{Appcontraloria.bienes_nacionales}}</td>
+            <td>{{Appcontraloria.usuario}}</td>
+            <td>{{Appcontraloria.Departamento}}</td>
+            <td>{{Appcontraloria.mantenimiento}}</td>
             <td>  
-              <button  class="boton2">Editar</button>
-              <button  class="boton2">Borrar</button>
-              <button  class="boton2">Borrar Usuario</button>
+              <button  class="boton2" (click)="mostrarComponente()">Editar</button>
+              <button  class="boton2" (click)="onClickDelete(appcontraloria[i])">Borrar</button>
+              <button  class="boton2" (click)="onClickDeleteFields(appcontraloria[i])">Borrar Usuario</button>
             </td>
           </tr>
         </tbody>

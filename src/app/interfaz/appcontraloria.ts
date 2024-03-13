@@ -1,5 +1,5 @@
 export interface Appcontraloria {
-    id?: string;
+    id: string;
     dispositivo: string;
     modelo: string; 
     serial: string; 

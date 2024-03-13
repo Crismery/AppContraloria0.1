@@ -32,7 +32,6 @@
             <th>Cedula</th>
             <th>Usuario</th>
             <th>Departamento</th>
-            <th>Nombre Equipo</th>
             <th>OS</th>
             <th>Version</th>
             <th>CPU</th>
@@ -42,18 +41,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let Appcontraloria of appcontraloria">
+            <td>{{Appcontraloria.dispositivo}}</td>
+            <td>{{Appcontraloria.serial}}</td>
+            <td>{{Appcontraloria.cedula}}</td>
+            <td>{{Appcontraloria.usuario}}</td>
+            <td>{{Appcontraloria.Departamento}}</td>
+            <td>{{Appcontraloria.os}}</td>
+            <td>{{Appcontraloria.version}}</td>
+            <td>{{Appcontraloria.cpu}}</td>
+            <td>{{Appcontraloria.memoria}}</td>
+            <td>{{Appcontraloria.almacenamiento}}</td>
             <td>  
               <button  class="boton2" (click)="mostrarComponente()">Asignar Usuario</button>
               <button  class="boton2">Editar</button>

@@ -14,6 +14,9 @@ import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { RegistrosComponent } from './registros/registros.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AddEntradaComponent } from './entrada/add-entrada/add-entrada.component';
+import { AddRegistrosComponent } from './registros/add-registros/add-registros.component';
+import { EditEntradaComponent } from './entrada/edit-entrada/edit-entrada.component';
+import { EditAsignacionComponent } from './asignacion/edit-asignacion/edit-asignacion.component';
 
 
 const routes: Routes = [
@@ -30,7 +33,10 @@ const routes: Routes = [
     {path: 'mantenimiento', component: MantenimientoComponent},
     {path: 'reporte', component: ReporteComponent},
     {path: 'solicitudes', component: SolicitudesComponent},
-    {path: 'add-entrada', component: AddEntradaComponent}
+    {path: 'add-entrada', component: AddEntradaComponent},
+    {path: 'add-registros', component: AddRegistrosComponent},
+    {path: 'edit-entrada', component: EditEntradaComponent},
+    {path: 'edit-asignacion',component: EditAsignacionComponent}
 ];
 
 @NgModule({
