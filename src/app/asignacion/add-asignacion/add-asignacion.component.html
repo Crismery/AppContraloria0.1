@@ -18,8 +18,12 @@
   <mat-option *ngFor="let opcion of formData.opciones5" [value]="opcion">{{ opcion }}</mat-option>
 </mat-select>
 </mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>Version</mat-label>
+  <input matInput type="text"  formControlName="Version">
+</mat-form-field>
     </div>
-    <div fxLayout="row" fxLayoutAlign="flex-end">
+    <div class="cardbutton">
       <button>Guardar</button>
       <button (click)="cerrarCentrado()">Cancelar</button>
     </div>

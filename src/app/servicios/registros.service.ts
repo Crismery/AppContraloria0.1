@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, deleteDoc,deleteField, getDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, updateDoc,query, where } from '@angular/fire/firestore';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { Observable } from 'rxjs';
 

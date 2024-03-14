@@ -33,7 +33,8 @@ this.form = this.formBuilder.group({
   Departamento: [''],
   mantenimiento: [''],
   cedula: [''],
-  usuario: ['']
+  usuario: [''],
+  version: ['']
 });
 
 this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {

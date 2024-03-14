@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { AddEntradaComponent } from './add-entrada/add-entrada.component';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { RegistrosService } from '../servicios/registros.service';
+import { EditEntradaComponent } from './edit-entrada/edit-entrada.component';
 
 @Component({
   selector: 'app-entrada',
@@ -25,6 +26,19 @@ export class EntradaComponent implements OnInit {
       height: '500px',
       viewContainerRef: this.viewContainerRef,
       panelClass: 'dialog-container',
+      disableClose: true
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado:', result);
+    });
+  }
+  mostrarComponenteedit(): void {
+    const dialogRef = this.dialog.open(EditEntradaComponent, {
+      width: '550px',
+      height: '500px',
+      viewContainerRef: this.viewContainerRef,
+      panelClass: 'dialog-container-edit',
       disableClose: true
     });
   

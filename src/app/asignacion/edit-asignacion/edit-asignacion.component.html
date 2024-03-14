@@ -1,1 +1,31 @@
-<p>edit-asignacion works!</p>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div class="container">
+    <br>
+      <h1>Editar Usuarios</h1>
+     
+      <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Cedula</mat-label>
+      <input matInput type="text" placeholder="ej. 402-1234567-8" formControlName="Cedula">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Usuario</mat-label>
+    <input matInput type="text" placeholder="ej. Marco Rodrigue" formControlName="Bienes Nacionales">
+  </mat-form-field>
+  <mat-form-field >
+  <mat-label>Departamento</mat-label>
+  <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones5">
+    <mat-option *ngFor="let opcion of formData.opciones5" [value]="opcion">{{ opcion }}</mat-option>
+  </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Version</mat-label>
+    <input matInput type="text"  formControlName="Version">
+  </mat-form-field>
+      </div>
+      <div class="cardbutton">
+        <button>Guardar</button>
+        <button (click)="cerrarCentrado()">Cancelar</button>
+      </div>
+  </div> 
+  </div>

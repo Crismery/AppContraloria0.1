@@ -26,20 +26,24 @@ h1 {
     width: 40%; 
   margin-bottom: 15px; 
 }
-
 button {
   background-color:hsl(0, 82%, 37%);
   border-radius: 5px!important;
   font-family: 'Times New Roman', Times, serif;
   border: 0;
   color: #dfdeee;
-  margin-right: 50px;
+  margin-right: 10px;
+  width: 100px;
+  height: 40px;
   font-size: 18px;
-  margin-top: 20px;
+}
+.cardbutton{
+  display: flex;
+  justify-content: flex-end;
 }
 button:hover{
   background: #ffffff;
-  color: hsl(0, 82%, 37%);;
+  color: #ff000d;
   border: 0;
   font-weight: 600;
 } 

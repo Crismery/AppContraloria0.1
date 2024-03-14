@@ -1,3 +1,63 @@
-<p>add-registros works!</p>
-
-<button (click)="cerrarCentrado()">Cancelar</button>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div class="container">
+     <br>
+         <h1>Editar Registro/s</h1>
+         <div class="row">
+ 
+           <mat-form-field appearance="outline">
+             <mat-label>Dispositivo</mat-label>
+             <mat-select  placeholder="Seleccione un Dispositivo"  name="opciones">
+                 <mat-option value="Desktop">Desktop</mat-option>
+                 <mat-option value="Laptop">Laptop</mat-option>
+                 <mat-option value="Monitor">Monitor</mat-option>
+                 <mat-option value="Telefono">Telefono</mat-option>
+                 <mat-option value="Printer">Printer</mat-option>
+             </mat-select>
+         </mat-form-field>
+ 
+           <mat-form-field appearance="outline">
+             <mat-label>Modelo</mat-label>
+             <input matInput type="text" placeholder="ej. Pro Desk">
+         </mat-form-field>
+         <mat-form-field appearance="outline">
+           <mat-label>Serial</mat-label>
+           <input matInput type="text" placeholder="ej. 1xcs45">
+       </mat-form-field>
+       <mat-form-field appearance="outline">
+         <mat-label>Placa</mat-label>
+         <input matInput type="text" placeholder="ej. 1234">
+     </mat-form-field>
+     <mat-form-field appearance="outline">
+        <mat-label>Cedula</mat-label>
+        <input matInput type="text" placeholder="ej. 1234">
+    </mat-form-field>
+     <mat-form-field appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input matInput type="text" placeholder="ej. 1234">
+    </mat-form-field>
+   <ng-container>
+     <mat-form-field appearance="outline">
+       <mat-label>Departamento</mat-label>
+       <mat-select placeholder="Seleccione almacenamiento" >
+         <mat-option value="Direción Jurídica">Direción Jurídica</mat-option>
+         <mat-option value="Dirección de Comunicaciones">Dirección de Comunicaciones</mat-option>
+         <mat-option value="Planificación y Desarrollo">Planificación y Desarrollo</mat-option>
+         <mat-option value="Recursos Humanos">Recursos Humanos</mat-option>
+         <mat-option value="Tecnología de la Información y Comunicación">Tecnología de la Información y Comunicación</mat-option>
+         <mat-option value="Administrativa Financiera">Administrativa Financiera</mat-option>
+         <mat-option value="Revisión y Control de Calidad">Revisión y Control de Calidad</mat-option>
+         <mat-option value="Desarrollo Normativo">Desarrollo Normativo</mat-option>
+         <mat-option value="Unidades de Auditoría Interna Gubernamental">Unidades de Auditoría Interna Gubernamental</mat-option>
+         <mat-option value="Auditoría Interna">Auditoría Interna</mat-option>
+         <mat-option value="Auditorías Especiales e Investigació">Auditorías Especiales e Investigació</mat-option>
+         <mat-option value="Análisis Financiero">Análisis Financiero</mat-option>
+       </mat-select>
+     </mat-form-field>
+   </ng-container>
+         </div>
+         <div class="cardbutton">
+           <button>Guardar</button>
+           <button (click)="cerrarCentrado()">Cancelar</button>
+         </div>
+    </div>   
+ </div>
