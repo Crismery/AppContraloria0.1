@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, updateDoc,query, where } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, updateDoc, getDoc} from '@angular/fire/firestore';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { Observable } from 'rxjs';
 
@@ -19,9 +19,14 @@ export class RegistrosService {
     const placeRef = collection(this.firestore, 'appcontraloria');
     return collectionData(placeRef, { idField: 'id' }) as Observable<Appcontraloria[]>;
   }
-  deletePlaces(appcontraloria: Appcontraloria){
-    const placeRef= doc(this.firestore,`appcontraloria/${appcontraloria.id}`);
-    return deleteDoc(placeRef);
+  deletePlaces(appcontraloria: Appcontraloria): Promise<{ success: boolean }> {
+    const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);
+    return deleteDoc(placeRef)
+      .then(() => ({ success: true }))
+      .catch(error => {
+        console.error('Error deleting document:', error);
+        return { success: false };
+      });
   }
   async deleteFields(appcontraloria: Appcontraloria) {
     const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);
@@ -31,5 +36,20 @@ export class RegistrosService {
         Departamento: null 
     };
     await updateDoc(placeRef, updateData);
+}
+updatePlace(appcontraloria: Appcontraloria){
+  const { id, ...dataToUpdate } = appcontraloria; 
+  const placeRef = doc(this.firestore, 'appcontraloria', id);
+  return updateDoc(placeRef, dataToUpdate);
+}
+async loadEditData(id: string): Promise<Appcontraloria | null> {
+  const placeRef = doc(this.firestore, 'appcontraloria', id);
+  const documentSnapshot = await getDoc(placeRef);
+  if (documentSnapshot.exists()) {
+    return { id: documentSnapshot.id, ...documentSnapshot.data() } as Appcontraloria;
+  } else {
+    console.error('El documento no existe');
+    return null;
+  }
 }
 }

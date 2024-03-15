@@ -6,7 +6,7 @@
  
            <mat-form-field appearance="outline">
              <mat-label>Dispositivo</mat-label>
-             <mat-select  placeholder="Seleccione un Dispositivo"  name="opciones">
+             <mat-select  placeholder="Seleccione un Dispositivo"  name="opciones" [(ngModel)]="appcontraloriaedit.dispositivo">
                  <mat-option value="Desktop">Desktop</mat-option>
                  <mat-option value="Laptop">Laptop</mat-option>
                  <mat-option value="Monitor">Monitor</mat-option>
@@ -17,28 +17,28 @@
  
            <mat-form-field appearance="outline">
              <mat-label>Modelo</mat-label>
-             <input matInput type="text" placeholder="ej. Pro Desk">
+             <input matInput type="text" placeholder="ej. Pro Desk" [(ngModel)]="appcontraloriaedit.modelo">
          </mat-form-field>
          <mat-form-field appearance="outline">
            <mat-label>Serial</mat-label>
-           <input matInput type="text" placeholder="ej. 1xcs45">
+           <input matInput type="text" placeholder="ej. 1xcs45" [(ngModel)]="appcontraloriaedit.serial">
        </mat-form-field>
        <mat-form-field appearance="outline">
          <mat-label>Placa</mat-label>
-         <input matInput type="text" placeholder="ej. 1234">
+         <input matInput type="text" placeholder="ej. 1234" [(ngModel)]="appcontraloriaedit.placa">
      </mat-form-field>
      <mat-form-field appearance="outline">
         <mat-label>Cedula</mat-label>
-        <input matInput type="text" placeholder="ej. 1234">
+        <input matInput type="text" placeholder="ej. 000-0000000-0" [(ngModel)]="appcontraloriaedit.cedula">
     </mat-form-field>
      <mat-form-field appearance="outline">
         <mat-label>Usuario</mat-label>
-        <input matInput type="text" placeholder="ej. 1234">
+        <input matInput type="text" placeholder="ej. Juansito Perez" [(ngModel)]="appcontraloriaedit.usuario">
     </mat-form-field>
    <ng-container>
      <mat-form-field appearance="outline">
        <mat-label>Departamento</mat-label>
-       <mat-select placeholder="Seleccione almacenamiento" >
+       <mat-select placeholder="Seleccione almacenamiento" [(ngModel)]="appcontraloriaedit.Departamento">
          <mat-option value="Direción Jurídica">Direción Jurídica</mat-option>
          <mat-option value="Dirección de Comunicaciones">Dirección de Comunicaciones</mat-option>
          <mat-option value="Planificación y Desarrollo">Planificación y Desarrollo</mat-option>
@@ -54,9 +54,13 @@
        </mat-select>
      </mat-form-field>
    </ng-container>
+   <mat-form-field appearance="outline">
+    <mat-label>Version</mat-label>
+    <input matInput type="text" [(ngModel)]="appcontraloriaedit.version">
+</mat-form-field>
          </div>
          <div class="cardbutton">
-           <button>Guardar</button>
+           <button (click)="actualizarLugar()">Guardar</button>
            <button (click)="cerrarCentrado()">Cancelar</button>
          </div>
     </div>   

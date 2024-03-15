@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegistrosService } from '../../servicios/registros.service';
 import {MatSnackBar}from '@angular/material/snack-bar'
 

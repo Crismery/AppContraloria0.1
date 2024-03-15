@@ -5,6 +5,7 @@ import { AddEntradaComponent } from './add-entrada/add-entrada.component';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { RegistrosService } from '../servicios/registros.service';
 import { EditEntradaComponent } from './edit-entrada/edit-entrada.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-entrada',
@@ -18,7 +19,8 @@ export class EntradaComponent implements OnInit {
   constructor(private router:Router, 
     private dialog:MatDialog, 
     private viewContainerRef: ViewContainerRef,
-    private registrosService: RegistrosService ) { }
+    private registrosService: RegistrosService,
+    private _snackbar: MatSnackBar ) { }
 
   mostrarComponente(): void {
     const dialogRef = this.dialog.open(AddEntradaComponent, {
@@ -50,10 +52,19 @@ export class EntradaComponent implements OnInit {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria;
     });
-  }
+  }  
 
  async onClickDelete(appcontraloria: Appcontraloria){
     const response = await this.registrosService.deletePlaces(appcontraloria);
     console.log(response);
+    if (response.success) {
+      this._snackbar.open('Registro eliminado', 'Cerrar', {
+        duration: 3000,
+      });
+    } else {
+      this._snackbar.open('Error al eliminar el registro', 'Cerrar', {
+        duration: 3000,
+      });
   }
+}
 }

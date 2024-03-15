@@ -48,7 +48,6 @@ export class AsignacionComponent implements OnInit{
 
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
-      // Filtrar los documentos con campos de usuario, cédula y departamento vacíos
       this.appcontraloria = appcontraloria.filter(item =>
         !item.cedula && !item.usuario && !item.Departamento
       );
