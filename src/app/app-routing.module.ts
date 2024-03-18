@@ -34,9 +34,9 @@ const routes: Routes = [
     {path: 'reporte', component: ReporteComponent},
     {path: 'solicitudes', component: SolicitudesComponent},
     {path: 'add-entrada', component: AddEntradaComponent},
-    {path: 'add-registros', component: AddRegistrosComponent},
-    {path: 'edit-entrada', component: EditEntradaComponent},
-    {path: 'edit-asignacion',component: EditAsignacionComponent}
+    {path: 'add-registros/:id', component: AddRegistrosComponent},
+    {path: 'edit-entrada/:id', component: EditEntradaComponent},
+    {path: 'edit-asignacion/:id',component: EditAsignacionComponent}
 ];
 
 @NgModule({

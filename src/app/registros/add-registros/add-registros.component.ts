@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RegistrosService } from '../../servicios/registros.service';
 import { Appcontraloria } from '../../interfaz/appcontraloria';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,37 +11,33 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './add-registros.component.html',
   styleUrl: './add-registros.component.scss'
 })
-export class AddRegistrosComponent implements OnInit {
+export class AddRegistrosComponent implements OnInit{
 
-  appcontraloriaedit: any = {};
+  appcontraloriaedit: any ={};
 
   constructor(public dialogRef: MatDialogRef<AddRegistrosComponent>,
     private registros: RegistrosService,
-    private route: ActivatedRoute){
+    private route: ActivatedRoute,
+    @Inject(MAT_DIALOG_DATA) public appcontraloria:Appcontraloria){
   }
 
-  ngOnInit(): void {
-  
-    this.route.params.subscribe(params => {
-      const id = params['id']; 
-      if (id) {
-        this.registros.loadEditData(id)
-          .then(data => {
-            if (data) {
-              this.appcontraloriaedit = data;
-            } else {
-              console.error('No se pudo cargar la información del lugar');
-            }
-          })
-          .catch(error => console.error('Error al cargar la información del lugar:', error));
+ 
+ ngOnInit(): void {
+
+ /* const id = this.data.id; 
+  this.registros.loadEditData(id)
+    .then(data => {
+      if (data) {
+        this.appcontraloriaedit = data;
       } else {
-        console.error('ID del lugar no proporcionado en la URL');
+        console.error('No se pudo cargar');
       }
-    });
-  }
-  
+    })
+    .catch(error => console.error('Error al cargar la información:', error));*/
+}
 
-  actualizarLugar() {
+
+  /*actualizarLugar() {
     if (this.appcontraloriaedit) {
       this.registros.updatePlace(this.appcontraloriaedit)
         .then(() => console.log('Lugar actualizado correctamente'))
@@ -49,7 +45,7 @@ export class AddRegistrosComponent implements OnInit {
     } else {
       console.error('No hay información para actualizar');
     }
-  }
+  }*/
   cerrarCentrado(){
     this.dialogRef.close();
   }

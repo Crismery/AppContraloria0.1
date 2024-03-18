@@ -21,8 +21,9 @@ export class RegistrosComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private _snackbar: MatSnackBar) {}
 
-  mostrarComponente(): void {
+  mostrarComponente(id: string): void {
     const dialogRef = this.dialog.open(AddRegistrosComponent, {
+      data: {id},
       width: '550px',
       height: '500px',
       viewContainerRef: this.viewContainerRef,

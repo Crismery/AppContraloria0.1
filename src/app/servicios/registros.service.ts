@@ -42,13 +42,18 @@ updatePlace(appcontraloria: Appcontraloria){
   const placeRef = doc(this.firestore, 'appcontraloria', id);
   return updateDoc(placeRef, dataToUpdate);
 }
-async loadEditData(id: string): Promise<Appcontraloria | null> {
-  const placeRef = doc(this.firestore, 'appcontraloria', id);
-  const documentSnapshot = await getDoc(placeRef);
-  if (documentSnapshot.exists()) {
-    return { id: documentSnapshot.id, ...documentSnapshot.data() } as Appcontraloria;
-  } else {
-    console.error('El documento no existe');
+async loadEditData(id: string): Promise<Appcontraloria | string | null> {
+  try {
+    const placeRef = doc(this.firestore, 'appcontraloria', id);
+    const documentSnapshot = await getDoc(placeRef);
+    if (documentSnapshot.exists()) {
+      return { id: documentSnapshot.id, ...documentSnapshot.data() } as Appcontraloria;
+    } else {
+      console.error('El documento no existe');
+      return null;
+    }
+  } catch (error) {
+    console.error('Error al cargar la información:', error);
     return null;
   }
 }
