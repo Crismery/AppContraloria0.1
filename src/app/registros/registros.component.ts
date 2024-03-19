@@ -5,6 +5,8 @@ import { Appcontraloria } from '../interfaz/appcontraloria';
 import { MatDialog } from '@angular/material/dialog';
 import { AddRegistrosComponent } from './add-registros/add-registros.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -19,22 +21,31 @@ export class RegistrosComponent implements OnInit {
   constructor(private registrosService: RegistrosService,
     private dialog: MatDialog,
     private viewContainerRef: ViewContainerRef,
-    private _snackbar: MatSnackBar) {}
+    private _snackbar: MatSnackBar,
+    private router: Router) {}
 
-  mostrarComponente(id: string): void {
-    const dialogRef = this.dialog.open(AddRegistrosComponent, {
-      data: {id},
-      width: '550px',
-      height: '500px',
-      viewContainerRef: this.viewContainerRef,
-      panelClass: 'dialog-container',
-      disableClose: true
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialogo cerrado:', result);
-    });
-  }
+    async mostrarComponente(appcontraloria: Appcontraloria): Promise<void> {
+      try {
+        const registro = await this.registrosService.getPlaceById(appcontraloria);
+      
+        const dialogRef = this.dialog.open(AddRegistrosComponent, {
+          data: registro, 
+          width: '550px',
+          height: '500px',
+          viewContainerRef: this.viewContainerRef,
+          panelClass: 'dialog-container',
+          disableClose: true
+        });
+    
+        // Suscribirse al evento de cierre del diálogo
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('Dialogo cerrado:', result);
+        });
+      } catch (error) {
+        console.error('Error al obtener la información del registro:', error);
+      }
+    }
+    
 
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {

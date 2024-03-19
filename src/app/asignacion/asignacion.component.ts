@@ -32,18 +32,27 @@ export class AsignacionComponent implements OnInit{
       console.log('Dialogo cerrado:', result);
     });
   }
-  mostrarComponenteedit(): void {
-    const dialogRef = this.dialog.open(EditAsignacionComponent, {
-      width: '500px',
-      height: '380px',
-      viewContainerRef: this.viewContainerRef,
-      panelClass: 'dialog-container-edit',
-      disableClose: true
-    });
+
+  async mostrarComponenteedit(appcontraloria: Appcontraloria): Promise<void> {
+    try {
+      const registro = await this.registrosService.getPlaceById(appcontraloria);
+    
+      const dialogRef = this.dialog.open(EditAsignacionComponent, {
+        data: registro, 
+        width: '550px',
+        height: '500px',
+        viewContainerRef: this.viewContainerRef,
+        panelClass: 'dialog-container',
+        disableClose: true
+      });
   
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialogo cerrado:', result);
-    });
+      // Suscribirse al evento de cierre del diálogo
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialogo cerrado:', result);
+      });
+    } catch (error) {
+      console.error('Error al obtener la información del registro:', error);
+    }
   }
 
   ngOnInit() {

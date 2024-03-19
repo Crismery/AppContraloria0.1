@@ -49,7 +49,7 @@
             <td>{{Appcontraloria.Departamento}}</td>
             <td>{{Appcontraloria.mantenimiento}}</td>
             <td>  
-              <button  class="boton2" (click)="mostrarComponente('this.data.id')">Editar</button>
+              <button  class="boton2" (click)="mostrarComponente(appcontraloria[i])">Editar</button>
               <button  class="boton2" (click)="onClickDelete(appcontraloria[i])">Borrar</button>
               <button  class="boton2" (click)="onClickDeleteFields(appcontraloria[i])">Borrar Usuario</button>
             </td>

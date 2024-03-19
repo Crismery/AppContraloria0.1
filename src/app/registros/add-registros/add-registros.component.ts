@@ -13,17 +13,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddRegistrosComponent implements OnInit{
 
-  appcontraloriaedit: any ={};
+  appcontraloriaedit!: Appcontraloria;
 
   constructor(public dialogRef: MatDialogRef<AddRegistrosComponent>,
     private registros: RegistrosService,
     private route: ActivatedRoute,
-    @Inject(MAT_DIALOG_DATA) public appcontraloria:Appcontraloria){
+    @Inject(MAT_DIALOG_DATA) public data: Appcontraloria){
   }
 
  
  ngOnInit(): void {
 
+  this.appcontraloriaedit = {...this.data};
  /* const id = this.data.id; 
   this.registros.loadEditData(id)
     .then(data => {

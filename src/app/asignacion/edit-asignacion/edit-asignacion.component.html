@@ -6,21 +6,21 @@
       <div class="row">
     <mat-form-field appearance="outline">
       <mat-label>Cedula</mat-label>
-      <input matInput type="text" placeholder="ej. 402-1234567-8" formControlName="Cedula">
+      <input matInput type="text" placeholder="ej. 402-1234567-8" [(ngModel)]="appcontraloriaedit.cedula">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Usuario</mat-label>
-    <input matInput type="text" placeholder="ej. Marco Rodrigue" formControlName="Bienes Nacionales">
+    <input matInput type="text" placeholder="ej. Marco Rodrigue" [(ngModel)]="appcontraloriaedit.usuario">
   </mat-form-field>
   <mat-form-field >
   <mat-label>Departamento</mat-label>
-  <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones5">
+  <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones5" [(ngModel)]="appcontraloriaedit.Departamento">
     <mat-option *ngFor="let opcion of formData.opciones5" [value]="opcion">{{ opcion }}</mat-option>
   </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Version</mat-label>
-    <input matInput type="text"  formControlName="Version">
+    <input matInput type="text" [(ngModel)]="appcontraloriaedit.version">
   </mat-form-field>
       </div>
       <div class="cardbutton">

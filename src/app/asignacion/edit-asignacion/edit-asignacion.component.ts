@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Appcontraloria } from '../../interfaz/appcontraloria';
 
 interface FormData{
   opcionSeleccionada: string;
@@ -11,7 +12,7 @@ interface FormData{
   templateUrl: './edit-asignacion.component.html',
   styleUrl: './edit-asignacion.component.scss'
 })
-export class EditAsignacionComponent {
+export class EditAsignacionComponent implements OnInit{
 
   formData: FormData={
     opcionSeleccionada: '',
@@ -21,7 +22,14 @@ export class EditAsignacionComponent {
  'Análisis Financiero']
   };
 
-  constructor(private dialogRef: MatDialogRef<EditAsignacionComponent>) { }
+  appcontraloriaedit!: Appcontraloria;
+
+  constructor(private dialogRef: MatDialogRef<EditAsignacionComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Appcontraloria) { }
+
+    ngOnInit(): void {
+      this.appcontraloriaedit = {...this.data};
+    }
 
   cerrarCentrado(){
     this.dialogRef.close();

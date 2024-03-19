@@ -41,7 +41,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let Appcontraloria of appcontraloria">
+          <tr *ngFor="let Appcontraloria of appcontraloria; let i = index">
             <td>{{Appcontraloria.dispositivo}}</td>
             <td>{{Appcontraloria.serial}}</td>
             <td>{{Appcontraloria.cedula}}</td>
@@ -54,7 +54,7 @@
             <td>{{Appcontraloria.almacenamiento}}</td>
             <td>  
               <button  class="boton2" (click)="mostrarComponente()">Asignar Usuario</button>
-              <button  class="boton2" (click)="mostrarComponenteedit()">Editar</button>
+              <button  class="boton2" (click)="mostrarComponenteedit(appcontraloria[i])">Editar</button>
             </td>
           </tr>
         </tbody>
