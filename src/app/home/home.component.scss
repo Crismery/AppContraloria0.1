@@ -1,3 +1,10 @@
+body{
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('/./assets/imgcontraloria.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
 .container {
   display: flex;
   justify-content: center;
@@ -8,8 +15,6 @@
   gap: 2rem;
   margin: auto;
   position: relative;
- /*background-image: url('/./src/assets/imgcontraloria.jpg') #000;
-  background-size: cover;*/
   }
   /*.container::before{
     content: '';
@@ -47,7 +52,7 @@
 }
 h2, h3 {
   font-size: 2.125rem;
-  color: var(--black-900);
+  color: white;
   font-weight: 300;
   line-height: 80%;
   letter-spacing: -0.125rem;

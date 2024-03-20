@@ -1,5 +1,6 @@
+<body>
 <div class="navbar">
-    <div class="logo"><img src="assets/logocontraloria.png" class="logo1"> <h5> CONTRALORIA | ASIGNACION</h5></div>
+    <div class="logo"><img src="assets/Captura.png" class="logo1"> <h5> CONTRALORIA | ASIGNACION</h5></div>
     <div class="user-info">
         <!--button class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
@@ -24,7 +25,7 @@
         <mat-label>Filtro</mat-label>
         <input matInput [formControl]="filtro" placeholder="ej. Laptop" #input>
       </mat-form-field-->
-      <table>
+      <table class="table table-striped mt-5">
         <thead>
           <tr>
             <th>Dispositivo</th>
@@ -55,7 +56,6 @@
             <td>  
               <!--button  class="boton2" (click)="mostrarComponente()">Asignar Usuario</button-->
               <button  class="boton2" (click)="mostrarComponenteedit(appcontraloria[i])">Asignar Usuario</button>
-              <i class="fa-regular fa-trash"></i>
             </td>
           </tr>
         </tbody>
@@ -74,4 +74,4 @@
       </div>
       <!--/div-->
   </div>
-  
+</body>
