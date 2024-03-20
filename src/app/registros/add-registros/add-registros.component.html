@@ -42,7 +42,7 @@
    <ng-container>
      <mat-form-field appearance="outline">
        <mat-label>Departamento</mat-label>
-       <mat-select placeholder="Seleccione almacenamiento" [(ngModel)]="appcontraloriaedit.Departamento">
+       <mat-select placeholder="Seleccione departamento" [(ngModel)]="appcontraloriaedit.Departamento">
          <mat-option value="Direción Jurídica">Direción Jurídica</mat-option>
          <mat-option value="Dirección de Comunicaciones">Dirección de Comunicaciones</mat-option>
          <mat-option value="Planificación y Desarrollo">Planificación y Desarrollo</mat-option>
@@ -64,7 +64,7 @@
 </mat-form-field>
          </div>
          <div class="cardbutton">
-           <button >Guardar</button>
+           <button (click)="actualizarLugar()" >Guardar</button>
            <button (click)="cerrarCentrado()">Cancelar</button>
          </div>
     </div>   

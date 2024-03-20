@@ -46,7 +46,6 @@ export class RegistrosComponent implements OnInit {
       }
     }
     
-
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria;

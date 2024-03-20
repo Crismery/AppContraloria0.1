@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appcontraloria } from '../../interfaz/appcontraloria';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { RegistrosService } from '../../servicios/registros.service';
 
 @Component({
   selector: 'app-edit-entrada',
@@ -16,11 +17,29 @@ export class EditEntradaComponent implements OnInit{
   constructor(private dialogRef: MatDialogRef<EditEntradaComponent>,
     private formBuilder: FormBuilder,
     private _snackbar: MatSnackBar,
+    private registros: RegistrosService,
     @Inject(MAT_DIALOG_DATA) public data: Appcontraloria) { }
 
     ngOnInit(): void {
       this.appcontraloriaedit = {...this.data};
     }
+
+    actualizarLugar() {
+      if (this.appcontraloriaedit) {
+        this.registros.updatePlace(this.appcontraloriaedit)
+          .then(() => {
+            this._snackbar.open('Se editó con éxito.', 'Cerrar', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+            });
+          })
+          .catch(error => console.error('Error al actualizar el lugar:', error));
+      } else {
+        console.error('No hay información para actualizar');
+      }
+    }
+    
 
   cerrarCentrado(){
     this.dialogRef.close();
