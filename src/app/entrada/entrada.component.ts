@@ -6,6 +6,7 @@ import { Appcontraloria } from '../interfaz/appcontraloria';
 import { RegistrosService } from '../servicios/registros.service';
 import { EditEntradaComponent } from './edit-entrada/edit-entrada.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-entrada',
@@ -15,6 +16,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class EntradaComponent implements OnInit {
 
   appcontraloria: Appcontraloria[]=[];
+  query: string='';
+  resultados$!: Observable<Appcontraloria[]>;
+
+  filteredResults: Appcontraloria[]=[];
   
   constructor(private router:Router, 
     private dialog:MatDialog, 
@@ -58,6 +63,8 @@ export class EntradaComponent implements OnInit {
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria;
+
+      this.filteredResults = this.appcontraloria;
     });
   }  
 
@@ -72,6 +79,15 @@ export class EntradaComponent implements OnInit {
       this._snackbar.open('Error al eliminar el registro', 'Cerrar', {
         duration: 3000,
       });
+  }
+}
+buscar(): void {
+  if (this.query.trim() !== '') {
+    this.filteredResults = this.appcontraloria.filter(place => 
+      place.dispositivo.toLowerCase().includes(this.query.trim().toLowerCase())
+    );
+  } else {
+    this.filteredResults = this.appcontraloria;
   }
 }
 }

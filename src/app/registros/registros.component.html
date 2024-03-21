@@ -18,14 +18,13 @@
     <br>
     <div class="navbar1">
       <span >Registro General CGR </span>
-      <!--button  class="boton1">Entrada de uno más registros</button-->
     </div>
-    <!--div class="mainbody">
-      <mat-form-field appearance="outline">
-        <mat-label>Filtro</mat-label>
-        <input matInput [formControl]="filtro" placeholder="ej. Laptop" #input>
-      </mat-form-field-->
-      <table class="table table-striped mt-5">
+
+      <div class="search-bar mt-3">
+        <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
+      </div>
+      
+      <table class="table table-striped mt-3 ">
         <thead>
           <tr>
             <th>Dispositivo</th>
@@ -40,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let Appcontraloria of appcontraloria; let i = index">
+          <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
             <td>{{Appcontraloria.dispositivo}}</td>
             <td>{{Appcontraloria.modelo}}</td>
             <td>{{Appcontraloria.serial}}</td>
@@ -50,9 +49,9 @@
             <td>{{Appcontraloria.Departamento}}</td>
             <td>{{Appcontraloria.mantenimiento}}</td>
             <td>  
-              <button  class="boton2" (click)="mostrarComponente(appcontraloria[i])">Editar</button>
-              <button  class="boton2" (click)="onClickDelete(appcontraloria[i])">Borrar</button>
-              <button  class="boton2" (click)="onClickDeleteFields(appcontraloria[i])">Borrar Usuario</button>
+              <button  class="boton2" (click)="mostrarComponente(Appcontraloria)">Editar</button>
+              <button  class="boton2" (click)="onClickDelete(Appcontraloria)">Borrar</button>
+              <button  class="boton2" (click)="onClickDeleteFields(Appcontraloria)">Borrar Usuario</button>
             </td>
           </tr>
         </tbody>

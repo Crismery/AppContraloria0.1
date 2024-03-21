@@ -25,7 +25,10 @@
         <mat-label>Filtro</mat-label>
         <input matInput [formControl]="filtro" placeholder="ej. Laptop" #input>
       </mat-form-field-->
-      <table class="table table-striped mt-5">
+      <div class="search-bar mt-3">
+        <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
+      </div>
+      <table class="table table-striped mt-3">
         <thead>
           <tr>
             <th>Dispositivo</th>
@@ -42,7 +45,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let Appcontraloria of appcontraloria; let i = index">
+          <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
             <td>{{Appcontraloria.dispositivo}}</td>
             <td>{{Appcontraloria.serial}}</td>
             <td>{{Appcontraloria.cedula}}</td>
@@ -55,7 +58,7 @@
             <td>{{Appcontraloria.almacenamiento}}</td>
             <td>  
               <!--button  class="boton2" (click)="mostrarComponente()">Asignar Usuario</button-->
-              <button  class="boton2" (click)="mostrarComponenteedit(appcontraloria[i])">Asignar Usuario</button>
+              <button  class="boton2" (click)="mostrarComponenteedit(Appcontraloria)">Asignar Usuario</button>
             </td>
           </tr>
         </tbody>

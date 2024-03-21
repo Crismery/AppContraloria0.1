@@ -4,6 +4,7 @@ import { AddAsignacionComponent } from './add-asignacion/add-asignacion.componen
 import { RegistrosService } from '../servicios/registros.service';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { EditAsignacionComponent } from './edit-asignacion/edit-asignacion.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-asignacion',
@@ -13,6 +14,10 @@ import { EditAsignacionComponent } from './edit-asignacion/edit-asignacion.compo
 export class AsignacionComponent implements OnInit{
 
   appcontraloria: Appcontraloria[]=[];
+  query: string='';
+  resultados$!: Observable<Appcontraloria[]>;
+
+  filteredResults: Appcontraloria[]=[];
 
  
   constructor(private dialog:MatDialog, 
@@ -60,7 +65,17 @@ export class AsignacionComponent implements OnInit{
       this.appcontraloria = appcontraloria.filter(item =>
         !item.cedula && !item.usuario && !item.Departamento
       );
+      this.filteredResults = this.appcontraloria;
     });
+  }
+  buscar(): void {
+    if (this.query.trim() !== '') {
+      this.filteredResults = this.appcontraloria.filter(place => 
+        place.dispositivo.toLowerCase().includes(this.query.trim().toLowerCase())
+      );
+    } else {
+      this.filteredResults = this.appcontraloria;
+    }
   }
 
 }

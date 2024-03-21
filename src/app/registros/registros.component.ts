@@ -6,8 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddRegistrosComponent } from './add-registros/add-registros.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
-
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registros',
@@ -17,6 +17,10 @@ import { Router } from '@angular/router';
 export class RegistrosComponent implements OnInit {
 
   appcontraloria: Appcontraloria[] = [];
+  query: string='';
+  resultados$!: Observable<Appcontraloria[]>;
+
+  filteredResults: Appcontraloria[]=[];
 
   constructor(private registrosService: RegistrosService,
     private dialog: MatDialog,
@@ -24,33 +28,36 @@ export class RegistrosComponent implements OnInit {
     private _snackbar: MatSnackBar,
     private router: Router) {}
 
-    async mostrarComponente(appcontraloria: Appcontraloria): Promise<void> {
-      try {
-        const registro = await this.registrosService.getPlaceById(appcontraloria);
+  async mostrarComponente(appcontraloria: Appcontraloria): Promise<void> {
+    try {
+      const registro = await this.registrosService.getPlaceById(appcontraloria);
       
-        const dialogRef = this.dialog.open(AddRegistrosComponent, {
-          data: registro, 
-          width: '550px',
-          height: '500px',
-          viewContainerRef: this.viewContainerRef,
-          panelClass: 'dialog-container',
-          disableClose: true
-        });
-    
-        // Suscribirse al evento de cierre del diálogo
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('Dialogo cerrado:', result);
-        });
-      } catch (error) {
-        console.error('Error al obtener la información del registro:', error);
-      }
+      const dialogRef = this.dialog.open(AddRegistrosComponent, {
+        data: registro, 
+        width: '550px',
+        height: '500px',
+        viewContainerRef: this.viewContainerRef,
+        panelClass: 'dialog-container',
+        disableClose: true
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialogo cerrado:', result);
+      });
+    } catch (error) {
+      console.error('Error al obtener la información del registro:', error);
     }
+  }
     
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
-      this.appcontraloria = appcontraloria;
+      this.appcontraloria = appcontraloria.filter(item =>
+        item.cedula && item.usuario && item.Departamento
+      );
+      this.filteredResults = this.appcontraloria;
     });
   }
+
   async onClickDelete(appcontraloria: Appcontraloria){
     const response = await this.registrosService.deletePlaces(appcontraloria);
     console.log(response);
@@ -62,22 +69,32 @@ export class RegistrosComponent implements OnInit {
       this._snackbar.open('Error al eliminar el registro', 'Cerrar', {
         duration: 3000,
       });
+    }
   }
-}
-async onClickDeleteFields(appcontraloria: Appcontraloria) {
-  try {
+
+  async onClickDeleteFields(appcontraloria: Appcontraloria) {
+    try {
       const response = await this.registrosService.deleteFields(appcontraloria);
-      console.log('Usuarios eliminandos.');
+      console.log('Usuarios eliminados.');
 
       this._snackbar.open('Usuarios eliminados.', 'Cerrar', {
           duration: 3000,
       });
-  } catch (error) {
+    } catch (error) {
       console.error('Error al borrar los usuarios:', error);
 
       this._snackbar.open('Error al borrar los usuarios.', 'Cerrar', {
           duration: 3000,
       });
+    }
   }
-}
+  buscar(): void {
+    if (this.query.trim() !== '') {
+      this.filteredResults = this.appcontraloria.filter(place => 
+        place.dispositivo.toLowerCase().includes(this.query.trim().toLowerCase())
+      );
+    } else {
+      this.filteredResults = this.appcontraloria;
+    }
+  }
 }
