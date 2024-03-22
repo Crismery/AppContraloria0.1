@@ -1,7 +1,7 @@
 body{
-  background: #cecab7;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #cecab7);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #cecab7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #cecab7; 
+background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #cecab7);  
+background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #cecab7); 
 }
 .navbar {
     background-color: #002774;
@@ -92,7 +92,7 @@ margin-right: 5cm;
 .boton1 {
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Alinea el contenido al final del contenedor (derecha en este caso) */
+  justify-content: flex-end; 
   width: 225px;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
@@ -120,20 +120,6 @@ margin-right: 5cm;
   align-items: center;
   border-radius: 10px;
 }
-.boton2{
-  background-color:hsl(0, 82%, 37%);
-  border-radius: 5px!important;
-  font-family: 'Times New Roman', Times, serif;
-  border: 0;
-  color: #dfdeee;
-  margin-right: 10px;
-}
-.boton2:hover{
-  background: #ffffff;
-  color: #ff000d;
-  border: 0;
-  font-weight: 600;
-}
 button{
   background-color: white;
   border: 0;
@@ -157,4 +143,24 @@ input[type=text] {
   box-sizing: border-box;
   font-family: 'Times New Roman', Times, serif;
   border-radius: 10px;
+}
+.borrar{
+  font-size: 25px;
+  color: red;
+  align-items: center;
+}
+.borrar:hover{
+  color: black;
+  border: 0;
+  font-weight: 600;
+}
+.editar{
+  font-size: 25px;
+  color: #072879;
+  align-items: center;
+}
+.editar:hover{
+  color: black;
+  border: 0;
+  font-weight: 600;
 }

@@ -7,7 +7,6 @@ import { AddRegistrosComponent } from './add-registros/add-registros.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registros',
@@ -21,6 +20,11 @@ export class RegistrosComponent implements OnInit {
   resultados$!: Observable<Appcontraloria[]>;
 
   filteredResults: Appcontraloria[]=[];
+
+  startIndex: number = 0;
+  endIndex: number = 0;
+  totalItems: number = 0;
+  itemsPerPage: number = 5;
 
   constructor(private registrosService: RegistrosService,
     private dialog: MatDialog,
@@ -55,6 +59,8 @@ export class RegistrosComponent implements OnInit {
         item.cedula && item.usuario && item.Departamento
       );
       this.filteredResults = this.appcontraloria;
+
+      this.loadData();
     });
   }
 
@@ -96,5 +102,30 @@ export class RegistrosComponent implements OnInit {
     } else {
       this.filteredResults = this.appcontraloria;
     }
+  }
+  
+  loadData(): void {
+    this.totalItems = this.filteredResults.length; 
+    this.endIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems);
+  }
+  
+  changeItemsPerPage(event: any): void {
+    const value = (event.target as HTMLSelectElement).value;
+    if (value !== null && value !== undefined) {
+      this.itemsPerPage = +value;
+      this.startIndex = 0; 
+      this.filteredResults = this.appcontraloria.slice(0, this.itemsPerPage);
+  
+      this.loadData();
+    }
+  }
+    prevPage(): void {
+    this.startIndex = Math.max(0, this.startIndex - this.itemsPerPage);
+    this.loadData();
+  }
+
+  nextPage(): void {
+    this.startIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems - this.itemsPerPage);
+    this.loadData();
   }
 }

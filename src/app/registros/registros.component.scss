@@ -96,20 +96,6 @@ img{
   align-items: center;
   border-radius: 10px;
 }
-.boton2{
-  background-color:hsl(0, 82%, 37%);
-  border-radius: 5px!important;
-  font-family: 'Times New Roman', Times, serif;
-  border: 0;
-  color: #dfdeee;
-  margin-right: 10px;
-}
-.boton2:hover{
-  background: #ffffff;
-  color: #ff000d;
-  border: 0;
-  font-weight: 600;
-}
 button{
   background-color: white;
   border: 0;
@@ -133,4 +119,34 @@ input[type=text] {
   box-sizing: border-box;
   font-family: 'Times New Roman', Times, serif;
   border-radius: 10px;
+}
+.editar{
+  font-size: 25px;
+  color: #072879;
+  align-items: center;
+}
+.editar:hover{
+  color: black;
+  border: 0;
+  font-weight: 600;
+}
+.borrar{
+  font-size: 25px;
+  color: red;
+  align-items: center;
+}
+.borrar:hover{
+  color: black;
+  border: 0;
+  font-weight: 600;
+}
+.borrarusuario{
+  font-size: 25px;
+  color: darkred;
+  align-items: center;
+}
+.borrarusuario:hover{
+  color: black;
+  border: 0;
+  font-weight: 600;
 }

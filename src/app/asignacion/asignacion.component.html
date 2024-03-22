@@ -20,11 +20,6 @@
       <span >Asignacion</span>
       <!--button  class="boton1">Entrada de uno más registros</button-->
     </div>
-    <!--div class="mainbody">
-      <mat-form-field appearance="outline">
-        <mat-label>Filtro</mat-label>
-        <input matInput [formControl]="filtro" placeholder="ej. Laptop" #input>
-      </mat-form-field-->
       <div class="search-bar mt-3">
         <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
       </div>
@@ -56,25 +51,25 @@
             <td>{{Appcontraloria.cpu}}</td>
             <td>{{Appcontraloria.memoria}}</td>
             <td>{{Appcontraloria.almacenamiento}}</td>
-            <td>  
+            <td class="button2">  
               <!--button  class="boton2" (click)="mostrarComponente()">Asignar Usuario</button-->
-              <button  class="boton2" (click)="mostrarComponenteedit(Appcontraloria)">Asignar Usuario</button>
+              <i class="bi bi-person-add" (click)="mostrarComponenteedit(Appcontraloria)" title="Asignar Usuarios" ></i>
             </td>
           </tr>
         </tbody>
       </table>
-      <!--mat-paginator [pageSizeOptions]="[ 5, 10, 25, 100]" aria-label="Seleccione el numero de registros"></mat-paginator-->
       <div class="pagination">
         <label for="itemsPerPage">Items per page:</label>
-        <select id="itemsPerPage" name="itemsPerPage">
-          <option value="5">5</option>
-          <option value="10">10</option>
+        <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
         </select>
-        <span>0 of 0</span>
-        <button>&lt;</button>
-        <button>&gt;</button>
-        
-      </div>
-      <!--/div-->
+        <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
+        <button (click)="prevPage()">&lt;</button>
+        <button (click)="nextPage()">&gt;</button>
+    </div>
   </div>
 </body>
