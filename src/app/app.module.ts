@@ -33,6 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { AddRegistrosComponent } from './registros/add-registros/add-registros.component';
 import { EditEntradaComponent } from './entrada/edit-entrada/edit-entrada.component';
 import { EditAsignacionComponent } from './asignacion/edit-asignacion/edit-asignacion.component';
+import { AddMantenimientoComponent } from './mantenimiento/add-mantenimiento/add-mantenimiento.component';
 
 
 
@@ -55,7 +56,8 @@ import { EditAsignacionComponent } from './asignacion/edit-asignacion/edit-asign
     AddAsignacionComponent,
     AddRegistrosComponent,
     EditEntradaComponent,
-    EditAsignacionComponent
+    EditAsignacionComponent,
+    AddMantenimientoComponent
   ],
   imports: [
     BrowserModule,

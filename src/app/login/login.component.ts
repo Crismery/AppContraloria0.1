@@ -25,15 +25,23 @@ export class LoginComponent {
   ngOnInit(): void{
 
   }
-
   onSubmit() {
-    this.userService.login(this.formLogin.value)
-      .then(response => {
-        console.log(response);
-        this.router.navigate(['/home']);
-      })
-      .catch(error => console.log(error));
-  }
+    if (this.formLogin.valid) {
+      this.userService.login(this.formLogin.value)
+        .then(response => {
+          console.log(response);
+          this.router.navigate(['/home']);
+        })
+        .catch(error => {
+          console.log(error);
+          // Maneja el error del inicio de sesión aquí
+          // Puedes mostrar un mensaje de error adecuado al usuario
+        });
+    } else {
+      // Formulario inválido, muestra un mensaje de error al usuario
+      alert('Por favor complete todos los campos correctamente.');
+    }
+  }  
   onClick(){
     this.userService.loginWithGoogle()
     .then(response => {

@@ -7,13 +7,26 @@
             <div class="input-container mb-3">
                 <input type="text" v-model="username" placeholder="Correo Electronico" autocomplete="off"
                     formControlName="email">
+                    <div *ngIf="formLogin.get('email')?.errors?.['required'] && (formLogin.get('email')?.dirty || formLogin.get('email')?.touched)">
+                        <div class="alert alert-danger">El correo electrónico es requerido.</div>
+                    </div>
+                    <div *ngIf="formLogin.get('email')?.errors?.['email'] && (formLogin.get('email')?.dirty || formLogin.get('email')?.touched)">
+                        <div class="alert alert-danger">El correo electrónico no es válido.</div>
+                      </div>
+
                 <input class="input-field password" type="password"
                     v-model="password" placeholder="Contraseña" autocomplete="off" formControlName="password">
+                    <div *ngIf="formLogin.get('password')?.errors?.['required'] && (formLogin.get('password')?.dirty || formLogin.get('password')?.touched)">
+                        <div class="alert alert-danger">La contraseña es requerida.</div>
+                    </div>
+                    <div *ngIf="formLogin.get('password')?.errors?.['minlength'] && (formLogin.get('password')?.dirty || formLogin.get('password')?.touched)">
+                        <div class="alert alert-danger">La contraseña debe tener al menos 6 caracteres.</div>
+                    </div>
             </div>
             <!-- <a href="#" class="forgetpass">Forget Password?</a> -->
             <input type="submit" value="Iniciar sesión" class="btn1">
             <br><br>
-            <input type="submit" value="Iniciar sesión con Google" class="btn btn-info" (click)="onClick()">
+            <input  value="Iniciar sesión con Google" class="btn btn-info" (click)="onClick()">
             <br>
             <span v-on:click="togglePass"> ¿No tienes una cuenta? <a href="/registro"> <span
                         class="underline-on-hover">Registrar</span> </a>
