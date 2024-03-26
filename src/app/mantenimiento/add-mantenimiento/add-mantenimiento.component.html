@@ -1,1 +1,83 @@
-<p>add-mantenimiento works!</p>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div class="container">
+     <br>
+         <h1>Matenimiento</h1>
+         <form>
+         <div class="row">
+ 
+           <mat-form-field appearance="outline">
+             <mat-label>Tipo de Matenimiento</mat-label>
+             <mat-select  placeholder="Seleccione un tipo de mantenimiento" [(ngModel)]="tipomantenimiento" name="mantenimiento">
+                 <mat-option>Ninguno</mat-option>
+                 <mat-option value="Fisico">Fisico</mat-option>
+                 <mat-option value="Logico">Logico</mat-option>
+                 <mat-option value="Ambos">Ambos</mat-option>
+             </mat-select>
+         </mat-form-field>
+         <h3 *ngIf="tipomantenimiento === 'Ambos'">Mantenimiento Logico</h3>
+         <div class="row">
+            <div *ngIf="tipomantenimiento === 'Logico' || tipomantenimiento === 'Ambos'" >
+                <mat-checkbox >Cambio de OS</mat-checkbox>
+            </div>
+            <div *ngIf="tipomantenimiento === 'Logico' || tipomantenimiento === 'Ambos'">
+                <mat-checkbox>Desfragmentacion</mat-checkbox>
+            </div>
+            <div *ngIf="tipomantenimiento === 'Logico' || tipomantenimiento === 'Ambos'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Actulizacion</mat-label>
+                    <mat-select placeholder="Seleccione Actualizacion">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option value="OS">Sistema Operativo</mat-option>
+                        <mat-option value="Software">Software</mat-option>
+                        <mat-option value="Otros">Otros</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </div>
+
+                <h3 *ngIf="tipomantenimiento === 'Ambos'">Mantenimiento Fisico</h3>
+            <div *ngIf="tipomantenimiento === 'Fisico' || tipomantenimiento === 'Ambos'">
+                <mat-checkbox (change)="toggleMemoria($event)">Memoria</mat-checkbox>
+                <mat-form-field appearance="outline" *ngIf="memoriaSeleccionada">
+                    <mat-label>Memoria</mat-label>
+                    <mat-select placeholder="Seleccione Memoria">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option value="8Gb">8Gb</mat-option>
+                        <mat-option value="16Gb">16Gb</mat-option>
+                        <mat-option value="32Gb">32Gb</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="tipomantenimiento === 'Fisico' || tipomantenimiento === 'Ambos'">
+                <mat-checkbox (change)="toggledisco($event)">Disco</mat-checkbox>
+            <mat-form-field appearance="outline" *ngIf="discoSeleccionada" >
+                <mat-label>Capacidad</mat-label>
+                <mat-select  placeholder="Seleccione Disco">
+                    <mat-option>Ninguno</mat-option>
+                    <mat-option value="256Gb">256Gb</mat-option>
+                    <mat-option value="512Gb">512Gb</mat-option>
+                    <mat-option value="1Tb">1Tb</mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+            <div *ngIf="tipomantenimiento === 'Fisico' || tipomantenimiento === 'Ambos'">
+                <mat-checkbox (change)="togglelimpieza($event)">Limpieza</mat-checkbox>
+            <mat-form-field appearance="outline" *ngIf="limpiezaSeleccionada">
+                <mat-label>Limpieza</mat-label>
+                <mat-select  placeholder="Seleccione Limpieza">
+                    <mat-option>Ninguno</mat-option>
+                    <mat-option value="HDD">HDD</mat-option>
+                    <mat-option value="SDD">SDD</mat-option>
+                    <mat-option value="NVMe">NVMe</mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+        </div>
+         </div>
+         <div class="cardbutton">
+           <button>Actualizar</button>
+           <button (click)="cerrarCentrado()">Cancelar</button>
+         </div>
+         </form>
+    </div>   
+ </div>

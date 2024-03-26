@@ -34,7 +34,12 @@ this.form = this.formBuilder.group({
   mantenimiento: [''],
   cedula: [''],
   usuario: [''],
-  version: ['']
+  version: [''],
+  tipo_de_mantenimiento: [''],
+  fecha_de_mantenimiento: [''],
+  fisico: [''],
+  logico: [''],
+  limpieza:['']
 });
 
 this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {

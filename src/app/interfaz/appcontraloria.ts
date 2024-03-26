@@ -15,4 +15,9 @@ export interface Appcontraloria {
     almacenamiento: string;
     mantenimiento: string;
     tamaño: string;
+    tipo_de_mantenimiento: string;
+    fecha_de_mantenimiento: string;
+    fisico: string;
+    logico: string;
+    limpieza: string;
 }

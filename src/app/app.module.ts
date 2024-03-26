@@ -34,6 +34,7 @@ import { AddRegistrosComponent } from './registros/add-registros/add-registros.c
 import { EditEntradaComponent } from './entrada/edit-entrada/edit-entrada.component';
 import { EditAsignacionComponent } from './asignacion/edit-asignacion/edit-asignacion.component';
 import { AddMantenimientoComponent } from './mantenimiento/add-mantenimiento/add-mantenimiento.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -72,6 +73,7 @@ import { AddMantenimientoComponent } from './mantenimiento/add-mantenimiento/add
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
+    MatCheckboxModule,
     provideFirebaseApp(() => initializeApp({"projectId":"app-contraloria-4e461","appId":"1:773014821815:web:25693680a61efc7fe0a632","storageBucket":"app-contraloria-4e461.appspot.com","apiKey":"AIzaSyDQ-4H7L3V8acBlSqClBLPeXasvpSQ2p8c","authDomain":"app-contraloria-4e461.firebaseapp.com","messagingSenderId":"773014821815"})),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())

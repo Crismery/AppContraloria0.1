@@ -21,8 +21,53 @@
       <span >Mantenimiento</span>
       <!--button  class="boton1">Entrada de uno más registros</button-->
     </div>
-      <div class="search-bar mt-3">
-        <input type="text"  placeholder="ej. Laptop">
-      </div>
+    <div class="search-bar mt-3">
+      <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
+    </div>
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th>Dispositivo</th>
+            <th>Serial</th>
+            <th>Placa</th>
+            <th>Version</th>
+            <th>Tipo de Mantenimiento</th>
+            <th>Descripcion</th>
+            <th>Fisico</th>
+            <th>Logico</th>
+            <th>Fecha</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
+            <td>{{Appcontraloria.dispositivo}}</td>
+            <td>{{Appcontraloria.serial}}</td>
+            <td>{{Appcontraloria.placa}}</td>
+            <td>{{Appcontraloria.version}}</td>
+            <td>{{Appcontraloria.tipo_de_mantenimiento}}</td>
+            <td>{{Appcontraloria.mantenimiento}}</td>
+            <td>{{Appcontraloria.fisico}}</td>
+            <td>{{Appcontraloria.logico}}</td>
+            <td>{{Appcontraloria.fecha_de_mantenimiento}}</td>
+            <td class="button2">  
+              <i class="bi bi-gear" (click)="mostrarComponente()" title="Mantenimiento" ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <label for="itemsPerPage">Items per page:</label>
+        <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+        <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
+        <button (click)="prevPage()">&lt;</button>
+        <button (click)="nextPage()">&gt;</button>
+    </div>
   </div>
 </body>

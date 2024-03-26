@@ -16,9 +16,9 @@ import { Observable } from 'rxjs';
 export class EntradaComponent implements OnInit {
 
   appcontraloria: Appcontraloria[]=[];
+
   query: string='';
   resultados$!: Observable<Appcontraloria[]>;
-
   filteredResults: Appcontraloria[]=[];
 
   startIndex: number = 0;
@@ -45,7 +45,6 @@ export class EntradaComponent implements OnInit {
       console.log('Dialogo cerrado:', result);
     });
   }
-
   async mostrarComponenteedit(appcontraloria: Appcontraloria): Promise<void> {
     try {
       const registro = await this.registrosService.getPlaceById(appcontraloria);
@@ -65,6 +64,8 @@ export class EntradaComponent implements OnInit {
       console.error('Error al obtener la información del registro:', error);
     }
   }
+
+
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria;
@@ -74,6 +75,7 @@ export class EntradaComponent implements OnInit {
       this.loadData();
     });
   }  
+
 
  async onClickDelete(appcontraloria: Appcontraloria){
     const response = await this.registrosService.deletePlaces(appcontraloria);
@@ -88,6 +90,8 @@ export class EntradaComponent implements OnInit {
       });
   }
 }
+
+
 buscar(): void {
   if (this.query.trim() !== '') {
     this.filteredResults = this.appcontraloria.filter(place => 
@@ -98,11 +102,11 @@ buscar(): void {
   }
 }
 
+
 loadData(): void {
   this.totalItems = this.filteredResults.length; 
   this.endIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems);
 }
-
 changeItemsPerPage(event: any): void {
   const value = (event.target as HTMLSelectElement).value;
   if (value !== null && value !== undefined) {
@@ -117,7 +121,6 @@ prevPage(): void {
   this.startIndex = Math.max(0, this.startIndex - this.itemsPerPage);
   this.loadData();
 }
-
 nextPage(): void {
   this.startIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems - this.itemsPerPage);
   this.loadData();
