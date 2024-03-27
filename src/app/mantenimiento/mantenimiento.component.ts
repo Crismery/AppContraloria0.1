@@ -27,18 +27,24 @@ export class MantenimientoComponent  implements OnInit{
     private registrosService: RegistrosService,
     private viewContainerRef:ViewContainerRef){
   }
-  mostrarComponente(): void {
-    const dialogRef = this.dialog.open(AddMantenimientoComponent, {
-      width: '500px',
-      height: '380px',
-      viewContainerRef: this.viewContainerRef,
-      panelClass: 'dialog-container',
-      disableClose: true
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialogo cerrado:', result);
-    });
+  async  mostrarComponente(appcontraloria: Appcontraloria): Promise<void> {
+    try {
+      const registro = await this.registrosService.getPlaceById(appcontraloria);
+    
+      const dialogRef = this.dialog.open(AddMantenimientoComponent, {
+        data: registro, 
+        width: '550px',
+        height: '500px',
+        viewContainerRef: this.viewContainerRef,
+        panelClass: 'dialog-container',
+        disableClose: true
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialogo cerrado:', result);
+      });
+    } catch (error) {
+      console.error('Error al obtener la información del registro:', error);
+    }
   }
 
   

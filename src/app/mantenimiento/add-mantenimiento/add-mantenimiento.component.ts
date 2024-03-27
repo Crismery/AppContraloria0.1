@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Appcontraloria } from '../../interfaz/appcontraloria';
+import { RegistrosService } from '../../servicios/registros.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-mantenimiento',
@@ -13,8 +16,14 @@ export class AddMantenimientoComponent {
   memoriaSeleccionada: boolean = false;
   discoSeleccionada: boolean = false;
   limpiezaSeleccionada: boolean = false;
+  osSeleccionada: boolean = false;
 
-  constructor( private dialogRef: MatDialogRef<AddMantenimientoComponent>) { }
+
+  appcontraloriaedit: any = {};
+
+  constructor( private dialogRef: MatDialogRef<AddMantenimientoComponent>,
+    private registros: RegistrosService,
+    private _snackbar: MatSnackBar ) { }
   cerrarCentrado(){
     this.dialogRef.close();
   }
@@ -26,5 +35,24 @@ export class AddMantenimientoComponent {
   }
   togglelimpieza(event: any) {
     this.limpiezaSeleccionada = event.checked;
+  }
+  toggleos(event: any) {
+    this.osSeleccionada = event.checked;
+  }
+
+  actualizarLugar() {
+    if (this.appcontraloriaedit) {
+      this.registros.updatePlace(this.appcontraloriaedit)
+        .then(() => {
+          this._snackbar.open('Se editó con éxito.', 'Cerrar', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+          });
+        })
+        .catch(error => console.error('Error al actualizar el lugar:', error));
+    } else {
+      console.error('No hay información para actualizar');
+    }
   }
 }

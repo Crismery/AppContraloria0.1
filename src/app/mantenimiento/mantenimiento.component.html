@@ -47,11 +47,11 @@
             <td>{{Appcontraloria.version}}</td>
             <td>{{Appcontraloria.tipo_de_mantenimiento}}</td>
             <td>{{Appcontraloria.mantenimiento}}</td>
-            <td>{{Appcontraloria.fisico}}</td>
-            <td>{{Appcontraloria.logico}}</td>
+            <td>Memoria:{{Appcontraloria.memoria}}, Disco:{{Appcontraloria.almacenamiento}} y Limpieza: {{Appcontraloria.limpieza}}</td>
+            <td>Os: {{Appcontraloria.os}}</td>
             <td>{{Appcontraloria.fecha_de_mantenimiento}}</td>
-            <td class="button2">  
-              <i class="bi bi-gear" (click)="mostrarComponente()" title="Mantenimiento" ></i>
+            <td class="button2" style="text-align: center; vertical-align: middle;">  
+              <i class="bi bi-gear" (click)="mostrarComponente(Appcontraloria)" title="Mantenimiento" ></i>
             </td>
           </tr>
         </tbody>

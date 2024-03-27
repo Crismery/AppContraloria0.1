@@ -48,3 +48,24 @@ color: #ff000d;
 border: 0;
 font-weight: 600;
 } 
+h3{
+  margin-top: 5px; 
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  text-align: left;
+}
+.checkboxes-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+ .select-container, .description-container {
+  flex: 1 1 50%;
+  margin-bottom: 15px;
+  padding-right: 10px;
+}
+
+.mat-form-field {
+  width: 250%;
+}
