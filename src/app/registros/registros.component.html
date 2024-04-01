@@ -1,73 +1,76 @@
 <body>
-<div class="navbar">
-    <div class="logo"><img src="assets/Captura.png" class="logo1"> <h5> CONTRALORIA | REGISTROS GENERAL CGR</h5></div>
+  <div class="navbar">
+    <div class="logo"><img src="assets/Captura.png" class="logo1">
+      <h5> CONTRALORIA | REGISTROS GENERAL CGR</h5>
+    </div>
     <div class="user-info">
-        <!--button class="p-link layout-topbar-button">
+      <!--button class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button-->
-        <button [routerLink]="'/home'" class="boton">
-            <img src="assets/salir.png" >
-            <i class="pi pi-cog"></i>
-            <span>Home</span>
-        </button>
+      <button [routerLink]="'/home'" class="boton">
+        <img src="assets/salir.png">
+        <i class="pi pi-cog"></i>
+        <span>Home</span>
+      </button>
     </div>
   </div>
-  
+
   <div class="content">
     <br>
     <div class="navbar1">
-      <span >Registro General CGR </span>
+      <span>Registro General CGR </span>
     </div>
 
-      <div class="search-bar mt-3">
-        <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
-      </div>
-      
-      <table class="table table-striped mt-3 ">
-        <thead>
-          <tr>
-            <th>Dispositivo</th>
-            <th>Modelo</th>
-            <th>Serial</th>
-            <th>Placa</th>
-            <th>Bienes Nacionales</th>
-            <th>Usuario</th>
-            <th>Departamento</th>
-            <th>Mantenimiento</th>
-            <th>Accion</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
-            <td>{{Appcontraloria.dispositivo}}</td>
-            <td>{{Appcontraloria.modelo}}</td>
-            <td>{{Appcontraloria.serial}}</td>
-            <td>{{Appcontraloria.placa}}</td>
-            <td>{{Appcontraloria.bienes_nacionales}}</td>
-            <td>{{Appcontraloria.usuario}}</td>
-            <td>{{Appcontraloria.Departamento}}</td>
-            <td>{{Appcontraloria.mantenimiento}}</td>
-            <td style="text-align: center; vertical-align: middle;">  
-              <i class="bi bi-pencil-square editar" (click)="mostrarComponente(Appcontraloria)" title="Editar"></i>
-              <i class="bi bi-trash borrar" (click)="onClickDelete(Appcontraloria)" title="Borrar"></i>
-              <i class="bi bi-person-dash borrarusuario"(click)="onClickDeleteFields(Appcontraloria)" title="Borrar Usuario"></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="pagination">
-        <label for="itemsPerPage">Items per page:</label>
-        <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-        </select>
-        <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
-        <button (click)="prevPage()">&lt;</button>
-        <button (click)="nextPage()">&gt;</button>
+    <div class="search-bar mt-3">
+      <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
+    </div>
+
+    <table class="table table-striped mt-3 ">
+      <thead>
+        <tr>
+          <th style="text-align: center;">Dispositivo</th>
+          <th style="text-align: center;">Modelo</th>
+          <th style="text-align: center;">Serial</th>
+          <th style="text-align: center;">Placa</th>
+          <th style="text-align: center;">Bienes Nacionales</th>
+          <th style="text-align: center;">Usuario</th>
+          <th style="text-align: center;">Departamento</th>
+          <th style="text-align: center;">Mantenimiento</th>
+          <th style="text-align: center;">Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
+          <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
+          <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
+          <td style="text-align: center;">{{Appcontraloria.serial}}</td>
+          <td style="text-align: center;">{{Appcontraloria.placa}}</td>
+          <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
+          <td style="text-align: center;">{{Appcontraloria.usuario}}</td>
+          <td style="text-align: center;">{{Appcontraloria.Departamento}}</td>
+          <td style="text-align: center;">{{Appcontraloria.mantenimiento}}</td>
+          <td style="text-align: center; vertical-align: middle;">
+            <i class="bi bi-pencil-square editar" (click)="mostrarComponente(Appcontraloria)" title="Editar"></i>
+            <i class="bi bi-trash borrar" (click)="onClickDelete(Appcontraloria)" title="Borrar"></i>
+            <i class="bi bi-person-dash borrarusuario" (click)="onClickDeleteFields(Appcontraloria)"
+              title="Borrar Usuario"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <label for="itemsPerPage">Items per page:</label>
+      <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
+      <button (click)="prevPage()">&lt;</button>
+      <button (click)="nextPage()">&gt;</button>
     </div>
   </div>
 </body>

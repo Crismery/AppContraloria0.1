@@ -1,73 +1,77 @@
 <body>
-<div class="navbar">
-    <div class="logo"><img src="assets/Captura.png" class="logo1"> <h5> CONTRALORIA | MANTENIMIENTO</h5></div>
+  <div class="navbar">
+    <div class="logo"><img src="assets/Captura.png" class="logo1">
+      <h5> CONTRALORIA | MANTENIMIENTO</h5>
+    </div>
     <div class="user-info">
-        <!--button class="p-link layout-topbar-button">
+      <!--button class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button-->
-        <button [routerLink]="'/home'" class="boton">
-            <img src="assets/salir.png" >
-            <i class="pi pi-cog"></i>
-            <span>Home</span>
-        </button>
-      <!-- Iconos y nombre del usuario aquí -->
+      <button [routerLink]="'/home'" class="boton">
+        <img src="assets/salir.png">
+        <i class="pi pi-cog"></i>
+        <span>Home</span>
+      </button>
     </div>
   </div>
-  
+
   <div class="content">
     <br>
     <div class="navbar1">
-      <span >Mantenimiento</span>
+      <span>Mantenimiento</span>
       <!--button  class="boton1">Entrada de uno más registros</button-->
     </div>
     <div class="search-bar mt-3">
       <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
     </div>
-      <table class="table table-striped mt-3">
-        <thead>
-          <tr>
-            <th>Dispositivo</th>
-            <th>Serial</th>
-            <th>Placa</th>
-            <th>Version</th>
-            <th>Tipo de Mantenimiento</th>
-            <th>Descripcion</th>
-            <th>Fisico</th>
-            <th>Logico</th>
-            <th>Fecha</th>
-            <th>Accion</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
-            <td>{{Appcontraloria.dispositivo}}</td>
-            <td>{{Appcontraloria.serial}}</td>
-            <td>{{Appcontraloria.placa}}</td>
-            <td>{{Appcontraloria.version}}</td>
-            <td>{{Appcontraloria.tipo_de_mantenimiento}}</td>
-            <td>{{Appcontraloria.mantenimiento}}</td>
-            <td>Memoria:{{Appcontraloria.memoria}}, Disco:{{Appcontraloria.almacenamiento}} y Limpieza: {{Appcontraloria.limpieza}}</td>
-            <td>Os: {{Appcontraloria.os}}</td>
-            <td>{{Appcontraloria.fecha_de_mantenimiento}}</td>
-            <td class="button2" style="text-align: center; vertical-align: middle;">  
-              <i class="bi bi-gear" (click)="mostrarComponente(Appcontraloria)" title="Mantenimiento" ></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="pagination">
-        <label for="itemsPerPage">Items per page:</label>
-        <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-        </select>
-        <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
-        <button (click)="prevPage()">&lt;</button>
-        <button (click)="nextPage()">&gt;</button>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th style="text-align: center;">Dispositivo</th>
+          <th style="text-align: center;">Serial</th>
+          <th style="text-align: center;">Placa</th>
+          <th style="text-align: center;">Version</th>
+          <th style="text-align: center;">Tipo de Mantenimiento</th>
+          <th style="text-align: center;">Descripcion</th>
+          <th style="text-align: center;">Fisico</th>
+          <th style="text-align: center;">Logico</th>
+          <th style="text-align: center;">Defragmentacion</th>
+          <th style="text-align: center;">Fecha</th>
+          <th style="text-align: center;">Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Appcontraloria of filteredResults; let i = index" style="text-align: center;">
+          <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
+          <td style="text-align: center;">{{Appcontraloria.serial}}</td>
+          <td style="text-align: center;">{{Appcontraloria.placa}}</td>
+          <td style="text-align: center;">{{Appcontraloria.version}}</td>
+          <td style="text-align: center;">{{Appcontraloria.tipo_de_mantenimiento}}</td>
+          <td style="text-align: center;">{{Appcontraloria.mantenimiento}}</td>
+          <td style="text-align: center;">Memoria:{{Appcontraloria.memoria}}, Disco:{{Appcontraloria.almacenamiento}} y
+            Limpieza: {{Appcontraloria.limpieza}}</td>
+          <td style="text-align: center;">Os: {{Appcontraloria.os}}</td>
+          <td style="text-align: center;">{{Appcontraloria.defragmentacion}}</td>
+          <td style="text-align: center;">{{Appcontraloria.fecha_de_mantenimiento}}</td>
+          <td class="button2" style="text-align: center; vertical-align: middle;">
+            <i class="bi bi-gear" (click)="mostrarComponente(Appcontraloria)" title="Mantenimiento"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <label for="itemsPerPage">Items per page:</label>
+      <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
+      <button (click)="prevPage()">&lt;</button>
+      <button (click)="nextPage()">&gt;</button>
     </div>
   </div>
 </body>

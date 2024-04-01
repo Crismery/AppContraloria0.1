@@ -46,8 +46,6 @@ export class MantenimientoComponent  implements OnInit{
       console.error('Error al obtener la información del registro:', error);
     }
   }
-
-  
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria;

@@ -38,7 +38,7 @@ this.form = this.formBuilder.group({
   tipo_de_mantenimiento: [''],
   fecha_de_mantenimiento: [''],
   // fisico: [''],
-  // logico: [''],
+  defragmentacion: [''],
   limpieza:['']
 });
 

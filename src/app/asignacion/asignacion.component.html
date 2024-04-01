@@ -1,75 +1,79 @@
 <body>
-<div class="navbar">
-    <div class="logo"><img src="assets/Captura.png" class="logo1"> <h5> CONTRALORIA | ASIGNACION</h5></div>
+  <div class="navbar">
+    <div class="logo"><img src="assets/Captura.png" class="logo1">
+      <h5> CONTRALORIA | ASIGNACION</h5>
+    </div>
     <div class="user-info">
-        <!--button class="p-link layout-topbar-button">
+      <!--button class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button-->
-        <button [routerLink]="'/home'" class="boton">
-            <img src="assets/salir.png" >
-            <i class="pi pi-cog"></i>
-            <span>Home</span>
-        </button>
+      <button [routerLink]="'/home'" class="boton">
+        <img src="assets/salir.png">
+        <i class="pi pi-cog"></i>
+        <span>Home</span>
+      </button>
     </div>
   </div>
-  
+
   <div class="content">
     <br>
     <div class="navbar1">
-      <span >Asignacion</span>
+      <span>Asignacion</span>
       <!--button  class="boton1">Entrada de uno más registros</button-->
     </div>
-      <div class="search-bar mt-3">
-        <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
-      </div>
-      <table class="table table-striped mt-3">
-        <thead>
-          <tr>
-            <th>Dispositivo</th>
-            <th>Serial</th>
-            <th>Cedula</th>
-            <th>Usuario</th>
-            <th>Departamento</th>
-            <th>OS</th>
-            <th>Version</th>
-            <th>CPU</th>
-            <th>Memoria</th>
-            <th>Almacenamiento</th>
-            <th>Accion</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
-            <td>{{Appcontraloria.dispositivo}}</td>
-            <td>{{Appcontraloria.serial}}</td>
-            <td>{{Appcontraloria.cedula}}</td>
-            <td>{{Appcontraloria.usuario}}</td>
-            <td>{{Appcontraloria.Departamento}}</td>
-            <td>{{Appcontraloria.os}}</td>
-            <td>{{Appcontraloria.version}}</td>
-            <td>{{Appcontraloria.cpu}}</td>
-            <td>{{Appcontraloria.memoria}}</td>
-            <td>{{Appcontraloria.almacenamiento}}</td>
-            <td class="button2" style="text-align: center; vertical-align: middle;">  
-              <!--button  class="boton2" (click)="mostrarComponente()">Asignar Usuario</button-->
-              <i class="bi bi-person-add" (click)="mostrarComponenteedit(Appcontraloria)" title="Asignar Usuarios" ></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="pagination">
-        <label for="itemsPerPage">Items per page:</label>
-        <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-        </select>
-        <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
-        <button (click)="prevPage()">&lt;</button>
-        <button (click)="nextPage()">&gt;</button>
+    <div class="search-bar mt-3">
+      <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
+    </div>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th style="text-align: center;">Dispositivo</th>
+          <th style="text-align: center;">Serial</th>
+          <th style="text-align: center;">Cedula</th>
+          <th style="text-align: center;">Usuario</th>
+          <th style="text-align: center;">Departamento</th>
+          <th style="text-align: center;">OS</th>
+          <th style="text-align: center;">Version</th>
+          <th style="text-align: center;">CPU</th>
+          <th style="text-align: center;">Memoria</th>
+          <th style="text-align: center;">Almacenamiento</th>
+          <th style="text-align: center;">Matenimiento</th>
+          <th style="text-align: center;">Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
+          <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
+          <td style="text-align: center;">{{Appcontraloria.serial}}</td>
+          <td style="text-align: center;">{{Appcontraloria.cedula}}</td>
+          <td style="text-align: center;">{{Appcontraloria.usuario}}</td>
+          <td style="text-align: center;">{{Appcontraloria.Departamento}}</td>
+          <td style="text-align: center;">{{Appcontraloria.os}}</td>
+          <td style="text-align: center;">{{Appcontraloria.version}}</td>
+          <td style="text-align: center;">{{Appcontraloria.cpu}}</td>
+          <td style="text-align: center;">{{Appcontraloria.memoria}}</td>
+          <td style="text-align: center;">{{Appcontraloria.almacenamiento}}</td>
+          <td style="text-align: center;">{{Appcontraloria.mantenimiento}}</td>
+          <td class="button2" style="text-align: center; vertical-align: middle;">
+            <!--button  class="boton2" (click)="mostrarComponente()">Asignar Usuario</button-->
+            <i class="bi bi-person-add" (click)="mostrarComponenteedit(Appcontraloria)" title="Asignar Usuarios"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <label for="itemsPerPage">Items per page:</label>
+      <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
+      <button (click)="prevPage()">&lt;</button>
+      <button (click)="nextPage()">&gt;</button>
     </div>
   </div>
 </body>

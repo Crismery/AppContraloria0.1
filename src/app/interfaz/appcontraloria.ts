@@ -17,7 +17,8 @@ export interface Appcontraloria {
     tamaño: string;
     tipo_de_mantenimiento: string;
     fecha_de_mantenimiento: string;
-    fisico: string;
-    logico: string;
+    // fisico: string;
+    // logico: string;
     limpieza: string;
+    defragmentacion: string;
 }
