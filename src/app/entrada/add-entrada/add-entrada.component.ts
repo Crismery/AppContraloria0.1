@@ -1,9 +1,9 @@
-import { Component} from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject} from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegistrosService } from '../../servicios/registros.service';
-import {MatSnackBar}from '@angular/material/snack-bar'
-
+import {MatSnackBar}from '@angular/material/snack-bar';
+import { Appcontraloria } from '../../interfaz/appcontraloria';
 
 @Component({
   selector: 'app-add-entrada',
@@ -13,11 +13,13 @@ import {MatSnackBar}from '@angular/material/snack-bar'
 export class AddEntradaComponent {
 
   form: FormGroup;
+  appcontraloriaedit!: Appcontraloria;
 
   constructor(public dialogRef: MatDialogRef<AddEntradaComponent>, 
     private registros:RegistrosService, 
     private formBuilder: FormBuilder,
-    private _snackbar: MatSnackBar) { 
+    private _snackbar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: Appcontraloria ) { 
   
 this.form = this.formBuilder.group({
   dispositivo: ['', Validators.required],
@@ -37,7 +39,8 @@ this.form = this.formBuilder.group({
   version: [''],
   tipo_de_mantenimiento: [''],
   fecha_de_mantenimiento: [''],
-  // fisico: [''],
+  fecha_de_entrada: [''],
+  fecha_de_salida: [''],
   defragmentacion: [''],
   limpieza:['']
 });
@@ -48,6 +51,8 @@ this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {
 }
   ngOnInit() {
     this.actualizarControles(this.form.get('dispositivo')?.value);
+
+    this.appcontraloriaedit = {...this.data};
   }
 
   actualizarControles(selectedDispositivo: string | null): void {
@@ -74,13 +79,14 @@ this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {
 
     this.form.updateValueAndValidity();
   }
-
   async onSubmit(){
     if (this.form.valid) {
-      console.log(this.form.value)
+      // Asignar la fecha de entrada antes de realizar el reset del formulario
+      this.appcontraloriaedit.fecha_de_entrada = new Date().toISOString().split('T')[0];
+      console.log(this.form.value);
       const response = await this.registros.addPlace(this.form.value);
       console.log(response);
-  
+    
       if (response) {
         this.form.reset();
         this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
@@ -96,7 +102,7 @@ this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {
         duration: 2000,
       });
     }
-  }  
+  }    
   cerrarCentrado(){
     this.dialogRef.close();
   }

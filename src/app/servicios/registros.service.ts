@@ -12,6 +12,10 @@ export class RegistrosService {
   constructor(private firestore: Firestore) { }
 
   addPlace(appcontraloria: Appcontraloria){
+
+    const fechaDeEntrada = new Date().toISOString().split('T')[0];
+    appcontraloria.fecha_de_entrada = fechaDeEntrada;
+    
     const placeRef= collection(this.firestore, 'appcontraloria');
     return addDoc(placeRef, appcontraloria);
   }

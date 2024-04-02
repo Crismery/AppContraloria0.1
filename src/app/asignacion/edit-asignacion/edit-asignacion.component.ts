@@ -37,6 +37,7 @@ export class EditAsignacionComponent implements OnInit{
 
     actualizarLugar() {
       if (this.appcontraloriaedit) {
+        this.appcontraloriaedit.fecha_de_asignacion= new Date().toISOString().split('T')[0];
         this.registros.updatePlace(this.appcontraloriaedit)
           .then(() => {
             this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
