@@ -5,7 +5,7 @@ background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #cecab7);
 background-repeat: no-repeat;
 background-position: center;
 background-size: cover;
-height: 100vh;
+height: 225vh;
 }
 .navbar {
   background-color: #002774;
@@ -79,13 +79,14 @@ table{
 th, td{
   text-align: left;
   padding: 8px;
-  border:  1px solid #fdfcfc;
+  border:  1px solid #072879;
   font-family: 'Times New Roman', Times, serif;
 }
 th{
-  background-color: white#f2f2f2;
+  background-color: #072879;
   border-bottom: 1px solid rgb(82, 81, 81);
   font-family: 'Times New Roman', Times, serif;
+  color: white;
 }
 
 .pagination {
@@ -111,12 +112,24 @@ margin-right: 5cm;
   border-radius: 10px;
 }
 button{
-  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  width: 125px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: 14px;
+  background-color: #ff000d;
+  border-radius: 5px !important;
+  padding: 20px 30px;
+  color: #dfdeee;
+  height: 45px;
+  cursor: pointer;
   border: 0;
 }
 button:hover{
   background: #ffffff;
-  color: #072879;
+  color: #ff000d;
   border: 0;
   font-weight: 600;
 }
@@ -133,15 +146,49 @@ input[type=text] {
   font-family: 'Times New Roman', Times, serif;
   border-radius: 10px;
 }
-.button2 i{
+.boton1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  width: 150px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: 14px;
+  background-color: #ff000d;
+  border-radius: 5px !important;
+  padding: 20px 30px;
+  color: #dfdeee;
+  height: 45px;
+  cursor: pointer;
+  border: 0;
+}
+.boton1:hover{
+  background: #ffffff;
+  color: #ff000d;
+  border: 0;
+  font-weight: 600;
+}
+h2{
+  margin-top: 5px; 
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  text-align: left;
+}
+.borrar{
   font-size: 25px;
-  color: #072879;
+  color: red;
   align-items: center;
 }
-.button2 i:hover{
+.borrar:hover{
   color: black;
   border: 0;
   font-weight: 600;
 }
-
-
+.checkbox{
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
