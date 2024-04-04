@@ -37,6 +37,7 @@
           <th style="text-align: center;">Usuario</th>
           <th style="text-align: center;">Departamento</th>
           <th style="text-align: center;">Mantenimiento</th>
+          <th style="text-align: center;">Fecha de actualizacion</th>
           <th style="text-align: center;">Accion</th>
         </tr>
       </thead>
@@ -50,6 +51,7 @@
           <td style="text-align: center;">{{Appcontraloria.usuario}}</td>
           <td style="text-align: center;">{{Appcontraloria.Departamento}}</td>
           <td style="text-align: center;">{{Appcontraloria.mantenimiento}}</td>
+          <td style="text-align: center;">{{Appcontraloria.fecha_de_actualizacion}}</td>
           <td style="text-align: center; vertical-align: middle;">
             <i class="bi bi-pencil-square editar" (click)="mostrarComponente(Appcontraloria)" title="Editar"></i>
             <i class="bi bi-trash borrar" (click)="onClickDelete(Appcontraloria)" title="Borrar"></i>

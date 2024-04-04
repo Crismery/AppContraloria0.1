@@ -15,6 +15,9 @@ export class RegistrosService {
 
     const fechaDeEntrada = new Date().toISOString().split('T')[0];
     appcontraloria.fecha_de_entrada = fechaDeEntrada;
+
+    const fecha_de_actualizacion = new Date().toISOString().split('T')[0];
+    appcontraloria.fecha_de_actualizacion = fecha_de_actualizacion;
     
     const placeRef= collection(this.firestore, 'appcontraloria');
     return addDoc(placeRef, appcontraloria);

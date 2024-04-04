@@ -21,4 +21,5 @@ export interface Appcontraloria {
     defragmentacion: string;
     fecha_de_entrada: string;
     fecha_de_asignacion: string;
+    fecha_de_actualizacion: string;
 }
