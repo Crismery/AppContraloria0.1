@@ -6,7 +6,7 @@
  
            <mat-form-field appearance="outline">
              <mat-label>Dispositivo</mat-label>
-             <mat-select  placeholder="Seleccione un Dispositivo"  name="opciones" [(ngModel)]="appcontraloriaedit.dispositivo">
+             <mat-select  placeholder="Seleccione un Dispositivo"  name="opciones" [(ngModel)]="appcontraloriaeditar.dispositivo">
                  <mat-option value="Desktop">Desktop</mat-option>
                  <mat-option value="Laptop">Laptop</mat-option>
                  <mat-option value="Monitor">Monitor</mat-option>
@@ -17,19 +17,19 @@
  
            <mat-form-field appearance="outline">
              <mat-label>Modelo</mat-label>
-             <input matInput type="text" placeholder="ej. Pro Desk" [(ngModel)]="appcontraloriaedit.modelo">
+             <input matInput type="text" placeholder="ej. Pro Desk" [(ngModel)]="appcontraloriaeditar.modelo">
          </mat-form-field>
          <mat-form-field appearance="outline">
            <mat-label>Serial</mat-label>
-           <input matInput type="text" placeholder="ej. 1xcs45" [(ngModel)]="appcontraloriaedit.serial">
+           <input matInput type="text" placeholder="ej. 1xcs45" [(ngModel)]="appcontraloriaeditar.serial">
        </mat-form-field>
        <mat-form-field appearance="outline">
          <mat-label>Placa</mat-label>
-         <input matInput type="text" placeholder="ej. 1234" [(ngModel)]="appcontraloriaedit.placa">
+         <input matInput type="text" placeholder="ej. 1234" [(ngModel)]="appcontraloriaeditar.placa">
      </mat-form-field>
      <mat-form-field appearance="outline">
        <mat-label>Bienes Nacionales</mat-label>
-       <input matInput type="text" placeholder="ej. 123456" [(ngModel)]="appcontraloriaedit.bienes_nacionales">
+       <input matInput type="text" placeholder="ej. 123456" [(ngModel)]="appcontraloriaeditar.bienes_nacionales">
    </mat-form-field>
  
    <ng-container>
@@ -45,7 +45,7 @@
    <ng-container >
      <mat-form-field appearance="outline" >
        <mat-label>OS</mat-label>
-       <mat-select placeholder="Seleccione un OS" [(ngModel)]="appcontraloriaedit.os">
+       <mat-select placeholder="Seleccione un OS" [(ngModel)]="appcontraloriaeditar.os">
          <mat-option value="Windows_10">Windows 10</mat-option>
          <mat-option value="Windows_11">Windows 11</mat-option>
        </mat-select>
@@ -55,7 +55,7 @@
    <ng-container>
      <mat-form-field appearance="outline">
        <mat-label>CPU</mat-label>
-       <mat-select placeholder="Seleccione un CPU" [(ngModel)]="appcontraloriaedit.cpu">
+       <mat-select placeholder="Seleccione un CPU" [(ngModel)]="appcontraloriaeditar.cpu">
          <mat-option value="i3">i3</mat-option>
          <mat-option value="i5">i5</mat-option>
          <mat-option value="i7">i7</mat-option>
@@ -66,7 +66,7 @@
    <ng-container>
      <mat-form-field appearance="outline">
        <mat-label>Memoria RAM</mat-label>
-       <mat-select placeholder="Seleccione un memoria" [(ngModel)]="appcontraloriaedit.memoria">
+       <mat-select placeholder="Seleccione un memoria" [(ngModel)]="appcontraloriaeditar.memoria">
          <mat-option value="8Gb">8Gb</mat-option>
          <mat-option value="16Gb">16Gb</mat-option>
          <mat-option value="32Gb">32Gb</mat-option>
@@ -77,7 +77,7 @@
    <ng-container>
      <mat-form-field appearance="outline">
        <mat-label>Almacenamiento</mat-label>
-       <mat-select placeholder="Seleccione almacenamiento" [(ngModel)]="appcontraloriaedit.almacenamiento">
+       <mat-select placeholder="Seleccione almacenamiento" [(ngModel)]="appcontraloriaeditar.almacenamiento">
          <mat-option value="256Gb">256Gb</mat-option>
          <mat-option value="512Gb">512Gb</mat-option>
          <mat-option value="1Tb">1Tb</mat-option>

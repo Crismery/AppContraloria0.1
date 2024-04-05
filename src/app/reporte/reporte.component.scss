@@ -173,12 +173,15 @@ h2{
   font-family: 'Times New Roman', Times, serif;
   text-align: left;
 }
-.borrar{
-  font-size: 25px;
+.imprimir{
+  font-size: 35px;
   color: red;
-  align-items: center;
+  text-align: right; 
+  margin-left: auto; 
+  justify-content: flex-end;
+  float: right;
 }
-.borrar:hover{
+.imprimir:hover{
   color: black;
   border: 0;
   font-weight: 600;

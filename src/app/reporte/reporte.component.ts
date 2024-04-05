@@ -50,40 +50,50 @@ export class ReporteComponent implements OnInit {
     //asignacion
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item => item.usuario && item.cedula && item.Departamento);
+    
+      this.registroasignar = this.appcontraloria.length;
     });
+    
     //matenimiento
     this.registrosService.getPlaces().subscribe(appcontraloriaman => {
       this.appcontraloriaman = appcontraloriaman.filter(item => item.tipo_de_mantenimiento && item.mantenimiento && item.defragmentacion);
+
+       this.registromatenimiento = this.appcontraloriaman.length;
     });
     //Entrada
     this.registrosService.getPlaces().subscribe(appcontraloriaent => {
       if (!this.ultimaCarga) {
         this.ultimaCarga = new Date();
-        this.ultimaCarga.setDate(this.ultimaCarga.getDate() - 7); // Restar 7 días a la fecha actual
+        this.ultimaCarga.setDate(this.ultimaCarga.getDate() - 7); 
       }
       this.appcontraloriaent = appcontraloriaent.filter(item => {
         if (this.ultimaCarga) { 
           const fechaEntrada = new Date(item.fecha_de_entrada);
-          const fecha_de_actualizacion = new Date(item.fecha_de_actualizacion);
+          
           if (fechaEntrada > this.ultimaCarga) {
             this.registrosent++; 
-            return true;
-          }
-          if (fecha_de_actualizacion > this.ultimaCarga) {
-            this.registroactu++; 
             return true;
           }
         }
         return false; 
       });
+      console.log('Registros nuevos:', this.registrosent);
+      console.log('Registros actualizados:', this.registroactu);
       this.ultimaCarga = new Date(); 
     });
+       
     //Registro
     this.registrosService.getPlaces().subscribe(appcontraloriare => {
-
       const unaSemanaAtras = new Date();
-      unaSemanaAtras.setDate(unaSemanaAtras.getDate() - 7); // Cambia el número de días según tus necesidades
-      this.appcontraloriare = appcontraloriare.filter(registro => new Date(registro.fecha_de_actualizacion) > unaSemanaAtras);
+      unaSemanaAtras.setDate(unaSemanaAtras.getDate() - 7); 
+      this.appcontraloriare = appcontraloriare.filter(registro => {
+        if (new Date(registro.fecha_de_actualizacion) > unaSemanaAtras) {
+          this.registroregistro++;
+          return true;
+        }
+        return false;
+      });
     });
+    
   }
 }

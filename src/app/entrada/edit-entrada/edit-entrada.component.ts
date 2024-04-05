@@ -12,7 +12,7 @@ import { RegistrosService } from '../../servicios/registros.service';
 })
 export class EditEntradaComponent implements OnInit{
 
-  appcontraloriaedit!: Appcontraloria;
+  appcontraloriaeditar!: Appcontraloria;
 
   constructor(private dialogRef: MatDialogRef<EditEntradaComponent>,
     private formBuilder: FormBuilder,
@@ -21,14 +21,15 @@ export class EditEntradaComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: Appcontraloria) { }
 
     ngOnInit(): void {
-      this.appcontraloriaedit = {...this.data};
+      this.appcontraloriaeditar = {...this.data};
     }
 
     actualizarLugar() {
-      if (this.appcontraloriaedit) {
+      if (this.appcontraloriaeditar) {
 
-        this.appcontraloriaedit.fecha_de_actualizacion = new Date().toISOString().split('T')[0];
-        this.registros.updatePlace(this.appcontraloriaedit)
+        this.appcontraloriaeditar.fecha_de_actualizacion = new Date().toISOString();
+
+        this.registros.updatePlace(this.appcontraloriaeditar)
           .then(() => {
             this._snackbar.open('Se editó con éxito.', 'Cerrar', {
               duration: 3000,

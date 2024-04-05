@@ -43,7 +43,7 @@ this.form = this.formBuilder.group({
   fecha_de_salida: [''],
   defragmentacion: [''],
   limpieza:[''],
-  fecha_de_edicion: ['']
+  fecha_de_actualizacion: ['']
 });
 
 this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {
@@ -84,6 +84,7 @@ this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {
     if (this.form.valid) {
       // Asignar la fecha de entrada antes de realizar el reset del formulario
       this.appcontraloriaedit.fecha_de_entrada = new Date().toISOString().split('T')[0];
+
       console.log(this.form.value);
       const response = await this.registros.addPlace(this.form.value);
       console.log(response);

@@ -29,16 +29,16 @@ export class AlmacenComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private _snackbar: MatSnackBar) { }
 
-  ngOnInit() {
-    this.registrosService.getPlaces().subscribe(appcontraloria => {
-      this.appcontraloria = appcontraloria;
-
-      this.filteredResults = this.appcontraloria;
-
-       this.loadData();
-
-    });
-  }
+    ngOnInit() {
+      this.registrosService.getPlaces().subscribe(appcontraloria => {
+        this.appcontraloria = appcontraloria.filter(item =>
+          !item.cedula && !item.usuario && !item.Departamento
+        );
+        this.filteredResults = this.appcontraloria;
+  
+        this.loadData();
+      });
+    }
 
   buscar(): void {
     if (this.query.trim() !== '') {

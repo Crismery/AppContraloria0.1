@@ -36,7 +36,7 @@
       <h2>Reporte de los cambios de Registros</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggleregistros($event)">Ver Cambios </mat-checkbox>
       <div *ngIf="registros || todo">
-        <h3>-Sean actualizado 7 dispositivo, 5 quedaron libres para asignar nuevamente y 5 se eliminaron.</h3>
+        <h3>-Sean actualizado {{registroregistro}} dispositivo, 5 quedaron libres para asignar nuevamente y 5 se eliminaron.</h3>
         <table class="table table-striped mt-3 ">
           <thead>
             <tr>
@@ -76,7 +76,7 @@
       <h2>Reporte de los cambios de las entradas</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggleentrada($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="entrada || todo">
-        <h3>-Sean agregado {{ registrosent }} dispositivo, sean actualizado {{registroactu}} y se eliminaron 4.</h3>
+        <h3>-Sean agregado {{ registrosent }} dispositivo, sean actualizado {{registroregistro}} y se eliminaron 4.</h3>
         <table class="table table-striped mt-3">
           <thead>
             <tr>
@@ -86,6 +86,7 @@
               <th style="text-align: center;">Placa</th>
               <th style="text-align: center;">Bienes Nacionales</th>
               <th style="text-align: center;">Fecha de entrada</th>
+              <th style="text-align: center;">Fecha de actualizado</th>
               <!-- <th style="text-align: center;">Accion</th> -->
             </tr>
           </thead>
@@ -97,13 +98,15 @@
           <td style="text-align: center;">{{Appcontraloria.placa}}</td>
           <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
           <td style="text-align: center;">{{Appcontraloria.fecha_de_entrada}}</td>
+          <td style="text-align: center;">{{Appcontraloria.fecha_de_actualizacion}}</td>
               <!-- <td style="text-align: center; vertical-align: middle;">
                 <i class="bi bi-trash borrar"title="Borrar"></i>
               </td> -->
             </tr>
           </tbody>
         </table>
-        <button *ngIf="entrada">Imprimir</button>
+        <!-- <button *ngIf="entrada">Imprimir</button> -->
+        <i class="bi bi-printer imprimir" *ngIf="entrada"  title="Imprimir"></i>
       </div>
     </div>
 
@@ -111,7 +114,7 @@
       <h2>Reporte de los cambios de los dipositivos asignados</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggleasignacion($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="asignacion || todo">
-        <h3>-Sean asiginado 10 dispositivos</h3>
+        <h3>-Sean asiginado {{ registroasignar }} dispositivos</h3>
         <table class="table table-striped mt-3">
           <thead>
             <tr>
@@ -146,7 +149,8 @@
             </tr>
           </tbody>
         </table>
-        <button *ngIf="asignacion">Imprimir</button>
+        <!-- <button *ngIf="asignacion">Imprimir</button> -->
+        <i class="bi bi-printer imprimir" *ngIf="asignacion"  title="Imprimir"></i>
       </div>
     </div>
 
@@ -154,7 +158,7 @@
       <h2>Reporte de los cambios de mantenimiento</h2>
       <mat-checkbox class="checkbox-container" (change)="togglematenimiento($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="mantenimiento || todo">
-        <h3>-Se le an hecho mantenimiento a 20 dispositivos </h3>
+        <h3>-Se le an hecho mantenimiento a {{registromatenimiento}} dispositivos </h3>
         <table class="table table-striped mt-3">
           <thead>
             <tr>
@@ -189,7 +193,8 @@
             </tr>
           </tbody>
         </table>
-        <button *ngIf="mantenimiento">Imprimir</button>
+        <!-- <button *ngIf="mantenimiento">Imprimir</button> -->
+        <i class="bi bi-printer imprimir" *ngIf="mantenimiento"  title="Imprimir"></i>
       </div>
     </div>
     </div>
