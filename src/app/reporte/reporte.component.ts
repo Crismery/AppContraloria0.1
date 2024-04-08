@@ -23,6 +23,7 @@ export class ReporteComponent implements OnInit {
 
   appcontraloriare: Appcontraloria[] = [];
   registroregistro =0;
+  registrousu= 0;
 
   appcontraloriaent: Appcontraloria[] = [];
   ultimaCarga: Date | [] = [];
@@ -87,13 +88,18 @@ export class ReporteComponent implements OnInit {
       const unaSemanaAtras = new Date();
       unaSemanaAtras.setDate(unaSemanaAtras.getDate() - 7); 
       this.appcontraloriare = appcontraloriare.filter(registro => {
-        if (new Date(registro.fecha_de_actualizacion) > unaSemanaAtras) {
+        const fechaActualizacion = new Date(registro.fecha_de_actualizacion);
+        const fechaEliminacion = new Date(registro.fecha_de_elimusuario);
+        if (fechaActualizacion > unaSemanaAtras) {
           this.registroregistro++;
+          return true;
+        }
+        if (fechaEliminacion > unaSemanaAtras) {
+          this.registrousu++;
           return true;
         }
         return false;
       });
-    });
-    
+    });    
   }
 }

@@ -43,7 +43,8 @@ this.form = this.formBuilder.group({
   fecha_de_salida: [''],
   defragmentacion: [''],
   limpieza:[''],
-  fecha_de_actualizacion: ['']
+  fecha_de_actualizacion: [''],
+  fecha_de_elimusuario: ['']
 });
 
 this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {

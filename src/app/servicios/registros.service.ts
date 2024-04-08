@@ -35,15 +35,20 @@ export class RegistrosService {
         return { success: false };
       });
   }
+
   async deleteFields(appcontraloria: Appcontraloria) {
     const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);
+    
+    const fecha_de_elimusuario = new Date().toISOString();
     const updateData = {
         usuario: null, 
         cedula: null, 
-        Departamento: null 
+        Departamento: null,
+        fecha_de_elimusuario: fecha_de_elimusuario
     };
     await updateDoc(placeRef, updateData);
 }
+
 updatePlace(appcontraloria: Appcontraloria){
   const { id, ...dataToUpdate } = appcontraloria; 
   const placeRef = doc(this.firestore, 'appcontraloria', id);

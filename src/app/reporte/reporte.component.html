@@ -36,7 +36,7 @@
       <h2>Reporte de los cambios de Registros</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggleregistros($event)">Ver Cambios </mat-checkbox>
       <div *ngIf="registros || todo">
-        <h3>-Sean actualizado {{registroregistro}} dispositivo, 5 quedaron libres para asignar nuevamente y 5 se eliminaron.</h3>
+        <h3>-Sean actualizado {{registroregistro}} dispositivo, quedo  {{registrousu}} libres para asignar nuevamente y 5 se eliminaron.</h3>
         <table class="table table-striped mt-3 ">
           <thead>
             <tr>
@@ -68,7 +68,7 @@
             </tr>
           </tbody>
         </table>
-        <button *ngIf="registros">Imprimir</button>
+        <i class="bi bi-printer imprimir" *ngIf="registros"  title="Imprimir"></i>
       </div>
     </div>
 
