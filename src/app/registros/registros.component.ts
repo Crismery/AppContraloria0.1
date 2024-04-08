@@ -19,33 +19,6 @@ export class RegistrosComponent implements OnInit {
   query: string='';
   resultados$!: Observable<Appcontraloria[]>;
 
-  appcontraloriaeditar: Appcontraloria = {
-    id: '',
-    dispositivo: '',
-    modelo: '',
-    serial: '',
-    placa: '',
-    bienes_nacionales:'',
-    cedula: '',
-    usuario: '',
-    Departamento:'',
-    os: '',
-    version: '', 
-    cpu:'',
-    memoria: '',
-    almacenamiento: '',
-    mantenimiento: '',
-    tamaño: '',
-    tipo_de_mantenimiento: '',
-    fecha_de_mantenimiento: '',
-    limpieza: '',
-    defragmentacion: '',
-    fecha_de_entrada: '',
-    fecha_de_asignacion: '',
-    fecha_de_actualizacion: '',
-    fecha_de_elimusuario: ''
-  };
-
   filteredResults: Appcontraloria[]=[];
 
   startIndex: number = 0;
@@ -106,8 +79,6 @@ export class RegistrosComponent implements OnInit {
   }
 
   async onClickDeleteFields(appcontraloria: Appcontraloria) {
-
-    this.appcontraloriaeditar.fecha_de_elimusuario = new Date().toISOString();
     try {
 
       const response = await this.registrosService.deleteFields(appcontraloria);

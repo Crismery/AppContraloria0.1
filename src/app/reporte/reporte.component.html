@@ -68,7 +68,7 @@
             </tr>
           </tbody>
         </table>
-        <i class="bi bi-printer imprimir" *ngIf="registros"  title="Imprimir"></i>
+        <i class="bi bi-printer imprimir" *ngIf="registros"  title="Imprimir" (click)="onImprimirRegistros()"></i>
       </div>
     </div>
 
@@ -106,7 +106,7 @@
           </tbody>
         </table>
         <!-- <button *ngIf="entrada">Imprimir</button> -->
-        <i class="bi bi-printer imprimir" *ngIf="entrada"  title="Imprimir"></i>
+        <i class="bi bi-printer imprimir" *ngIf="entrada"  title="Imprimir" (click)="onImprimirEntrada()"></i>
       </div>
     </div>
 
@@ -150,7 +150,7 @@
           </tbody>
         </table>
         <!-- <button *ngIf="asignacion">Imprimir</button> -->
-        <i class="bi bi-printer imprimir" *ngIf="asignacion"  title="Imprimir"></i>
+        <i class="bi bi-printer imprimir" *ngIf="asignacion"  title="Imprimir" (click)="onImprimirAsignacion()"></i>
       </div>
     </div>
 
