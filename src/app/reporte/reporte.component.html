@@ -21,7 +21,7 @@
     <br>
     <div class="navbar1">
       <span> <img src="assets/reporte.png" class="img2"> Reporte</span>
-      <button  class="boton1">Imprimir todo</button>
+      <button  class="boton1" (click)=" onImprimirTodos()">Imprimir todo</button>
     </div>
     <!-- <div class="search-bar mt-3">
         <input type="text" placeholder="ej. Laptop">
@@ -194,7 +194,7 @@
           </tbody>
         </table>
         <!-- <button *ngIf="mantenimiento">Imprimir</button> -->
-        <i class="bi bi-printer imprimir" *ngIf="mantenimiento"  title="Imprimir"></i>
+        <i class="bi bi-printer imprimir" *ngIf="mantenimiento"  title="Imprimir" (click)="onImprimirManteni()"></i>
       </div>
     </div>
     </div>

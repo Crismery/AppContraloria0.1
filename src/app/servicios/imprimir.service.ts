@@ -18,6 +18,7 @@ export class ImprimirService {
     doc.text(titulo, doc.internal.pageSize.width /2, 25,{align: 'center'} )
     
     autoTable(doc, {
+      columnStyles: { europe: { halign: 'center' } },
       head: [encabezado],
       body: cuerpo,
     })
@@ -26,7 +27,32 @@ export class ImprimirService {
       const hoy = new Date();
       doc.save(hoy.getDate() + hoy.getMonth() + hoy.getFullYear() + hoy.getTime()+ ".pdf")
     }else {
-
+      doc.output('dataurlnewwindow');
     }
   }
+//Imprimir todo...
+imprimirTodas(encabezados: string[][], cuerpos: any[][][], titulos: string[], guardar?: boolean) {
+  const doc = new jsPDF({
+    orientation: "portrait",
+    unit: "px",
+    format: 'letter'
+  });
+
+  titulos.forEach((titulo, index) => {
+    doc.setFontSize(16);
+    doc.text(titulo, doc.internal.pageSize.width / 2, 25, { align: 'center' });
+    autoTable(doc, {
+      head: [encabezados[index]], 
+      body: cuerpos[index],
+    });
+    doc.addPage(); 
+  });
+
+  if (guardar) {
+    const hoy = new Date();
+    doc.save(hoy.getDate() + hoy.getMonth() + hoy.getFullYear() + hoy.getTime() + ".pdf")
+  } else {
+    doc.output('dataurlnewwindow');
+  }
+}
 }

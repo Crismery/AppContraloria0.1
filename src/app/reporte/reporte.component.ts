@@ -106,6 +106,7 @@ export class ReporteComponent implements OnInit {
     });
   }
 
+  //Registro
   onImprimirRegistros() {
     const encabezado = ["Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Usuario", "Departamento", "Matenimiento"];
     const cuerpo = this.appcontraloriare.map(registro => {
@@ -123,6 +124,8 @@ export class ReporteComponent implements OnInit {
 
     this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de Registros", true);
   }
+
+  //Entrada
 onImprimirEntrada(){
   const encabezado = ["Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Fecha de entrada", "Fecha de actualizado"];
   const cuerpo = this.appcontraloriaent.map(item => {
@@ -138,21 +141,112 @@ onImprimirEntrada(){
   });
   this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de las entradas", true);
 }
-onImprimirAsignacion(){
-  const encabezado = ["Dispositivo", "Serial", "Cedula", "Usuario", "Departamento", "OS", "CPU","Memoria", "Almacenamiento"];
-  const cuerpo = this.appcontraloriaent.map(asig => {
+
+  //Asignacion
+  onImprimirAsignacion(){
+    const encabezado = ["Dispositivo", "Serial", "Cedula", "Usuario", "Departamento", "OS", "CPU","Memoria", "Almacenamiento"];
+    const cuerpo = this.appcontraloriaent
+      .filter(asig => asig.usuario && asig.cedula && asig.Departamento) 
+      .map(asig => {
+        return [
+          asig.dispositivo,
+          asig.serial,
+          asig.cedula,
+          asig.usuario,      
+          asig.Departamento,
+          asig.os,
+          asig.cpu,
+          asig.memoria,
+          asig.almacenamiento
+        ];
+      });
+    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de los dipositivos asignados", true);
+  }  
+
+  //Mantenimiento
+onImprimirManteni(){
+  const encabezado = ["Dispositivo", "Serial", "Placa", "Tipo de mantenimiento","Descripcion","Fisico y Logico", "Defragmentacion", "Fecha de mantenimiento"];
+  const cuerpo = this.appcontraloriaman
+  .filter(item => item.tipo_de_mantenimiento && item.mantenimiento && item.defragmentacion)
+  .map(item => {
     return [
-      asig.dispositivo,
-      asig.serial,
-      asig.cedula,
-      asig.usuario,      
-      asig.Departamento,
-      asig.os,
-      asig.cpu,
-      asig.memoria,
-      asig.almacenamiento
+      item.dispositivo,
+      item.serial,
+      item.placa,
+      item.tipo_de_mantenimiento,
+      item.mantenimiento,
+      item.memoria +''+ item.almacenamiento +''+ item.limpieza +''+ item.os,
+      item.defragmentacion,
+      item.fecha_de_mantenimiento
     ];
   });
-  this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de los dipositivos asignados", true);
+  this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de mantenimiento", true);
+}
+
+onImprimirTodos() {
+  const encabezado1 = ["Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Usuario", "Departamento", "Mantenimiento"];
+  const cuerpo1 = this.appcontraloriare.map(registro => {
+    return [
+      registro.dispositivo,
+      registro.modelo,
+      registro.serial,
+      registro.placa,
+      registro.bienes_nacionales,
+      registro.usuario,
+      registro.Departamento,
+      registro.mantenimiento
+    ];
+  });
+
+  const encabezado2 = ["Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Fecha de entrada", "Fecha de actualización"];
+  const cuerpo2 = this.appcontraloriaent.map(item => {
+    return [
+      item.dispositivo,
+      item.modelo,
+      item.serial,
+      item.placa,
+      item.bienes_nacionales,
+      item.fecha_de_entrada,
+      item.fecha_de_actualizacion
+    ];
+  });
+
+  const encabezado3 = ["Dispositivo", "Serial", "Cedula", "Usuario", "Departamento", "OS", "CPU","Memoria", "Almacenamiento"];
+  const cuerpo3 = this.appcontraloriaent
+    .filter(asig => asig.usuario && asig.cedula && asig.Departamento) 
+    .map(asig => {
+      return [
+        asig.dispositivo,
+        asig.serial,
+        asig.cedula,
+        asig.usuario,      
+        asig.Departamento,
+        asig.os,
+        asig.cpu,
+        asig.memoria,
+        asig.almacenamiento
+      ];
+    });
+
+  const encabezado4 = ["Dispositivo", "Serial", "Placa", "Tipo de mantenimiento","Descripcion","Fisico y Logico", "Defragmentacion", "Fecha de mantenimiento"];
+  const cuerpo4 = this.appcontraloriaman
+    .filter(item => item.tipo_de_mantenimiento && item.mantenimiento && item.defragmentacion)
+    .map(item => {
+      return [
+        item.dispositivo,
+        item.serial,
+        item.placa,
+        item.tipo_de_mantenimiento,
+        item.mantenimiento,
+        item.memoria +''+ item.almacenamiento +''+ item.limpieza +''+ item.os,
+        item.defragmentacion,
+        item.fecha_de_mantenimiento
+      ];
+    });
+
+    const encabezados = [encabezado1, encabezado2, encabezado3, encabezado4];
+    const cuerpos = [cuerpo1, cuerpo2, cuerpo3, cuerpo4];
+  
+    this.imprimir.imprimirTodas(encabezados, cuerpos, ["Reporte de los cambios de Registros", "Reporte de los cambios de las entradas", "Reporte de los cambios de los dispositivos asignados", "Reporte de los cambios de mantenimiento"], true);
 }
 }
