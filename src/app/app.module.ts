@@ -35,6 +35,7 @@ import { EditEntradaComponent } from './entrada/edit-entrada/edit-entrada.compon
 import { EditAsignacionComponent } from './asignacion/edit-asignacion/edit-asignacion.component';
 import { AddMantenimientoComponent } from './mantenimiento/add-mantenimiento/add-mantenimiento.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { BorradorComponent } from './almacen/borrador/borrador.component';
 
 
 
@@ -58,7 +59,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     AddRegistrosComponent,
     EditEntradaComponent,
     EditAsignacionComponent,
-    AddMantenimientoComponent
+    AddMantenimientoComponent,
+    BorradorComponent
   ],
   imports: [
     BrowserModule,

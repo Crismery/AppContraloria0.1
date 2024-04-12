@@ -17,6 +17,7 @@ import { AddEntradaComponent } from './entrada/add-entrada/add-entrada.component
 import { AddRegistrosComponent } from './registros/add-registros/add-registros.component';
 import { EditEntradaComponent } from './entrada/edit-entrada/edit-entrada.component';
 import { EditAsignacionComponent } from './asignacion/edit-asignacion/edit-asignacion.component';
+import { BorradorComponent } from './almacen/borrador/borrador.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
     {path: 'add-entrada', component: AddEntradaComponent},
     {path: 'add-registros/:id', component: AddRegistrosComponent},
     {path: 'edit-entrada/:id', component: EditEntradaComponent},
-    {path: 'edit-asignacion/:id',component: EditAsignacionComponent}
+    {path: 'edit-asignacion/:id',component: EditAsignacionComponent},
+  {path: 'borrador', component: BorradorComponent,}
 ];
 
 @NgModule({

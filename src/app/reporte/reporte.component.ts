@@ -68,7 +68,7 @@ export class ReporteComponent implements OnInit {
     this.registrosService.getPlaces().subscribe(appcontraloriaent => {
       if (!this.ultimaCarga) {
         this.ultimaCarga = new Date();
-        this.ultimaCarga.setDate(this.ultimaCarga.getDate() - 7);
+        this.ultimaCarga.setDate(this.ultimaCarga.getDate() - 30);
       }
       this.appcontraloriaent = appcontraloriaent.filter(item => {
         if (this.ultimaCarga) {
@@ -89,7 +89,7 @@ export class ReporteComponent implements OnInit {
     //Registro
     this.registrosService.getPlaces().subscribe(appcontraloriare => {
       const unaSemanaAtras = new Date();
-      unaSemanaAtras.setDate(unaSemanaAtras.getDate() - 7);
+      unaSemanaAtras.setDate(unaSemanaAtras.getDate() - 30);
       this.appcontraloriare = appcontraloriare.filter(registro => {
         const fechaActualizacion = new Date(registro.fecha_de_actualizacion);
         const fechaEliminacion = new Date(registro.fecha_de_elimusuario);
@@ -184,7 +184,8 @@ onImprimirManteni(){
 }
 
 onImprimirTodos() {
-  const encabezado1 = ["Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Usuario", "Departamento", "Mantenimiento"];
+  //registro
+  const encabezado1 =[ "Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Usuario", "Departamento", "Mantenimiento"];
   const cuerpo1 = this.appcontraloriare.map(registro => {
     return [
       registro.dispositivo,
@@ -197,8 +198,9 @@ onImprimirTodos() {
       registro.mantenimiento
     ];
   });
-
-  const encabezado2 = ["Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Fecha de entrada", "Fecha de actualización"];
+ 
+  //entrada
+  const encabezado2 =[ "Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Fecha de entrada", "Fecha de actualización"];
   const cuerpo2 = this.appcontraloriaent.map(item => {
     return [
       item.dispositivo,
@@ -211,6 +213,7 @@ onImprimirTodos() {
     ];
   });
 
+  //asignar
   const encabezado3 = ["Dispositivo", "Serial", "Cedula", "Usuario", "Departamento", "OS", "CPU","Memoria", "Almacenamiento"];
   const cuerpo3 = this.appcontraloriaent
     .filter(asig => asig.usuario && asig.cedula && asig.Departamento) 
@@ -227,8 +230,8 @@ onImprimirTodos() {
         asig.almacenamiento
       ];
     });
-
-  const encabezado4 = ["Dispositivo", "Serial", "Placa", "Tipo de mantenimiento","Descripcion","Fisico y Logico", "Defragmentacion", "Fecha de mantenimiento"];
+    //matenimiento
+  const encabezado4 =[ "Dispositivo", "Serial", "Placa", "Tipo de mantenimiento","Descripcion","Fisico y Logico", "Defragmentacion", "Fecha de mantenimiento"];
   const cuerpo4 = this.appcontraloriaman
     .filter(item => item.tipo_de_mantenimiento && item.mantenimiento && item.defragmentacion)
     .map(item => {
