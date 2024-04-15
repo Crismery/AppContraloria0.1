@@ -14,7 +14,21 @@
       <!-- Iconos y nombre del usuario aquí -->
     </div>
   </div>
-  
+
+  <div class="contenedor"> 
+    <mat-sidenav-container class="contenedor-menu">
+      <mat-sidenav #cajon mode="side" opened>
+        <mat-nav-list style="text-align: center; vertical-align: middle;">
+          <a mat-list-item routerLink="/almacen"> <i class="bi bi-shop-window" style="font-size: 30px" title="Almacen"></i></a>
+          <a mat-list-item routerLink="/borrador"> <i class="bi bi-trash" style="font-size: 30px" title="Eliminados"></i></a>
+        </mat-nav-list>
+        <div class="imagen-menu">
+          <img src="assets/inicio.png" alt="">
+        </div>
+    </mat-sidenav> 
+  </mat-sidenav-container>
+    
+    <!-- <mat-sidenav-content> -->
   <div class="content">
     <br>
     <div class="navbar1">
@@ -71,4 +85,7 @@
         <button (click)="nextPage()">&gt;</button>
       </div>
   </div>
+<!-- </mat-sidenav-content>
+</mat-sidenav-container> -->
+</div> 
 </body>
