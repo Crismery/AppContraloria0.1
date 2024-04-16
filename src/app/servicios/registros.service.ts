@@ -54,6 +54,25 @@ updatePlace(appcontraloria: Appcontraloria){
   const placeRef = doc(this.firestore, 'appcontraloria', id);
   return updateDoc(placeRef, dataToUpdate);
 }
+updateplacefecha(appcontraloria: Appcontraloria) {
+  if (appcontraloria) {
+    const dataToUpdate = { ...appcontraloria }; // Aquí puedes realizar cualquier transformación necesaria
+    
+    const placeRef = doc(this.firestore, 'appcontraloria', appcontraloria.id);
+    return updateDoc(placeRef, dataToUpdate)
+      .then(() => {
+        console.log('Documento actualizado correctamente.');
+      })
+      .catch(error => {
+        console.error('Error al actualizar el documento:', error);
+        throw error; // Puedes decidir si lanzar el error nuevamente o manejarlo aquí mismo
+      });
+  } else {
+    console.error('El objeto appcontraloria es undefined');
+    // Aquí puedes manejar el caso en el que appcontraloria es undefined, si es necesario
+    throw new Error('El objeto appcontraloria es undefined'); // Lanza un error si appcontraloria es undefined
+  }
+}
 async getPlaceById(appcontraloria: Appcontraloria): Promise<Appcontraloria | string> {
   try {
     const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);

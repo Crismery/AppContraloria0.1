@@ -39,6 +39,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      color: white;
   }
   .boton{
     display: inline-flex; 
@@ -143,11 +144,6 @@
     border: 0;
     font-weight: 600;
   }
-  // .contenedor {
-  //   display: flex;
-  //   height: 100vh;
-  // }
-  
   .contenedor-menu {
     display: flex;
     flex-direction: column;

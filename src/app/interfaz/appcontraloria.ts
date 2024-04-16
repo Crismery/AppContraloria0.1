@@ -24,4 +24,5 @@ export interface Appcontraloria {
     fecha_de_actualizacion: string;
     fecha_de_elimusuario: string;
     fecha_de_borrados: string;
+    fecha_de_reingreso: string;
 }

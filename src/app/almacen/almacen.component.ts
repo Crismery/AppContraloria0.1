@@ -32,7 +32,7 @@ export class AlmacenComponent implements OnInit {
     ngOnInit() {
       this.registrosService.getPlaces().subscribe(appcontraloria => {
         this.appcontraloria = appcontraloria.filter(item =>
-          !item.cedula && !item.usuario && !item.Departamento
+          !item.cedula && !item.usuario && !item.Departamento && !item.fecha_de_borrados
         );
         this.filteredResults = this.appcontraloria;
   

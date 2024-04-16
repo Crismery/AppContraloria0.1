@@ -37,7 +37,7 @@
               <span><img src="assets/borrador.png" class="img2">Eliminados</span>
             </div>
             <div class="search-bar mt-3">
-              <input placeholder="ej. Laptop">
+              <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
             </div>
             <table class="table table-striped mt-3">
               <thead>
@@ -52,16 +52,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
+                <tr *ngFor="let Appcontraloria of appcontraloria; let i = index">
+                  <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
+                  <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
+                  <td style="text-align: center;">{{Appcontraloria.serial}}</td>
+                  <td style="text-align: center;">{{Appcontraloria.placa}}</td>
+                  <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
+                  <td style="text-align: center;">{{Appcontraloria.fecha_de_borrados}}</td>
                   <td style="text-align: center; vertical-align: middle;">
-                  <i class="bi bi-plus-lg editar" title="Agregar" style="font-size: 25px; align-items: center;"></i>
-                  <i class="bi bi-trash borrar" title="Borrar" style="font-size: 25px; align-items: center;"></i>
+                  <i class="bi bi-plus-lg editar"  (click)="agregarFechaMomento(Appcontraloria)" title="Agregar" style="font-size: 25px; align-items: center;"></i>
+                  <i class="bi bi-trash borrar" (click)="onClickDelete(Appcontraloria)" title="Borrar" style="font-size: 25px; align-items: center;"></i>
                 </td>
                 </tr>
               </tbody>
@@ -82,6 +82,5 @@
           </div>
          
         <!-- </mat-sidenav-content> -->
-    <!-- </mat-sidenav-container> -->
   </div>
 </body>

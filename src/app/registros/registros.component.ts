@@ -56,25 +56,29 @@ export class RegistrosComponent implements OnInit {
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item =>
-        item.cedula && item.usuario && item.Departamento
+        item.cedula && item.usuario && item.Departamento && !item.fecha_de_borrados
       );
       this.filteredResults = this.appcontraloria;
 
       this.loadData();
     });
   }
-
-  async onClickDelete(appcontraloria: Appcontraloria){
-    const response = await this.registrosService.deletePlaces(appcontraloria);
-    console.log(response);
-    if (response.success) {
-      this._snackbar.open('Registro eliminado', 'Cerrar', {
-        duration: 3000,
-      });
+  agregarFechaMomento(appcontraloria: Appcontraloria) {
+    if (appcontraloria) {
+      appcontraloria.fecha_de_borrados = new Date().toISOString();
+      this.registrosService.updatePlace(appcontraloria)
+        .then(() => {
+          this._snackbar.open('Registro eliminado con éxito', 'Cerrar', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+          });
+        })
+        .catch(error => {
+          console.error('Error al agregar la fecha del momento al registro:', error);
+        });
     } else {
-      this._snackbar.open('Error al eliminar el registro', 'Cerrar', {
-        duration: 3000,
-      });
+      console.error('Registro no válido.');
     }
   }
 

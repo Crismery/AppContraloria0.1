@@ -38,7 +38,7 @@ const routes: Routes = [
     {path: 'add-registros/:id', component: AddRegistrosComponent},
     {path: 'edit-entrada/:id', component: EditEntradaComponent},
     {path: 'edit-asignacion/:id',component: EditAsignacionComponent},
-  {path: 'borrador', component: BorradorComponent,}
+  {path: 'borrador', component: BorradorComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))}
 ];
 
 @NgModule({

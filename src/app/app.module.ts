@@ -26,7 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { AddEntradaComponent } from './entrada/add-entrada/add-entrada.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AddAsignacionComponent } from './asignacion/add-asignacion/add-asignacion.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -88,7 +88,8 @@ import { MatListModule } from '@angular/material/list';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: MAT_DIALOG_DATA, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })
