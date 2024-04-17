@@ -1,3 +1,10 @@
+body{
+  background: url('/./assets/cupula-trans (1).png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
 .navbar {
   background-color: #002774;
     padding: 16px;
@@ -7,12 +14,12 @@
     border-bottom: 3px solid lightgray; 
   
   }
-.logo1{
-  height: 50px;
-  width: 50px;
-  float: left;
-  border-radius: 10px;
-}
+  .logo1{
+    height: 40px;
+    width: 60px;
+    float: left;
+    border-radius: 10px;
+  }
 h5{
    margin-top: 5px; 
    font-family: 'Times New Roman', Times, serif;
@@ -164,4 +171,9 @@ mat-sidenav {
 .imagen-menu img {
   width: 90px;
   height: auto;
+}
+.salida{
+  font-size: 30px;
+  align-items: center;
+  width: 30;
 }

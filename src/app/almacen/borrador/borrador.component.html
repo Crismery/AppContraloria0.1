@@ -1,6 +1,6 @@
 <body>
   <div class="navbar">
-    <div class="logo"><img src="assets/Captura.png" class="logo1">
+    <div class="logo"><img src="assets/1_Horizontal centralizado blanco.png" class="logo1">
       <h5> CONTRALORIA | ELIMINADOS</h5>
     </div>
     <div class="user-info">
@@ -8,10 +8,10 @@
                 <i class="pi pi-user"></i>
                 <span>Profile</span>
             </button-->
-      <button [routerLink]="'/home'" class="boton">
-        <img src="assets/salir.png">
-        <i class="pi pi-cog"></i>
-        <span>Home</span>
+      <button [routerLink]="'/home'" class="boton" title="Home">
+        <!-- <img src="assets/salir.png"> -->
+        <i class="bi bi-box-arrow-right  salida" title="Home"></i>
+        <!-- <span>Home</span> -->
       </button>
       <!-- Iconos y nombre del usuario aquí -->
     </div>
@@ -21,52 +21,56 @@
     <mat-sidenav-container class="contenedor-menu">
       <mat-sidenav #cajon mode="side" opened>
         <mat-nav-list style="text-align: center; vertical-align: middle;">
-          <a mat-list-item routerLink="/almacen"> <i class="bi bi-shop-window" style="font-size: 30px" title="Almacen"></i></a>
-          <a mat-list-item routerLink="/borrador"> <i class="bi bi-trash" style="font-size: 30px" title="Eliminados"></i></a>
+          <a mat-list-item routerLink="/almacen"> <i class="bi bi-shop-window" style="font-size: 30px"
+              title="Almacen"></i></a>
+          <a mat-list-item routerLink="/borrador"> <i class="bi bi-trash" style="font-size: 30px"
+              title="Eliminados"></i></a>
         </mat-nav-list>
         <div class="imagen-menu">
           <img src="assets/inicio.png" alt="">
         </div>
-    </mat-sidenav> 
-  </mat-sidenav-container>
+      </mat-sidenav>
+    </mat-sidenav-container>
 
-        <!-- <mat-sidenav-content> -->
-          <div class="content">
-            <br>
-            <div class="navbar1">
-              <span><img src="assets/borrador.png" class="img2">Eliminados</span>
-            </div>
-            <div class="search-bar mt-3">
-              <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
-            </div>
-            <table class="table table-striped mt-3">
-              <thead>
-                <tr>
-                  <th style="text-align: center;">Dispositivo</th>
-                  <th style="text-align: center;">Modelo</th>
-                  <th style="text-align: center;">Serial</th>
-                  <th style="text-align: center;">Placa</th>
-                  <th style="text-align: center;">Bienes Nacionales</th>
-                  <th style="text-align: center;">Fecha de eliminacion</th>
-                  <th style="text-align: center;">Accion</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let Appcontraloria of appcontraloria; let i = index">
-                  <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
-                  <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
-                  <td style="text-align: center;">{{Appcontraloria.serial}}</td>
-                  <td style="text-align: center;">{{Appcontraloria.placa}}</td>
-                  <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
-                  <td style="text-align: center;">{{Appcontraloria.fecha_de_borrados}}</td>
-                  <td style="text-align: center; vertical-align: middle;">
-                  <i class="bi bi-plus-lg editar"  (click)="agregarFechaMomento(Appcontraloria)" title="Agregar" style="font-size: 25px; align-items: center;"></i>
-                  <i class="bi bi-trash borrar" (click)="onClickDelete(Appcontraloria)" title="Borrar" style="font-size: 25px; align-items: center;"></i>
-                </td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- <div class="pagination">
+    <!-- <mat-sidenav-content> -->
+    <div class="content">
+      <br>
+      <div class="navbar1">
+        <span><img src="assets/borrador.png" class="img2">Eliminados</span>
+      </div>
+      <div class="search-bar mt-3">
+        <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
+      </div>
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th style="text-align: center;">Dispositivo</th>
+            <th style="text-align: center;">Modelo</th>
+            <th style="text-align: center;">Serial</th>
+            <th style="text-align: center;">Placa</th>
+            <th style="text-align: center;">Bienes Nacionales</th>
+            <th style="text-align: center;">Fecha de eliminacion</th>
+            <th style="text-align: center;">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
+            <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
+            <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
+            <td style="text-align: center;">{{Appcontraloria.serial}}</td>
+            <td style="text-align: center;">{{Appcontraloria.placa}}</td>
+            <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
+            <td style="text-align: center;">{{Appcontraloria.fecha_de_borrados}}</td>
+            <td style="text-align: center; vertical-align: middle;">
+              <i class="bi bi-plus-lg editar" (click)="agregarFechaMomento(Appcontraloria)" title="Agregar"
+                style="font-size: 25px; align-items: center;"></i>
+              <i class="bi bi-trash borrar" (click)="onClickDelete(Appcontraloria)" title="Borrar"
+                style="font-size: 25px; align-items: center;"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
             <label for="itemsPerPage">Items per page:</label>
             <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
               <option value="5">5</option>
@@ -78,9 +82,9 @@
             <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
             <button (click)="prevPage()">&lt;</button>
             <button (click)="nextPage()">&gt;</button>
-          </div> -->
           </div>
-         
-        <!-- </mat-sidenav-content> -->
+    </div>
+
+    <!-- </mat-sidenav-content> -->
   </div>
 </body>

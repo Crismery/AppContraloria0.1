@@ -25,7 +25,6 @@ export class AlmacenComponent implements OnInit {
   itemsPerPage: number = 5;
 
   constructor(private registrosService: RegistrosService,
-    private dialog: MatDialog,
     private viewContainerRef: ViewContainerRef,
     private _snackbar: MatSnackBar) { }
 

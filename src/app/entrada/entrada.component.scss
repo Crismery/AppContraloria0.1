@@ -1,12 +1,10 @@
-// body {
-//   background: #cecab7;
-//   background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #cecab7);
-//   background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #cecab7);
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   background-size: cover;
-//   min-height: 200vh; 
-// }
+body{
+  background: url('/./assets/cupula-trans (1).png');
+  // background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
 .navbar {
     background-color: #002774;
     padding: 16px;
@@ -17,8 +15,8 @@
     border-bottom: 3px solid lightgray; 
   }
 .logo1{
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 60px;
   float: left;
   border-radius: 10px;
 }
@@ -174,4 +172,9 @@ input[type=text] {
   color: black;
   border: 0;
   font-weight: 600;
+}
+.salida{
+  font-size: 30px;
+  align-items: center;
+  width: 30;
 }

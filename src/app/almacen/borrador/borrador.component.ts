@@ -17,9 +17,12 @@ export class BorradorComponent implements OnInit {
 
   query: string='';
   resultados$!: Observable<Appcontraloria[]>;
-
   filteredResults: Appcontraloria[]=[];
 
+  startIndex: number = 0;
+  endIndex: number = 0;
+  totalItems: number = 0;
+  itemsPerPage: number = 5;
 
   constructor(private dialog: MatDialog,
     private viewContainerRef: ViewContainerRef,
@@ -33,6 +36,7 @@ export class BorradorComponent implements OnInit {
       this.appcontraloria = appcontraloria.filter(registro => registro.fecha_de_borrados);
 
       this.filteredResults = this.appcontraloria;
+      this.loadData();
 
     });
 
@@ -40,10 +44,15 @@ export class BorradorComponent implements OnInit {
   }
   agregarFechaMomento(appcontraloria: Appcontraloria) {
     if (appcontraloria) {
+      // Borrar la fecha_de_borrados
+      appcontraloria.fecha_de_borrados = '';
+  
+      // Agregar la fecha_de_reingreso
       appcontraloria.fecha_de_reingreso = new Date().toISOString();
+      
       this.registrosService.updatePlace(appcontraloria)
         .then(() => {
-          this._snackbar.open('Registro agregado con éxito', 'Cerrar', {
+          this._snackbar.open('Registro actualizado con éxito', 'Cerrar', {
             duration: 3000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom'
@@ -51,11 +60,21 @@ export class BorradorComponent implements OnInit {
         })
         .catch(error => {
           console.error('Error al agregar la fecha del momento al registro:', error);
+          this._snackbar.open('Error al actualizar el registro', 'Cerrar', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+          });
         });
     } else {
       console.error('Registro no válido.');
+      this._snackbar.open('Registro no válido', 'Cerrar', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
     }
-  }  
+  }
   async onClickDelete(appcontraloria: Appcontraloria) {
     const response = await this.registrosService.deletePlaces(appcontraloria);
     console.log(response);
@@ -77,5 +96,27 @@ export class BorradorComponent implements OnInit {
     } else {
       this.filteredResults = this.appcontraloria;
     }
+  }
+  loadData(): void {
+    this.totalItems = this.filteredResults.length;
+    this.endIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems);
+  }
+  changeItemsPerPage(event: any): void {
+    const value = (event.target as HTMLSelectElement).value;
+    if (value !== null && value !== undefined) {
+      this.itemsPerPage = +value;
+      this.startIndex = 0;
+      this.filteredResults = this.appcontraloria.slice(0, this.itemsPerPage);
+
+      this.loadData();
+    }
+  }
+  prevPage(): void {
+    this.startIndex = Math.max(0, this.startIndex - this.itemsPerPage);
+    this.loadData();
+  }
+  nextPage(): void {
+    this.startIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems - this.itemsPerPage);
+    this.loadData();
   }
 }

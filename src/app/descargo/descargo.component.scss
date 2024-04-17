@@ -16,12 +16,12 @@
     border-bottom: 3px solid lightgray; 
   
   }
-.logo1{
-  height: 50px;
-  width: 50px;
-  float: left;
-  border-radius: 10px;
-}
+  .logo1{
+    height: 40px;
+    width: 60px;
+    float: left;
+    border-radius: 10px;
+  }
 h5{
    margin-top: 5px; 
    font-family: 'Times New Roman', Times, serif;
@@ -142,4 +142,9 @@ input[type=text] {
   color: black;
   border: 0;
   font-weight: 600;
+}
+.salida{
+  font-size: 30px;
+  align-items: center;
+  width: 30;
 }

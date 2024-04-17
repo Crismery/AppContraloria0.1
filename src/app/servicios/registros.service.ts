@@ -65,7 +65,7 @@ updateplacefecha(appcontraloria: Appcontraloria) {
       })
       .catch(error => {
         console.error('Error al actualizar el documento:', error);
-        throw error; // Puedes decidir si lanzar el error nuevamente o manejarlo aquí mismo
+        throw error; 
       });
   } else {
     console.error('El objeto appcontraloria es undefined');
