@@ -53,6 +53,9 @@
             <!-- <th style="text-align: center;">Accion</th> -->
           </tr>
         </thead>
+        </table>
+        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+          <table class="table table-striped">
         <tbody>
           <tr  *ngFor="let Appcontraloria of filteredResults; let i = index">
             <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
@@ -71,7 +74,8 @@
           </tr>
         </tbody>
       </table>
-      <div class="pagination">
+      </div>
+      <!-- <div class="pagination">
         <label for="itemsPerPage">Items per page:</label>
         <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
           <option value="5">5</option>
@@ -83,7 +87,7 @@
         <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
         <button (click)="prevPage()">&lt;</button>
         <button (click)="nextPage()">&gt;</button>
-      </div>
+      </div> -->
   </div>
 <!-- </mat-sidenav-content>
 </mat-sidenav-container> -->

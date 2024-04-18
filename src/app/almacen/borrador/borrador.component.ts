@@ -4,6 +4,7 @@ import { RegistrosService } from '../../servicios/registros.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appcontraloria } from '../../interfaz/appcontraloria';
 import { Observable } from 'rxjs';
+import { SinodialogoComponent } from './sinodialogo/sinodialogo.component';
 
 @Component({
   selector: 'app-borrador',
@@ -24,6 +25,9 @@ export class BorradorComponent implements OnInit {
   totalItems: number = 0;
   itemsPerPage: number = 5;
 
+  registroSeleccionado!: Appcontraloria;
+
+
   constructor(private dialog: MatDialog,
     private viewContainerRef: ViewContainerRef,
     private registrosService: RegistrosService,
@@ -31,6 +35,40 @@ export class BorradorComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Appcontraloria) {
   }
 
+  mostrarComponente(registro: Appcontraloria): void {
+    this.registroSeleccionado = registro;
+    const dialogRef = this.dialog.open(SinodialogoComponent, {
+      width: '250px',
+      height: '150px',
+      viewContainerRef: this.viewContainerRef,
+      panelClass: 'dialog-container',
+      disableClose: true
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialogo cerrado:', result);
+    });
+}
+
+  // async mostrarComponente(appcontraloria: Appcontraloria): Promise<void> {
+  //   try {
+  //     const registro = await this.registrosService.getPlaceById(appcontraloria);
+    
+  //     const dialogRef = this.dialog.open(SinodialogoComponent, {
+  //       data: registro, 
+  //       width: '550px',
+  //       height: '500px',
+  //       viewContainerRef: this.viewContainerRef,
+  //       panelClass: 'dialog-container',
+  //       disableClose: true
+  //     });
+  //     dialogRef.afterClosed().subscribe(result => {
+  //       console.log('Dialogo cerrado:', result);
+  //     });
+  //   } catch (error) {
+  //     console.error('Error al obtener la información del registro:', error);
+  //   }
+  // }
   ngOnInit(): void {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(registro => registro.fecha_de_borrados);

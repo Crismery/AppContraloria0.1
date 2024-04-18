@@ -39,6 +39,9 @@ import { BorradorComponent } from './almacen/borrador/borrador.component';
 import { MatSidenavModule } from '@angular/material/sidenav'; 
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
+import { SinodialogoComponent } from './almacen/borrador/sinodialogo/sinodialogo.component';
+import { DialogoentradaComponent } from './entrada/dialogoentrada/dialogoentrada.component';
+import { DialogoregistroComponent } from './registros/dialogoregistro/dialogoregistro.component';
 
 
 
@@ -63,7 +66,10 @@ import { MatListModule } from '@angular/material/list';
     EditEntradaComponent,
     EditAsignacionComponent,
     AddMantenimientoComponent,
-    BorradorComponent
+    BorradorComponent,
+    SinodialogoComponent,
+    DialogoentradaComponent,
+    DialogoregistroComponent
   ],
   imports: [
     BrowserModule,

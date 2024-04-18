@@ -13,7 +13,6 @@
           <i class="bi bi-box-arrow-right  salida" title="Home"></i>
           <!-- <span>Home</span> -->
         </button>
-      <!-- Iconos y nombre del usuario aquí -->
     </div>
   </div>
 
@@ -32,12 +31,13 @@
         <!-- <h2>Ver todos los cambios</h2> -->
         <mat-checkbox class="checkbox-container" (change)=" toggletodo($event)">Ver todo</mat-checkbox>
       </div>
-
+      <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
     <div class="checkbox">
       <h2>Reporte de los cambios de Registros</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggleregistros($event)">Ver Cambios </mat-checkbox>
       <div *ngIf="registros || todo">
         <h3>-Sean actualizado {{registroregistro}} dispositivo, quedo  {{registrousu}} libres para asignar nuevamente y {{registroelim}} se eliminaron.</h3>
+        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
         <table class="table table-striped mt-3 ">
           <thead>
             <tr>
@@ -69,6 +69,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
         <i class="bi bi-printer imprimir" *ngIf="registros"  title="Imprimir" (click)="onImprimirRegistros()"></i>
       </div>
     </div>
@@ -78,6 +79,7 @@
       <mat-checkbox class="checkbox-container" (change)=" toggleentrada($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="entrada || todo">
         <h3>-Sean agregado {{ registrosent }} dispositivo, sean actualizado {{registroregistro}} y se eliminaron {{registroelim}}.</h3>
+        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
         <table class="table table-striped mt-3">
           <thead>
             <tr>
@@ -106,6 +108,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
         <!-- <button *ngIf="entrada">Imprimir</button> -->
         <i class="bi bi-printer imprimir" *ngIf="entrada"  title="Imprimir" (click)="onImprimirEntrada()"></i>
       </div>
@@ -116,6 +119,7 @@
       <mat-checkbox class="checkbox-container" (change)=" toggleasignacion($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="asignacion || todo">
         <h3>-Sean asiginado {{ registroasignar }} dispositivos</h3>
+        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
         <table class="table table-striped mt-3">
           <thead>
             <tr>
@@ -150,6 +154,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
         <!-- <button *ngIf="asignacion">Imprimir</button> -->
         <i class="bi bi-printer imprimir" *ngIf="asignacion"  title="Imprimir" (click)="onImprimirAsignacion()"></i>
       </div>
@@ -160,6 +165,7 @@
       <mat-checkbox class="checkbox-container" (change)="togglematenimiento($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="mantenimiento || todo">
         <h3>-Se le an hecho mantenimiento a {{registromatenimiento}} dispositivos </h3>
+        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
         <table class="table table-striped mt-3">
           <thead>
             <tr>
@@ -194,9 +200,11 @@
             </tr>
           </tbody>
         </table>
+        </div>
         <!-- <button *ngIf="mantenimiento">Imprimir</button> -->
         <i class="bi bi-printer imprimir" *ngIf="mantenimiento"  title="Imprimir" (click)="onImprimirManteni()"></i>
       </div>
+    </div>
     </div>
     </div>
 </body>

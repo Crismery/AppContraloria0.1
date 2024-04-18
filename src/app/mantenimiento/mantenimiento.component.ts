@@ -48,7 +48,7 @@ export class MantenimientoComponent  implements OnInit{
   }
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
-      this.appcontraloria = appcontraloria;
+      this.appcontraloria = appcontraloria.filter(registro => !registro.fecha_de_borrados);
 
       this.filteredResults = this.appcontraloria;
     });

@@ -77,7 +77,7 @@ export class ReporteComponent implements OnInit {
         if (this.ultimaCarga) {
           const fechaEntrada = new Date(item.fecha_de_entrada);
 
-          if (fechaEntrada > this.ultimaCarga) {
+          if (fechaEntrada > this.ultimaCarga && !item.fecha_de_borrados) {
             this.registrosent++;
             return true;
           }

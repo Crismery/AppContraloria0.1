@@ -41,6 +41,7 @@
       <div class="search-bar mt-3">
         <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
       </div>
+      <!-- <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;"> -->
       <table class="table table-striped mt-3">
         <thead>
           <tr>
@@ -53,6 +54,9 @@
             <th style="text-align: center;">Accion</th>
           </tr>
         </thead>
+        </table>
+        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+          <table class="table table-striped">
         <tbody>
           <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
             <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
@@ -64,25 +68,13 @@
             <td style="text-align: center; vertical-align: middle;">
               <i class="bi bi-plus-lg editar" (click)="agregarFechaMomento(Appcontraloria)" title="Agregar"
                 style="font-size: 25px; align-items: center;"></i>
-              <i class="bi bi-trash borrar" (click)="onClickDelete(Appcontraloria)" title="Borrar"
+              <i class="bi bi-trash borrar" (click)="mostrarComponente(Appcontraloria)" title="Borrar"
                 style="font-size: 25px; align-items: center;"></i>
             </td>
           </tr>
         </tbody>
       </table>
-      <div class="pagination">
-            <label for="itemsPerPage">Items per page:</label>
-            <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-            <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
-            <button (click)="prevPage()">&lt;</button>
-            <button (click)="nextPage()">&gt;</button>
-          </div>
+      </div>
     </div>
 
     <!-- </mat-sidenav-content> -->
