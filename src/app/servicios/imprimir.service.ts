@@ -37,7 +37,7 @@ export class ImprimirService {
     const img1Height = 30;
     const img2Y = 75;
     const img2Height = 20;
-    const tableY = 120;
+    const tableY = 150;
     const titleY = (img2Y + img2Height + tableY) / 2;
     doc.setFontSize(14);
     doc.text(titulo, doc.internal.pageSize.width / 2, titleY, { align: 'center' });
@@ -79,6 +79,11 @@ export class ImprimirService {
       }
     });
 
+  const textoPersonalizado = `-Sean actualizado dispositivo, quedo libres para asignar nuevamente y se eliminaron.`;
+  doc.setFontSize(12);
+  doc.setTextColor(0,0,0);
+  doc.text(textoPersonalizado, 90, 140); 
+
     if (guardar) {
       const nombreAplicacion = "Appcontraloria reporte individual"; 
       doc.save(nombreAplicacion + ".pdf");
@@ -93,31 +98,30 @@ export class ImprimirService {
       unit: "px",
       format: 'letter'
     });
-
-    let yPositionTitulo = 100; 
-    
-
+  
+    let yPositionTitulo = 120; 
+  
     titulos.forEach((titulo, index) => {
-
+  
       const date = new Date();
       const dateString = (date.getMonth() + 1) + '/' + date.getDate() + '/' + (date.getFullYear().toString().substr(-2));
       const timeString = date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
       doc.setTextColor(0, 0, 0);
-      doc.setFont("'Times New Roman', Times, serif","normal");
+      doc.setFont("'Times New Roman', Times, serif");
       doc.setFontSize(10);
       doc.text(dateString + ', ' + timeString, 10, 10);
-
+  
       const appName = "Appcontraloria";
       const anchoAppName = doc.getTextWidth(appName);
       const posicionCentro1 = (doc.internal.pageSize.width - anchoAppName) / 2;
       doc.setTextColor(0, 0, 0);
-      doc.setFont("'Times New Roman', Times, serif","normal");
+      doc.setFont("'Times New Roman', Times, serif");
       doc.setFontSize(10);
       doc.text(appName, posicionCentro1, 10);
-
+  
       const img1 = 'assets/Captura.png'; 
       doc.addImage(img1, 'PNG', 25, 25, 30, 30); 
-      doc.setFont("'Times New Roman', Times, serif","normal");
+      doc.setFont("'Times New Roman', Times, serif");
       doc.setTextColor(200,200,200);
       doc.setFontSize(10)
       doc.text('CONTRALORIA | REPORTE', 25 + 30, 50); 
@@ -128,22 +132,29 @@ export class ImprimirService {
   
       const img2 = 'assets/reporte.png'; 
       doc.addImage(img2, 'PNG', 35, 75, 20, 20); 
-      doc.setFont("'Times New Roman', Times, serif","normal");
+      doc.setFont("'Times New Roman', Times, serif");
       doc.setTextColor(200,200,200);
       doc.setFontSize(10);
       doc.text('Reporte', 35 + 25, 90); 
-
-      
+  
       const anchoTitulo = doc.getTextWidth(titulo);
       const posicionCentro = (doc.internal.pageSize.width - anchoTitulo) / 2;
-
-      doc.setFont("'Times New Roman', Times, serif","normal");
+  
+      doc.setFont("'Times New Roman', Times, serif");
       doc.setTextColor(0, 0, 0);
       doc.setFontSize(14);
       doc.text(titulo, posicionCentro, yPositionTitulo, { align: "center" });
 
-      const yPositionTabla = 30 + yPositionTitulo;
-
+      const textoPersonalizado = 
+     `-Sean actualizado dispositivo, se an agregado dispositivo, sean asingando 2 dispositivos, 
+     se le an hecho mantenimiento a 0 dispositivos, quedo libres para asignar nuevamente y se eliminaron.`;
+    doc.setFontSize(12);
+    doc.setTextColor(0,0,0);
+    doc.setFont("'Times New Roman', Times, serif")
+    doc.text(textoPersonalizado, 60, 140); 
+  
+      const yPositionTabla = 60 + yPositionTitulo;
+  
       autoTable(doc, {
         head: [encabezados[index]],
         body: cuerpos[index],
@@ -163,21 +174,21 @@ export class ImprimirService {
           lineColor: [82, 81, 81],
         }
       });
-
+  
       const numberOfRows = cuerpos[index].length;
       const rowHeight = 25;
-
+  
       const tableHeight = numberOfRows * rowHeight + (numberOfRows * rowHeight * 0.1);
-
+  
       yPositionTitulo += tableHeight + 75; 
     });
 
+  
     if (guardar) {
       const nombreAplicacion = "Appcontraloria reporte";
       doc.save(nombreAplicacion + ".pdf");
     } else {
       doc.output('dataurlnewwindow');
     }
-}
-
+  }  
 }

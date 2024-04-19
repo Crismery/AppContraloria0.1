@@ -1,9 +1,9 @@
 body{
-  background: url('/./assets/cupula-trans (1).png');
+  background-image: url('/./assets/cupula-trans (1).png');
+  height: 95%;
+  background-position: right;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
+  background-size: contain;
 }
   .navbar {
     background-color: #002774;

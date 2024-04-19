@@ -19,7 +19,7 @@
   <div class="content">
     <br>
     <div class="navbar1">
-      <span> <img src="assets/registro.png" class="img2">Registro General CGR </span>
+      <span><i class="bi bi-file-earmark-text salida"></i>Registro General CGR </span>
     </div>
 
     <div class="search-bar mt-3">
@@ -59,8 +59,8 @@
           <td style="text-align: center;">{{Appcontraloria.fecha_de_asignacion}}</td>
           <td style="text-align: center; vertical-align: middle;">
             <i class="bi bi-pencil-square editar" (click)="mostrarComponente(Appcontraloria)" title="Editar"></i>
-            <i class="bi bi-trash borrar" (click)="agregarFechaMomento(Appcontraloria)" title="Borrar"></i>
-            <i class="bi bi-person-dash borrarusuario" (click)="onClickDeleteFields(Appcontraloria)"
+            <i class="bi bi-trash borrar" (click)="dialogoregistro(Appcontraloria)" title="Borrar"></i>
+            <i class="bi bi-person-dash borrarusuario" (click)="dialogousuario(Appcontraloria)"
               title="Borrar Usuario"></i>
           </td>
         </tr>

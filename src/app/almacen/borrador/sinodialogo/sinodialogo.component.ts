@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component,Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RegistrosService } from '../../../servicios/registros.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appcontraloria } from '../../../interfaz/appcontraloria';
@@ -10,13 +10,12 @@ import { Appcontraloria } from '../../../interfaz/appcontraloria';
   styleUrl: './sinodialogo.component.scss'
 })
 export class SinodialogoComponent {
-  
-  registroSeleccionado!: Appcontraloria;
 
   constructor(public dialogRef: MatDialogRef<SinodialogoComponent>,
     private dialog: MatDialog,
     private registrosService: RegistrosService,
     private _snackbar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: Appcontraloria
   ) {
   }
   async onClickDelete(appcontraloria: Appcontraloria) {

@@ -19,8 +19,8 @@
   <div class="content">
     <br>
     <div class="navbar1">
-      <span> <img src="assets/entrada.png" class="img2"> Entrada</span>
-      <button class="boton1" (click)="mostrarComponente()">Entrada de uno más registros
+      <span> <i class="bi bi-box-arrow-in-down salida"></i> Entrada</span>
+      <button class="boton1" (click)="mostrarComponente()">Entrada de uno o más registros
 
       </button>
     </div>
@@ -56,7 +56,7 @@
           <td style="text-align: center;">{{Appcontraloria.fecha_de_actualizacion}}</td>
           <td style="text-align: center; vertical-align: middle;">
             <i class="bi bi-pencil-square editar" (click)="mostrarComponenteedit(Appcontraloria)" title="Editar"></i>
-            <i class="bi bi-trash borrar" (click)="agregarFechaMomento(Appcontraloria)" title="Borrar"></i>
+            <i class="bi bi-trash borrar" (click)="dialogoregistro(Appcontraloria)" title="Borrar"></i>
           </td>
         </tr>
       </tbody>

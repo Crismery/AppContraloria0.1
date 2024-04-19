@@ -42,6 +42,7 @@ import { MatListModule } from '@angular/material/list';
 import { SinodialogoComponent } from './almacen/borrador/sinodialogo/sinodialogo.component';
 import { DialogoentradaComponent } from './entrada/dialogoentrada/dialogoentrada.component';
 import { DialogoregistroComponent } from './registros/dialogoregistro/dialogoregistro.component';
+import { DialogousuarioComponent } from './registros/dialogousuario/dialogousuario.component';
 
 
 
@@ -69,7 +70,8 @@ import { DialogoregistroComponent } from './registros/dialogoregistro/dialogoreg
     BorradorComponent,
     SinodialogoComponent,
     DialogoentradaComponent,
-    DialogoregistroComponent
+    DialogoregistroComponent,
+    DialogousuarioComponent
   ],
   imports: [
     BrowserModule,
