@@ -11,7 +11,7 @@ export class ImprimirService {
 
   constructor() { }
 
-  imprimir(encabezado: string[], cuerpo: Array<any>, titulo: string, guardar?: boolean) {
+  imprimir(encabezado: string[], cuerpo: Array<any>, titulo: string, guardar?: boolean, htmlContent?:string) {
     const doc = new jsPDF({
       orientation: "portrait",
       unit: "px",
@@ -19,7 +19,7 @@ export class ImprimirService {
     });
 
     const date = new Date();
-    const dateString = (date.getMonth() + 1) + '/' + date.getDate() + '/' + (date.getFullYear().toString().substr(-4));
+    const dateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear().toString().substr(-4));
     const timeString = date.getHours() + ':' + (date.getMinutes()<10?'0':'') + date.getMinutes();
     doc.setFont("'Times New Roman', Times, serif","normal");
     doc.setFontSize(10);
@@ -59,6 +59,12 @@ export class ImprimirService {
     doc.setFontSize(10);
     doc.text('Reporte', 35 + 25, img2Y + img2Height + 0); 
 
+    if (htmlContent) {
+      doc.setFontSize(12);
+      doc.setTextColor(0, 0, 0);
+      doc.text(htmlContent, 90, 140);
+    }
+
     autoTable(doc, {
       startY: tableY, 
       columnStyles: { europe: { halign: 'center' } },
@@ -79,11 +85,6 @@ export class ImprimirService {
       }
     });
 
-  const textoPersonalizado = `-Sean actualizado dispositivo, quedo libres para asignar nuevamente y se eliminaron.`;
-  doc.setFontSize(12);
-  doc.setTextColor(0,0,0);
-  doc.text(textoPersonalizado, 90, 140); 
-
     if (guardar) {
       const nombreAplicacion = "Appcontraloria reporte individual"; 
       doc.save(nombreAplicacion + ".pdf");
@@ -92,19 +93,24 @@ export class ImprimirService {
     }
 }
   //Imprimir todo...
-  imprimirTodas(encabezados: string[][], cuerpos: any[][][], titulos: string[], guardar?: boolean) {
+  imprimirTodas(encabezados: string[][], cuerpos: any[][][], titulos: string[], guardar?: boolean, htmlContent?:string) {
     const doc = new jsPDF({
       orientation: "portrait",
       unit: "px",
       format: 'letter'
     });
   
-    let yPositionTitulo = 120; 
+    let yPositionTitulo = 150; 
+    let primeraPagina = true;
+
+    doc.internal.events.subscribe('addPage', () => {
+      primeraPagina = false; 
+  });
   
     titulos.forEach((titulo, index) => {
   
       const date = new Date();
-      const dateString = (date.getMonth() + 1) + '/' + date.getDate() + '/' + (date.getFullYear().toString().substr(-2));
+      const dateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear().toString().substr(-2));
       const timeString = date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
       doc.setTextColor(0, 0, 0);
       doc.setFont("'Times New Roman', Times, serif");
@@ -119,25 +125,26 @@ export class ImprimirService {
       doc.setFontSize(10);
       doc.text(appName, posicionCentro1, 10);
   
-      const img1 = 'assets/Captura.png'; 
-      doc.addImage(img1, 'PNG', 25, 25, 30, 30); 
-      doc.setFont("'Times New Roman', Times, serif");
-      doc.setTextColor(200,200,200);
-      doc.setFontSize(10)
-      doc.text('CONTRALORIA | REPORTE', 25 + 30, 50); 
-  
-      doc.setDrawColor(211, 211, 211);
-      doc.setLineWidth(1.7); 
-      doc.line(20, 60, doc.internal.pageSize.width - 20, 60); 
-  
-      const img2 = 'assets/reporte.png'; 
-      doc.addImage(img2, 'PNG', 35, 75, 20, 20); 
-      doc.setFont("'Times New Roman', Times, serif");
-      doc.setTextColor(200,200,200);
-      doc.setFontSize(10);
-      doc.text('Reporte', 35 + 25, 90); 
-  
-      const anchoTitulo = doc.getTextWidth(titulo);
+      if (primeraPagina) {
+        const img1 = 'assets/Captura.png'; 
+        doc.addImage(img1, 'PNG', 25, 25, 30, 30); 
+        doc.setFont("'Times New Roman', Times, serif");
+        doc.setTextColor(200,200,200);
+        doc.setFontSize(10)
+        doc.text('CONTRALORIA | REPORTE', 25 + 30, 50); 
+    
+        doc.setDrawColor(211, 211, 211);
+        doc.setLineWidth(1.7); 
+        doc.line(20, 60, doc.internal.pageSize.width - 20, 60); 
+    
+        const img2 = 'assets/reporte.png';
+        doc.addImage(img2, 'PNG', 35, 75, 20, 20); 
+        doc.setFont("'Times New Roman', Times, serif");
+        doc.setTextColor(200,200,200);
+        doc.setFontSize(10);
+        doc.text('Reporte', 35 + 25, 90); 
+
+        const anchoTitulo = doc.getTextWidth(titulo);
       const posicionCentro = (doc.internal.pageSize.width - anchoTitulo) / 2;
   
       doc.setFont("'Times New Roman', Times, serif");
@@ -145,19 +152,20 @@ export class ImprimirService {
       doc.setFontSize(14);
       doc.text(titulo, posicionCentro, yPositionTitulo, { align: "center" });
 
-      const textoPersonalizado = 
-     `-Sean actualizado dispositivo, se an agregado dispositivo, sean asingando 2 dispositivos, 
-     se le an hecho mantenimiento a 0 dispositivos, quedo libres para asignar nuevamente y se eliminaron.`;
-    doc.setFontSize(12);
-    doc.setTextColor(0,0,0);
-    doc.setFont("'Times New Roman', Times, serif")
-    doc.text(textoPersonalizado, 60, 140); 
+        if (htmlContent) {
+            doc.setFontSize(12);
+            doc.setFont("'Times New Roman', Times, serif")
+            doc.text(htmlContent, 50, 110);
+        }
+    }
+      const yPositionTabla = 30 + yPositionTitulo;
   
-      const yPositionTabla = 60 + yPositionTitulo;
-  
+      const maxFilas = 10; // Define el número máximo de filas a mostrar
+    const filasLimitadas = cuerpos[index].slice(0, maxFilas);
+
       autoTable(doc, {
         head: [encabezados[index]],
-        body: cuerpos[index],
+        body: filasLimitadas,
         startY: yPositionTabla,
         margin: { top: 10 },
         styles: {
@@ -177,7 +185,6 @@ export class ImprimirService {
   
       const numberOfRows = cuerpos[index].length;
       const rowHeight = 25;
-  
       const tableHeight = numberOfRows * rowHeight + (numberOfRows * rowHeight * 0.1);
   
       yPositionTitulo += tableHeight + 75; 

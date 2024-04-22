@@ -124,8 +124,9 @@ export class ReporteComponent implements OnInit {
         registro.mantenimiento
       ];
     });
+    const htmlContent = `-Sean actualizado ${this.registroregistro} dispositivo, quedo ${this.registrousu} libres para asignar nuevamente y ${this.registroelim} se eliminaron.`;
 
-    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de Registros", true);
+    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de Registros", true, htmlContent);
   }
 
   //Entrada
@@ -142,7 +143,9 @@ export class ReporteComponent implements OnInit {
         item.fecha_de_actualizacion
       ];
     });
-    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de las entradas", true);
+    const htmlContent = `-Sean agregado ${this.registrosent } dispositivo, sean actualizado ${this.registroregistro} y se eliminaron ${this.registroelim}.`;
+
+    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de las entradas", true, htmlContent);
   }
 
   //Asignacion
@@ -163,7 +166,8 @@ export class ReporteComponent implements OnInit {
           asig.almacenamiento
         ];
       });
-    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de los dipositivos asignados", true);
+      const htmlContent = `-Sean asiginado ${this.registroasignar } dispositivos.`;
+    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de los dipositivos asignados", true, htmlContent);
   }
 
   //Mantenimiento
@@ -183,7 +187,8 @@ export class ReporteComponent implements OnInit {
           item.fecha_de_mantenimiento
         ];
       });
-    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de mantenimiento", true);
+      const htmlContent = `-Se le an hecho mantenimiento a ${this.registromatenimiento} dispositivos.`;
+    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de mantenimiento", true, htmlContent);
   }
 
   onImprimirTodos() {
@@ -253,6 +258,10 @@ export class ReporteComponent implements OnInit {
     const encabezados = [encabezado1, encabezado2, encabezado3, encabezado4];
     const cuerpos = [cuerpo1, cuerpo2, cuerpo3, cuerpo4];
 
-    this.imprimir.imprimirTodas(encabezados, cuerpos, ["Reporte de los cambios de Registros", "Reporte de los cambios de las entradas", "Reporte de los cambios de los dispositivos asignados", "Reporte de los cambios de mantenimiento"], true);
+    const htmlContent =  `-Sean actualizado ${this.registroregistro} dispositivo, se an agregado ${this.registrosent } dispositivo, sean asingando ${this.registroasignar } dispositivos, 
+    se le an hecho mantenimiento a ${this.registromatenimiento} dispositivos, quedo libres ${this.registrousu} para asignar nuevamente 
+    y se eliminaron ${this.registroelim} registros.`;
+
+    this.imprimir.imprimirTodas(encabezados, cuerpos, ["Reporte de los cambios de Registros", "Reporte de los cambios de las entradas", "Reporte de los cambios de los dispositivos asignados", "Reporte de los cambios de mantenimiento"], true, htmlContent);
   }
 }
