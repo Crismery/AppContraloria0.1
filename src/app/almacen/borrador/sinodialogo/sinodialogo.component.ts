@@ -21,6 +21,7 @@ export class SinodialogoComponent {
   async onClickDelete(appcontraloria: Appcontraloria) {
     const response = await this.registrosService.deletePlaces(appcontraloria);
     console.log(response);
+    this.dialogRef.close();
     if (response.success) {
       this._snackbar.open('Registro eliminado', 'Cerrar', {
         duration: 3000,

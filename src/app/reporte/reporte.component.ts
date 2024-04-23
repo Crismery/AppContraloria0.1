@@ -77,7 +77,7 @@ export class ReporteComponent implements OnInit {
         if (this.ultimaCarga) {
           const fechaEntrada = new Date(item.fecha_de_entrada);
 
-          if (fechaEntrada > this.ultimaCarga && !item.fecha_de_borrados) {
+          if (fechaEntrada > this.ultimaCarga && !item.fecha_de_borrados && item.fecha_de_entrada) {
             this.registrosent++;
             return true;
           }
@@ -258,9 +258,13 @@ export class ReporteComponent implements OnInit {
     const encabezados = [encabezado1, encabezado2, encabezado3, encabezado4];
     const cuerpos = [cuerpo1, cuerpo2, cuerpo3, cuerpo4];
 
-    const htmlContent =  `-Sean actualizado ${this.registroregistro} dispositivo, se an agregado ${this.registrosent } dispositivo, sean asingando ${this.registroasignar } dispositivos, 
+    const htmlContent = `Reporte:
+
+    -Sean actualizado ${this.registroregistro} dispositivo, se an agregado ${this.registrosent } dispositivo, sean asingando ${this.registroasignar } dispositivos, 
     se le an hecho mantenimiento a ${this.registromatenimiento} dispositivos, quedo libres ${this.registrousu} para asignar nuevamente 
-    y se eliminaron ${this.registroelim} registros.`;
+    y se eliminaron ${this.registroelim} registros.
+    
+    `;
 
     this.imprimir.imprimirTodas(encabezados, cuerpos, ["Reporte de los cambios de Registros", "Reporte de los cambios de las entradas", "Reporte de los cambios de los dispositivos asignados", "Reporte de los cambios de mantenimiento"], true, htmlContent);
   }

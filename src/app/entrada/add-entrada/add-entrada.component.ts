@@ -90,6 +90,7 @@ this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {
 
       console.log(this.form.value);
       const response = await this.registros.addPlace(this.form.value);
+      
       console.log(response);
     
       if (response) {

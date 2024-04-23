@@ -22,7 +22,7 @@ private _snackbar: MatSnackBar,
 
       const response = await this.registrosService.deleteFields(appcontraloria);
       console.log('Usuarios eliminados.');
-
+      this.dialogRef.close();
       this._snackbar.open('Usuarios eliminados.', 'Cerrar', {
           duration: 3000,
       });

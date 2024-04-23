@@ -31,6 +31,7 @@ actualizarLugar() {
   if (this.appcontraloriaedit) {
 
     this.appcontraloriaedit.fecha_de_actualizacion = new Date().toISOString().split('T')[0];
+    this.dialogRef.close();
     this.registros.updatePlace(this.appcontraloriaedit)
       .then(() => {
         this._snackbar.open('Se editó con éxito.', 'Cerrar', {

@@ -56,7 +56,7 @@ export class AddMantenimientoComponent implements OnInit {
 
       this.appcontraloriaedit.fecha_de_mantenimiento = new Date().toISOString().split('T')[0];
       this.appcontraloriaedit.defragmentacion = this.defragmentacionChecked? 'Si' : 'No';
-
+      this.dialogRef.close();
       this.registros.updatePlace(this.appcontraloriaedit)
         .then(() => {
           this._snackbar.open('Se editó con éxito.', 'Cerrar', {

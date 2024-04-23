@@ -28,7 +28,7 @@ export class EditEntradaComponent implements OnInit{
       if (this.appcontraloriaeditar) {
 
         this.appcontraloriaeditar.fecha_de_actualizacion = new Date().toISOString();
-
+        this.dialogRef.close();
         this.registros.updatePlace(this.appcontraloriaeditar)
           .then(() => {
             this._snackbar.open('Se editó con éxito.', 'Cerrar', {

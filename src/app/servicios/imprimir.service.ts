@@ -100,7 +100,7 @@ export class ImprimirService {
       format: 'letter'
     });
   
-    let yPositionTitulo = 150; 
+    let yPositionTitulo = 180; 
     let primeraPagina = true;
 
     doc.internal.events.subscribe('addPage', () => {
@@ -108,6 +108,16 @@ export class ImprimirService {
   });
   
     titulos.forEach((titulo, index) => {
+
+      const tituloHeight = 30; // Altura estimada del título
+      const tableHeight = 30 * cuerpos[index].length; // Altura estimada de la tabla (25 es la altura de cada fila)
+      const totalHeight = tituloHeight + tableHeight; // Altura total de la tabla y el título
+  
+      // Verificar si hay suficiente espacio en la página actual para la tabla y su título
+      if (yPositionTitulo + totalHeight > doc.internal.pageSize.height) {
+          doc.addPage(); // Cambiar a la siguiente página
+          yPositionTitulo = 20; // Ajustar la posición del título en la nueva página
+      }
   
       const date = new Date();
       const dateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear().toString().substr(-2));
@@ -137,36 +147,36 @@ export class ImprimirService {
         doc.setLineWidth(1.7); 
         doc.line(20, 60, doc.internal.pageSize.width - 20, 60); 
     
-        const img2 = 'assets/reporte.png';
-        doc.addImage(img2, 'PNG', 35, 75, 20, 20); 
-        doc.setFont("'Times New Roman', Times, serif");
-        doc.setTextColor(200,200,200);
-        doc.setFontSize(10);
-        doc.text('Reporte', 35 + 25, 90); 
+        // const img2 = 'assets/reporte.png';
+        // doc.addImage(img2, 'PNG', 35, 75, 20, 20); 
+        // doc.setFont("'Times New Roman', Times, serif");
+        // doc.setTextColor(200,200,200);
+        // doc.setFontSize(10);
+        // doc.text('Reporte', 35 + 25, 90); 
 
-        const anchoTitulo = doc.getTextWidth(titulo);
+        if (htmlContent) {
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.setFont("'Times New Roman', Times, serif")
+            doc.text(htmlContent, 50, 110);
+        }
+    }
+    const anchoTitulo = doc.getTextWidth(titulo);
       const posicionCentro = (doc.internal.pageSize.width - anchoTitulo) / 2;
   
       doc.setFont("'Times New Roman', Times, serif");
       doc.setTextColor(0, 0, 0);
       doc.setFontSize(14);
-      doc.text(titulo, posicionCentro, yPositionTitulo, { align: "center" });
-
-        if (htmlContent) {
-            doc.setFontSize(12);
-            doc.setFont("'Times New Roman', Times, serif")
-            doc.text(htmlContent, 50, 110);
-        }
-    }
+      doc.text(titulo, posicionCentro, yPositionTitulo + 15, { align: "center" });
       const yPositionTabla = 30 + yPositionTitulo;
   
       const maxFilas = 10; // Define el número máximo de filas a mostrar
-    const filasLimitadas = cuerpos[index].slice(0, maxFilas);
+      const filasLimitadas = cuerpos[index].slice(0, maxFilas);
 
       autoTable(doc, {
         head: [encabezados[index]],
         body: filasLimitadas,
-        startY: yPositionTabla,
+        startY: yPositionTitulo + 40,
         margin: { top: 10 },
         styles: {
           font: 'Times New Roman', 
@@ -182,12 +192,8 @@ export class ImprimirService {
           lineColor: [82, 81, 81],
         }
       });
-  
-      const numberOfRows = cuerpos[index].length;
-      const rowHeight = 25;
-      const tableHeight = numberOfRows * rowHeight + (numberOfRows * rowHeight * 0.1);
-  
-      yPositionTitulo += tableHeight + 75; 
+
+      yPositionTitulo += totalHeight + 30; 
     });
 
   

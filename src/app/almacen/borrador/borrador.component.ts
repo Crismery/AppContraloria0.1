@@ -65,15 +65,14 @@ export class BorradorComponent implements OnInit {
   }
   agregarFechaMomento(appcontraloria: Appcontraloria) {
     if (appcontraloria) {
-      // Borrar la fecha_de_borrados
+      
       appcontraloria.fecha_de_borrados = '';
   
-      // Agregar la fecha_de_reingreso
       appcontraloria.fecha_de_reingreso = new Date().toISOString();
       
       this.registrosService.updatePlace(appcontraloria)
         .then(() => {
-          this._snackbar.open('Registro actualizado con éxito', 'Cerrar', {
+          this._snackbar.open('Registro agregado nuevamente', 'Cerrar', {
             duration: 3000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom'

@@ -20,6 +20,7 @@ export class DialogoentradaComponent {
   agregarFechaMomento(appcontraloria: Appcontraloria) {
     if (appcontraloria) {
       appcontraloria.fecha_de_borrados = new Date().toISOString();
+      this.dialogRef.close();
       this.registrosService.updatePlace(appcontraloria)
         .then(() => {
           this._snackbar.open('Registro eliminado con éxito', 'Cerrar', {
