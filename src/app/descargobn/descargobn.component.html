@@ -18,11 +18,42 @@
   <div class="content">
     <br>
     <div class="navbar1">
-      <span ><i class="bi bi-cloud-download salida"></i>Descargo BN</span>
-      <!--button  class="boton1">Entrada de uno más registros</button-->
+      <span ><i class="bi bi-cloud-download salida" ></i>Descargo BN</span>
+      <button  class="boton1" (click)="mostrarComponente()"> <i class="bi bi-cloud-download salida"></i>Descargo BN</button>
     </div>
       <div class="search-bar mt-3">
         <input type="text" placeholder="ej. Laptop">
       </div>
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th style="text-align: center;">Dispositivo</th>
+            <th style="text-align: center;">Modelo</th>
+            <th style="text-align: center;">Serial</th>
+            <th style="text-align: center;">Placa</th>
+            <th style="text-align: center;">Bienes Nacionales</th>
+            <th style="text-align: center;">Fecha de descargo-BN</th>
+            <th style="text-align: center;">Accion</th>
+          </tr>
+        </thead>
+        </table>
+        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+          <table class="table table-striped">
+        <tbody>
+          <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
+            <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
+            <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
+            <td style="text-align: center;">{{Appcontraloria.serial}}</td>
+            <td style="text-align: center;">{{Appcontraloria.placa}}</td>
+            <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
+            <td style="text-align: center;">{{Appcontraloria.fecha_de_descargoBN}}</td>
+            <td style="text-align: center; vertical-align: middle;">
+              <i class="bi bi-plus-lg editar" title="Reagregar"
+              style="font-size: 25px; align-items: center;"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
   </div>
 </body>

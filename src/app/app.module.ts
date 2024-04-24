@@ -43,6 +43,8 @@ import { SinodialogoComponent } from './almacen/borrador/sinodialogo/sinodialogo
 import { DialogoentradaComponent } from './entrada/dialogoentrada/dialogoentrada.component';
 import { DialogoregistroComponent } from './registros/dialogoregistro/dialogoregistro.component';
 import { DialogousuarioComponent } from './registros/dialogousuario/dialogousuario.component';
+import { DialogocorreoComponent } from './descargobn/dialogocorreo/dialogocorreo.component';
+
 
 
 
@@ -71,7 +73,8 @@ import { DialogousuarioComponent } from './registros/dialogousuario/dialogousuar
     SinodialogoComponent,
     DialogoentradaComponent,
     DialogoregistroComponent,
-    DialogousuarioComponent
+    DialogousuarioComponent,
+    DialogocorreoComponent
   ],
   imports: [
     BrowserModule,

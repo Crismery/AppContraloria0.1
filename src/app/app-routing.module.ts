@@ -18,27 +18,31 @@ import { AddRegistrosComponent } from './registros/add-registros/add-registros.c
 import { EditEntradaComponent } from './entrada/edit-entrada/edit-entrada.component';
 import { EditAsignacionComponent } from './asignacion/edit-asignacion/edit-asignacion.component';
 import { BorradorComponent } from './almacen/borrador/borrador.component';
+import { DialogocorreoComponent } from './descargobn/dialogocorreo/dialogocorreo.component';
+
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent},
-    {path: 'registro', component: RegistroComponent},
-    {path: 'home', component: HomeComponent,  ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'registros', component: RegistrosComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'entrada', component: EntradaComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'asignacion', component: AsignacionComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'almacen', component: AlmacenComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'descargo', component: DescargoComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'descargobn', component: DescargobnComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'mantenimiento', component: MantenimientoComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'reporte', component: ReporteComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'solicitudes', component: SolicitudesComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))},
-    {path: 'add-entrada', component: AddEntradaComponent},
-    {path: 'add-registros/:id', component: AddRegistrosComponent},
-    {path: 'edit-entrada/:id', component: EditEntradaComponent},
-    {path: 'edit-asignacion/:id',component: EditAsignacionComponent},
-  {path: 'borrador', component: BorradorComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro']))}
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'home', component: HomeComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'registros', component: RegistrosComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'entrada', component: EntradaComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'asignacion', component: AsignacionComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'almacen', component: AlmacenComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'descargo', component: DescargoComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'descargobn', component: DescargobnComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'mantenimiento', component: MantenimientoComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'reporte', component: ReporteComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'solicitudes', component: SolicitudesComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  { path: 'add-entrada', component: AddEntradaComponent },
+  { path: 'add-registros/:id', component: AddRegistrosComponent },
+  { path: 'edit-entrada/:id', component: EditEntradaComponent },
+  { path: 'edit-asignacion/:id', component: EditAsignacionComponent },
+  { path: 'borrador', component: BorradorComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
+  {path: 'dialogocorreo', component: DialogocorreoComponent,}
+
 ];
 
 @NgModule({

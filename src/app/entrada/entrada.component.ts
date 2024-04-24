@@ -27,7 +27,7 @@ export class EntradaComponent implements OnInit {
   totalItems: number = 0;
   itemsPerPage: number = 5;
   
-  constructor(private router:Router, 
+  constructor(
     private dialog:MatDialog, 
     private viewContainerRef: ViewContainerRef,
     private registrosService: RegistrosService,
