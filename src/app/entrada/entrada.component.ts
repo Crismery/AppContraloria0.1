@@ -88,7 +88,7 @@ export class EntradaComponent implements OnInit {
 
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
-      this.appcontraloria = appcontraloria.filter(registro => !registro.fecha_de_borrados);
+      this.appcontraloria = appcontraloria.filter(registro => !registro.fecha_de_borrados && !registro.fecha_de_descargoBN);
   
       this.filteredResults = this.appcontraloria;
   
@@ -96,24 +96,24 @@ export class EntradaComponent implements OnInit {
     });
   } 
 
-  agregarFechaMomento(appcontraloria: Appcontraloria) {
-    if (appcontraloria) {
-      appcontraloria.fecha_de_borrados = new Date().toISOString();
-      this.registrosService.updatePlace(appcontraloria)
-        .then(() => {
-          this._snackbar.open('Registro eliminado con éxito', 'Cerrar', {
-            duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'bottom'
-          });
-        })
-        .catch(error => {
-          console.error('Error al agregar la fecha del momento al registro:', error);
-        });
-    } else {
-      console.error('Registro no válido.');
-    }
-  }
+  // agregarFechaMomento(appcontraloria: Appcontraloria) {
+  //   if (appcontraloria) {
+  //     appcontraloria.fecha_de_borrados = new Date().toISOString();
+  //     this.registrosService.updatePlace(appcontraloria)
+  //       .then(() => {
+  //         this._snackbar.open('Registro eliminado con éxito', 'Cerrar', {
+  //           duration: 3000,
+  //           horizontalPosition: 'center',
+  //           verticalPosition: 'bottom'
+  //         });
+  //       })
+  //       .catch(error => {
+  //         console.error('Error al agregar la fecha del momento al registro:', error);
+  //       });
+  //   } else {
+  //     console.error('Registro no válido.');
+  //   }
+  // }
 
 buscar(): void {
   if (this.query.trim() !== '') {

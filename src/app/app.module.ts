@@ -44,6 +44,8 @@ import { DialogoentradaComponent } from './entrada/dialogoentrada/dialogoentrada
 import { DialogoregistroComponent } from './registros/dialogoregistro/dialogoregistro.component';
 import { DialogousuarioComponent } from './registros/dialogousuario/dialogousuario.component';
 import { DialogocorreoComponent } from './descargobn/dialogocorreo/dialogocorreo.component';
+import { DialogoBNComponent } from './almacen/dialogo-bn/dialogo-bn.component';
+import { DialogoagregarComponent } from './almacen/borrador/dialogoagregar/dialogoagregar.component';
 
 
 
@@ -74,7 +76,9 @@ import { DialogocorreoComponent } from './descargobn/dialogocorreo/dialogocorreo
     DialogoentradaComponent,
     DialogoregistroComponent,
     DialogousuarioComponent,
-    DialogocorreoComponent
+    DialogocorreoComponent,
+    DialogoBNComponent,
+    DialogoagregarComponent
   ],
   imports: [
     BrowserModule,

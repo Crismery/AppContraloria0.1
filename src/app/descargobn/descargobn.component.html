@@ -19,10 +19,10 @@
     <br>
     <div class="navbar1">
       <span ><i class="bi bi-cloud-download salida" ></i>Descargo BN</span>
-      <button  class="boton1" (click)="mostrarComponente()"> <i class="bi bi-cloud-download salida"></i>Descargo BN</button>
+      <button  class="boton1"  (click)="mostrarComponente()"> <i class="bi bi-cloud-download salida"></i>Descargo BN</button>
     </div>
       <div class="search-bar mt-3">
-        <input type="text" placeholder="ej. Laptop">
+        <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
       </div>
       <table class="table table-striped mt-3">
         <thead>
@@ -48,7 +48,7 @@
             <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
             <td style="text-align: center;">{{Appcontraloria.fecha_de_descargoBN}}</td>
             <td style="text-align: center; vertical-align: middle;">
-              <i class="bi bi-plus-lg editar" title="Reagregar"
+              <i class="bi bi-plus-lg editar" (click)="mostrarComponenteagre(Appcontraloria)" title="Agregar"
               style="font-size: 25px; align-items: center;"></i>
             </td>
           </tr>

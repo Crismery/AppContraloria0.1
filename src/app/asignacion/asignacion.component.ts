@@ -65,7 +65,7 @@ export class AsignacionComponent implements OnInit {
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item =>
-        !item.cedula && !item.usuario && !item.Departamento && !item.fecha_de_borrados
+        !item.cedula && !item.usuario && !item.Departamento && !item.fecha_de_borrados && !item.fecha_de_descargoBN
       );
       this.filteredResults = this.appcontraloria;
 

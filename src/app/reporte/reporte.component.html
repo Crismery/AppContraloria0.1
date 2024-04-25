@@ -36,7 +36,7 @@
       <h2>Reporte de los cambios de Registros</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggleregistros($event)">Ver Cambios </mat-checkbox>
       <div *ngIf="registros || todo">
-        <h3>-Sean actualizado {{registroregistro}} dispositivo, quedo  {{registrousu}} libres para asignar nuevamente y {{registroelim}} se eliminaron.</h3>
+        <h3>-Sean actualizado {{registroregistro}} dispositivo, quedo  {{registrousu}} libres para asignar nuevamente.</h3>
         <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
         <table class="table table-striped mt-3 ">
           <thead>
@@ -78,7 +78,7 @@
       <h2>Reporte de los cambios de las entradas</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggleentrada($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="entrada || todo">
-        <h3>-Sean agregado {{ registrosent }} dispositivo, sean actualizado {{registroregistro}} y se eliminaron {{registroelim}}.</h3>
+        <h3>-Sean agregado {{ registrosent }} dispositivo, sean actualizado {{registroregistro}}.</h3>
         <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
         <table class="table table-striped mt-3">
           <thead>
@@ -203,6 +203,40 @@
         </div>
         <!-- <button *ngIf="mantenimiento">Imprimir</button> -->
         <i class="bi bi-printer imprimir" *ngIf="mantenimiento"  title="Imprimir" (click)="onImprimirManteni()"></i>
+      </div>
+    </div>
+    
+    <div class="checkbox">
+      <h2>Reporte de los registros enviado a descargo de bienes nacionales</h2>
+      <mat-checkbox class="checkbox-container" (change)=" toggledescargo($event)">Ver Cambios</mat-checkbox>
+      <div *ngIf="descargoBN || todo">
+        <h3>-Sean enviado {{registroelim}} registros al Descargo de BN.</h3>
+        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
+        <table class="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th style="text-align: center;">Dispositivo</th>
+              <th style="text-align: center;">Serial</th>
+              <th style="text-align: center;">Modelo</th>
+              <th style="text-align: center;">Placa</th>
+              <th style="text-align: center;">Bienes Nacionales</th>
+              <th style="text-align: center;">Fecha de descargo-BN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Appcontraloria of appcontraloriaBN; let i = index">
+              <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
+              <td style="text-align: center;">{{Appcontraloria.serial}}</td>
+              <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
+              <td style="text-align: center;">{{Appcontraloria.placa}}</td>
+              <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
+              <td style="text-align: center;">{{Appcontraloria.fecha_de_descargoBN}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <!-- <button *ngIf="asignacion">Imprimir</button> -->
+        <i class="bi bi-printer imprimir" *ngIf="descargoBN"  title="Imprimir" (click)="onImprimirdescargoBN()"></i>
       </div>
     </div>
     </div>

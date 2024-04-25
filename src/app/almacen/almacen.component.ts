@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { Observable } from 'rxjs';
+import { DialogoBNComponent } from './dialogo-bn/dialogo-bn.component';
+
 
 
 @Component({
@@ -26,16 +28,34 @@ export class AlmacenComponent implements OnInit {
 
   constructor(private registrosService: RegistrosService,
     private viewContainerRef: ViewContainerRef,
-    private _snackbar: MatSnackBar) { }
+    private _snackbar: MatSnackBar,
+    private dialog: MatDialog,) { }
 
+    async mostrarComponente(appcontraloria: Appcontraloria): Promise<void> {
+      try {
+        const registro = await this.registrosService.getPlaceById(appcontraloria);
+      
+        const dialogRef = this.dialog.open(DialogoBNComponent, {
+          data: registro, 
+          width: '300px',
+          height: '200px',
+          viewContainerRef: this.viewContainerRef,
+          panelClass: 'dialog-container',
+          disableClose: true
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('Dialogo cerrado:', result);
+        });
+      } catch (error) {
+        console.error('Error al obtener la información del registro:', error);
+      }
+    }
     ngOnInit() {
       this.registrosService.getPlaces().subscribe(appcontraloria => {
         this.appcontraloria = appcontraloria.filter(item =>
-          !item.cedula && !item.usuario && !item.Departamento && !item.fecha_de_borrados
+          !item.cedula && !item.usuario && !item.Departamento && !item.fecha_de_borrados && !item.fecha_de_descargoBN
         );
         this.filteredResults = this.appcontraloria;
-  
-        this.loadData();
       });
     }
 
@@ -47,28 +67,5 @@ export class AlmacenComponent implements OnInit {
     } else {
       this.filteredResults = this.appcontraloria;
     }
-  }
-
-  loadData(): void {
-    this.totalItems = this.filteredResults.length;
-    this.endIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems);
-  }
-  changeItemsPerPage(event: any): void {
-    const value = (event.target as HTMLSelectElement).value;
-    if (value !== null && value !== undefined) {
-      this.itemsPerPage = +value;
-      this.startIndex = 0;
-      this.filteredResults = this.appcontraloria.slice(0, this.itemsPerPage);
-
-      this.loadData();
-    }
-  }
-  prevPage(): void {
-    this.startIndex = Math.max(0, this.startIndex - this.itemsPerPage);
-    this.loadData();
-  }
-  nextPage(): void {
-    this.startIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems - this.itemsPerPage);
-    this.loadData();
   }
 }

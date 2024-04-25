@@ -37,7 +37,7 @@ export class ImprimirService {
     const img1Height = 30;
     const img2Y = 75;
     const img2Height = 20;
-    const tableY = 150;
+    const tableY = 160;
     const titleY = (img2Y + img2Height + tableY) / 2;
     doc.setFontSize(14);
     doc.text(titulo, doc.internal.pageSize.width / 2, titleY, { align: 'center' });
