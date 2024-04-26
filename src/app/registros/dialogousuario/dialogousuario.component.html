@@ -2,8 +2,11 @@
     <div class="container">
         <h3>¿Esta seguro/a de que quiere borrar el usuario?</h3>
         <div class="cardbutton">
-            <button (click)="onClickDeleteFields(data)">Si</button>
-            <button (click)="cerrarCentrado()">No</button>
+            <i class="bi bi-x-circle no" title="No" (click)="cerrarCentrado()"></i>
+            <i class="bi bi-check-circle si" title="Si" (click)="onClickDeleteFields(data)"></i>
+            <!-- <button (click)="onClickDeleteFields(data)">Si</button> -->
+            <!-- <button (click)="cerrarCentrado()">No</button> -->
+
           </div>
     </div>
 </div>

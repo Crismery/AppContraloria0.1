@@ -71,16 +71,16 @@ export class ImprimirService {
       head: [encabezado],
       body: cuerpo,
       styles: {
-        font: 'Times New Roman', // Fuente
-        fontStyle: 'normal',     // Estilo de fuente (normal, bold, italic)
-        fontSize: 12,            // Tamaño de fuente
-        cellPadding: 5,          // Espaciado interno de celda
-        fillColor: [256, 255, 255], // Color de fondo de las celdas
-        textColor: [0, 0, 0],      // Color de texto
-        halign: 'left',            // Alineación horizontal (left, center, right)
-        valign: 'middle',          // Alineación vertical (top, middle, bottom)
-        cellWidth: 'auto',         // Ancho de celda (auto, wrap)
-        minCellHeight: 20,              // Altura de fila
+        font: 'Times New Roman', 
+        fontStyle: 'normal',     
+        fontSize: 12,            
+        cellPadding: 5,          
+        fillColor: [256, 255, 255], 
+        textColor: [0, 0, 0],      
+        halign: 'left',           
+        valign: 'middle',          
+        cellWidth: 'auto',        
+        minCellHeight: 20,              
         lineColor: [82, 81, 81] 
       }
     });
@@ -97,7 +97,7 @@ export class ImprimirService {
     const doc = new jsPDF({
       orientation: "portrait",
       unit: "px",
-      format: 'letter'
+      format: 'letter',
     });
   
     let yPositionTitulo = 180; 
@@ -109,14 +109,14 @@ export class ImprimirService {
   
     titulos.forEach((titulo, index) => {
 
-      const tituloHeight = 30; // Altura estimada del título
-      const tableHeight = 30 * cuerpos[index].length; // Altura estimada de la tabla (25 es la altura de cada fila)
-      const totalHeight = tituloHeight + tableHeight; // Altura total de la tabla y el título
+      const tituloHeight = 30; 
+      const tableHeight = 30 * cuerpos[index].length; 
+      const totalHeight = tituloHeight + tableHeight; 
   
-      // Verificar si hay suficiente espacio en la página actual para la tabla y su título
+      
       if (yPositionTitulo + totalHeight > doc.internal.pageSize.height) {
-          doc.addPage(); // Cambiar a la siguiente página
-          yPositionTitulo = 20; // Ajustar la posición del título en la nueva página
+          doc.addPage(); 
+          yPositionTitulo = 20; 
       }
   
       const date = new Date();
@@ -147,12 +147,12 @@ export class ImprimirService {
         doc.setLineWidth(1.7); 
         doc.line(20, 60, doc.internal.pageSize.width - 20, 60); 
     
-        // const img2 = 'assets/reporte.png';
-        // doc.addImage(img2, 'PNG', 35, 75, 20, 20); 
-        // doc.setFont("'Times New Roman', Times, serif");
-        // doc.setTextColor(200,200,200);
-        // doc.setFontSize(10);
-        // doc.text('Reporte', 35 + 25, 90); 
+        const img2 = 'assets/reporte.png';
+        doc.addImage(img2, 'PNG', 35, 75, 20, 20); 
+        doc.setFont("'Times New Roman', Times, serif");
+        doc.setTextColor(200,200,200);
+        doc.setFontSize(10);
+        doc.text('Reporte', 35 + 25, 90); 
 
         if (htmlContent) {
             doc.setFontSize(12);
@@ -170,7 +170,7 @@ export class ImprimirService {
       doc.text(titulo, posicionCentro, yPositionTitulo + 15, { align: "center" });
       const yPositionTabla = 30 + yPositionTitulo;
   
-      const maxFilas = 10; // Define el número máximo de filas a mostrar
+      const maxFilas = 10; 
       const filasLimitadas = cuerpos[index].slice(0, maxFilas);
 
       autoTable(doc, {

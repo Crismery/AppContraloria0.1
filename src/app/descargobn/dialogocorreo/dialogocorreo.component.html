@@ -1,2 +1,22 @@
-<p>dialogocorreo works!</p>
-<button (click)="cerrarCentrado()">No</button>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <div class="navbar">
+        <span ><h3><p><i class="bi bi-envelope-at salida"></i> Enviar correo</p></h3></span>
+        <i class="bi bi-x-circle no"(click)="cerrarCentrado()"></i>
+      </div>
+    <div class="container">
+        <br>
+        <div class="form-group">
+            <!-- <label for="destinatarios">Destinatarios:</label> -->
+            <input type="text" id="destinatarios" placeholder="Destinatarios:">
+        </div>
+        <div class="form-group">
+            <!-- <label for="asunto">Asunto:</label> -->
+            <input type="text" id="asunto" placeholder="Asunto:">
+        </div>
+        <div class="form-group" fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+            <!-- <label for="cuerpo">Cuerpo del Correo:</label> -->
+            <textarea id="cuerpo" ></textarea>
+        </div>
+        <button>Enviar</button>
+</div>
+</div>

@@ -20,8 +20,7 @@ export class DialogoBNComponent {
 
   agregarFechaMomento(appcontraloria: Appcontraloria) {
     if (appcontraloria) {
-      
-     
+
       appcontraloria.fecha_de_descargoBN = '';
   
       appcontraloria.fecha_de_reingreso = new Date().toISOString();

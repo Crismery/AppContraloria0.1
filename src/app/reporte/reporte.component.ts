@@ -14,7 +14,7 @@ export class ReporteComponent implements OnInit {
   mantenimiento: boolean = false;
   entrada: boolean = false;
   registros: boolean = false;
-  descargoBN: boolean =false;
+  descargoBN: boolean = false;
   todo: boolean = false;
 
   appcontraloria: Appcontraloria[] = [];
@@ -33,7 +33,7 @@ export class ReporteComponent implements OnInit {
   registrosent = 0;
   registroactu = 0;
 
-  appcontraloriaBN : Appcontraloria[] =[];
+  appcontraloriaBN: Appcontraloria[] = [];
 
   constructor(private registrosService: RegistrosService,
     private imprimir: ImprimirService
@@ -61,11 +61,11 @@ export class ReporteComponent implements OnInit {
     //asignacion
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(asig =>
-        asig.cedula && asig.usuario && asig.Departamento 
+        asig.cedula && asig.usuario && asig.Departamento
       );
-  
+
       this.registroasignar = this.appcontraloria.length;
-  
+
       this.registroelim = appcontraloria.filter(asig => asig.fecha_de_descargoBN).length;
     });
 
@@ -117,8 +117,9 @@ export class ReporteComponent implements OnInit {
     });
     //descargo-BN
     this.registrosService.getPlaces().subscribe(appcontraloriaBN => {
-      this.appcontraloria = appcontraloriaBN.filter(item => item.fecha_de_descargoBN);
+      this.appcontraloriaBN = appcontraloriaBN.filter(item => item.fecha_de_descargoBN);
     });
+
   }
 
   //Registro
@@ -156,7 +157,7 @@ export class ReporteComponent implements OnInit {
         item.fecha_de_actualizacion
       ];
     });
-    const htmlContent = `-Sean agregado ${this.registrosent } dispositivo, sean actualizado ${this.registroregistro} y sean enviado ${this.registroelim} registros al Descargo de BN.`;
+    const htmlContent = `-Sean agregado ${this.registrosent} dispositivo, sean actualizado ${this.registroregistro} y sean enviado ${this.registroelim} registros al Descargo de BN.`;
 
     this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de las entradas", true, htmlContent);
   }
@@ -179,7 +180,7 @@ export class ReporteComponent implements OnInit {
           asig.almacenamiento
         ];
       });
-      const htmlContent = `-Sean asiginado ${this.registroasignar } dispositivos.`;
+    const htmlContent = `-Sean asiginado ${this.registroasignar} dispositivos.`;
     this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de los dipositivos asignados", true, htmlContent);
   }
 
@@ -200,23 +201,27 @@ export class ReporteComponent implements OnInit {
           item.fecha_de_mantenimiento
         ];
       });
-      const htmlContent = `-Se le an hecho mantenimiento a ${this.registromatenimiento} dispositivos.`;
+    const htmlContent = `-Se le an hecho mantenimiento a ${this.registromatenimiento} dispositivos.`;
     this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los cambios de mantenimiento", true, htmlContent);
   }
   //descargo-BN
   onImprimirdescargoBN() {
     const encabezado = ["Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Fecha de descargo-BN"];
-    const cuerpo = this.appcontraloriaBN.map(descargo => {
-      return [
-        descargo.dispositivo,
-        descargo.modelo,
-        descargo.serial,
-        descargo.placa,
-        descargo.bienes_nacionales,
-        descargo.fecha_de_descargoBN
-      ];
-    });
-    const htmlContent = `-Sean enviado ${this.registroelim} registros al Descargo de BN.`;
+    const cuerpo = this.appcontraloriaBN
+      .filter(descargo => descargo.fecha_de_descargoBN)
+      .map(descargo => {
+        return [
+          descargo.dispositivo,
+          descargo.modelo,
+          descargo.serial,
+          descargo.placa,
+          descargo.bienes_nacionales,
+          descargo.fecha_de_descargoBN
+        ];
+      });
+    const htmlContent = `
+    -Sean enviado ${this.registroelim} registros al Descargo de BN.
+    `;
 
     this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los registros enviado a descargo de bienes nacionales", true, htmlContent);
   }
@@ -284,9 +289,9 @@ export class ReporteComponent implements OnInit {
           item.fecha_de_mantenimiento
         ];
       });
-      //descargo-BN
-      const encabezado = ["Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Fecha de descargo-BN"];
-      const cuerpo = this.appcontraloriaBN
+    //descargo-BN
+    const encabezado = ["Dispositivo", "Modelo", "Serial", "Placa", "Bienes Nacionales", "Fecha de descargo-BN"];
+    const cuerpo = this.appcontraloriaBN
       .filter(item => item.fecha_de_descargoBN)
       .map(descargo => {
         return [
@@ -304,7 +309,7 @@ export class ReporteComponent implements OnInit {
 
     const htmlContent = `Reporte:
 
-    -Sean actualizado ${this.registroregistro} dispositivo, se an agregado ${this.registrosent } dispositivo, sean asingando ${this.registroasignar } dispositivos, 
+    -Sean actualizado ${this.registroregistro} dispositivo, se an agregado ${this.registrosent} dispositivo, sean asingando ${this.registroasignar} dispositivos, 
     se le an hecho mantenimiento a ${this.registromatenimiento} dispositivos, quedo libres ${this.registrousu} para asignar nuevamente 
     y sean enviado ${this.registroelim} registros al Descargo de BN.
     

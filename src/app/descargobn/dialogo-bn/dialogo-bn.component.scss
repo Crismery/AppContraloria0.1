@@ -20,3 +20,27 @@
     margin-bottom: 50px;
     font-family: 'Times New Roman', Times, serif;
 }
+.no{
+  font-size: 35px;
+  color: black;
+  align-items: center;
+  float: right;
+  margin-right: 10px;
+}
+.no:hover{
+  color: red;
+  border: 0;
+  font-weight: 600;
+}
+.si{
+  font-size: 35px;
+  color: black;
+  align-items: center;
+  float: right;
+  margin-right: 10px;
+}
+.si:hover{
+  color: greenyellow;
+  border: 0;
+  font-weight: 600;
+}

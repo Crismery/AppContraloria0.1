@@ -67,8 +67,8 @@ export class DescargobnComponent implements OnInit {
     
       const dialogRef = this.dialog.open(DialogoBNComponent, {
         data: registro, 
-        width: '250px',
-        height: '140px',
+        width: '300px',
+        height: '150px',
         viewContainerRef: this.viewContainerRef,
         panelClass: 'dialog-container',
         disableClose: true
