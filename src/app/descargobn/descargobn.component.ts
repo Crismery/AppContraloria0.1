@@ -49,7 +49,7 @@ export class DescargobnComponent implements OnInit {
   // }
   mostrarComponente(): void {
     const dialogRef = this.dialog.open(DialogocorreoComponent, {
-      width: '700px',
+      width: '550px',
       height: '600px',
       viewContainerRef: this.viewContainerRef,
       panelClass: 'dialog-container',
