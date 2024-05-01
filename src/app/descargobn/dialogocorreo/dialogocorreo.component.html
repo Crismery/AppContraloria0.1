@@ -5,17 +5,17 @@
       </div>
     <div class="container">
         <br>
-        <div class="form-group">
+        <div class="form-group" [formGroup]="datos">
             <!-- <label for="destinatarios">Destinatarios:</label> -->
-            <input type="text" id="destinatarios" placeholder="Destinatarios:">
+            <input type="text" id="destinatarios" placeholder="Correo:" formControlName="correo">
         </div>
         <div class="form-group">
             <!-- <label for="asunto">Asunto:</label> -->
-            <input type="text" id="asunto" placeholder="Asunto:">
+            <input type="text" id="asunto" placeholder="Asunto:" formControlName="asunto">
         </div>
         <div class="form-group" fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
             <!-- <label for="cuerpo">Cuerpo del Correo:</label> -->
-            <textarea id="cuerpo" ></textarea>
+            <textarea id="cuerpo" formControlName="mensaje"></textarea>
         </div>
         <button>Enviar</button>
 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -7,7 +8,14 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrl: './dialogocorreo.component.scss'
 })
 export class DialogocorreoComponent {
- constructor(public dialogRef: MatDialogRef<DialogocorreoComponent>){}
+
+  datos: FormGroup;
+
+ constructor(public dialogRef: MatDialogRef<DialogocorreoComponent>){
+  this.datos = new FormGroup({
+  
+  });
+ }
 
  cerrarCentrado(){
   this.dialogRef.close();
