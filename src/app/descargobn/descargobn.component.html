@@ -15,11 +15,13 @@
     </div>
   </div>
   
-  <div class="content">
+  <div class="content" >
     <br>
-    <div class="navbar1">
+    <div class="navbar1" >
       <span ><i class="bi bi-cloud-download salida"></i> Descargo BN</span>
-      <button  class="boton1"  (click)="mostrarComponente()"> <i class="bi bi-envelope-at salida"></i> Descargo BN</button>
+      <div *ngFor="let correo of appcontraloria; let i = index">
+      <button  class="boton1"  (click)="mostrarComponente(correo)"> <i class="bi bi-envelope-at salida"></i> Descargo BN</button>
+      </div>
     </div>
       <div class="search-bar mt-3">
         <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
@@ -40,7 +42,7 @@
         <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
           <table class="table table-striped">
         <tbody>
-          <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
+          <tr *ngFor="let Appcontraloria of appcontraloria; let i = index">
             <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
             <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
             <td style="text-align: center;">{{Appcontraloria.serial}}</td>

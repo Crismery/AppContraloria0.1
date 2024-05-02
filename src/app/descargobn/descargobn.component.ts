@@ -16,9 +16,9 @@ import { DialogoBNComponent } from './dialogo-bn/dialogo-bn.component';
 export class DescargobnComponent implements OnInit {
 
   query: string = '';
-  resultados$!: Observable<Appcontraloria[]>;
+  // resultados$!: Observable<Appcontraloria[]>;
 
-  filteredResults: Appcontraloria[] = [];
+  // filteredResults: Appcontraloria[] = [];
   appcontraloria: Appcontraloria[] = [];
 
   constructor(private dialog:MatDialog, 
@@ -27,39 +27,39 @@ export class DescargobnComponent implements OnInit {
     private _snackbar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: Appcontraloria){}
 
-  // async dialogoregistro(appcontraloria: Appcontraloria): Promise<void> {
-  //   try {
-  //     const registro = await this.registrosService.getPlaceById(appcontraloria);
+  async mostrarComponente(appcontraloria: Appcontraloria): Promise<void> {
+    try {
+      const registro = await this.registrosService.getPlaceById(appcontraloria);
       
-  //     const dialogRef = this.dialog.open(BNcorreosComponent, {
-  //       data: registro, 
-  //       width: '500px',
-  //       height: '500px',
-  //       viewContainerRef: this.viewContainerRef,
-  //       panelClass: 'dialog-container',
-  //       disableClose: true
-  //     });
+      const dialogRef = this.dialog.open(DialogocorreoComponent, {
+        data: registro, 
+        width: '550px',
+        height: '500px',
+        viewContainerRef: this.viewContainerRef,
+        panelClass: 'dialog-container',
+        disableClose: true
+      });
   
-  //     dialogRef.afterClosed().subscribe(result => {
-  //       console.log('Dialogo cerrado:', result);
-  //     });
-  //   } catch (error) {
-  //     console.error('Error al obtener la información del registro:', error);
-  //   }
-  // }
-  mostrarComponente(): void {
-    const dialogRef = this.dialog.open(DialogocorreoComponent, {
-      width: '550px',
-      height: '600px',
-      viewContainerRef: this.viewContainerRef,
-      panelClass: 'dialog-container',
-      disableClose: true
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialogo cerrado:', result);
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialogo cerrado:', result);
+      });
+    } catch (error) {
+      console.error('Error al obtener la información del registro:', error);
+    }
   }
+  // mostrarComponente(): void {
+  //   const dialogRef = this.dialog.open(DialogocorreoComponent, {
+  //     width: '550px',
+  //     height: '500px',
+  //     viewContainerRef: this.viewContainerRef,
+  //     panelClass: 'dialog-container',
+  //     disableClose: true
+  //   });
+  
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('Dialogo cerrado:', result);
+  //   });
+  // }
 
   async mostrarComponenteagre(appcontraloria: Appcontraloria): Promise<void> {
     try {
@@ -85,7 +85,6 @@ export class DescargobnComponent implements OnInit {
       this.appcontraloria = appcontraloria.filter(item =>
         item.fecha_de_descargoBN
       );
-      this.filteredResults = this.appcontraloria;
     });
   }
   agregarFechaMomento(appcontraloria: Appcontraloria) {
@@ -122,11 +121,17 @@ export class DescargobnComponent implements OnInit {
   }
   buscar(): void {
     if (this.query.trim() !== '') {
-      this.filteredResults = this.appcontraloria.filter(place =>
+      // Filtrar los resultados basados en la búsqueda
+      this.appcontraloria = this.appcontraloria.filter(place =>
         place.dispositivo.toLowerCase().includes(this.query.trim().toLowerCase())
       );
     } else {
-      this.filteredResults = this.appcontraloria;
+      // Restaurar los resultados originales
+      this.registrosService.getPlaces().subscribe(appcontraloria => {
+        this.appcontraloria = appcontraloria.filter(item =>
+          item.fecha_de_descargoBN
+        );
+      });
     }
   }
 }
