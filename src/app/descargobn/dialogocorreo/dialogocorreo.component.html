@@ -6,17 +6,15 @@
     <div class="container" [formGroup]="datos">
         <br>
         <div class="form-group">
-            <!-- <label for="destinatarios">Destinatarios:</label> -->
             <input type="text" id="destinatarios" placeholder="Correo:" formControlName="correo" name="correo">
         </div>
         <div class="form-group">
-            <!-- <label for="asunto">Asunto:</label> -->
             <input type="text" id="asunto" placeholder="Asunto:" formControlName="asunto" name="asunto">
         </div>
         <div class="form-group" fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
-            <!-- <label for="cuerpo">Cuerpo del Correo:</label> -->
-            <textarea id="cuerpo" formControlName="mensaje" name="mensaje"></textarea>
-        </div>
+            <textarea id="cuerpo"  formControlName="mensaje" name="mensaje">
+                Estos Dispositivo seran enviados al decargo de bienes</textarea>
+          </div>
         <button (click)="enviarcorreo()">Enviar</button>
 </div>
 </div>

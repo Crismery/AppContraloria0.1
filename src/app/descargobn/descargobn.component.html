@@ -1,46 +1,49 @@
 <body>
-<div class="navbar">
-    <div class="logo"><img src="assets/1_Horizontal centralizado blanco.png" class="logo1"> <h5> CONTRALORIA | DESCARGO-BN</h5></div>
+  <div class="navbar">
+    <div class="logo"><img src="assets/1_Horizontal centralizado blanco.png" class="logo1">
+      <h5> CONTRALORIA | DESCARGO-BN</h5>
+    </div>
     <div class="user-info">
-        <!--button class="p-link layout-topbar-button">
+      <!--button class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button-->
-        <button [routerLink]="'/home'" class="boton" title="Home">
-          <!-- <img src="assets/salir.png"> -->
-          <i class="bi bi-box-arrow-right  salida" title="Home"></i>
-          <!-- <span>Home</span> -->
-        </button>
+      <button [routerLink]="'/home'" class="boton" title="Home">
+        <!-- <img src="assets/salir.png"> -->
+        <i class="bi bi-box-arrow-right  salida" title="Home"></i>
+        <!-- <span>Home</span> -->
+      </button>
       <!-- Iconos y nombre del usuario aquí -->
     </div>
   </div>
-  
-  <div class="content" >
+
+  <div class="content">
     <br>
-    <div class="navbar1" >
-      <span ><i class="bi bi-cloud-download salida"></i> Descargo BN</span>
-      <div *ngFor="let correo of appcontraloria; let i = index">
-      <button  class="boton1"  (click)="mostrarComponente(correo)"> <i class="bi bi-envelope-at salida"></i> Descargo BN</button>
+    <div class="navbar1">
+      <span><i class="bi bi-cloud-download salida"></i> Descargo BN</span>
+      <div>
+        <button class="boton1" (click)="mostrarComponente(appcontraloria[0])"> <i class="bi bi-envelope-at salida"></i> Descargo
+          BN</button>
       </div>
     </div>
-      <div class="search-bar mt-3">
-        <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
-      </div>
-      <table class="table table-striped mt-3">
-        <thead>
-          <tr>
-            <th style="text-align: center;">Dispositivo</th>
-            <th style="text-align: center;">Modelo</th>
-            <th style="text-align: center;">Serial</th>
-            <th style="text-align: center;">Placa</th>
-            <th style="text-align: center;">Bienes Nacionales</th>
-            <th style="text-align: center;">Fecha de descargo-BN</th>
-            <th style="text-align: center;">Accion</th>
-          </tr>
-        </thead>
-        </table>
-        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
-          <table class="table table-striped">
+    <div class="search-bar mt-3">
+      <input type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
+    </div>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th style="text-align: center;">Dispositivo</th>
+          <th style="text-align: center;">Modelo</th>
+          <th style="text-align: center;">Serial</th>
+          <th style="text-align: center;">Placa</th>
+          <th style="text-align: center;">Bienes Nacionales</th>
+          <th style="text-align: center;">Fecha de descargo-BN</th>
+          <th style="text-align: center;">Accion</th>
+        </tr>
+      </thead>
+    </table>
+    <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+      <table class="table table-striped">
         <tbody>
           <tr *ngFor="let Appcontraloria of appcontraloria; let i = index">
             <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
@@ -51,11 +54,11 @@
             <td style="text-align: center;">{{Appcontraloria.fecha_de_descargoBN}}</td>
             <td style="text-align: center; vertical-align: middle;">
               <i class="bi bi-plus-lg editar" (click)="mostrarComponenteagre(Appcontraloria)" title="Agregar"
-              style="font-size: 25px; align-items: center;"></i>
+                style="font-size: 25px; align-items: center;"></i>
             </td>
           </tr>
         </tbody>
       </table>
-  </div>
+    </div>
   </div>
 </body>
