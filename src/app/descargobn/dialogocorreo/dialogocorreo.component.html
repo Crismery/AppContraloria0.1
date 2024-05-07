@@ -12,8 +12,10 @@
             <input type="text" id="asunto" placeholder="Asunto:" formControlName="asunto" name="asunto">
         </div>
         <div class="form-group" fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
-            <textarea id="cuerpo"  formControlName="mensaje" name="mensaje">
-                Estos Dispositivo seran enviados al decargo de bienes</textarea>
+            <textarea id="cuerpo" formControlName="mensaje" name="mensaje">
+                 Estos Dispositivo seran enviados al decargo de bienes:
+                {{ datos.get('mensaje')?.value }}
+            </textarea>
           </div>
         <button (click)="enviarcorreo()">Enviar</button>
 </div>

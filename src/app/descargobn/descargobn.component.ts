@@ -27,26 +27,25 @@ export class DescargobnComponent implements OnInit {
     private _snackbar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: Appcontraloria){}
 
-  async mostrarComponente(appcontraloria: Appcontraloria): Promise<void> {
-    try {
-      const registro = await this.registrosService.getPlaceById(appcontraloria);
-      
-      const dialogRef = this.dialog.open(DialogocorreoComponent, {
-        data: registro, 
-        width: '550px',
-        height: '500px',
-        viewContainerRef: this.viewContainerRef,
-        panelClass: 'dialog-container',
-        disableClose: true
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialogo cerrado:', result);
-      });
-    } catch (error) {
-      console.error('Error al obtener la información del registro:', error);
-    }
-  }
+    async mostrarComponente(registros: Appcontraloria[]): Promise<void> {
+      try {
+        const dialogRef = this.dialog.open(DialogocorreoComponent, {
+          data: registros, // Pasar un array de objetos
+          width: '550px',
+          height: '500px',
+          viewContainerRef: this.viewContainerRef,
+          panelClass: 'dialog-container',
+          disableClose: true
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('Dialogo cerrado:', result);
+        });
+      } catch (error) {
+        console.error('Error al obtener la información del registro:', error);
+      }
+    }    
+    
   // mostrarComponente(): void {
   //   const dialogRef = this.dialog.open(DialogocorreoComponent, {
   //     width: '550px',

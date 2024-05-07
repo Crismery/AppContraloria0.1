@@ -18,6 +18,8 @@ export class DialogocorreoComponent implements OnInit {
   datos: FormGroup;
   appcontraloria: Appcontraloria[] = [];
 
+  appcontraloriacorreo!: Appcontraloria;
+
   constructor(public dialogRef: MatDialogRef<DialogocorreoComponent>,
     private httpclient: HttpClient,
     private fb: FormBuilder,
@@ -27,43 +29,53 @@ export class DialogocorreoComponent implements OnInit {
     this.datos = new FormGroup({
       correo: new FormControl('', [Validators.required, Validators.email]),
       asunto: new FormControl('', Validators.required),
-      mensaje: new FormControl('')
+      mensaje: new FormControl('', Validators.required)
     });
   }
 
 
   ngOnInit(): void {
     this.construirFormulario();
+
+    this.appcontraloriacorreo = { ...this.data };
   }
 
   private construirFormulario(): void {
     this.datos = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
       asunto: ['', Validators.required],
-      mensaje: [this.data ? this.obtenerdispositivos(this.data) : '']
+      mensaje: [this.obtenerInformacion()]
     });
   }
 
-  // obtenerInformacion(registro: Appcontraloria): string {
-  //   // Aquí construyes la cadena de información usando las propiedades de registro
-  //   return `Dispositivo: ${registro.dispositivo}, Modelo: ${registro.modelo}, Serial: ${registro.serial}, Placa: ${registro.placa}`;
-  // }
-  obtenerdispositivos(registros: Appcontraloria[]): string {
-    if (!registros || registros.length === 0) {
-      return 'No hay dispositivos para enviar al descargo de bienes.';
+  obtenerInformacion(): string {
+    if (!Array.isArray(this.data)) {
+      console.error('El objeto "data" no es un array.');
+      return '';
     }
-  
-    let informacion = 'Estos Dispositivos serán enviados al descargo de bienes:\n';
-    informacion += registros
-      .filter(registro => registro.fecha_de_descargoBN) // Filtra los registros que cumplen la condición
-      .map(registro =>
-        `Dispositivo: ${registro.dispositivo}, Modelo: ${registro.modelo}, Serial: ${registro.serial}, Placa: ${registro.placa}`
-      )
-      .join('\n');
-  
-    return informacion;
+
+    const mensajeesta = 'Estos Dispositivo seran enviados al decargo de bienes nacionales:  ';
+    const informacion = this.data.map(registro =>
+      `-Dispositivo: ${registro.dispositivo}, Modelo: ${registro.modelo}, Serial: ${registro.serial}, Placa: ${registro.placa}`
+    );
+
+    return mensajeesta +'\n'+'\n'+ informacion.join('\n');
   }
-  
+  // obtenerdispositivos(): string {
+  //   if (!Array.isArray(this.data)) {
+  //     console.error('El objeto "data" no es un array.');
+  //     return ''; // Devuelve una cadena vacía u otra acción apropiada
+  //   }
+
+  //   const registrosFiltrados = this.data.filter(registro => registro.fecha_de_descargoBN);
+
+  //   const informacion = registrosFiltrados.map(registro =>
+  //     `Dispositivo: ${registro.dispositivo}, Modelo: ${registro.modelo}, Serial: ${registro.serial}, Placa: ${registro.placa}`
+  //   );
+
+  //   return informacion.join('\n');
+  // }
+
   enviarcorreo() {
 
     if (this.datos.invalid) {

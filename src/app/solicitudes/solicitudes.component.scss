@@ -24,20 +24,6 @@ h5{
    margin-top: 5px; 
    font-family: 'Times New Roman', Times, serif;
 }
-img{
-    width: 20px;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-.img2{
-  width: 40px;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
 .boton{
   display: inline-flex; 
   align-items: center;
@@ -85,20 +71,6 @@ th{
   border-bottom: 1px solid rgb(82, 81, 81);
   font-family: 'Times New Roman', Times, serif;
 }
-
-.pagination {
-display: flex;
-align-items: center;
-justify-content: flex-end;
-margin-right: 5cm;
-}
-
-.pagination label,
-.pagination span,
-.pagination select,
-.pagination button {
- margin: 0 5px;
-}
 .navbar1 {
   background-color: #072879;
   padding: 14px;
@@ -107,24 +79,6 @@ margin-right: 5cm;
   color: #dfdeee;
   align-items: center;
   border-radius: 10px;
-}
-.enviar {
-  background-color: #002774;
-  border-radius: 5px;
-  font-family: 'Times New Roman', Times, serif;
-  border: 0;
-  color: #dfdeee;
-  width: 100px;
-  height: 40px;
-  font-size: 18px;
-  position: absolute;
-   right: 150px;
-}
-.enviar:hover {
-  background: #ffffff;
-  color: #002774;
-  border: 0;
-  font-weight: 600;
 }
 .search-bar {
   width: 300px;
@@ -144,12 +98,55 @@ input[type=text] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // border-radius: 10px;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .salida{
   font-size: 30px;
   align-items: center;
   width: 30;
   margin-left: 10px;
+}
+.header{
+  background-color: rgb(252, 251, 251);
+  width: 40%;
+  padding:len;
+  padding: 14px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+  &__h1{}
+  &__a{}
+  &__button{}
+  &__svg{
+    width: 2en;
+    height: 2em;
+    margin-right: 10px;
+  }
+  &__nav{
+    background-color: #dfdeee;
+  }
+  &__ul{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &__p{
+    margin: 0 .5en;
+  }
+  &__b{
+    background-color: #002774;
+  border-radius: 5px;
+  font-family: 'Times New Roman', Times, serif;
+  border: 0;
+  color: #dfdeee;
+  width: 100px;
+  height: 40px;
+  font-size: 18px;
+  position: absolute;
+  bottom: 20px
+  }
 }
