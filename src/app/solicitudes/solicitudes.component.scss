@@ -1,49 +1,54 @@
-body{
+body {
   background-image: url('/./assets/cupula-trans (1).png');
   height: 95%;
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 .navbar {
   background-color: #002774;
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    border-bottom: 3px solid lightgray; 
-  
-  }
-  .logo1{
-    height: 40px;
-    width: 60px;
-    float: left;
-    border-radius: 10px;
-  }
-h5{
-   margin-top: 5px; 
-   font-family: 'Times New Roman', Times, serif;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  border-bottom: 3px solid lightgray;
+
 }
-.boton{
-  display: inline-flex; 
+
+.logo1 {
+  height: 40px;
+  width: 60px;
+  float: left;
+  border-radius: 10px;
+}
+
+h5 {
+  margin-top: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.boton {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100px; 
+  width: 100px;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
-  font-size: 18px; 
+  font-size: 18px;
   background-color: #002774;
   border-radius: 100px !important;
-  padding: 20px 30px; 
+  padding: 20px 30px;
   margin-right: 10px;
   color: #dfdeee;
   text-decoration: none;
   border: 0;
-  height: 60px; 
+  height: 60px;
   transition: 0.3s;
-  cursor: pointer; 
+  cursor: pointer;
 }
-.boton:hover{
+
+.boton:hover {
   background: #ffffff;
   color: #072879;
   border: 1px solid #072879;
@@ -55,22 +60,27 @@ h5{
   max-width: 1150px;
   padding: 0 20px;
 }
-table{
+
+table {
   border-collapse: collapse;
   width: 100%;
   border-radius: 10px;
 }
-th, td{
+
+th,
+td {
   text-align: left;
   padding: 8px;
-  border:  1px solid #fdfcfc;
+  border: 1px solid #fdfcfc;
   font-family: 'Times New Roman', Times, serif;
 }
-th{
+
+th {
   background-color: white#f2f2f2;
   border-bottom: 1px solid rgb(82, 81, 81);
   font-family: 'Times New Roman', Times, serif;
 }
+
 .navbar1 {
   background-color: #072879;
   padding: 14px;
@@ -80,6 +90,7 @@ th{
   align-items: center;
   border-radius: 10px;
 }
+
 .search-bar {
   width: 300px;
   border-radius: 10px;
@@ -93,22 +104,24 @@ input[type=text] {
   font-family: 'Times New Roman', Times, serif;
   border-radius: 10px;
 }
-.checkbox{
+
+.checkbox {
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.salida{
+
+.salida {
   font-size: 30px;
   align-items: center;
   width: 30;
   margin-left: 10px;
 }
-.header{
+.header {
   background-color: rgb(252, 251, 251);
   width: 40%;
-  padding:len;
+  padding: len;
   padding: 14px;
   display: flex;
   flex-flow: row wrap;
@@ -116,37 +129,95 @@ input[type=text] {
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  
-  &__h1{}
-  &__a{}
-  &__button{}
-  &__svg{
+
+  h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+  }
+
+  &__button {
+    font-size: 10px;
+    align-items: center;
+    float: right;
+    margin-right: 10px;
+    margin-top: -65px;
+    border: 0;
+    background-color: rgb(252, 251, 251);
+
+    @media screen and (max-width: 480px) {
+      display: flex;
+    }
+  }
+
+  &__svg {
     width: 2en;
     height: 2em;
     margin-right: 10px;
-  }
-  &__nav{
-    background-color: #dfdeee;
-  }
-  &__ul{
-    display:flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;
     align-items: center;
   }
-  &__p{
-    margin: 0 .5en;
+
+  &__nav {
+    background-color: rgb(252, 251, 251);
+    border-top: 3px solid lightgray;
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
   }
-  &__b{
+
+  &__ul {
+    display: flex;
+    flex-flow: row wrap;
+    // justify-content: flex-end;
+    // align-items: center;
+
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+    }
+  }
+
+  &__p,
+  &__text {
+    margin: 0 .5em;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+
+    @media screen and (max-width: 480px) {
+      margin: .5em 0;
+    }
+  }
+  &__in{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+   width: 50px;
+  }
+
+  &__f {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    float: right;
+    margin-right: -250px;
+    margin-top: -80px;
+  }
+
+  &__b {
     background-color: #002774;
-  border-radius: 5px;
-  font-family: 'Times New Roman', Times, serif;
-  border: 0;
-  color: #dfdeee;
-  width: 100px;
-  height: 40px;
-  font-size: 18px;
-  position: absolute;
-  bottom: 20px
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    border: 0;
+    color: #dfdeee;
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
   }
+}
+
+.header__nav--activo {
+  display: flex;
+}
+.header__chec{
+  font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    float: right;
+    margin:0 0 .5em 0 ;
 }

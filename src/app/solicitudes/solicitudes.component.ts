@@ -1,29 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-solicitudes',
   templateUrl: './solicitudes.component.html',
   styleUrl: './solicitudes.component.scss'
 })
-export class SolicitudesComponent {
+export class SolicitudesComponent implements OnInit {
 
-  tiposolicitud: string='';
+  activo : boolean = false;
   
-  devices: string[] = [
-    'Desktop',
-    'Laptop',
-    'Monitor',
-    'Teléfono',
-    'Impresora',
-    'Mouse',
-    'Teclado',
-    'Proyector',
-    'Audífonos',
-    'Puntero'
-  ];
-
-  // deviceQuantities: number[] = new Array(this.devices.length).fill(0);
-
   constructor(){}
 
+  ngOnInit(): void {
+    
+  }
+
+  setactivo(): void{
+    this.activo =!this.activo;
+  }
 }

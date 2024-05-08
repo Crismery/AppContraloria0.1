@@ -18,39 +18,45 @@
 
   <div class="content">
     <br>
-    <div class="navbar1">
+    <!-- <div class="navbar1">
       <span><i class="bi bi-pencil-square salida"></i>Solicitudes</span>
-      <!--button  class="boton1">Entrada de uno más registros</button-->
-    </div>
+    </div> -->
     <!-- <div class="search-bar mt-3">
         <input type="text"  placeholder="ej. Laptop">
       </div> -->
-    <section>
-      <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
-        <div class="checkbox">
-          <div class="header">
-            <h1 class="header__a">
-              <a href="" class="header__a">Solicitud</a>
-              <p class="header__p">gmail.com</p>
-              <p class="header__p">Fecha</p>
-            </h1>
-
-            <button class="header__button">
-              <svg class="header__svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67"/>
-              </svg>
-            </button>
-
-            <nav class="header__nav">
-              <ul class="header__ul">
-                <p class="header__p">gmail</p>
-                <p class="header__p">asunto</p>
-                <button class="header__b"></button>
-              </ul>
-            </nav>
-          </div>
+    <!-- Dentro de tu HTML -->
+<section>
+  <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+    <div class="checkbox">
+      <div class="header">
+        <div >
+          <h2>Solicitudes</h2>
+          <p class="header__p">gmail.com</p>
+          <p class="header__f">Fecha</p>
         </div>
-        
+        <button class="header__button" (click)="setactivo()" title="Ver">
+          <svg class="header__svg" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67"/>
+          </svg>
+        </button>
+        <nav class="header__nav" [ngClass]="{'header__nav--activo': activo}">
+          <ul class="header__ul">
+            <p class="header__p">iwueiiwgmail.com</p>
+            <!-- <p class="header__p">asunto</p>  -->
+            <mat-checkbox class="header__chec">Aprobar</mat-checkbox>
+            <mat-checkbox class="header__chec">Rechazar</mat-checkbox>
+            <input class="header__in" type="text" placeholder="Asunto" style=" font-family: 'Times New Roman', Times, serif;
+            font-size: 14px;
+           width: 50;">
+            <textarea class="header__text" name="" id="" placeholder="Mensaje"></textarea>
+            <input class="header__in" type="text" placeholder="Comentario">
+            <button class="header__b">Enviar</button>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
         <br>
         <div>
           <table class="table table-striped mt-3">
@@ -85,7 +91,7 @@
             </table>
           </div>
         </div>
-      </div>
-    </section>
+      <!-- </div>
+    </section> -->
   </div>
 </body>
