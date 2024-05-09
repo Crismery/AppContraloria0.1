@@ -27,6 +27,7 @@
     <!-- Dentro de tu HTML -->
 <section>
   <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="checkbox">
       <div class="header">
         <div >
@@ -42,31 +43,58 @@
         <nav class="header__nav" [ngClass]="{'header__nav--activo': activo}">
           <ul class="header__ul">
             <p class="header__p">iwueiiwgmail.com</p>
-            <!-- <p class="header__p">asunto</p>  -->
-            <mat-checkbox class="header__chec">Aprobar</mat-checkbox>
-            <mat-checkbox class="header__chec">Rechazar</mat-checkbox>
-            <input class="header__in" type="text" placeholder="Asunto" style=" font-family: 'Times New Roman', Times, serif;
-            font-size: 14px;
-           width: 50;">
-            <textarea class="header__text" name="" id="" placeholder="Mensaje"></textarea>
-            <input class="header__in" type="text" placeholder="Comentario">
-            <button class="header__b">Enviar</button>
+            <div class="form-check ">
+              <input class="form-check-input radio" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label radio" for="flexRadioDefault1">
+                Aprobar
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input radio" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <label class="form-check-label radio" for="flexRadioDefault2">
+                En espera
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input radio" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <label class="form-check-label radio" for="flexRadioDefault2">
+                Rechazar
+              </label>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+              <input type="text" class="form-control half-width" placeholder="Asunto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" formControlName="asunto">
+            </div>  
+            <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">          
+            <div class="form-floating">
+              <textarea class="form-control text" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" formControlName="mensaje"></textarea>
+              <label for="floatingTextarea2" class="text">mensaje</label>
+            </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control half-width" placeholder="Comentario" aria-label="Username" formControlName="comentario">
+            </div>
+            <button class="header__b" type="submit">Enviar</button>
           </ul>
         </nav>
       </div>
     </div>
+    </form>
   </div>
 </section>
         <br>
         <div>
+          <div class="search-bar mt-3">
+            <input type="text" class="form-control" placeholder="Buscar solicitudes">
+          </div>
           <table class="table table-striped mt-3">
             <thead>
               <tr>
-                <th style="text-align: center;">Tipo de solicitud</th>
                 <th style="text-align: center;">Correo</th>
-                <th style="text-align: center;">Departamento</th>
+                <th style="text-align: center;">Asunto</th>
+                <th style="text-align: center;">Mensaje</th>
+                <th style="text-align: center;">Comentario</th>
                 <th style="text-align: center;">Fecha de solicitud </th>
-                <th style="text-align: center;">Fecha de aprovacion</th>
+                <th style="text-align: center;">Fecha de respuesta</th>
                 <th style="text-align: center;">Estatu</th>
                 <!-- <th style="text-align: center;">Accion</th> -->
               </tr>
@@ -76,6 +104,7 @@
             <table class="table table-striped">
               <tbody>
                 <tr>
+                  <td style="text-align: center;"></td>
                   <td style="text-align: center;"></td>
                   <td style="text-align: center;"></td>
                   <td style="text-align: center;"></td>
