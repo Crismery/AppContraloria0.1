@@ -33,9 +33,7 @@ export class SolicitudesComponent implements OnInit {
 
   async onSubmit(){
     if (this.form.valid) {
-      // Asignar la fecha de entrada antes de realizar el reset del formulario
-      this.correos.fecha_respuesta = new Date().toISOString().split('T')[0];
-
+    
       console.log(this.form.value);
       const response = await this.correo.addPlace(this.form.value);
       

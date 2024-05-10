@@ -13,7 +13,6 @@ body {
   justify-content: space-between;
   color: white;
   border-bottom: 3px solid lightgray;
-
 }
 
 .logo1 {
@@ -21,6 +20,23 @@ body {
   width: 60px;
   float: left;
   border-radius: 10px;
+}
+
+.left {
+  width: 60%;
+  display: grid;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // border-right: 2px solid white;
+  margin: auto;
+}
+
+.right {
+  width: 80%;
+  display: grid;
+  // grid-template-columns: repeat(3, auto);
+  gap: 1rem;
 }
 
 h5 {
@@ -56,9 +72,15 @@ h5 {
 }
 
 .content {
-  margin: 0 auto;
-  max-width: 1150px;
-  padding: 0 20px;
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  width: 90vw;
+  max-width: none;
+  // margin-bottom: 3rem;
+  gap: 2rem;
+  margin: auto;
+  position: relative;
 }
 
 table {
@@ -108,7 +130,7 @@ input[type=text] {
 .checkbox {
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   align-items: center;
 }
 
@@ -118,15 +140,16 @@ input[type=text] {
   width: 30;
   margin-left: 10px;
 }
+
 .header {
   background-color: rgb(252, 251, 251);
-  width: 40%;
+  width: 80%;
   padding: len;
   padding: 14px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
+  // justify-content: space-between;
+  // align-items: center;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
@@ -137,10 +160,13 @@ input[type=text] {
 
   &__button {
     font-size: 10px;
-    align-items: center;
-    float: right;
-    margin-right: 10px;
-    margin-top: -65px;
+    top: -10;
+    right: -10;
+    // margin-top: 10px;
+    // margin-right: 10px;
+    // float: right;
+    // margin-right: -100px;
+    // margin-top: -65px;
     border: 0;
     background-color: rgb(252, 251, 251);
 
@@ -148,6 +174,7 @@ input[type=text] {
       display: flex;
     }
   }
+
   &__svg {
     width: 2en;
     height: 2em;
@@ -158,21 +185,22 @@ input[type=text] {
   &__nav {
     background-color: rgb(252, 251, 251);
     border-top: 3px solid lightgray;
+    width: 100%;
     display: none;
     flex-flow: column nowrap;
     justify-content: center;
-    align-items: center;
   }
 
   &__ul {
     display: flex;
     flex-direction: column;
   }
+
   &__f {
     font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
     float: right;
-    margin-right: -250px;
+    margin-right: -200px;
     margin-top: -80px;
   }
 
@@ -186,28 +214,39 @@ input[type=text] {
     height: 40px;
     font-size: 18px;
     float: right;
+    margin-right: 10px;
   }
-  &__b:hover{
+
+  &__b:hover {
     background: #ffffff;
     color: #072879;
     border: 1px solid #072879;
     font-weight: 600;
   }
 }
+
 .header__nav--activo {
   display: flex;
 }
-.radio{
+
+.radio {
   font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
-    float: right;
-    margin:0 .5em  ;
+  font-size: 14px;
+  float: right;
+  margin: 0 .5em;
 }
+
 .half-width {
-  width: 20px; 
-  height: 20px;
+  width: 20px;
+  height: 40px;
 }
-.text{
+
+.text {
   font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
+  font-size: 14px;
+}
+
+.input-group {
+  height: 50px;
+
 }
