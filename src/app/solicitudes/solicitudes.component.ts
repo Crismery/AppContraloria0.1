@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Correos } from '../interfaz/correos';
 import { EncorreoService } from '../servicios/encorreo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-solicitudes',
@@ -14,11 +15,16 @@ export class SolicitudesComponent implements OnInit {
   activo : boolean = false;
   form: FormGroup;
   correos!: Correos;
+
+  Correos: Correos[]=[];
+  idFrozen: boolean = false;
+  loaded: boolean = false;
   
   
   constructor( private correo: EncorreoService,
     private formBuilder: FormBuilder,
     private _snackbar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: Correos
   ){
     this.form = this.formBuilder.group({
       correo: [''],
@@ -56,7 +62,10 @@ export class SolicitudesComponent implements OnInit {
     }
   }   
   ngOnInit(): void {
-    
+   this.correo.getPlaces().subscribe(Correos =>{
+    this.Correos = Correos;
+    this.loaded =true;
+   })
   }
 
   setactivo(): void{

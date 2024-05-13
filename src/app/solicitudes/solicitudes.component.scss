@@ -31,7 +31,9 @@ body {
   // border-right: 2px solid white;
   margin: auto;
 }
-
+.estatico{
+  width: 80%;
+}
 .right {
   width: 80%;
   display: grid;
@@ -83,7 +85,7 @@ h5 {
   position: relative;
 }
 
-table {
+p-table {
   border-collapse: collapse;
   width: 100%;
   border-radius: 10px;
@@ -160,7 +162,7 @@ input[type=text] {
 
   &__button {
     font-size: 10px;
-    top: -10;
+    top: -30;
     right: -10;
     // margin-top: 10px;
     // margin-right: 10px;
@@ -189,6 +191,8 @@ input[type=text] {
     display: none;
     flex-flow: column nowrap;
     justify-content: center;
+    overflow: hidden;
+    transition: all .5s ease;
   }
 
   &__ul {

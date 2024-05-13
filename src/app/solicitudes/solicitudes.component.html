@@ -26,7 +26,7 @@
       </div> -->
     <!-- Dentro de tu HTML -->
 <div class="left">
-  <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+  <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 460px; max-width: 500px; ">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="checkbox">
       <div class="header">
@@ -72,7 +72,46 @@
     </form>
   </div>
 </div>
-        <br>
+
+<div class="estatico ">
+  <div class="right mt-3 ">
+    <div class="search-bar mt-3">
+      <input type="text" class="form-control" placeholder="Buscar solicitudes">
+    </div>
+    <!-- <p-toggleButton [(ngModel)]="idFrozen" [onIcon]="'pi pi-lock'" offIcon="pi pi-lock-open" [onLabel]="'Unfreeze asunto'" offLabel="Freeze Id" [style]="{'width': '12rem'}"></p-toggleButton> -->
+<p-table [value]="Correos" scrollDirection="both" [scrollable]="true" scrollHeight="350px" >
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:200px" pFrozenColumn>Correo</th>
+      <th style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen">Asunto</th>
+      <th style="width:200px">Solicitudes</th>
+      <th style="width:200px">Comentario</th>
+      <th style="width:200px">Fecha de solicitud</th>
+      <th style="width:200px">Fecha de respuesta</th>
+      <th style="width:200px" pFrozenColumn alignFrozen="right">Estatu</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-customer>
+    <tr *ngFor="let Correo of Correos; let i = index">
+      <td style="width:200px" pFrozenColumn class="font-bold">{{Correo.correo}}</td>
+      <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{Correo.asunto}}</td>
+      <td style="width:200px">
+        <span class="image-text ml-2">{{Correo.mensaje}}</span>
+      </td>
+      <td style="width:200px">{{Correo.comentario}}</td>
+      <td style="width:200px">{{Correo.fecha_solicitud}}</td>
+      <td style="width:200px">
+        <span class="image-text ml-2">{{Correo.fecha_respuesta}}</span>
+      </td>
+      <td style="width:200px" >
+        <span [class]="'customer-badge status-' + customer.status">{{Correo.estatu}}</span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+  </div>
+  </div>
+<!-- <div class="estatico">
         <div class="right mt-3">
           <div class="search-bar mt-3">
             <input type="text" class="form-control" placeholder="Buscar solicitudes">
@@ -87,31 +126,25 @@
                 <th style="text-align: center;">Fecha de solicitud </th>
                 <th style="text-align: center;">Fecha de respuesta</th>
                 <th style="text-align: center;">Estatu</th>
-                <!-- <th style="text-align: center;">Accion</th> -->
               </tr>
             </thead>
           </table>
           <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
             <table class="table table-striped">
               <tbody>
-                <tr>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <!-- <td style="text-align: center; vertical-align: middle;">
-            <i class="bi bi-plus-lg editar" (click)="mostrarComponenteagre(Appcontraloria)" title="Agregar"
-            style="font-size: 25px; align-items: center;"></i>
-          </td> -->
+                <tr *ngFor="let Correo of Correos; let i = index">
+                  <td style="text-align: center;">{{Correo.correo}}</td>
+                  <td style="text-align: center;">{{Correo.asunto}}</td>
+                  <td style="text-align: center;">{{Correo.mensaje}}</td>
+                  <td style="text-align: center;">{{Correo.comentario}}</td>
+                  <td style="text-align: center;">{{Correo.fecha_solicitud}}</td>
+                  <td style="text-align: center;">{{Correo.fecha_respuesta}}</td>
+                  <td style="text-align: center;">{{Correo.estatu}}</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-      <!-- </div>
-    </section> -->
+      </div> -->
   </div>
 </body>

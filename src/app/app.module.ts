@@ -47,6 +47,8 @@ import { DialogocorreoComponent } from './descargobn/dialogocorreo/dialogocorreo
 import { DialogoBNComponent } from './almacen/dialogo-bn/dialogo-bn.component';
 import { DialogoagregarComponent } from './almacen/borrador/dialogoagregar/dialogoagregar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 
 
@@ -98,6 +100,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatExpansionModule,
     MatListModule,
+    TableModule,
+    ToggleButtonModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp({"projectId":"app-contraloria-4e461","appId":"1:773014821815:web:25693680a61efc7fe0a632","storageBucket":"app-contraloria-4e461.appspot.com","apiKey":"AIzaSyDQ-4H7L3V8acBlSqClBLPeXasvpSQ2p8c","authDomain":"app-contraloria-4e461.firebaseapp.com","messagingSenderId":"773014821815"})),
     provideAuth(() => getAuth()),
