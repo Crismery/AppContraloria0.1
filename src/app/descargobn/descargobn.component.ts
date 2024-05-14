@@ -20,6 +20,7 @@ export class DescargobnComponent implements OnInit {
 
   // filteredResults: Appcontraloria[] = [];
   appcontraloria: Appcontraloria[] = [];
+  idFrozen: boolean = false;
 
   constructor(private dialog:MatDialog, 
     private viewContainerRef: ViewContainerRef,

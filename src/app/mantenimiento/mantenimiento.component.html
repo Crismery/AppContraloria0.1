@@ -20,50 +20,50 @@
     <br>
     <div class="navbar1">
       <span><i class="bi bi-gear salida"></i>Mantenimiento</span>
-      <!--button  class="boton1">Entrada de uno más registros</button-->
+      <!-- <button  class="boton1">Entrada de uno más registros</button> -->
     </div>
     <div class="search-bar mt-3">
       <input class="form-control" type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
     </div>
-    <table class="table table-striped mt-3">
-      <thead>
+    <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+      <ng-template pTemplate="header">
         <tr>
-          <th style="text-align: center;">Dispositivo</th>
-          <th style="text-align: center;">Serial</th>
-          <th style="text-align: center;">Placa</th>
-          <th style="text-align: center;">Version</th>
-          <th style="text-align: center;">Tipo de Mantenimiento</th>
-          <th style="text-align: center;">Descripcion</th>
-          <th style="text-align: center;">Fisico</th>
-          <th style="text-align: center;">Logico</th>
-          <th style="text-align: center;">Defragmentacion</th>
-          <th style="text-align: center;">Fecha</th>
-          <th style="text-align: center;">Accion</th>
+          <th style="width:200px" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+          <th style="width:200px" alignFrozen="left" pSortableColumn="serial" pFrozenColumn [frozen]="idFrozen">Serial <p-sortIcon field="serial" /></th>
+          <th style="width:200px" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+          <th style="width:200px" pSortableColumn="version">Version <p-sortIcon field="version" /></th>
+          <th style="width:200px" pSortableColumn="tipomanteniemiento">Tipo de mantenimiento <p-sortIcon field="tipomanteniemiento" /></th>
+          <th style="width:200px" pSortableColumn="descripcion">Descripcion <p-sortIcon field="descripcion" /></th>
+          <th style="width:200px" pSortableColumn="fisico">Fisico<p-sortIcon field="fisico" /></th>
+          <th style="width:200px" pSortableColumn="logico">Logico <p-sortIcon field="logico" /></th>
+          <th style="width:200px" pSortableColumn="defragmentacion">Defragmentacion <p-sortIcon field="defragmentacion" /></th>
+          <th style="width:200px" pSortableColumn="fecha">Fecha <p-sortIcon field="fecha" /></th>
+          <th style="width:200px" pSortableColumn="accion">Accion <p-sortIcon field="accion" /></th>
         </tr>
-      </thead>
-      </table>
-      <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
-        <table class="table table-striped">
-      <tbody>
-        <tr *ngFor="let Appcontraloria of filteredResults; let i = index" style="text-align: center;">
-          <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
-          <td style="text-align: center;">{{Appcontraloria.serial}}</td>
-          <td style="text-align: center;">{{Appcontraloria.placa}}</td>
-          <td style="text-align: center;">{{Appcontraloria.version}}</td>
-          <td style="text-align: center;">{{Appcontraloria.tipo_de_mantenimiento}}</td>
-          <td style="text-align: center;">{{Appcontraloria.mantenimiento}}</td>
-          <td style="text-align: center;">Memoria:{{Appcontraloria.memoria}}, Disco:{{Appcontraloria.almacenamiento}} y
-            Limpieza: {{Appcontraloria.limpieza}}</td>
-          <td style="text-align: center;">Os: {{Appcontraloria.os}}</td>
-          <td style="text-align: center;">{{Appcontraloria.defragmentacion}}</td>
-          <td style="text-align: center;">{{Appcontraloria.fecha_de_mantenimiento}}</td>
-          <td class="button2" style="text-align: center; vertical-align: middle;">
-            <i class="bi bi-gear" (click)="mostrarComponente(Appcontraloria)" title="Mantenimiento"></i>
+      </ng-template>
+      <ng-template pTemplate="body" let-filteredResults>
+        <tr>
+          <td style="width:200px" pFrozenColumn class="font-bold">{{filteredResults.dispositivo}}</td>
+          <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{filteredResults.serial}}</td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{filteredResults.placa}}</span>
+          </td>
+          <td style="width:200px">{{filteredResults.version}}</td>
+          <td style="width:200px">{{filteredResults.tipo_de_mantenimiento}}</td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{filteredResults.mantenimiento}}</span>
+          </td>
+          <td style="width:200px">Memoria:{{filteredResults.memoria}}, Disco:{{filteredResults.almacenamiento}} y
+            Limpieza: {{filteredResults.limpieza}}</td>
+          <td style="width:200px">{{filteredResults.os}}</td>
+          <td style="width:200px">{{filteredResults.defragmentacion}}</td>
+          <td style="width:200px">{{filteredResults.fecha_de_mantenimiento}}</td>
+          <td style="width:200px; text-align: center; vertical-align: middle;" >
+            <i class="bi bi-gear" (click)="mostrarComponente(filteredResults)" title="Mantenimiento"></i>
           </td>
         </tr>
-      </tbody>
-    </table>
-      </div>
+      </ng-template>
+    </p-table>
     <!-- <div class="pagination">
       <label for="itemsPerPage">Items per page:</label>
       <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">

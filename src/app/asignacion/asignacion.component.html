@@ -25,47 +25,43 @@
     <div class="search-bar mt-3">
       <input class="form-control" type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
     </div>
-    <table class="table table-striped mt-3">
-      <thead>
+    <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+      <ng-template pTemplate="header">
         <tr>
-          <th style="text-align: center;">Dispositivo</th>
-          <th style="text-align: center;">Serial</th>
-          <th style="text-align: center;">Cedula</th>
-          <th style="text-align: center;">Usuario</th>
-          <th style="text-align: center;">Departamento</th>
-          <th style="text-align: center;">OS</th>
-          <th style="text-align: center;">Version</th>
-          <th style="text-align: center;">CPU</th>
-          <th style="text-align: center;">Memoria</th>
-          <th style="text-align: center;">Almacenamiento</th>
-          <th style="text-align: center;">Matenimiento</th>
-          <th style="text-align: center;">Accion</th>
+          <th style="width:200px" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+          <th style="width:200px" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+          <th style="width:200px" pSortableColumn="os">Os<p-sortIcon field="os" /></th>
+          <th style="width:200px" pSortableColumn="version">Version<p-sortIcon field="version" /></th>
+          <th style="width:200px" pSortableColumn="cpu">CPU<p-sortIcon field="cpu" /></th>
+          <th style="width:200px" pSortableColumn="memoria">Memoria<p-sortIcon field="memoria" /></th>
+          <th style="width:200px" pSortableColumn="almacenamiento">Almacenamiento<p-sortIcon field="almacenamiento" /></th>
+          <th style="width:200px" pSortableColumn="mantenimiento">Mantenimiento<p-sortIcon field="mantenimiento" /></th>
+          <th style="width:200px" pSortableColumn="accion">Accion <p-sortIcon field="accion" /></th>
         </tr>
-      </thead>
-    </table>
-    <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
-      <table class="table table-striped">
-      <tbody>
-        <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
-          <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
-          <td style="text-align: center;">{{Appcontraloria.serial}}</td>
-          <td style="text-align: center;">{{Appcontraloria.cedula}}</td>
-          <td style="text-align: center;">{{Appcontraloria.usuario}}</td>
-          <td style="text-align: center;">{{Appcontraloria.Departamento}}</td>
-          <td style="text-align: center;">{{Appcontraloria.os}}</td>
-          <td style="text-align: center;">{{Appcontraloria.version}}</td>
-          <td style="text-align: center;">{{Appcontraloria.cpu}}</td>
-          <td style="text-align: center;">{{Appcontraloria.memoria}}</td>
-          <td style="text-align: center;">{{Appcontraloria.almacenamiento}}</td>
-          <td style="text-align: center;">{{Appcontraloria.mantenimiento}}</td>
-          <td class="button2" style="text-align: center; vertical-align: middle;">
-            <!--button  class="boton2" (click)="mostrarComponente()">Asignar Usuario</button-->
-            <i class="bi bi-person-add" (click)="mostrarComponenteedit(Appcontraloria)" title="Asignar Usuarios"></i>
+      </ng-template>
+      <ng-template pTemplate="body" let-filteredResults>
+        <tr>
+          <td style="width:200px" pFrozenColumn class="font-bold">{{filteredResults.dispositivo}}</td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{filteredResults.serial}}</span>
+          </td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{filteredResults.os}}</span>
+          </td>
+          <td style="width:200px">{{filteredResults.version}}</td>
+          <td style="width:200px">{{filteredResults.cpu}}</td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{filteredResults.memoria}}</span>
+          </td>
+          <td style="width:200px">{{filteredResults.almacenamiento}}</td>
+          <td style="width:200px">{{filteredResults.mantenimiento}}</td>
+          <td style="width:200px; text-align: center; vertical-align: middle;" >
+            <i class="bi bi-person-add" (click)="mostrarComponenteedit(filteredResults)" title="Asignar Usuarios"></i>
           </td>
         </tr>
-      </tbody>
-    </table>
-    </div>
+      </ng-template>
+    </p-table>
+
     <!-- <div class="pagination">
       <label for="itemsPerPage">Items per page:</label>
       <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">

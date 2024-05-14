@@ -25,48 +25,49 @@
     <div class="search-bar mt-3">
       <input class="form-control" type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
     </div>
-
-    <table class="table table-striped mt-3 ">
-      <thead>
+    <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+      <ng-template pTemplate="header">
         <tr>
-          <th style="text-align: center;">Dispositivo</th>
-          <th style="text-align: center;">Modelo</th>
-          <th style="text-align: center;">Serial</th>
-          <th style="text-align: center;">Placa</th>
-          <th style="text-align: center;">Bienes Nacionales</th>
-          <th style="text-align: center;">Usuario</th>
-          <th style="text-align: center;">Departamento</th>
-          <th style="text-align: center;">Mantenimiento</th>
-          <th style="text-align: center;">Fecha de actualizacion</th>
-          <th style="text-align: center;">Fecha de asignacion</th>
-          <th style="text-align: center;">Accion</th>
+          <th style="width:200px" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+          <th style="width:200px" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+          <th style="width:200px" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+          <th style="width:200px" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+          <th style="width:200px" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
+          <th style="width:200px" pSortableColumn="usuario">Usuario<p-sortIcon field="usuario" /></th>
+          <th style="width:200px" pSortableColumn="departamento">Departamento <p-sortIcon field="departamento" /></th>
+          <th style="width:200px" pSortableColumn="fisico">Mantenimiento<p-sortIcon field="fisico" /></th>
+          <th style="width:200px" pSortableColumn="actualizacion">Fecha actualizacion <p-sortIcon field="actualizacion" /></th>
+          <th style="width:200px" pSortableColumn="asignacion">Fecha asignacion<p-sortIcon field="asignacion" /></th>
+          <th style="width:200px" pSortableColumn="accion">Accion <p-sortIcon field="accion" /></th>
         </tr>
-      </thead>
-      </table>
-      <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 245px;">
-        <table class="table table-striped">
-      <tbody>
-        <tr *ngFor="let Appcontraloria of filteredResults; let i = index">
-          <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
-          <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
-          <td style="text-align: center;">{{Appcontraloria.serial}}</td>
-          <td style="text-align: center;">{{Appcontraloria.placa}}</td>
-          <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
-          <td style="text-align: center;">{{Appcontraloria.usuario}}</td>
-          <td style="text-align: center;">{{Appcontraloria.Departamento}}</td>
-          <td style="text-align: center;">{{Appcontraloria.mantenimiento}}</td>
-          <td style="text-align: center;">{{Appcontraloria.fecha_de_actualizacion}}</td>
-          <td style="text-align: center;">{{Appcontraloria.fecha_de_asignacion}}</td>
-          <td style="text-align: center; vertical-align: middle;">
-            <i class="bi bi-pencil-square editar" (click)="mostrarComponente(Appcontraloria)" title="Editar"></i>
-            <!-- <i class="bi bi-trash borrar" (click)="dialogoregistro(Appcontraloria)" title="Borrar"></i> -->
-            <i class="bi bi-person-dash borrarusuario" (click)="dialogousuario(Appcontraloria)"
-              title="Borrar Usuario"></i>
+      </ng-template>
+      <ng-template pTemplate="body" let-filteredResults>
+        <tr>
+          <td style="width:200px" pFrozenColumn class="font-bold">{{filteredResults.dispositivo}}</td>
+          <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{filteredResults.modelo}}</td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{filteredResults.serial}}</span>
+          </td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{filteredResults.placa}}</span>
+          </td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{filteredResults.bienes_nacionales}}</span>
+          </td>
+          <td style="width:200px">{{filteredResults.usuario}}</td>
+          <td style="width:200px">{{filteredResults.Departamento}}</td>
+          <td style="width:200px">
+            <span class="image-text ml-2">{{filteredResults.mantenimiento}}</span>
+          </td>
+          <td style="width:200px">{{filteredResults.fecha_de_actualizacion}}</td>
+          <td style="width:200px">{{filteredResults.fecha_de_asignacion}}</td>
+          <td style="width:200px; text-align: center; vertical-align: middle;" >
+            <i class="bi bi-pencil-square editar" (click)="mostrarComponente(filteredResults)" title="Editar"></i>
+            <i class="bi bi-person-dash borrarusuario" (click)="dialogousuario(filteredResults)"></i>
           </td>
         </tr>
-      </tbody>
-    </table>
-      </div>
+      </ng-template>
+    </p-table>
     <!-- <div class="pagination">
       <label for="itemsPerPage">Items per page:</label>
       <select id="itemsPerPage" name="itemsPerPage" (change)="changeItemsPerPage($event)">

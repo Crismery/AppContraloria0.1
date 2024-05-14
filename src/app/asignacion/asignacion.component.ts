@@ -18,6 +18,7 @@ export class AsignacionComponent implements OnInit {
   resultados$!: Observable<Appcontraloria[]>;
 
   filteredResults: Appcontraloria[] = [];
+  idFrozen: boolean = false;
 
   startIndex: number = 0;
   endIndex: number = 0;
@@ -74,13 +75,15 @@ export class AsignacionComponent implements OnInit {
   }
   buscar(): void {
     if (this.query.trim() !== '') {
-      this.filteredResults = this.appcontraloria.filter(place =>
-        place.dispositivo.toLowerCase().includes(this.query.trim().toLowerCase())
-      );
+      this.filteredResults = this.appcontraloria.filter(place => {
+        const concatenatedValues = Object.values(place).join(' ').toLowerCase();
+        return concatenatedValues.includes(this.query.trim().toLowerCase());
+      });
     } else {
       this.filteredResults = this.appcontraloria;
     }
   }
+  
   loadData(): void {
     this.totalItems = this.filteredResults.length;
     this.endIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems);

@@ -41,8 +41,37 @@
       <div class="search-bar mt-3">
         <input class="form-control" type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
       </div>
+      <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:200px" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+            <th style="width:200px" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+            <th style="width:200px" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+            <th style="width:200px" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+            <th style="width:200px" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
+            <th style="width:200px" pSortableColumn="entrada">Fecha de eliminacion<p-sortIcon field="entrada" /></th>
+            <th style="width:200px" pSortableColumn="accion">Accion <p-sortIcon field="accion" /></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-filteredResults>
+          <tr>
+            <td style="width:200px" pFrozenColumn class="font-bold">{{filteredResults.dispositivo}}</td>
+            <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{filteredResults.modelo}}</td>
+            <td style="width:200px">{{filteredResults.serial}}</td>
+            <td style="width:200px">{{filteredResults.placa}}</td>
+            <td style="width:200px">{{filteredResults.bienes_nacionales}}</td>
+            <td style="width:200px">{{filteredResults.fecha_de_borrados}}</td>
+            <td style="width:200px; text-align: center; vertical-align: middle;" >
+              <i class="bi bi-plus-lg editar" (click)="mostrarComponenteagregar(filteredResults)" title="Agregar"
+                style="font-size: 25px; align-items: center;"></i>
+              <i class="bi bi-trash borrar" (click)="mostrarComponente(filteredResults)" title="Borrar"
+                style="font-size: 25px; align-items: center;"></i>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
       <!-- <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;"> -->
-      <table class="table table-striped mt-3">
+      <!-- <table class="table table-striped mt-3">
         <thead>
           <tr>
             <th style="text-align: center;">Dispositivo</th>
@@ -75,8 +104,9 @@
         </tbody>
       </table>
       </div>
-    </div>
+    </div> -->
 
     <!-- </mat-sidenav-content> -->
+    </div>
   </div>
 </body>

@@ -45,7 +45,6 @@
             <p class="header__p">iwueiiwgmail.com</p>
             <div class="form-floating">
               <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="estatu" style="height: 35px; margin:.5em 0;">
-                <option selected>Ninguno</option>
                 <option value="Aprobado">Aprobado</option>
                 <option value="En espera">En espera</option>
                 <option value="Rechazado">Rechazado</option>
@@ -78,33 +77,33 @@
     <div class="search-bar mt-3">
       <input type="text" class="form-control" placeholder="Buscar solicitudes">
     </div>
-    <!-- <p-toggleButton [(ngModel)]="idFrozen" [onIcon]="'pi pi-lock'" offIcon="pi pi-lock-open" [onLabel]="'Unfreeze asunto'" offLabel="Freeze Id" [style]="{'width': '12rem'}"></p-toggleButton> -->
-<p-table [value]="Correos" scrollDirection="both" [scrollable]="true" scrollHeight="350px" >
+<p-table  [value]="Correos" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '45rem'}">
   <ng-template pTemplate="header">
     <tr>
-      <th style="width:200px" pFrozenColumn>Correo</th>
-      <th style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen">Asunto</th>
-      <th style="width:200px">Solicitudes</th>
-      <th style="width:200px">Comentario</th>
-      <th style="width:200px">Fecha de solicitud</th>
-      <th style="width:200px">Fecha de respuesta</th>
-      <th style="width:200px" pFrozenColumn alignFrozen="right">Estatu</th>
+      <th style="width:200px" pSortableColumn="correo">Correo <p-sortIcon field="correo" /></th>
+      <th style="width:200px" alignFrozen="left" pSortableColumn="asunto" pFrozenColumn [frozen]="idFrozen">Asunto <p-sortIcon field="asunto" /></th>
+      <th style="width:200px" pSortableColumn="mensaje">Solicitudes<p-sortIcon field="mensaje" /></th>
+      <th style="width:200px" pSortableColumn="comentario">Comentario <p-sortIcon field="comentario" /></th>
+      <th style="width:200px" pSortableColumn="solicitud">Fecha solicitud <p-sortIcon field="solicitud" /></th>
+      <th style="width:200px" pSortableColumn="respuesta">Fecha respuesta <p-sortIcon field="respuesta" /></th>
+      <th style="width:200px" pSortableColumn="estatu" pFrozenColumn alignFrozen="right">Estatu <p-sortIcon field="estatu" /></th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-customer>
-    <tr *ngFor="let Correo of Correos; let i = index">
-      <td style="width:200px" pFrozenColumn class="font-bold">{{Correo.correo}}</td>
-      <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{Correo.asunto}}</td>
+  <ng-template pTemplate="body" let-Correos>
+    <tr>
+      <td style="width:200px" pFrozenColumn class="font-bold">{{Correos.correo}}</td>
+      <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{Correos.asunto}}</td>
       <td style="width:200px">
-        <span class="image-text ml-2">{{Correo.mensaje}}</span>
+        <span class="image-text ml-2">{{Correos.mensaje}}</span>
       </td>
-      <td style="width:200px">{{Correo.comentario}}</td>
-      <td style="width:200px">{{Correo.fecha_solicitud}}</td>
+      <td style="width:200px">{{Correos.comentario}}</td>
+      <td style="width:200px">{{Correos.fecha_solicitud}}</td>
       <td style="width:200px">
-        <span class="image-text ml-2">{{Correo.fecha_respuesta}}</span>
+        <span class="image-text ml-2">{{Correos.fecha_respuesta}}</span>
       </td>
       <td style="width:200px" >
-        <span [class]="'customer-badge status-' + customer.status">{{Correo.estatu}}</span>
+        <!-- <span [class]="'Correos-badge estatu' + Correos.estatu">{{Correos.estatu}}</span> -->
+        <p-tag [value]="Correos.estatu" [severity]=" getSeverity(Correos.estatu)" />
       </td>
     </tr>
   </ng-template>

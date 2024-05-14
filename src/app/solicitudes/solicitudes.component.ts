@@ -4,6 +4,8 @@ import { Correos } from '../interfaz/correos';
 import { EncorreoService } from '../servicios/encorreo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-solicitudes',
@@ -19,7 +21,10 @@ export class SolicitudesComponent implements OnInit {
   Correos: Correos[]=[];
   idFrozen: boolean = false;
   loaded: boolean = false;
-  
+
+  query: string='';
+  resultados$!: Observable<Correos[]>;
+  filteredResults: Correos[]=[];
   
   constructor( private correo: EncorreoService,
     private formBuilder: FormBuilder,
@@ -65,9 +70,31 @@ export class SolicitudesComponent implements OnInit {
    this.correo.getPlaces().subscribe(Correos =>{
     this.Correos = Correos;
     this.loaded =true;
+
    })
   }
 
+  getSeverity(estatu: string): string {
+    if (estatu === 'Aprobado') {
+      return 'success';
+    } else if (estatu === 'En espera') {
+      return 'warning';
+    } else if (estatu === 'Rechazado') {
+      return 'danger';
+    } else {
+      return 'info';
+    }
+  }
+  // buscar(): void {
+  //   if (this.query.trim() !== '') {
+  //     this.filteredResults = this.Correos.filter(place => 
+  //       place.correo.toLowerCase().includes(this.query.trim().toLowerCase())
+  //     );
+  //   } else {
+  //     this.filteredResults = this.correo;
+  //   }
+  // }
+  
   setactivo(): void{
     this.activo =!this.activo;
   }

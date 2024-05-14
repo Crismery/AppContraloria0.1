@@ -22,6 +22,8 @@ export class EntradaComponent implements OnInit {
   resultados$!: Observable<Appcontraloria[]>;
   filteredResults: Appcontraloria[]=[];
 
+  idFrozen: boolean = false;
+
   startIndex: number = 0;
   endIndex: number = 0;
   totalItems: number = 0;
@@ -115,17 +117,17 @@ export class EntradaComponent implements OnInit {
   //   }
   // }
 
-buscar(): void {
-  if (this.query.trim() !== '') {
-    this.filteredResults = this.appcontraloria.filter(place => 
-      place.dispositivo.toLowerCase().includes(this.query.trim().toLowerCase())
-    );
-  } else {
-    this.filteredResults = this.appcontraloria;
+  buscar(): void {
+    if (this.query.trim() !== '') {
+      this.filteredResults = this.appcontraloria.filter(place => {
+        const concatenatedValues = Object.values(place).join(' ').toLowerCase();
+        return concatenatedValues.includes(this.query.trim().toLowerCase());
+      });
+    } else {
+      this.filteredResults = this.appcontraloria;
+    }
   }
-}
-
-
+  
 loadData(): void {
   this.totalItems = this.filteredResults.length; 
   this.endIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems);
