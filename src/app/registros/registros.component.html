@@ -28,17 +28,17 @@
     <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
       <ng-template pTemplate="header">
         <tr>
-          <th style="width:200px" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
-          <th style="width:200px" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
-          <th style="width:200px" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
-          <th style="width:200px" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
-          <th style="width:200px" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
-          <th style="width:200px" pSortableColumn="usuario">Usuario<p-sortIcon field="usuario" /></th>
-          <th style="width:200px" pSortableColumn="departamento">Departamento <p-sortIcon field="departamento" /></th>
-          <th style="width:200px" pSortableColumn="fisico">Mantenimiento<p-sortIcon field="fisico" /></th>
-          <th style="width:200px" pSortableColumn="actualizacion">Fecha actualizacion <p-sortIcon field="actualizacion" /></th>
-          <th style="width:200px" pSortableColumn="asignacion">Fecha asignacion<p-sortIcon field="asignacion" /></th>
-          <th style="width:200px" pSortableColumn="accion">Accion <p-sortIcon field="accion" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+          <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="usuario">Usuario<p-sortIcon field="usuario" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="departamento">Departamento <p-sortIcon field="departamento" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="fisico">Mantenimiento<p-sortIcon field="fisico" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="actualizacion">Fecha actualizacion <p-sortIcon field="actualizacion" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="asignacion">Fecha asignacion<p-sortIcon field="asignacion" /></th>
+          <th style="width:200px; text-align: center;">Accion </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-filteredResults>

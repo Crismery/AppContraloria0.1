@@ -1,11 +1,42 @@
 <div fxLayout="row" fxLayoutAlign="center center">
     <div class="container">
-        <h3>¿Esta seguro/a de que quiere borrar el registro definivamente?</h3>
+        <br>
+        <h1>Eliminar Registro/s</h1>
+        <div class="row">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <label for="floatingInputDisabled">Dispositivo</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <label for="floatingInputDisabled">Modelo</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <label for="floatingInputDisabled">Serial</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <label for="floatingInputDisabled">Placa</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <label for="floatingInputDisabled">Bienes Nacionales</label>
+          </div>
+          <form class="form-floating">
+            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com">
+            <label for="floatingInputValue">Correo</label>
+          </form>
+          <h3>¿Por que se esta eliminando este registro?</h3>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Razon de la eliminacion</label>
+          </div>
+        <!-- <h3>¿Esta seguro/a de que quiere borrar el registro definivamente?</h3> -->
         <div class="cardbutton">
             <i class="bi bi-x-circle no" title="No" (click)="cerrarCentrado()"></i>
-            <i class="bi bi-check-circle si" title="Si" (click)="onClickDelete(data)"></i>
-            <!-- <button (click)="onClickDelete(data)">Si</button>
-            <button (click)="cerrarCentrado()">No</button> -->
+            <!-- <i class="bi bi-check-circle si" title="Si" (click)="onClickDelete(data)"></i> -->
+        </div>
           </div>
     </div>
 </div>

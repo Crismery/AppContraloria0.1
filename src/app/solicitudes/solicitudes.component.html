@@ -42,7 +42,10 @@
         </button>
         <nav class="header__nav" [ngClass]="{'header__nav--activo': activo}">
           <ul class="header__ul">
-            <p class="header__p">iwueiiwgmail.com</p>
+            <!-- <p class="header__p">iwueiiwgmail.com</p> -->
+            <div class="input-group mb-3">
+              <input type="text" class="form-control half-width" placeholder="Correo" aria-label="Username" formControlName="Correo">
+            </div>
             <div class="form-floating">
               <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="estatu" style="height: 35px; margin:.5em 0;">
                 <option value="Aprobado">Aprobado</option>
@@ -80,13 +83,13 @@
 <p-table  [value]="Correos" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '45rem'}">
   <ng-template pTemplate="header">
     <tr>
-      <th style="width:200px" pSortableColumn="correo">Correo <p-sortIcon field="correo" /></th>
-      <th style="width:200px" alignFrozen="left" pSortableColumn="asunto" pFrozenColumn [frozen]="idFrozen">Asunto <p-sortIcon field="asunto" /></th>
-      <th style="width:200px" pSortableColumn="mensaje">Solicitudes<p-sortIcon field="mensaje" /></th>
-      <th style="width:200px" pSortableColumn="comentario">Comentario <p-sortIcon field="comentario" /></th>
-      <th style="width:200px" pSortableColumn="solicitud">Fecha solicitud <p-sortIcon field="solicitud" /></th>
-      <th style="width:200px" pSortableColumn="respuesta">Fecha respuesta <p-sortIcon field="respuesta" /></th>
-      <th style="width:200px" pSortableColumn="estatu" pFrozenColumn alignFrozen="right">Estatu <p-sortIcon field="estatu" /></th>
+      <th style="width:200px; text-align: center;" pSortableColumn="correo">Correo <p-sortIcon field="correo" /></th>
+      <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="asunto" pFrozenColumn [frozen]="idFrozen">Asunto <p-sortIcon field="asunto" /></th>
+      <th style="width:200px; text-align: center;" pSortableColumn="mensaje">Solicitudes<p-sortIcon field="mensaje" /></th>
+      <th style="width:200px; text-align: center;" pSortableColumn="comentario">Comentario <p-sortIcon field="comentario" /></th>
+      <th style="width:200px; text-align: center;" pSortableColumn="solicitud">Fecha solicitud <p-sortIcon field="solicitud" /></th>
+      <th style="width:200px; text-align: center;" pSortableColumn="respuesta">Fecha respuesta <p-sortIcon field="respuesta" /></th>
+      <th style="width:200px; text-align: center;" pSortableColumn="estatu" pFrozenColumn alignFrozen="right">Estatu <p-sortIcon field="estatu" /></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-Correos>
@@ -110,40 +113,5 @@
 </p-table>
   </div>
   </div>
-<!-- <div class="estatico">
-        <div class="right mt-3">
-          <div class="search-bar mt-3">
-            <input type="text" class="form-control" placeholder="Buscar solicitudes">
-          </div>
-          <table class="table table-striped mt-3">
-            <thead>
-              <tr>
-                <th style="text-align: center;">Correo</th>
-                <th style="text-align: center;">Asunto</th>
-                <th style="text-align: center;">Solicitudes</th>
-                <th style="text-align: center;">Comentario</th>
-                <th style="text-align: center;">Fecha de solicitud </th>
-                <th style="text-align: center;">Fecha de respuesta</th>
-                <th style="text-align: center;">Estatu</th>
-              </tr>
-            </thead>
-          </table>
-          <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
-            <table class="table table-striped">
-              <tbody>
-                <tr *ngFor="let Correo of Correos; let i = index">
-                  <td style="text-align: center;">{{Correo.correo}}</td>
-                  <td style="text-align: center;">{{Correo.asunto}}</td>
-                  <td style="text-align: center;">{{Correo.mensaje}}</td>
-                  <td style="text-align: center;">{{Correo.comentario}}</td>
-                  <td style="text-align: center;">{{Correo.fecha_solicitud}}</td>
-                  <td style="text-align: center;">{{Correo.fecha_respuesta}}</td>
-                  <td style="text-align: center;">{{Correo.estatu}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div> -->
   </div>
 </body>

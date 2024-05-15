@@ -1,10 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Correos } from '../interfaz/correos';
 import { EncorreoService } from '../servicios/encorreo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import Notiflix from 'notiflix';
 
 
 @Component({
@@ -25,10 +27,15 @@ export class SolicitudesComponent implements OnInit {
   query: string='';
   resultados$!: Observable<Correos[]>;
   filteredResults: Correos[]=[];
+
+  title = 'enviarrespuesta';
+  datos: FormGroup;
   
   constructor( private correo: EncorreoService,
     private formBuilder: FormBuilder,
-    private _snackbar: MatSnackBar,
+    private httpclient: HttpClient,
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: Correos
   ){
     this.form = this.formBuilder.group({
@@ -39,6 +46,12 @@ export class SolicitudesComponent implements OnInit {
       fecha_solicitud: [''],
       fecha_respuesta: [''],
       estatu: [''],
+    });
+
+    this.datos = new FormGroup({
+      correo: new FormControl('', [Validators.required, Validators.email]),
+      asunto: new FormControl('', Validators.required),
+      mensaje: new FormControl('', Validators.required)
     });
   }
 
@@ -74,6 +87,29 @@ export class SolicitudesComponent implements OnInit {
    })
   }
 
+  enviarcorreo() {
+
+    if (this.datos.invalid) {
+      this.snackBar.open('Correo es obligatorio', 'Cerrar', {
+        duration: 3000,
+        verticalPosition: 'top'
+      });
+      return;
+    }
+    Notiflix.Loading.hourglass('Cargando...');
+    let params = {
+      email: this.datos.value.correo,
+      asunto: this.datos.value.asunto,
+      mensaje: this.datos.value.mensaje
+    }
+    console.log(params)
+    this.httpclient.post('http://localhost:3001/solicitudes', params).subscribe(resp => {
+      console.log(resp)
+      Notiflix.Loading.remove();
+      Notiflix.Notify.success('Correo enviado correctamente');
+      this.datos.reset();
+    })
+  }
   getSeverity(estatu: string): string {
     if (estatu === 'Aprobado') {
       return 'success';

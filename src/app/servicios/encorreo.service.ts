@@ -14,9 +14,6 @@ export class EncorreoService {
 
     const fecha_respuesta = new Date().toISOString().split('T')[0];
     correo.fecha_respuesta= fecha_respuesta;
-
-    // const fecha_de_actualizacion = new Date().toISOString();
-    // appcontraloria.fecha_de_actualizacion = fecha_de_actualizacion;
     
     const placeRef= collection(this.firestore, 'correo');
     return addDoc(placeRef, correo);

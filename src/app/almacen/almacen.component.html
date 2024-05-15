@@ -41,14 +41,14 @@
       <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
         <ng-template pTemplate="header">
           <tr>
-            <th style="width:200px" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
-            <th style="width:200px" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
-            <th style="width:200px" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
-            <th style="width:200px" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
-            <th style="width:200px" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
-            <th style="width:200px" pSortableColumn="entrada">Fecha entrada<p-sortIcon field="entrada" /></th>
-            <th style="width:200px" pSortableColumn="actualizacion">Fecha actualizacion <p-sortIcon field="actualizacion" /></th>
-            <th style="width:200px" pSortableColumn="accion">Accion <p-sortIcon field="accion" /></th>
+            <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+            <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+            <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+            <th style="width:180px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+            <th style="width:220px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
+            <th style="width:200px; text-align: center;" pSortableColumn="entrada">Fecha entrada<p-sortIcon field="entrada" /></th>
+            <th style="width:200px; text-align: center;" pSortableColumn="actualizacion">Fecha actualizacion <p-sortIcon field="actualizacion" /></th>
+            <th style="width:200px; text-align: center;">Accion</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-filteredResults>

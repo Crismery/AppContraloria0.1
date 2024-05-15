@@ -15,9 +15,22 @@
     height: 30px;
     font-size: 18px;
   }
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 20px;
+    padding-left: 20px;
+    margin-right: 20px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: 'Times New Roman', Times, serif;
+}
   h3 {
-    text-align: center;
-    margin-bottom: 50px;
+    // text-align: center;
+    // margin-bottom: 50px;
     font-family: 'Times New Roman', Times, serif;
 }
 .no{

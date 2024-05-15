@@ -97,7 +97,6 @@ export class DialogocorreoComponent implements OnInit {
       Notiflix.Loading.remove();
       Notiflix.Notify.success('Correo enviado correctamente');
       this.datos.reset();
-      //this.dialogRef.close();
     })
   }
 
