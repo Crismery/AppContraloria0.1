@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class RegistrosService {
 
   constructor(private firestore: Firestore) { }
-
+//guardar
   addPlace(appcontraloria: Appcontraloria){
 
     const fechaDeEntrada = new Date().toISOString().split('T')[0];
@@ -22,10 +22,12 @@ export class RegistrosService {
     const placeRef= collection(this.firestore, 'appcontraloria');
     return addDoc(placeRef, appcontraloria);
   }
+  //listar
   getPlaces(): Observable<Appcontraloria[]> {
     const placeRef = collection(this.firestore, 'appcontraloria');
     return collectionData(placeRef, { idField: 'id' }) as Observable<Appcontraloria[]>;
   }
+  //eliminar
   deletePlaces(appcontraloria: Appcontraloria): Promise<{ success: boolean }> {
     const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);
     return deleteDoc(placeRef)
@@ -35,7 +37,7 @@ export class RegistrosService {
         return { success: false };
       });
   }
-
+//eliminar usuario
   async deleteFields(appcontraloria: Appcontraloria) {
     const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);
     
@@ -48,7 +50,7 @@ export class RegistrosService {
     };
     await updateDoc(placeRef, updateData);
 }
-
+//editar
 updatePlace(appcontraloria: Appcontraloria){
   const { id, ...dataToUpdate } = appcontraloria; 
   const placeRef = doc(this.firestore, 'appcontraloria', id);

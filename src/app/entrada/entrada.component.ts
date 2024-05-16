@@ -119,15 +119,17 @@ export class EntradaComponent implements OnInit {
 
   buscar(): void {
     if (this.query.trim() !== '') {
-      this.filteredResults = this.appcontraloria.filter(place => {
-        const concatenatedValues = Object.values(place).join(' ').toLowerCase();
-        return concatenatedValues.includes(this.query.trim().toLowerCase());
-      });
+      this.appcontraloria = this.appcontraloria.filter(place =>
+        Object.values(place).some(value =>
+          value && typeof value === 'string' && value.toLowerCase().includes(this.query.trim().toLowerCase())
+        )
+      );
     } else {
-      this.filteredResults = this.appcontraloria;
+      this.registrosService.getPlaces().subscribe(Correos => {
+        this.appcontraloria = Correos;
+      });
     }
   }
-  
 loadData(): void {
   this.totalItems = this.filteredResults.length; 
   this.endIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems);

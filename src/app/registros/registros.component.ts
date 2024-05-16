@@ -99,7 +99,7 @@ export class RegistrosComponent implements OnInit {
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item =>
-        item.cedula && item.usuario && item.Departamento && !item.fecha_de_descargoBN
+        item.cedula && item.usuario && item.Departamento && !item.fecha_de_descargoBN && !item.fecha_de_borrados
       );
       this.filteredResults = this.appcontraloria;
 

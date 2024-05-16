@@ -16,33 +16,33 @@ import Notiflix from 'notiflix';
 })
 export class SolicitudesComponent implements OnInit {
 
-  activo : boolean = false;
+  activo: boolean = false;
   form: FormGroup;
   correos!: Correos;
 
-  Correos: Correos[]=[];
+  Correos: Correos[] = [];
   idFrozen: boolean = false;
   loaded: boolean = false;
 
-  query: string='';
+  query: string = '';
   resultados$!: Observable<Correos[]>;
-  filteredResults: Correos[]=[];
+  filteredResults: Correos[] = [];
 
   title = 'enviarrespuesta';
   datos: FormGroup;
-  
-  constructor( private correo: EncorreoService,
+
+  constructor(private correo: EncorreoService,
     private formBuilder: FormBuilder,
     private httpclient: HttpClient,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: Correos
-  ){
+  ) {
     this.form = this.formBuilder.group({
       correo: [''],
-      asunto: ['',Validators.required],
-      mensaje: ['',Validators.required],
-      comentario: ['',Validators.required],
+      asunto: ['', Validators.required],
+      mensaje: ['', Validators.required],
+      comentario: ['', Validators.required],
       fecha_solicitud: [''],
       fecha_respuesta: [''],
       estatu: [''],
@@ -55,40 +55,64 @@ export class SolicitudesComponent implements OnInit {
     });
   }
 
-  async onSubmit(){
+  enviar(){
     if (this.form.valid) {
-    
+
+      console.log(this.form.value);
+      const response = this.correo.addPlace(this.form.value);
+
+      console.log(response);
+
+      //   if (response) {
+      //     this.form.reset();
+      //     this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
+      //       duration: 3000,
+      //     });
+      //   } else {
+      //     this._snackbar.open('No se pudo registrar la entrada', 'Cerrar', {
+      //       duration: 2000,
+      //     });
+      //   }
+      // } else {
+      //   this._snackbar.open('Por favor complete todos los campos obligatorios', 'Cerrar', {
+      //     duration: 2000,
+      //   });
+    }
+  }
+  async onSubmit() {
+    if (this.form.valid) {
+
       console.log(this.form.value);
       const response = await this.correo.addPlace(this.form.value);
-      
-      console.log(response);
-    
-    //   if (response) {
-    //     this.form.reset();
-    //     this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
-    //       duration: 3000,
-    //     });
-    //   } else {
-    //     this._snackbar.open('No se pudo registrar la entrada', 'Cerrar', {
-    //       duration: 2000,
-    //     });
-    //   }
-    // } else {
-    //   this._snackbar.open('Por favor complete todos los campos obligatorios', 'Cerrar', {
-    //     duration: 2000,
-    //   });
-    }
-  }   
-  ngOnInit(): void {
-   this.correo.getPlaces().subscribe(Correos =>{
-    this.Correos = Correos;
-    this.loaded =true;
 
-   })
+      console.log(response);
+
+      //   if (response) {
+      //     this.form.reset();
+      //     this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
+      //       duration: 3000,
+      //     });
+      //   } else {
+      //     this._snackbar.open('No se pudo registrar la entrada', 'Cerrar', {
+      //       duration: 2000,
+      //     });
+      //   }
+      // } else {
+      //   this._snackbar.open('Por favor complete todos los campos obligatorios', 'Cerrar', {
+      //     duration: 2000,
+      //   });
+    }
+  }
+  ngOnInit(): void {
+    this.correo.getPlaces().subscribe(Correos => {
+      this.Correos = Correos;
+      this.loaded = true;
+      this.filteredResults = this.Correos;
+    });
+
   }
 
   enviarcorreo() {
-
     if (this.datos.invalid) {
       this.snackBar.open('Correo es obligatorio', 'Cerrar', {
         duration: 3000,
@@ -121,17 +145,20 @@ export class SolicitudesComponent implements OnInit {
       return 'info';
     }
   }
-  // buscar(): void {
-  //   if (this.query.trim() !== '') {
-  //     this.filteredResults = this.Correos.filter(place => 
-  //       place.correo.toLowerCase().includes(this.query.trim().toLowerCase())
-  //     );
-  //   } else {
-  //     this.filteredResults = this.correo;
-  //   }
-  // }
-  
-  setactivo(): void{
-    this.activo =!this.activo;
+  buscar(): void {
+    if (this.query.trim() !== '') {
+      this.Correos = this.Correos.filter(place =>
+        Object.values(place).some(value =>
+          value && typeof value === 'string' && value.toLowerCase().includes(this.query.trim().toLowerCase())
+        )
+      );
+    } else {
+      this.correo.getPlaces().subscribe(Correos => {
+        this.Correos = Correos;
+      });
+    }
+  }
+  setactivo(): void {
+    this.activo = !this.activo;
   }
 }

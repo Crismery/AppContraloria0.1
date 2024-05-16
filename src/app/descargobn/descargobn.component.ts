@@ -83,7 +83,7 @@ export class DescargobnComponent implements OnInit {
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item =>
-        item.fecha_de_descargoBN
+        item.fecha_de_descargoBN && !item.fecha_de_borrados
       );
     });
   }

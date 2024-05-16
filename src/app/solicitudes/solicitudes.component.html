@@ -44,7 +44,7 @@
           <ul class="header__ul">
             <!-- <p class="header__p">iwueiiwgmail.com</p> -->
             <div class="input-group mb-3">
-              <input type="text" class="form-control half-width" placeholder="Correo" aria-label="Username" formControlName="Correo">
+              <input type="text" class="form-control half-width" placeholder="Correo" aria-label="Username" formControlName="correo" name="correo">
             </div>
             <div class="form-floating">
               <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="estatu" style="height: 35px; margin:.5em 0;">
@@ -66,7 +66,9 @@
             <div class="input-group mb-3">
               <input type="text" class="form-control half-width" placeholder="Comentario" aria-label="Username" formControlName="comentario">
             </div>
-            <button class="header__b" type="submit">Enviar</button>
+            <div>
+            <button class="header__b" (click)="enviar()">Enviar</button>
+            </div>
           </ul>
         </nav>
       </div>
@@ -78,7 +80,7 @@
 <div class="estatico ">
   <div class="right mt-3 ">
     <div class="search-bar mt-3">
-      <input type="text" class="form-control" placeholder="Buscar solicitudes">
+      <input type="text" [(ngModel)]="query" (input)="buscar()" class="form-control" placeholder="Buscar solicitudes">
     </div>
 <p-table  [value]="Correos" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '45rem'}">
   <ng-template pTemplate="header">

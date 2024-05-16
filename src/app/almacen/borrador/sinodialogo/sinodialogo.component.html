@@ -1,42 +1,43 @@
 <div fxLayout="row" fxLayoutAlign="center center">
     <div class="container">
-        <br>
+      <br>
         <h1>Eliminar Registro/s</h1>
         <div class="row">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.dispositivo">
             <label for="floatingInputDisabled">Dispositivo</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.modelo">
             <label for="floatingInputDisabled">Modelo</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.serial">
             <label for="floatingInputDisabled">Serial</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.placa">
             <label for="floatingInputDisabled">Placa</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.bienes_nacionales">
             <label for="floatingInputDisabled">Bienes Nacionales</label>
           </div>
           <form class="form-floating">
-            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com">
+            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" [(ngModel)]="appcontraloriamostrar.email" name="email">
             <label for="floatingInputValue">Correo</label>
           </form>
           <h3>¿Por que se esta eliminando este registro?</h3>
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Razon de la eliminacion</label>
-          </div>
-        <!-- <h3>¿Esta seguro/a de que quiere borrar el registro definivamente?</h3> -->
-        <div class="cardbutton">
-            <i class="bi bi-x-circle no" title="No" (click)="cerrarCentrado()"></i>
-            <!-- <i class="bi bi-check-circle si" title="Si" (click)="onClickDelete(data)"></i> -->
+            <textarea  variant="filled" rows="5"cols="30" pInputTextarea style="width: 400px" [(ngModel)]="appcontraloriamostrar.comentarioeli">
+            </textarea>
         </div>
+          <br>
+          <div class="cardbutton" >
+            <button (click)="actualizarLugar()">Guardar</button>
+            <button (click)="cerrarCentrado()">Cancelar</button>
+          </div>
+          <br>
           </div>
     </div>
 </div>

@@ -26,4 +26,6 @@ export interface Appcontraloria {
     fecha_de_borrados: string;
     fecha_de_reingreso: string;
     fecha_de_descargoBN: string;
+    email: string;
+    comentarioeli:string;
 }

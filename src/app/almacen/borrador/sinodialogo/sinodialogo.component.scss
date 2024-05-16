@@ -15,6 +15,11 @@
     height: 30px;
     font-size: 18px;
   }
+  .cardbutton{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 .8em 0;
+  }
   .row{
     display: flex;
     flex-wrap: wrap;
