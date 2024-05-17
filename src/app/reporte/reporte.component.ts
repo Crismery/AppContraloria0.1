@@ -35,6 +35,8 @@ export class ReporteComponent implements OnInit {
 
   appcontraloriaBN: Appcontraloria[] = [];
 
+  idFrozen: boolean = false;
+
   constructor(private registrosService: RegistrosService,
     private imprimir: ImprimirService
   ) { }
@@ -117,7 +119,7 @@ export class ReporteComponent implements OnInit {
     });
     //descargo-BN
     this.registrosService.getPlaces().subscribe(appcontraloriaBN => {
-      this.appcontraloriaBN = appcontraloriaBN.filter(item => item.fecha_de_descargoBN);
+      this.appcontraloriaBN = appcontraloriaBN.filter(item => item.fecha_de_descargoBN && !item.fecha_de_borrados);
     });
 
   }

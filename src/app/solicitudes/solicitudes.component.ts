@@ -29,7 +29,7 @@ export class SolicitudesComponent implements OnInit {
   filteredResults: Correos[] = [];
 
   title = 'enviarrespuesta';
-  datos: FormGroup;
+  // datos: FormGroup;
 
   constructor(private correo: EncorreoService,
     private formBuilder: FormBuilder,
@@ -45,16 +45,25 @@ export class SolicitudesComponent implements OnInit {
       comentario: ['', Validators.required],
       fecha_solicitud: [''],
       fecha_respuesta: [''],
-      estatu: [''],
+      estatu: ['', Validators.required],
     });
 
-    this.datos = new FormGroup({
+    this.form = new FormGroup({
       correo: new FormControl('', [Validators.required, Validators.email]),
       asunto: new FormControl('', Validators.required),
-      mensaje: new FormControl('', Validators.required)
+      mensaje: new FormControl('', Validators.required),
+      comentario: new FormControl('', Validators.required),
+      estatu: new FormControl('', Validators.required),
     });
   }
 
+  ngOnInit(): void {
+    this.correo.getPlaces().subscribe(Correos => {
+      this.Correos = Correos;
+      this.loaded = true;
+      this.filteredResults = this.Correos;
+    });
+  }
   enviar(){
     if (this.form.valid) {
 
@@ -62,58 +71,8 @@ export class SolicitudesComponent implements OnInit {
       const response = this.correo.addPlace(this.form.value);
 
       console.log(response);
-
-      //   if (response) {
-      //     this.form.reset();
-      //     this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
-      //       duration: 3000,
-      //     });
-      //   } else {
-      //     this._snackbar.open('No se pudo registrar la entrada', 'Cerrar', {
-      //       duration: 2000,
-      //     });
-      //   }
-      // } else {
-      //   this._snackbar.open('Por favor complete todos los campos obligatorios', 'Cerrar', {
-      //     duration: 2000,
-      //   });
     }
-  }
-  async onSubmit() {
-    if (this.form.valid) {
-
-      console.log(this.form.value);
-      const response = await this.correo.addPlace(this.form.value);
-
-      console.log(response);
-
-      //   if (response) {
-      //     this.form.reset();
-      //     this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
-      //       duration: 3000,
-      //     });
-      //   } else {
-      //     this._snackbar.open('No se pudo registrar la entrada', 'Cerrar', {
-      //       duration: 2000,
-      //     });
-      //   }
-      // } else {
-      //   this._snackbar.open('Por favor complete todos los campos obligatorios', 'Cerrar', {
-      //     duration: 2000,
-      //   });
-    }
-  }
-  ngOnInit(): void {
-    this.correo.getPlaces().subscribe(Correos => {
-      this.Correos = Correos;
-      this.loaded = true;
-      this.filteredResults = this.Correos;
-    });
-
-  }
-
-  enviarcorreo() {
-    if (this.datos.invalid) {
+    if (this.form.invalid) {
       this.snackBar.open('Correo es obligatorio', 'Cerrar', {
         duration: 3000,
         verticalPosition: 'top'
@@ -122,16 +81,16 @@ export class SolicitudesComponent implements OnInit {
     }
     Notiflix.Loading.hourglass('Cargando...');
     let params = {
-      email: this.datos.value.correo,
-      asunto: this.datos.value.asunto,
-      mensaje: this.datos.value.mensaje
+      email: this.form.value.correo,
+      asunto: this.form.value.asunto,
+      mensaje: `${this.form.value.estatu} \n \n - ${this.form.value.comentario}`
     }
     console.log(params)
     this.httpclient.post('http://localhost:3001/solicitudes', params).subscribe(resp => {
       console.log(resp)
       Notiflix.Loading.remove();
       Notiflix.Notify.success('Correo enviado correctamente');
-      this.datos.reset();
+      // this.form.reset();
     })
   }
   getSeverity(estatu: string): string {

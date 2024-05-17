@@ -25,19 +25,14 @@ body {
 .left {
   width: 60%;
   display: grid;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
-  // border-right: 2px solid white;
   margin: auto;
 }
 .estatico{
-  width: 80%;
+  width: 65%;
 }
 .right {
-  width: 80%;
+  width: 70%;
   display: grid;
-  // grid-template-columns: repeat(3, auto);
   gap: 1rem;
 }
 
@@ -75,11 +70,8 @@ h5 {
 
 .content {
   display: flex;
-  // justify-content: center;
-  // align-items: center;
-  width: 90vw;
+  width: 95vw;
   max-width: none;
-  // margin-bottom: 3rem;
   gap: 2rem;
   margin: auto;
   position: relative;
@@ -132,7 +124,6 @@ input[type=text] {
 .checkbox {
   padding: 10px;
   display: flex;
-  // justify-content: space-between;
   align-items: center;
 }
 
@@ -150,8 +141,6 @@ input[type=text] {
   padding: 14px;
   display: flex;
   flex-flow: row wrap;
-  // justify-content: space-between;
-  // align-items: center;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
@@ -164,11 +153,6 @@ input[type=text] {
     font-size: 10px;
     top: -30;
     right: -10;
-    // margin-top: 10px;
-    // margin-right: 10px;
-    // float: right;
-    // margin-right: -100px;
-    // margin-top: -65px;
     border: 0;
     background-color: rgb(252, 251, 251);
 
@@ -252,5 +236,8 @@ input[type=text] {
 
 .input-group {
   height: 50px;
-
+}
+option{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
 }

@@ -37,7 +37,41 @@
       <mat-checkbox class="checkbox-container" (change)=" toggleregistros($event)">Ver Cambios </mat-checkbox>
       <div *ngIf="registros || todo">
         <h3>-Sean actualizado {{registroregistro}} dispositivo, quedo  {{registrousu}} libres para asignar nuevamente.</h3>
-        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
+        <p-table  [value]="appcontraloriare" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+              <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="usuario">Usuario<p-sortIcon field="usuario" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="departamento">Departamento <p-sortIcon field="departamento" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="fisico">Mantenimiento<p-sortIcon field="fisico" /></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-appcontraloriare>
+            <tr>
+              <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloriare.dispositivo}}</td>
+              <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{appcontraloriare.modelo}}</td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloriare.serial}}</span>
+              </td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloriare.placa}}</span>
+              </td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloriare.bienes_nacionales}}</span>
+              </td>
+              <td style="width:200px">{{appcontraloriare.usuario}}</td>
+              <td style="width:200px">{{appcontraloriare.Departamento}}</td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloriare.mantenimiento}}</span>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <!-- <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
         <table class="table table-striped mt-3 ">
           <thead>
             <tr>
@@ -49,7 +83,6 @@
               <th style="text-align: center;">Usuario</th>
               <th style="text-align: center;">Departamento</th>
               <th style="text-align: center;">Mantenimiento</th>
-              <!-- <th style="text-align: center;">Accion</th> -->
             </tr>
           </thead>
           <tbody>
@@ -62,180 +95,167 @@
               <td style="text-align: center;">{{Appcontraloria.usuario}}</td>
               <td style="text-align: center;">{{Appcontraloria.Departamento}}</td>
               <td style="text-align: center;">{{Appcontraloria.mantenimiento}}</td>
-              <!-- <td style="text-align: center;">{{Appcontraloria.fecha_de_actualizacion}}</td> -->
-              <!-- <td style="text-align: center; vertical-align: middle;">
-                <i class="bi bi-trash borrar" title="Borrar"></i>
-              </td> -->
             </tr>
           </tbody>
         </table>
-        </div>
+        </div> -->
         <i class="bi bi-printer imprimir" *ngIf="registros"  title="Imprimir" (click)="onImprimirRegistros()"></i>
       </div>
     </div>
-
+<!-- Entrada -->
     <div class="checkbox">
       <h2>Reporte de los cambios de las entradas</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggleentrada($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="entrada || todo">
         <h3>-Sean agregado {{ registrosent }} dispositivo, sean actualizado {{registroregistro}}.</h3>
-        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
-        <table class="table table-striped mt-3">
-          <thead>
+        <p-table  [value]="appcontraloriaent" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+          <ng-template pTemplate="header">
             <tr>
-              <th style="text-align: center;">Dispositivo</th>
-              <th style="text-align: center;">Modelo</th>
-              <th style="text-align: center;">Serial</th>
-              <th style="text-align: center;">Placa</th>
-              <th style="text-align: center;">Bienes Nacionales</th>
-              <th style="text-align: center;">Fecha de entrada</th>
-              <th style="text-align: center;">Fecha de actualizado</th>
-              <!-- <th style="text-align: center;">Accion</th> -->
+              <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+              <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="entrada">Fecha entrada<p-sortIcon field="entrada" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="actualizacion">Fecha actualizacion <p-sortIcon field="actualizacion" /></th>
             </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let Appcontraloria of appcontraloriaent; let i = index" style="text-align: center;">
-              <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
-          <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
-          <td style="text-align: center;">{{Appcontraloria.serial}}</td>
-          <td style="text-align: center;">{{Appcontraloria.placa}}</td>
-          <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
-          <td style="text-align: center;">{{Appcontraloria.fecha_de_entrada}}</td>
-          <td style="text-align: center;">{{Appcontraloria.fecha_de_actualizacion}}</td>
-              <!-- <td style="text-align: center; vertical-align: middle;">
-                <i class="bi bi-trash borrar"title="Borrar"></i>
-              </td> -->
+          </ng-template>
+          <ng-template pTemplate="body" let-appcontraloriaent>
+            <tr>
+              <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloriaent.dispositivo}}</td>
+              <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{appcontraloriaent.modelo}}</td>
+              <td style="width:200px">{{appcontraloriaent.serial}}</td>
+              <td style="width:200px">{{appcontraloriaent.placa}}</td>
+              <td style="width:200px">{{appcontraloriaent.bienes_nacionales}}</td>
+              <td style="width:200px">{{appcontraloriaent.fecha_de_entrada}}</td>
+              <td style="width:200px">{{appcontraloriaent.fecha_de_actualizacion}}</td>
             </tr>
-          </tbody>
-        </table>
-        </div>
+          </ng-template>
+        </p-table>
         <!-- <button *ngIf="entrada">Imprimir</button> -->
         <i class="bi bi-printer imprimir" *ngIf="entrada"  title="Imprimir" (click)="onImprimirEntrada()"></i>
       </div>
     </div>
-
+<!-- asignar -->
     <div class="checkbox">
       <h2>Reporte de los cambios de los dipositivos asignados</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggleasignacion($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="asignacion || todo">
         <h3>-Sean asiginado {{ registroasignar }} dispositivos</h3>
-        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
-        <table class="table table-striped mt-3">
-          <thead>
+        <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+          <ng-template pTemplate="header">
             <tr>
-              <th style="text-align: center;">Dispositivo</th>
-              <th style="text-align: center;">Serial</th>
-              <th style="text-align: center;">Cedula</th>
-              <th style="text-align: center;">Usuario</th>
-              <th style="text-align: center;">Departamento</th>
-              <th style="text-align: center;">OS</th>
-              <!-- <th style="text-align: center;">Version</th> -->
-              <th style="text-align: center;">CPU</th>
-              <th style="text-align: center;">Memoria</th>
-              <th style="text-align: center;">Almacenamiento</th>
-              <!-- <th style="text-align: center;">Accion</th> -->
+              <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="serial">Cedula<p-sortIcon field="serial" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="serial">Usuario<p-sortIcon field="serial" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="serial">Departamento<p-sortIcon field="serial" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="os">Os<p-sortIcon field="os" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="cpu">CPU<p-sortIcon field="cpu" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="memoria">Memoria<p-sortIcon field="memoria" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="almacenamiento">Almacenamiento<p-sortIcon field="almacenamiento" /></th>
             </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let Appcontraloria of  appcontraloria; let i = index">
-              <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
-              <td style="text-align: center;">{{Appcontraloria.serial}}</td>
-              <td style="text-align: center;">{{Appcontraloria.cedula}}</td>
-              <td style="text-align: center;">{{Appcontraloria.usuario}}</td>
-              <td style="text-align: center;">{{Appcontraloria.Departamento}}</td>
-              <td style="text-align: center;">{{Appcontraloria.os}}</td>
-              <!-- <td style="text-align: center;">{{Appcontraloria.version}}</td> -->
-              <td style="text-align: center;">{{Appcontraloria.cpu}}</td>
-              <td style="text-align: center;">{{Appcontraloria.memoria}}</td>
-              <td style="text-align: center;">{{Appcontraloria.almacenamiento}}</td>
-              <!-- <td style="text-align: center; vertical-align: middle;">
-                <i class="bi bi-trash borrar" title="Borrar"></i>
-              </td> -->
+          </ng-template>
+          <ng-template pTemplate="body" let-appcontraloria>
+            <tr>
+              <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloria.dispositivo}}</td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloria.serial}}</span>
+              </td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloria.cedula}}</span>
+              </td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloria.usuario}}</span>
+              </td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloria.Departamento}}</span>
+              </td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloria.os}}</span>
+              </td>
+              <td style="width:200px">{{appcontraloria.cpu}}</td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloria.memoria}}</span>
+              </td>
+              <td style="width:200px">{{appcontraloria.almacenamiento}}</td>
             </tr>
-          </tbody>
-        </table>
-        </div>
+          </ng-template>
+        </p-table>
         <!-- <button *ngIf="asignacion">Imprimir</button> -->
         <i class="bi bi-printer imprimir" *ngIf="asignacion"  title="Imprimir" (click)="onImprimirAsignacion()"></i>
       </div>
     </div>
-
+<!-- mantenimiento -->
     <div class="checkbox">
       <h2>Reporte de los cambios de mantenimiento</h2>
       <mat-checkbox class="checkbox-container" (change)="togglematenimiento($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="mantenimiento || todo">
         <h3>-Se le an hecho mantenimiento a {{registromatenimiento}} dispositivos </h3>
-        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
-        <table class="table table-striped mt-3">
-          <thead>
+        <p-table  [value]="appcontraloriaman" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+          <ng-template pTemplate="header">
             <tr>
-              <th style="text-align: center;">Dispositivo</th>
-              <th style="text-align: center;">Serial</th>
-              <th style="text-align: center;">Placa</th>
-              <!-- <th style="text-align: center;">Version</th> -->
-              <th style="text-align: center;">Tipo de Mantenimiento</th>
-              <th style="text-align: center;">Descripcion</th>
-              <th style="text-align: center;">Fisico y Logico</th>
-              <th style="text-align: center;">Defragmentacion</th>
-              <th style="text-align: center;">Fecha</th>
-              <!-- <th style="text-align: center;">Accion</th> -->
+              <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+              <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="serial" pFrozenColumn [frozen]="idFrozen">Serial <p-sortIcon field="serial" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="tipomanteniemiento">Tipo de mantenimiento <p-sortIcon field="tipomanteniemiento" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="descripcion">Descripcion <p-sortIcon field="descripcion" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="fisico">Fisico<p-sortIcon field="fisico" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="logico">Logico <p-sortIcon field="logico" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="defragmentacion">Defragmentacion <p-sortIcon field="defragmentacion" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="fecha">Fecha <p-sortIcon field="fecha" /></th>
             </tr>
-          </thead>
-          <tbody>
+          </ng-template>
+          <ng-template pTemplate="body" let-appcontraloriaman>
             <tr>
-              <tr *ngFor="let Appcontraloria of appcontraloriaman; let i = index" style="text-align: center;">
-                <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
-                <td style="text-align: center;">{{Appcontraloria.serial}}</td>
-                <td style="text-align: center;">{{Appcontraloria.placa}}</td>
-                <!-- <td style="text-align: center;">{{Appcontraloria.version}}</td> -->
-                <td style="text-align: center;">{{Appcontraloria.tipo_de_mantenimiento}}</td>
-                <td style="text-align: center;">{{Appcontraloria.mantenimiento}}</td>
-                <td style="text-align: center;">Memoria:{{Appcontraloria.memoria}}, Disco:{{Appcontraloria.almacenamiento}} y
-                  Limpieza: {{Appcontraloria.limpieza}}, Os: {{Appcontraloria.os}}</td>
-                <td style="text-align: center;">{{Appcontraloria.defragmentacion}}</td>
-                <td style="text-align: center;">{{Appcontraloria.fecha_de_mantenimiento}}</td>
-              <!-- <td class="button2" style="text-align: center; vertical-align: middle;">
-                <i class="bi bi-trash borrar" title="Borrar"></i>
-              </td> -->
+              <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloriaman.dispositivo}}</td>
+              <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{appcontraloriaman.serial}}</td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloriaman.placa}}</span>
+              </td>
+              <td style="width:200px">{{appcontraloriaman.tipo_de_mantenimiento}}</td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{appcontraloriaman.mantenimiento}}</span>
+              </td>
+              <td style="width:200px">Memoria:{{appcontraloriaman.memoria}}, Disco:{{appcontraloriaman.almacenamiento}} y
+                Limpieza: {{appcontraloriaman.limpieza}}</td>
+              <td style="width:200px">{{appcontraloriaman.os}}</td>
+              <td style="width:200px">{{appcontraloriaman.defragmentacion}}</td>
+              <td style="width:200px">{{appcontraloriaman.fecha_de_mantenimiento}}</td>
             </tr>
-          </tbody>
-        </table>
-        </div>
-        <!-- <button *ngIf="mantenimiento">Imprimir</button> -->
+          </ng-template>
+        </p-table>
         <i class="bi bi-printer imprimir" *ngIf="mantenimiento"  title="Imprimir" (click)="onImprimirManteni()"></i>
       </div>
     </div>
-    
+    <!-- Descargo B-N -->
     <div class="checkbox">
       <h2>Reporte de los registros enviado a descargo de bienes nacionales</h2>
       <mat-checkbox class="checkbox-container" (change)=" toggledescargo($event)">Ver Cambios</mat-checkbox>
       <div *ngIf="descargoBN || todo">
         <h3>-Sean enviado {{registroelim}} registros al Descargo de BN.</h3>
-        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 300px;">
-        <table class="table table-striped mt-3">
-          <thead>
+        <p-table  [value]=" appcontraloriaBN" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+          <ng-template pTemplate="header">
             <tr>
-              <th style="text-align: center;">Dispositivo</th>
-              <th style="text-align: center;">Serial</th>
-              <th style="text-align: center;">Modelo</th>
-              <th style="text-align: center;">Placa</th>
-              <th style="text-align: center;">Bienes Nacionales</th>
-              <th style="text-align: center;">Fecha de descargo-BN</th>
+              <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
+              <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="entrada">Fecha de descargo-BN<p-sortIcon field="entrada" /></th>
             </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let Appcontraloria of appcontraloriaBN; let i = index">
-              <td style="text-align: center;">{{Appcontraloria.dispositivo}}</td>
-              <td style="text-align: center;">{{Appcontraloria.serial}}</td>
-              <td style="text-align: center;">{{Appcontraloria.modelo}}</td>
-              <td style="text-align: center;">{{Appcontraloria.placa}}</td>
-              <td style="text-align: center;">{{Appcontraloria.bienes_nacionales}}</td>
-              <td style="text-align: center;">{{Appcontraloria.fecha_de_descargoBN}}</td>
+          </ng-template>
+          <ng-template pTemplate="body" let-Appcontraloria>
+            <tr>
+              <td style="width:200px" pFrozenColumn class="font-bold">{{Appcontraloria.dispositivo}}</td>
+              <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{Appcontraloria.modelo}}</td>
+              <td style="width:200px">{{Appcontraloria.serial}}</td>
+              <td style="width:200px">{{Appcontraloria.placa}}</td>
+              <td style="width:200px">{{Appcontraloria.bienes_nacionales}}</td>
+              <td style="width:200px">{{Appcontraloria.fecha_de_descargoBN}}</td>
             </tr>
-          </tbody>
-        </table>
-        </div>
-        <!-- <button *ngIf="asignacion">Imprimir</button> -->
+          </ng-template>
+        </p-table>
         <i class="bi bi-printer imprimir" *ngIf="descargoBN"  title="Imprimir" (click)="onImprimirdescargoBN()"></i>
       </div>
     </div>

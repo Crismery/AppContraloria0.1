@@ -25,95 +25,113 @@
         <input type="text"  placeholder="ej. Laptop">
       </div> -->
     <!-- Dentro de tu HTML -->
-<div class="left">
-  <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 460px; max-width: 500px; ">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="checkbox">
-      <div class="header">
-        <div >
-          <h2>Solicitudes</h2>
-          <p class="header__p">gmail.com</p>
-          <p class="header__f">Fecha</p>
-        </div>
-        <button class="header__button" (click)="setactivo()" title="Ver">
-          <svg class="header__svg" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67"/>
-          </svg>
-        </button>
-        <nav class="header__nav" [ngClass]="{'header__nav--activo': activo}">
-          <ul class="header__ul">
-            <!-- <p class="header__p">iwueiiwgmail.com</p> -->
-            <div class="input-group mb-3">
-              <input type="text" class="form-control half-width" placeholder="Correo" aria-label="Username" formControlName="correo" name="correo">
+    <div class="left">
+      <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 460px; max-width: 500px; ">
+        <form [formGroup]="form">
+          <div class="checkbox">
+            <div class="header">
+              <div>
+                <h2>Solicitudes</h2>
+                <p class="header__p">gmail.com</p>
+                <p class="header__f">Fecha</p>
+              </div>
+              <button class="header__button" (click)="setactivo()" title="Ver">
+                <svg class="header__svg" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67" />
+                </svg>
+              </button>
+              <nav class="header__nav" [ngClass]="{'header__nav--activo': activo}">
+                <ul class="header__ul">
+                  <!-- <p class="header__p">iwueiiwgmail.com</p> -->
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control half-width" placeholder="Correo" aria-label="Username"
+                      formControlName="correo" name="correo">
+                  </div>
+                  <div class="form-floating">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                      formControlName="estatu" name="estatu" style="height: 35px; margin:.5em 0;">
+                      <option value="Aprobado">Aprobado</option>
+                      <option value="En espera">En espera</option>
+                      <option value="Rechazado">Rechazado</option>
+                    </select>
+                    <label for="floatingSelect">Selecione un estatu</label>
+                  </div>
+                  <div class="input-group input-group-sm ">
+                    <input type="text" class="form-control half-width" placeholder="Asunto"
+                      aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                      formControlName="asunto">
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+                    <div class="form-floating">
+                      <textarea class="form-control text" placeholder="Leave a comment here" id="floatingTextarea2"
+                        style="height: 100px" formControlName="mensaje"></textarea>
+                      <label for="floatingTextarea2" class="text">Solicitud</label>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control half-width" placeholder="Comentario" aria-label="Username"
+                      formControlName="comentario" name="comentario">
+                  </div>
+                  <div>
+                    <button class="header__b" (click)="enviar()">Enviar</button>
+                  </div>
+                </ul>
+              </nav>
             </div>
-            <div class="form-floating">
-              <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="estatu" style="height: 35px; margin:.5em 0;">
-                <option value="Aprobado">Aprobado</option>
-                <option value="En espera">En espera</option>
-                <option value="Rechazado">Rechazado</option>
-              </select>
-              <label for="floatingSelect">Selecione un estatu</label>
-            </div>
-            <div class="input-group input-group-sm ">
-              <input type="text" class="form-control half-width" placeholder="Asunto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" formControlName="asunto">
-            </div>  
-            <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">          
-            <div class="form-floating">
-              <textarea class="form-control text" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" formControlName="mensaje"></textarea>
-              <label for="floatingTextarea2" class="text">Solicitud</label>
-            </div>
-            </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control half-width" placeholder="Comentario" aria-label="Username" formControlName="comentario">
-            </div>
-            <div>
-            <button class="header__b" (click)="enviar()">Enviar</button>
-            </div>
-          </ul>
-        </nav>
+          </div>
+        </form>
       </div>
     </div>
-    </form>
-  </div>
-</div>
 
-<div class="estatico ">
-  <div class="right mt-3 ">
-    <div class="search-bar mt-3">
-      <input type="text" [(ngModel)]="query" (input)="buscar()" class="form-control" placeholder="Buscar solicitudes">
+    <div class="estatico ">
+      <div class="right mt-3 ">
+        <div class="search-bar mt-3">
+          <input type="text" [(ngModel)]="query" (input)="buscar()" class="form-control"
+            placeholder="Buscar solicitudes">
+        </div>
+        <p-table [value]="Correos" [scrollable]="true" styleClass="p-datatable-gridlines" scrollHeight="400px"
+          [tableStyle]="{'min-width': '40rem'}">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width:200px; text-align: center;" pSortableColumn="correo">Correo <p-sortIcon field="correo" />
+              </th>
+              <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="asunto" pFrozenColumn
+                [frozen]="idFrozen">Asunto <p-sortIcon field="asunto" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="mensaje">Solicitudes<p-sortIcon
+                  field="mensaje" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="comentario">Comentario <p-sortIcon
+                  field="comentario" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="solicitud">Fecha solicitud <p-sortIcon
+                  field="solicitud" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="respuesta">Fecha respuesta <p-sortIcon
+                  field="respuesta" /></th>
+              <th style="width:200px; text-align: center;" pSortableColumn="estatu" pFrozenColumn alignFrozen="right">
+                Estatu <p-sortIcon field="estatu" /></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-Correos>
+            <tr>
+              <td style="width:200px" pFrozenColumn class="font-bold">{{Correos.correo}}</td>
+              <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
+                [ngClass]="{'font-bold': idFrozen}">{{Correos.asunto}}</td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{Correos.mensaje}}</span>
+              </td>
+              <td style="width:200px">{{Correos.comentario}}</td>
+              <td style="width:200px">{{Correos.fecha_solicitud}}</td>
+              <td style="width:200px">
+                <span class="image-text ml-2">{{Correos.fecha_respuesta}}</span>
+              </td>
+              <td style="width:200px">
+                <!-- <span [class]="'Correos-badge estatu' + Correos.estatu">{{Correos.estatu}}</span> -->
+                <p-tag [value]="Correos.estatu" [severity]=" getSeverity(Correos.estatu)" />
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
     </div>
-<p-table  [value]="Correos" [scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '45rem'}">
-  <ng-template pTemplate="header">
-    <tr>
-      <th style="width:200px; text-align: center;" pSortableColumn="correo">Correo <p-sortIcon field="correo" /></th>
-      <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="asunto" pFrozenColumn [frozen]="idFrozen">Asunto <p-sortIcon field="asunto" /></th>
-      <th style="width:200px; text-align: center;" pSortableColumn="mensaje">Solicitudes<p-sortIcon field="mensaje" /></th>
-      <th style="width:200px; text-align: center;" pSortableColumn="comentario">Comentario <p-sortIcon field="comentario" /></th>
-      <th style="width:200px; text-align: center;" pSortableColumn="solicitud">Fecha solicitud <p-sortIcon field="solicitud" /></th>
-      <th style="width:200px; text-align: center;" pSortableColumn="respuesta">Fecha respuesta <p-sortIcon field="respuesta" /></th>
-      <th style="width:200px; text-align: center;" pSortableColumn="estatu" pFrozenColumn alignFrozen="right">Estatu <p-sortIcon field="estatu" /></th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-Correos>
-    <tr>
-      <td style="width:200px" pFrozenColumn class="font-bold">{{Correos.correo}}</td>
-      <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{Correos.asunto}}</td>
-      <td style="width:200px">
-        <span class="image-text ml-2">{{Correos.mensaje}}</span>
-      </td>
-      <td style="width:200px">{{Correos.comentario}}</td>
-      <td style="width:200px">{{Correos.fecha_solicitud}}</td>
-      <td style="width:200px">
-        <span class="image-text ml-2">{{Correos.fecha_respuesta}}</span>
-      </td>
-      <td style="width:200px" >
-        <!-- <span [class]="'Correos-badge estatu' + Correos.estatu">{{Correos.estatu}}</span> -->
-        <p-tag [value]="Correos.estatu" [severity]=" getSeverity(Correos.estatu)" />
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
-  </div>
-  </div>
   </div>
 </body>
