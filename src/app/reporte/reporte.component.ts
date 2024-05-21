@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RegistrosService } from '../servicios/registros.service';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { ImprimirService } from '../servicios/imprimir.service';
+import { EncorreoService } from '../servicios/encorreo.service';
+import { Correos } from '../interfaz/correos';
 
 @Component({
   selector: 'app-reporte',
@@ -15,6 +17,7 @@ export class ReporteComponent implements OnInit {
   entrada: boolean = false;
   registros: boolean = false;
   descargoBN: boolean = false;
+  soliciudes: boolean = false;
   todo: boolean = false;
 
   appcontraloria: Appcontraloria[] = [];
@@ -33,11 +36,14 @@ export class ReporteComponent implements OnInit {
   registrosent = 0;
   registroactu = 0;
 
+  appcontraloriasoli:Correos[]=[];
+
   appcontraloriaBN: Appcontraloria[] = [];
 
   idFrozen: boolean = false;
 
   constructor(private registrosService: RegistrosService,
+    private serviciocorreo: EncorreoService,
     private imprimir: ImprimirService
   ) { }
 
@@ -56,8 +62,23 @@ export class ReporteComponent implements OnInit {
   toggledescargo(event: any) {
     this.descargoBN = event.checked;
   }
+  togglesolicitudes(event: any) {
+    this.soliciudes = event.checked;
+  }
   toggletodo(event: any) {
     this.todo = event.checked;
+  }
+
+  getSeverity(estatu: string): string {
+    if (estatu === 'Aprobado') {
+      return 'success';
+    } else if (estatu === 'En espera') {
+      return 'warning';
+    } else if (estatu === 'Rechazado') {
+      return 'danger';
+    } else {
+      return 'info';
+    }
   }
   ngOnInit(): void {
     //asignacion
@@ -122,6 +143,10 @@ export class ReporteComponent implements OnInit {
       this.appcontraloriaBN = appcontraloriaBN.filter(item => item.fecha_de_descargoBN && !item.fecha_de_borrados);
     });
 
+    //solicitudes
+    this.serviciocorreo.getPlaces().subscribe(appcontraloriaSoli => {
+      this.appcontraloriasoli = appcontraloriaSoli;
+    });
   }
 
   //Registro
@@ -227,6 +252,26 @@ export class ReporteComponent implements OnInit {
 
     this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los registros enviado a descargo de bienes nacionales", true, htmlContent);
   }
+  //solicitudes
+  onImprimirsolicitudes() {
+    const encabezado = ["Correo", "Asunto", "Solicitudes", "Comentario", "Fecha solicitud", "Fecha resultado"];
+    const cuerpo = this.appcontraloriasoli
+      .map(solicitud => {
+        return [
+          solicitud.correo,
+          solicitud.asunto,
+          solicitud.mensaje,
+          solicitud.comentario,
+          solicitud.fecha_solicitud,
+          solicitud.fecha_respuesta
+        ];
+      });
+    // const htmlContent = `
+    // -Sean enviado ${this.registroelim} registros al Descargo de BN.
+    // `;
+
+    this.imprimir.imprimir(encabezado, cuerpo, "Reporte de las solicitudes", true);
+  }
 
   onImprimirTodos() {
     //registro
@@ -306,8 +351,22 @@ export class ReporteComponent implements OnInit {
         ];
       });
 
-    const encabezados = [encabezado1, encabezado2, encabezado3, encabezado4, encabezado];
-    const cuerpos = [cuerpo1, cuerpo2, cuerpo3, cuerpo4, cuerpo];
+      //solicitudes
+      const encabezadosoli = ["Correo", "Asunto", "Solicitudes", "Comentario", "Fecha solicitud", "Fecha resultado"];
+    const cuerposoli = this.appcontraloriasoli
+      .map(solicitud => {
+        return [
+          solicitud.correo,
+          solicitud.asunto,
+          solicitud.mensaje,
+          solicitud.comentario,
+          solicitud.fecha_solicitud,
+          solicitud.fecha_respuesta
+        ];
+      });
+
+    const encabezados = [encabezado1, encabezado2, encabezado3, encabezado4, encabezado, encabezadosoli];
+    const cuerpos = [cuerpo1, cuerpo2, cuerpo3, cuerpo4, cuerpo, cuerposoli];
 
     const htmlContent = `Reporte:
 
@@ -317,6 +376,6 @@ export class ReporteComponent implements OnInit {
     
     `;
 
-    this.imprimir.imprimirTodas(encabezados, cuerpos, ["Reporte de los cambios de Registros", "Reporte de los cambios de las entradas", "Reporte de los cambios de los dispositivos asignados", "Reporte de los cambios de mantenimiento", "Reporte de los registros enviado a descargo de bienes nacionales"], true, htmlContent);
+    this.imprimir.imprimirTodas(encabezados, cuerpos, ["Reporte de los cambios de Registros", "Reporte de los cambios de las entradas", "Reporte de los cambios de los dispositivos asignados", "Reporte de los cambios de mantenimiento", "Reporte de los registros enviado a descargo de bienes nacionales","Reporte de las solicitudes"], true, htmlContent);
   }
 }
