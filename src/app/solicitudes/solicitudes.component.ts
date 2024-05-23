@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import Notiflix from 'notiflix';
 
-
 @Component({
   selector: 'app-solicitudes',
   templateUrl: './solicitudes.component.html',
@@ -16,7 +15,9 @@ import Notiflix from 'notiflix';
 })
 export class SolicitudesComponent implements OnInit {
 
-  activo: boolean = false;
+  //activo: boolean = false;
+  //prueba
+  visitable: Boolean = false;
   form: FormGroup;
   correos!: Correos;
 
@@ -30,6 +31,10 @@ export class SolicitudesComponent implements OnInit {
 
   title = 'enviarrespuesta';
   // datos: FormGroup;
+
+  //resivir correo
+
+  emails : any[]=[];
 
   constructor(private correo: EncorreoService,
     private formBuilder: FormBuilder,
@@ -63,6 +68,7 @@ export class SolicitudesComponent implements OnInit {
       this.loaded = true;
       this.filteredResults = this.Correos;
     });
+    this.getEmails();
   }
   enviar(){
     if (this.form.valid) {
@@ -117,7 +123,25 @@ export class SolicitudesComponent implements OnInit {
       });
     }
   }
-  setactivo(): void {
-    this.activo = !this.activo;
+  // setactivo(): void {
+  //   this.activo = !this.activo;
+  // }
+  //prueba
+  showdialogo(){
+    this.visitable =true;
+  }
+
+  //resivir correo
+
+  getEmails() {
+    this.httpclient.get<any[]>('http://localhost:3000/emails')
+      .subscribe(
+        response => {
+          this.emails = response;
+        },
+        error => {
+          console.error('Error al obtener los correos', error);
+        }
+      );
   }
 }

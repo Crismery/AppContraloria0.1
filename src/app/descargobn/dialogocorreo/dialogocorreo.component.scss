@@ -3,6 +3,8 @@
   position: relative;
   display: flex;
   justify-content: center;
+  border-radius: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 button {
   background-color:hsl(0, 82%, 37%);
@@ -22,14 +24,11 @@ h3 {
 }
 .no{
 font-size: 20px;
-color: white;
+color: black;
 align-items: center;
 float: right;
 margin-right: 10px;
 margin-top: -50px;
-}
-.no:hover{
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .container {
   max-width: 800px; 
@@ -64,12 +63,12 @@ button:hover {
 }
 
 .navbar {
-  background-color: #002774;
+  background-color:white;
     padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    color: white;
+    color: black;
     border-bottom: 3px solid lightgray;
     height: 50px;
   }
