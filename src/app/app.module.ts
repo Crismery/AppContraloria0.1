@@ -51,6 +51,7 @@ import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { TagModule } from 'primeng/tag';
 import { DialogModule } from 'primeng/dialog';
+import { ResolicitudesComponent } from './solicitudes/resolicitudes/resolicitudes.component';
 
 
 
@@ -82,7 +83,8 @@ import { DialogModule } from 'primeng/dialog';
     DialogousuarioComponent,
     DialogocorreoComponent,
     DialogoBNComponent,
-    DialogoagregarComponent
+    DialogoagregarComponent,
+    ResolicitudesComponent
   ],
   imports: [
     BrowserModule,

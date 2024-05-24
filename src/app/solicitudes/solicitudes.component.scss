@@ -168,22 +168,6 @@ input[type=text] {
     align-items: center;
   }
 
-  &__nav {
-    background-color: rgb(252, 251, 251);
-    border-top: 3px solid lightgray;
-    width: 100%;
-    display: none;
-    flex-flow: column nowrap;
-    justify-content: center;
-    overflow: hidden;
-    transition: all .5s ease;
-  }
-
-  &__ul {
-    display: flex;
-    flex-direction: column;
-  }
-
   &__f {
     font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
@@ -211,33 +195,4 @@ input[type=text] {
     border: 1px solid #072879;
     font-weight: 600;
   }
-}
-
-.header__nav--activo {
-  display: flex;
-}
-
-.radio {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 14px;
-  float: right;
-  margin: 0 .5em;
-}
-
-.half-width {
-  width: 20px;
-  height: 40px;
-}
-
-.text {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 14px;
-}
-
-.input-group {
-  height: 50px;
-}
-option{
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 14px;
 }

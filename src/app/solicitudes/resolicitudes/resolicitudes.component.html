@@ -1,0 +1,51 @@
+<div class="navbar">
+    <i class="bi bi-x-lg no"(click)="cerrarCentrado()"></i>
+  </div>
+    <div class="container">
+        <div fxLayout="row" fxLayoutAlign="center center">
+        <form [formGroup]="form">
+        <div class="encabezado">
+            <h2>Solicitudes</h2>
+            <!-- <p class="header__p" *ngFor="let email of emails">{{email.snippet}}</p> -->
+            <p class="gmail">gmail.com</p>
+            <p class="fecha">Fecha</p>
+        </div>
+        <br>
+        <!-- <div class="card flex justify-content-center"> -->
+            <!-- <p class="header__p">iwueiiwgmail.com</p> -->
+            <div class="input-group mb-3">
+                <input type="text" class="form-control half-width" placeholder="Correo" aria-label="Username"
+                    formControlName="correo" name="correo">
+            </div>
+            <div class="form-floating">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                    formControlName="estatu" name="estatu" style="height: 35px; margin:.5em 0;">
+                    <option value="Aprobado">Aprobado</option>
+                    <option value="En espera">En espera</option>
+                    <option value="Rechazado">Rechazado</option>
+                </select>
+                <label for="floatingSelect">Selecione un estatu</label>
+            </div>
+            <div class="input-group input-group-sm ">
+                <input type="text" class="form-control half-width" placeholder="Asunto"
+                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" formControlName="asunto">
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+                <div class="form-floating">
+                    <textarea class="form-control text" placeholder="Leave a comment here" id="floatingTextarea2"
+                        style="height: 100px" formControlName="mensaje"></textarea>
+                    <label for="floatingTextarea2" class="text">Solicitud</label>
+                </div>
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control half-width" placeholder="Comentario" aria-label="Username"
+                    formControlName="comentario" name="comentario">
+            </div>
+            <div>
+                <button class="button" (click)="enviar()">Enviar</button>
+            </div>
+        <!-- </div> -->
+        </form>
+    </div>
+</div>
