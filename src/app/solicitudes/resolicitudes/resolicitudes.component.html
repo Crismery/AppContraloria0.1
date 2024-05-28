@@ -1,18 +1,15 @@
 <div class="navbar">
-    <i class="bi bi-x-lg no"(click)="cerrarCentrado()"></i>
-  </div>
-    <div class="container">
-        <div fxLayout="row" fxLayoutAlign="center center">
+    <i class="bi bi-x-lg no" (click)="cerrarCentrado()"></i>
+</div>
+<div class="container">
+    <div fxLayout="row" fxLayoutAlign="center center">
         <form [formGroup]="form">
-        <div class="encabezado">
-            <h2>Solicitudes</h2>
-            <!-- <p class="header__p" *ngFor="let email of emails">{{email.snippet}}</p> -->
-            <p class="gmail">gmail.com</p>
-            <p class="fecha">Fecha</p>
-        </div>
-        <br>
-        <!-- <div class="card flex justify-content-center"> -->
-            <!-- <p class="header__p">iwueiiwgmail.com</p> -->
+            <div class="encabezado">
+                <h2>Solicitudes</h2>
+                <p class="gmail">{{ data.from }}</p>
+                <p class="fecha">{{data.date}}</p>
+            </div>
+            <br>
             <div class="input-group mb-3">
                 <input type="text" class="form-control half-width" placeholder="Correo" aria-label="Username"
                     formControlName="correo" name="correo">
@@ -45,7 +42,6 @@
             <div>
                 <button class="button" (click)="enviar()">Enviar</button>
             </div>
-        <!-- </div> -->
         </form>
     </div>
 </div>

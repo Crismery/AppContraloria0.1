@@ -25,21 +25,18 @@ export class ResolicitudesComponent implements OnInit {
   constructor(private correo: EncorreoService,
     private formBuilder: FormBuilder,
     private httpclient: HttpClient,
-    private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog,
-    private viewContainerRef: ViewContainerRef,
     public dialogRef: MatDialogRef<ResolicitudesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Correos) {
-    this.form = this.formBuilder.group({
-      correo: [''],
-      asunto: ['', Validators.required],
-      mensaje: ['', Validators.required],
-      comentario: ['', Validators.required],
-      fecha_solicitud: [''],
-      fecha_respuesta: [''],
-      estatu: ['', Validators.required],
-    });
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+      this.form = this.formBuilder.group({
+        correo: [data.from || '', [Validators.required, Validators.email]],
+        asunto: [data.subject || '', Validators.required],
+        mensaje: [data.snippet || '', Validators.required],
+        comentario: ['', Validators.required],
+        estatu: ['', Validators.required],
+        fecha_solicitud: [''],
+        fecha_respuesta: [''],
+      });
 
     this.form = new FormGroup({
       correo: new FormControl('', [Validators.required, Validators.email]),
@@ -52,7 +49,7 @@ export class ResolicitudesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getEmails();
+    // this.getEmails();
   }
 
   enviar() {
@@ -80,22 +77,40 @@ export class ResolicitudesComponent implements OnInit {
     this.httpclient.post('http://localhost:3001/solicitudes', params).subscribe(resp => {
       console.log(resp)
       Notiflix.Loading.remove();
-      Notiflix.Notify.success('Correo enviado correctamente');
-      // this.form.reset();
-    })
+      Notiflix.Report.success(
+        'Correo enviado',
+        'El correo se envió con éxito',
+        'Aceptar'
+      );
+      this.dialogRef.close();
+    }, error => {
+      Notiflix.Loading.remove();
+      Notiflix.Report.failure(
+        'Error',
+        'No se pudo enviar el correo. Inténtalo de nuevo.',
+        'Aceptar'
+      );
+      console.error('Error al enviar el correo:', error);
+    });
   }
 
-  getEmails() {
-    this.httpclient.get<any[]>('http://localhost:3000/emails')
-      .subscribe(
-        response => {
-          this.emails = response;
-        },
-        error => {
-          console.error('Error al obtener los correos', error);
-        }
-      );
-  }
+  // getEmails() {
+  //   this.correo.getEmails().subscribe(
+  //     response => {
+  //       this.emails = response;
+  //       if (this.emails.length > 0) {
+  //         this.form.patchValue({
+  //           correo: this.emails[0].from,
+  //           asunto: this.emails[0].subject,
+  //           mensaje: this.emails[0].snippet
+  //         });
+  //       }
+  //     },
+  //     error => {
+  //       console.error('Error al obtener los correos', error);
+  //     }
+  //   );
+  // }
   cerrarCentrado() {
     this.dialogRef.close();
   }

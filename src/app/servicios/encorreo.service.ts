@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, updateDoc, getDoc} from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, getDoc} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import {Correos} from "../interfaz/correos"
+import {Correos} from "../interfaz/correos";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EncorreoService {
 
-  constructor(private firestore:Firestore) { }
+  private apiUrl = 'http://localhost:3002/api/emails';
+
+  constructor(private firestore:Firestore,
+    private http: HttpClient
+  ) { }
 //guardar
   addPlace(correo: Correos){
     const fecha_respuesta = new Date().toISOString().split('T')[0];
@@ -37,5 +42,10 @@ export class EncorreoService {
       console.error('Error al cargar la información:', error);
       return 'Error al cargar la información';
     }
+  }
+  
+  //obtener correo
+  getEmails(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
   }
 }

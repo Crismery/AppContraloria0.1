@@ -16,6 +16,7 @@ import { ResolicitudesComponent } from './resolicitudes/resolicitudes.component'
 })
 export class SolicitudesComponent implements OnInit {
 
+  form: FormGroup;
   Correos: Correos[] = [];
   idFrozen: boolean = false;
   loaded: boolean = false;
@@ -26,24 +27,36 @@ export class SolicitudesComponent implements OnInit {
 
   title = 'enviarrespuesta';
   //resivir correo
-
+  emails: any[] = [];
 
   constructor(private correo: EncorreoService,
     private dialog:MatDialog, 
     private viewContainerRef: ViewContainerRef,
+    private formBuilder: FormBuilder,
+    private httpclient: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: Correos
   ) {
+    this.form = this.formBuilder.group({
+      correo: [''],
+      asunto: ['', Validators.required],
+      mensaje: ['', Validators.required],
+      comentario: ['', Validators.required],
+      fecha_solicitud: [''],
+      fecha_respuesta: [''],
+      estatu: ['', Validators.required],
+    });
   }
 
-  mostrarComponente(): void {
+  mostrarComponente(email: any): void {
     const dialogRef = this.dialog.open(ResolicitudesComponent, {
       width: '550px',
       height: '500px',
       viewContainerRef: this.viewContainerRef,
       panelClass: 'dialog-container',
-      disableClose: true
+      disableClose: true,
+      data: email
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialogo cerrado:', result);
     });
@@ -54,6 +67,7 @@ export class SolicitudesComponent implements OnInit {
       this.loaded = true;
       this.filteredResults = this.Correos;
     });
+    this.getEmails();
   }
   getSeverity(estatu: string): string {
     if (estatu === 'Aprobado') {
@@ -78,5 +92,15 @@ export class SolicitudesComponent implements OnInit {
         this.Correos = Correos;
       });
     }
+  }
+  getEmails() {
+    this.correo.getEmails().subscribe(
+      response => {
+        this.emails = response;
+      },
+      error => {
+        console.error('Error al obtener los correos', error);
+      }
+    );
   }
 }
