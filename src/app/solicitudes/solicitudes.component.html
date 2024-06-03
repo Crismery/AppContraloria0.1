@@ -25,36 +25,31 @@
       </div> -->
     <!-- Dentro de tu HTML -->
     <div class="left" *ngIf="emails.length">
-      <div class="left">
-        <div fxLayout="row" fxLayoutAlign="center center"
-          style="overflow-y: auto; max-height: 460px; max-width: 500px; ">
-          <form [formGroup]="form">
-            <div class="checkbox">
+        <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 460px; max-width: 500px;">
+          <div class="checkbox" *ngFor="let email of emails">
+            <form [formGroup]="form">
               <div class="header">
                 <div>
                   <h2>Solicitudes</h2>
-                  <div *ngFor="let email of emails">
-                    <p class="gmail">{{email.snippet }}</p>
-                    <p class="fecha">{{ email.date}}</p>
-                  <button class="header__button" (click)="mostrarComponente(email)" title="Ver">
-                    <svg class="header__svg" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                      fill="currentColor" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd"
-                        d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67" />
-                    </svg>
-                  </button>
-                  </div>
+                    <p class="gmail">{{ email.subject }}</p>
+                    <p class="fecha">{{ email.date }}</p>
+                    <button class="header__button" (click)="mostrarComponente(email)" title="Ver">
+                      <svg class="header__svg" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67" />
+                      </svg>
+                    </button>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
     </div>
     <br>
     <div *ngIf="!emails.length">
       <p>No hay correos electrónicos nuevos.</p>
-    </div>
+    </div>    
 
     <div class="estatico ">
       <div class="right mt-3 ">

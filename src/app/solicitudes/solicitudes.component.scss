@@ -125,6 +125,8 @@ input[type=text] {
   padding: 10px;
   display: flex;
   align-items: center;
+  font-family: 'Times New Roman', Times, serif;
+  width: 200px;
 }
 
 .salida {
@@ -136,7 +138,7 @@ input[type=text] {
 
 .header {
   background-color: rgb(252, 251, 251);
-  width: 80%;
+  width: 200%;
   padding: len;
   padding: 14px;
   display: flex;
@@ -195,4 +197,11 @@ input[type=text] {
     border: 1px solid #072879;
     font-weight: 600;
   }
+}
+.fecha{
+  font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    float: right;
+    margin-right: -10px;
+    margin-top: -60px;
 }
