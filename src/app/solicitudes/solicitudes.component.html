@@ -23,16 +23,17 @@
     <!-- <div class="search-bar mt-3">
         <input type="text"  placeholder="ej. Laptop">
       </div> -->
-    <!-- Dentro de tu HTML -->
     <div class="left" *ngIf="emails.length">
         <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 460px; max-width: 500px;">
           <div class="checkbox" *ngFor="let email of emails">
             <form [formGroup]="form">
               <div class="header">
                 <div>
-                  <h2>Solicitudes</h2>
-                    <p class="gmail">{{ email.subject }}</p>
+                  <div class="header-content">
+                    <h2>Solicitudes</h2>
                     <p class="fecha">{{ email.date }}</p>
+                  </div>
+                    <p class="gmail">{{ email.from }}</p>
                     <button class="header__button" (click)="mostrarComponente(email)" title="Ver">
                       <svg class="header__svg" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                         fill="currentColor" viewBox="0 0 16 16">

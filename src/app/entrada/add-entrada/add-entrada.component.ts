@@ -48,7 +48,8 @@ this.form = this.formBuilder.group({
   fecha_de_borrados: [''],
   fecha_de_reingreso: [''],
   fecha_de_asignacion: [''],
-  fecha_de_descargoBN: ['']
+  fecha_de_descargoBN: [''],
+  comentarioeliusuario:['']
 });
 
 this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {

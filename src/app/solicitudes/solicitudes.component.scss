@@ -170,14 +170,6 @@ input[type=text] {
     align-items: center;
   }
 
-  &__f {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
-    float: right;
-    margin-right: -200px;
-    margin-top: -80px;
-  }
-
   &__b {
     background-color: #002774;
     border-radius: 5px;
@@ -198,10 +190,17 @@ input[type=text] {
     font-weight: 600;
   }
 }
-.fecha{
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fecha {
   font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
-    float: right;
-    margin-right: -10px;
-    margin-top: -60px;
+  font-size: 14px;
+  color: gray;
+  // position: static;
+  // top: 8px;
+  // right: 16px;
 }

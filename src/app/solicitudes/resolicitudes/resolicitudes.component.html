@@ -12,9 +12,8 @@
             <br>
             <div class="input-group mb-3">
                 <input type="text" class="form-control half-width" placeholder="Correo" aria-label="Username"
-                    formControlName="correo" name="correo" [(ngModel)]="data.from" >
-                    <!-- <p class="gmail"  formControlName="correo" name="correo">{{ data.from }}</p> -->
-            </div>
+         formControlName="correo" name="correo">
+                </div>
             <div class="form-floating">
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
                     formControlName="estatu" name="estatu" style="height: 35px; margin:.5em 0;">
@@ -24,22 +23,17 @@
                 </select>
                 <label for="floatingSelect">Selecione un estatu</label>
             </div>
-            <div class="input-group input-group-sm ">
-                <input type="text" class="form-control half-width" placeholder="Asunto" 
-                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="floatingInputDisabled" [disabled]="isDisabled" formControlName="asunto"[(ngModel)]="data.subject">
-            </div>
-            <!-- <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInputDisabled" [disabled]="isDisabled" placeholder="asunto" formControlName="asunto"[(ngModel)]="data.subject">
-                <label for="floatingInputDisabled">Email address</label>
+            <div class="input-group mb-3 half-width">
+                <span class="input-group-text">Asunto</span>
+                <div class="form-floating">
+                  <input type="text" class="form-control half-width" id="floatingInputDisabled" formControlName="asunto" name="asunto" placeholder="Username">
+                  <label for="floatingInputGroup1">Asunto</label>
+                </div>
               </div>
-            <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Solicitud" id="floatingTextareaDisabled" [disabled]="isDisabled" formControlName="mensaje" [(ngModel)]="data.snippet"></textarea>
-                <label for="floatingTextareaDisabled">Comments</label>
-              </div> -->
             <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
                 <div class="form-floating">
                     <textarea class="form-control text" placeholder="Leave a comment here" id="floatingTextarea2"
-                        style="height: 100px" formControlName="mensaje" [(ngModel)]="data.snippet"></textarea>
+                        style="height: 100px" formControlName="mensaje" name="mensaje"></textarea>
                     <label for="floatingTextarea2" class="text">Solicitud</label>
                 </div>
             </div>

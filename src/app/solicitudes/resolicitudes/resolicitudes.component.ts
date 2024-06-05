@@ -22,8 +22,6 @@ export class ResolicitudesComponent implements OnInit {
 
   emails: any[] = [];
 
-  isDisabled: boolean = true;
-
   constructor(private correo: EncorreoService,
     private formBuilder: FormBuilder,
     private httpclient: HttpClient,
@@ -32,8 +30,8 @@ export class ResolicitudesComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {
       this.form = this.formBuilder.group({
         correo: [data.from || '', [Validators.required, Validators.email]],
-        asunto: [data.subject ||'', Validators.required ||{ value: '', disabled: this.isDisabled}],
-        mensaje: [data.snippet || '', Validators.required || { value: '', disabled: this.isDisabled}],
+        asunto: [data.subject ||'', Validators.required ],
+        mensaje: [data.snippet || '', Validators.required],
         comentario: ['', Validators.required],
         estatu: ['', Validators.required],
         fecha_solicitud: [''],
@@ -48,6 +46,11 @@ export class ResolicitudesComponent implements OnInit {
       estatu: new FormControl('', Validators.required),
     });
 
+    this.form = this.formBuilder.group({
+      correo: [{ value: this.data.from, disabled: true }],
+      asunto: [{ value: this.data.subject, disabled: true }],
+      mensaje: [{ value: this.data.snippet, disabled: true }]
+    });
   }
 
   ngOnInit(): void {

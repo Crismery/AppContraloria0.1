@@ -28,4 +28,5 @@ export interface Appcontraloria {
     fecha_de_descargoBN: string;
     email: string;
     comentarioeli:string;
+    comentarioeliusuario:string;
 }

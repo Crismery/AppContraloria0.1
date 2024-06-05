@@ -42,6 +42,8 @@ export class ReporteComponent implements OnInit {
 
   idFrozen: boolean = false;
 
+  dialogVisible: boolean = false;
+
   constructor(private registrosService: RegistrosService,
     private serviciocorreo: EncorreoService,
     private imprimir: ImprimirService
@@ -378,4 +380,7 @@ export class ReporteComponent implements OnInit {
 
     this.imprimir.imprimirTodas(encabezados, cuerpos, ["Reporte de los cambios de Registros", "Reporte de los cambios de las entradas", "Reporte de los cambios de los dispositivos asignados", "Reporte de los cambios de mantenimiento", "Reporte de los registros enviado a descargo de bienes nacionales","Reporte de las solicitudes"], true, htmlContent);
   }
+  showDialog() {
+    this.dialogVisible = true;
+}
 }

@@ -6,7 +6,7 @@
  
            <mat-form-field appearance="outline">
              <mat-label>Dispositivo</mat-label>
-             <mat-select  placeholder="Seleccione un Dispositivo"  name="opciones" [(ngModel)]="appcontraloriaedit.dispositivo">
+             <mat-select  placeholder="Seleccione un Dispositivo"  name="opciones" [(ngModel)]="appcontraloriaedit.dispositivo" disabled>
                  <mat-option value="Desktop">Desktop</mat-option>
                  <mat-option value="Laptop">Laptop</mat-option>
                  <mat-option value="Monitor">Monitor</mat-option>
@@ -17,19 +17,19 @@
  
            <mat-form-field appearance="outline">
              <mat-label>Modelo</mat-label>
-             <input matInput type="text" placeholder="ej. Pro Desk" [(ngModel)]="appcontraloriaedit.modelo">
+             <input matInput type="text" placeholder="ej. Pro Desk" [(ngModel)]="appcontraloriaedit.modelo" disabled>
          </mat-form-field>
          <mat-form-field appearance="outline">
            <mat-label>Serial</mat-label>
-           <input matInput type="text" placeholder="ej. 1xcs45" [(ngModel)]="appcontraloriaedit.serial">
+           <input matInput type="text" placeholder="ej. 1xcs45" [(ngModel)]="appcontraloriaedit.serial" disabled>
        </mat-form-field>
        <mat-form-field appearance="outline">
          <mat-label>Placa</mat-label>
-         <input matInput type="text" placeholder="ej. 1234" [(ngModel)]="appcontraloriaedit.placa">
+         <input matInput type="text" placeholder="ej. 1234" [(ngModel)]="appcontraloriaedit.placa" disabled>
      </mat-form-field>
      <mat-form-field appearance="outline">
       <mat-label>Bienes Nacionales</mat-label>
-      <input matInput type="text" placeholder="ej. 12548" [(ngModel)]="appcontraloriaedit.bienes_nacionales">
+      <input matInput type="text" placeholder="ej. 12548" [(ngModel)]="appcontraloriaedit.bienes_nacionales"disabled>
   </mat-form-field>
      <mat-form-field appearance="outline">
         <mat-label>Cedula</mat-label>
@@ -61,6 +61,11 @@
    <mat-form-field appearance="outline">
     <mat-label>Version</mat-label>
     <input matInput type="text" [(ngModel)]="appcontraloriaedit.version">
+</mat-form-field>
+<h3>-Escriba la razon por la cual se cambiara de usuario:</h3>
+<mat-form-field appearance="outline">
+  <mat-label>Comentario</mat-label>
+  <input matInput type="text" placeholder="Comentario" [(ngModel)]="appcontraloriaedit.comentarioeliusuario">
 </mat-form-field>
          </div>
          <div class="cardbutton">
