@@ -43,6 +43,12 @@ export class ReporteComponent implements OnInit {
   idFrozen: boolean = false;
 
   dialogVisible: boolean = false;
+  dialogVisiblere: boolean = false;
+  dialogVisibleen: boolean = false;
+  dialogVisiblesi: boolean = false;
+  dialogVisiblema: boolean = false;
+  dialogVisiblede: boolean = false;
+  dialogVisibletodo: boolean = false;
 
   constructor(private registrosService: RegistrosService,
     private serviciocorreo: EncorreoService,
@@ -382,5 +388,23 @@ export class ReporteComponent implements OnInit {
   }
   showDialog() {
     this.dialogVisible = true;
+}
+showDialogre() {
+  this.dialogVisiblere = true;
+}
+showDialogen() {
+  this.dialogVisibleen = true;
+}
+showDialogsi() {
+  this.dialogVisiblesi = true;
+}
+showDialogma() {
+  this.dialogVisiblema = true;
+}
+showDialogde() {
+  this.dialogVisiblede = true;
+}
+showDialogtodo() {
+  this.dialogVisibletodo = true;
 }
 }
