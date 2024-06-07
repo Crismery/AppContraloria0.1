@@ -50,7 +50,7 @@ export class SolicitudesComponent implements OnInit {
   mostrarComponente(email: any): void {
     const dialogRef = this.dialog.open(ResolicitudesComponent, {
       width: '550px',
-      height: '500px',
+      height: '550px',
       viewContainerRef: this.viewContainerRef,
       panelClass: 'dialog-container',
       disableClose: true,
@@ -69,15 +69,17 @@ export class SolicitudesComponent implements OnInit {
     });
     this.getEmails();
   }
-  getSeverity(estatu: string): string {
-    if (estatu === 'Aprobado') {
-      return 'success';
-    } else if (estatu === 'En espera') {
-      return 'warning';
-    } else if (estatu === 'Rechazado') {
-      return 'danger';
-    } else {
-      return 'info';
+  
+  getSeverity(estatu: string){
+    switch(estatu) {
+      case 'Aprobado':
+        return 'success';
+      case 'En espera':
+        return 'warning';
+      case 'Rechazado':
+        return 'danger';
+      default:
+        return undefined;
     }
   }
   buscar(): void {

@@ -21,10 +21,46 @@
     <br>
     <div class="navbar1">
       <span><i class="bi bi-cloud-download salida"></i> Descargo BN</span>
-      <div>
-        <button class="boton1" (click)="mostrarComponente(appcontraloria)"> <i class="bi bi-envelope-at salida"></i> Descargo
-          BN</button>
-      </div>
+      <!-- <div>
+        <button class="boton1" (click)="mostrarComponente(appcontraloria)"> <i class="bi bi-envelope-at salida"></i> Descargo BN</button>
+      </div> -->
+      <div class="flex justify-content-center">
+        <button 
+            class="boton1"
+            type="button" 
+            (click)="showDialog()" 
+            pButton 
+            icon="pi pi-external-link" 
+            label="Descargo BN">
+            <i class="bi bi-envelope-at salida"></i>
+        </button>
+    </div>
+    <p-dialog 
+        header="Enviar correo" 
+        [resizable]="false" 
+        [modal]="true" 
+        [maximizable]="true" 
+        appendTo="body" 
+        [(visible)]="dialogVisible" 
+        [style]="{width: '45vw'}" 
+        [contentStyle]="{height: '400px'}">
+      <div class="container" [formGroup]="datos">
+          <br>
+          <div class="form-group">
+              <input type="text" id="destinatarios" placeholder="Correo:" formControlName="correo" name="correo">
+          </div>
+          <div class="form-group">
+              <input type="text" id="asunto" placeholder="Asunto:" formControlName="asunto" name="asunto">
+          </div>
+          <div class="form-group" fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
+              <textarea id="cuerpo" formControlName="mensaje" name="mensaje">
+                   Estos Dispositivo seran enviados al decargo de bienes:
+                  {{ datos.get('mensaje')?.value }}
+              </textarea>
+            </div>
+          <button class="Enviar" (click)="enviarcorreo()"><i class="bi bi-send-check"></i>Enviar</button>
+  </div>
+    </p-dialog>
     </div>
     <div class="search-bar mt-3">
       <input class="form-control" type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">

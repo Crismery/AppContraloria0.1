@@ -29,7 +29,7 @@
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "notiflix": "^3.2.7",
-    "primeng": "^17.7.0",
+    "primeng": "^17.18.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

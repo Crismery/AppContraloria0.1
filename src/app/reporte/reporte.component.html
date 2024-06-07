@@ -37,34 +37,298 @@
             </button>
         </div>
         <p-dialog 
-      header="Reporte de los cambios de Registros" 
+      header="Ver todo" 
       [resizable]="false" 
       [modal]="true" 
       [maximizable]="true" 
       appendTo="body" 
       [(visible)]="dialogVisibletodo" 
       [style]="{width: '75vw', backgroundColor: 'white', borderRadius: '10px', padding: '20px'}" 
-      [contentStyle]="{height: '300px',padding: '10px'}">
+      [contentStyle]="{height: '400px',padding: '10px'}">
       <p-tabView>
-        <p-tabPanel header="Header I">
-            <p>
-                Lorem ipsum dolor sit amet...
-            </p>
+        <p-tabPanel header="Registros">
+          <h3>-Sean actualizado {{registroregistro}} dispositivo, quedo {{registrousu}} libres para asignar nuevamente.</h3>
+          <p-table 
+          [value]="appcontraloriare" 
+          [scrollable]="true"
+          scrollHeight="flex" 
+          [tableStyle]="{'min-width': '50rem'}">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
+                      field="dispositivo" /></th>
+                  <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn
+                    [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon
+                      field="serial" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" />
+                  </th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales
+                    <p-sortIcon field="bienesnacionales" />
+                  </th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="usuario">Usuario<p-sortIcon
+                      field="usuario" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="departamento">Departamento <p-sortIcon
+                      field="departamento" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="fisico">Mantenimiento<p-sortIcon
+                      field="fisico" /></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-appcontraloriare>
+                <tr>
+                  <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloriare.dispositivo}}</td>
+                  <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
+                    [ngClass]="{'font-bold': idFrozen}">{{appcontraloriare.modelo}}</td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloriare.serial}}</span>
+                  </td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloriare.placa}}</span>
+                  </td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloriare.bienes_nacionales}}</span>
+                  </td>
+                  <td style="width:200px">{{appcontraloriare.usuario}}</td>
+                  <td style="width:200px">{{appcontraloriare.Departamento}}</td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloriare.mantenimiento}}</span>
+                  </td>
+                </tr>
+              </ng-template>
+      </p-table>
         </p-tabPanel>
-        <p-tabPanel header="Header II">
-            <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
-            </p>
+        <p-tabPanel header="Entrada">
+          <h3>-Sean agregado {{ registrosent }} dispositivo, sean actualizado {{registroregistro}}.</h3>
+          <p-table 
+          [value]="appcontraloriaent" 
+          [scrollable]="true"
+          scrollHeight="flex" 
+          [tableStyle]="{'min-width': '50rem'}">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
+                      field="dispositivo" /></th>
+                  <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn
+                    [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon
+                      field="serial" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" />
+                  </th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales
+                    <p-sortIcon field="bienesnacionales" />
+                  </th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="entrada">Fecha entrada<p-sortIcon
+                      field="entrada" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="actualizacion">Fecha actualizacion
+                    <p-sortIcon field="actualizacion" />
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-appcontraloriaent>
+                <tr>
+                  <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloriaent.dispositivo}}</td>
+                  <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
+                    [ngClass]="{'font-bold': idFrozen}">{{appcontraloriaent.modelo}}</td>
+                  <td style="width:200px">{{appcontraloriaent.serial}}</td>
+                  <td style="width:200px">{{appcontraloriaent.placa}}</td>
+                  <td style="width:200px">{{appcontraloriaent.bienes_nacionales}}</td>
+                  <td style="width:200px">{{appcontraloriaent.fecha_de_entrada}}</td>
+                  <td style="width:200px">{{appcontraloriaent.fecha_de_actualizacion}}</td>
+                </tr>
+              </ng-template>
+      </p-table>
         </p-tabPanel>
-        <p-tabPanel header="Header III">
-            <p>
-                At vero eos et accusamus et iusto odio dignissimos...
-            </p>
+        <p-tabPanel header="Dispositivo Asignados">
+          <h3>-Sean asiginado {{ registroasignar }} dispositivos.</h3>
+          <p-table 
+          [value]="appcontraloria" 
+          [scrollable]="true"
+          scrollHeight="flex" 
+          [tableStyle]="{'min-width': '50rem'}">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
+                      field="dispositivo" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon
+                      field="serial" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="serial">Cedula<p-sortIcon
+                      field="serial" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="serial">Usuario<p-sortIcon
+                      field="serial" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="serial">Departamento<p-sortIcon
+                      field="serial" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="os">Os<p-sortIcon field="os" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="cpu">CPU<p-sortIcon field="cpu" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="memoria">Memoria<p-sortIcon
+                      field="memoria" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="almacenamiento">Almacenamiento<p-sortIcon
+                      field="almacenamiento" /></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-appcontraloria>
+                <tr>
+                  <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloria.dispositivo}}</td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloria.serial}}</span>
+                  </td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloria.cedula}}</span>
+                  </td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloria.usuario}}</span>
+                  </td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloria.Departamento}}</span>
+                  </td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloria.os}}</span>
+                  </td>
+                  <td style="width:200px">{{appcontraloria.cpu}}</td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloria.memoria}}</span>
+                  </td>
+                  <td style="width:200px">{{appcontraloria.almacenamiento}}</td>
+                </tr>
+              </ng-template>
+      </p-table>
         </p-tabPanel>
+        <p-tabPanel header="Mantenimiento">
+          <h3>-Se le an hecho mantenimiento a {{registromatenimiento}} dispositivos.</h3>
+          <p-table 
+          [value]="appcontraloriaman" 
+          [scrollable]="true"
+          scrollHeight="flex" 
+          [tableStyle]="{'min-width': '50rem'}">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
+                      field="dispositivo" /></th>
+                  <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="serial" pFrozenColumn
+                    [frozen]="idFrozen">Serial <p-sortIcon field="serial" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" />
+                  </th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="tipomanteniemiento">Tipo de mantenimiento
+                    <p-sortIcon field="tipomanteniemiento" />
+                  </th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="descripcion">Descripcion <p-sortIcon
+                      field="descripcion" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="fisico">Fisico<p-sortIcon
+                      field="fisico" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="logico">Logico <p-sortIcon
+                      field="logico" /></th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="defragmentacion">Defragmentacion
+                    <p-sortIcon field="defragmentacion" />
+                  </th>
+                  <th style="width:200px; text-align: center;" pSortableColumn="fecha">Fecha <p-sortIcon field="fecha" />
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-appcontraloriaman>
+                <tr>
+                  <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloriaman.dispositivo}}</td>
+                  <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
+                    [ngClass]="{'font-bold': idFrozen}">{{appcontraloriaman.serial}}</td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloriaman.placa}}</span>
+                  </td>
+                  <td style="width:200px">{{appcontraloriaman.tipo_de_mantenimiento}}</td>
+                  <td style="width:200px">
+                    <span class="image-text ml-2">{{appcontraloriaman.mantenimiento}}</span>
+                  </td>
+                  <td style="width:200px">Memoria:{{appcontraloriaman.memoria}},
+                    Disco:{{appcontraloriaman.almacenamiento}} y
+                    Limpieza: {{appcontraloriaman.limpieza}}</td>
+                  <td style="width:200px">{{appcontraloriaman.os}}</td>
+                  <td style="width:200px">{{appcontraloriaman.defragmentacion}}</td>
+                  <td style="width:200px">{{appcontraloriaman.fecha_de_mantenimiento}}</td>
+                </tr>
+              </ng-template>
+      </p-table>
+      </p-tabPanel>
+      <p-tabPanel header="Descargo Bienes Nacionales">
+        <h3>-Sean enviado {{registroelim}} registros al Descargo de BN.</h3>
+        <p-table 
+                [value]="appcontraloriaBN" 
+                [scrollable]="true"
+                scrollHeight="flex" 
+                [tableStyle]="{'min-width': '50rem'}">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
+                            field="dispositivo" /></th>
+                        <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn
+                          [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+                        <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon
+                            field="serial" /></th>
+                        <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" />
+                        </th>
+                        <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales
+                          <p-sortIcon field="bienesnacionales" />
+                        </th>
+                        <th style="width:200px; text-align: center;" pSortableColumn="entrada">Fecha de descargo-BN<p-sortIcon
+                            field="entrada" /></th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-Appcontraloria>
+                      <tr>
+                        <td style="width:200px" pFrozenColumn class="font-bold">{{Appcontraloria.dispositivo}}</td>
+                        <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
+                          [ngClass]="{'font-bold': idFrozen}">{{Appcontraloria.modelo}}</td>
+                        <td style="width:200px">{{Appcontraloria.serial}}</td>
+                        <td style="width:200px">{{Appcontraloria.placa}}</td>
+                        <td style="width:200px">{{Appcontraloria.bienes_nacionales}}</td>
+                        <td style="width:200px">{{Appcontraloria.fecha_de_descargoBN}}</td>
+                      </tr>
+                    </ng-template>
+            </p-table>
+    </p-tabPanel>
+    <p-tabPanel header="Solicitudes">
+      <p-table 
+                [value]="appcontraloriasoli" 
+                [scrollable]="true"
+                scrollHeight="flex" 
+                [tableStyle]="{'min-width': '50rem'}">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th style="width:200px; text-align: center;" pSortableColumn="correo">Correo <p-sortIcon field="correo" />
+                        </th>
+                        <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="asunto" pFrozenColumn
+                          [frozen]="idFrozen">Asunto <p-sortIcon field="asunto" /></th>
+                        <th style="width:200px; text-align: center;" pSortableColumn="mensaje">Solicitudes<p-sortIcon
+                            field="mensaje" /></th>
+                        <th style="width:200px; text-align: center;" pSortableColumn="comentario">Comentario <p-sortIcon
+                            field="comentario" /></th>
+                        <th style="width:200px; text-align: center;" pSortableColumn="solicitud">Fecha solicitud <p-sortIcon
+                            field="solicitud" /></th>
+                        <th style="width:200px; text-align: center;" pSortableColumn="respuesta">Fecha respuesta <p-sortIcon
+                            field="respuesta" /></th>
+                        <th style="width:200px; text-align: center;" pSortableColumn="estatu" pFrozenColumn alignFrozen="right">
+                          Estatu <p-sortIcon field="estatu" /></th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-Correos>
+                      <tr>
+                        <td style="width:200px" pFrozenColumn class="font-bold">{{Correos.correo}}</td>
+                        <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
+                          [ngClass]="{'font-bold': idFrozen}">{{Correos.asunto}}</td>
+                        <td style="width:200px">
+                          <span class="image-text ml-2">{{Correos.mensaje}}</span>
+                        </td>
+                        <td style="width:200px">{{Correos.comentario}}</td>
+                        <td style="width:200px">{{Correos.fecha_solicitud}}</td>
+                        <td style="width:200px">
+                          <span class="image-text ml-2">{{Correos.fecha_respuesta}}</span>
+                        </td>
+                        <td style="width:200px">
+                          <p-tag [value]="Correos.estatu" [severity]=" getSeverity(Correos.estatu)" />
+                        </td>
+                      </tr>
+                    </ng-template>
+            </p-table>
+  </p-tabPanel>
     </p-tabView>
   </p-dialog>
         </div>
-      <mat-checkbox class="checkbox-container" (change)=" toggletodo($event)">Ver todo</mat-checkbox>
       <button class="boton1" (click)=" onImprimirTodos()"> <i class="bi bi-filetype-pdf salida"></i>Imprimir
         todo</button>
     </div>
@@ -236,46 +500,6 @@
             </ng-template>
     </p-dialog>
           </div>
-        <!-- <mat-checkbox class="checkbox-container" (change)=" toggleentrada($event)">Ver Cambios</mat-checkbox>
-        <div *ngIf="entrada || todo">
-          <h3>-Sean agregado {{ registrosent }} dispositivo, sean actualizado {{registroregistro}}.</h3>
-          <p-table [value]="appcontraloriaent" [scrollable]="true" scrollHeight="350px"
-            [tableStyle]="{'min-width': '45rem'}">
-            <ng-template pTemplate="header">
-              <tr>
-                <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
-                    field="dispositivo" /></th>
-                <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn
-                  [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon
-                    field="serial" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" />
-                </th>
-                <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales
-                  <p-sortIcon field="bienesnacionales" />
-                </th>
-                <th style="width:200px; text-align: center;" pSortableColumn="entrada">Fecha entrada<p-sortIcon
-                    field="entrada" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="actualizacion">Fecha actualizacion
-                  <p-sortIcon field="actualizacion" />
-                </th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-appcontraloriaent>
-              <tr>
-                <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloriaent.dispositivo}}</td>
-                <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
-                  [ngClass]="{'font-bold': idFrozen}">{{appcontraloriaent.modelo}}</td>
-                <td style="width:200px">{{appcontraloriaent.serial}}</td>
-                <td style="width:200px">{{appcontraloriaent.placa}}</td>
-                <td style="width:200px">{{appcontraloriaent.bienes_nacionales}}</td>
-                <td style="width:200px">{{appcontraloriaent.fecha_de_entrada}}</td>
-                <td style="width:200px">{{appcontraloriaent.fecha_de_actualizacion}}</td>
-              </tr>
-            </ng-template>
-          </p-table>
-          <i class="bi bi-printer imprimir" *ngIf="entrada" title="Imprimir" (click)="onImprimirEntrada()"></i>
-        </div> -->
       </div>
       <!-- asignar -->
       <div class="checkbox">
@@ -368,59 +592,6 @@
             </ng-template>
     </p-dialog>
           </div>
-        <!-- <mat-checkbox class="checkbox-container" (change)=" toggleasignacion($event)">Ver Cambios</mat-checkbox>
-        <div *ngIf="asignacion || todo">
-          <h3>-Sean asiginado {{ registroasignar }} dispositivos</h3>
-          <p-table [value]="appcontraloria" [scrollable]="true" scrollHeight="350px"
-            [tableStyle]="{'min-width': '45rem'}">
-            <ng-template pTemplate="header">
-              <tr>
-                <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
-                    field="dispositivo" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon
-                    field="serial" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="serial">Cedula<p-sortIcon
-                    field="serial" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="serial">Usuario<p-sortIcon
-                    field="serial" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="serial">Departamento<p-sortIcon
-                    field="serial" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="os">Os<p-sortIcon field="os" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="cpu">CPU<p-sortIcon field="cpu" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="memoria">Memoria<p-sortIcon
-                    field="memoria" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="almacenamiento">Almacenamiento<p-sortIcon
-                    field="almacenamiento" /></th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-appcontraloria>
-              <tr>
-                <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloria.dispositivo}}</td>
-                <td style="width:200px">
-                  <span class="image-text ml-2">{{appcontraloria.serial}}</span>
-                </td>
-                <td style="width:200px">
-                  <span class="image-text ml-2">{{appcontraloria.cedula}}</span>
-                </td>
-                <td style="width:200px">
-                  <span class="image-text ml-2">{{appcontraloria.usuario}}</span>
-                </td>
-                <td style="width:200px">
-                  <span class="image-text ml-2">{{appcontraloria.Departamento}}</span>
-                </td>
-                <td style="width:200px">
-                  <span class="image-text ml-2">{{appcontraloria.os}}</span>
-                </td>
-                <td style="width:200px">{{appcontraloria.cpu}}</td>
-                <td style="width:200px">
-                  <span class="image-text ml-2">{{appcontraloria.memoria}}</span>
-                </td>
-                <td style="width:200px">{{appcontraloria.almacenamiento}}</td>
-              </tr>
-            </ng-template>
-          </p-table>
-          <i class="bi bi-printer imprimir" *ngIf="asignacion" title="Imprimir" (click)="onImprimirAsignacion()"></i>
-        </div> -->
       </div>
       <!-- mantenimiento -->
       <div class="checkbox">
@@ -512,58 +683,6 @@
             </ng-template>
     </p-dialog>
           </div>
-        <!-- <mat-checkbox class="checkbox-container" (change)="togglematenimiento($event)">Ver Cambios</mat-checkbox>
-        <div *ngIf="mantenimiento || todo">
-          <h3>-Se le an hecho mantenimiento a {{registromatenimiento}} dispositivos </h3>
-          <p-table [value]="appcontraloriaman" [scrollable]="true" scrollHeight="350px"
-            [tableStyle]="{'min-width': '45rem'}">
-            <ng-template pTemplate="header">
-              <tr>
-                <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
-                    field="dispositivo" /></th>
-                <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="serial" pFrozenColumn
-                  [frozen]="idFrozen">Serial <p-sortIcon field="serial" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" />
-                </th>
-                <th style="width:200px; text-align: center;" pSortableColumn="tipomanteniemiento">Tipo de mantenimiento
-                  <p-sortIcon field="tipomanteniemiento" />
-                </th>
-                <th style="width:200px; text-align: center;" pSortableColumn="descripcion">Descripcion <p-sortIcon
-                    field="descripcion" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="fisico">Fisico<p-sortIcon
-                    field="fisico" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="logico">Logico <p-sortIcon
-                    field="logico" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="defragmentacion">Defragmentacion
-                  <p-sortIcon field="defragmentacion" />
-                </th>
-                <th style="width:200px; text-align: center;" pSortableColumn="fecha">Fecha <p-sortIcon field="fecha" />
-                </th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-appcontraloriaman>
-              <tr>
-                <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloriaman.dispositivo}}</td>
-                <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
-                  [ngClass]="{'font-bold': idFrozen}">{{appcontraloriaman.serial}}</td>
-                <td style="width:200px">
-                  <span class="image-text ml-2">{{appcontraloriaman.placa}}</span>
-                </td>
-                <td style="width:200px">{{appcontraloriaman.tipo_de_mantenimiento}}</td>
-                <td style="width:200px">
-                  <span class="image-text ml-2">{{appcontraloriaman.mantenimiento}}</span>
-                </td>
-                <td style="width:200px">Memoria:{{appcontraloriaman.memoria}},
-                  Disco:{{appcontraloriaman.almacenamiento}} y
-                  Limpieza: {{appcontraloriaman.limpieza}}</td>
-                <td style="width:200px">{{appcontraloriaman.os}}</td>
-                <td style="width:200px">{{appcontraloriaman.defragmentacion}}</td>
-                <td style="width:200px">{{appcontraloriaman.fecha_de_mantenimiento}}</td>
-              </tr>
-            </ng-template>
-          </p-table>
-          <i class="bi bi-printer imprimir" *ngIf="mantenimiento" title="Imprimir" (click)="onImprimirManteni()"></i>
-        </div> -->
       </div>
       <!-- Descargo B-N -->
       <div class="checkbox">
@@ -639,42 +758,6 @@
             </ng-template>
     </p-dialog>
           </div>
-        <!-- <mat-checkbox class="checkbox-container" (change)=" toggledescargo($event)">Ver Cambios</mat-checkbox>
-        <div *ngIf="descargoBN || todo">
-          <h3>-Sean enviado {{registroelim}} registros al Descargo de BN.</h3>
-          <p-table [value]=" appcontraloriaBN" [scrollable]="true" scrollHeight="350px"
-            [tableStyle]="{'min-width': '45rem'}">
-            <ng-template pTemplate="header">
-              <tr>
-                <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
-                    field="dispositivo" /></th>
-                <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn
-                  [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon
-                    field="serial" /></th>
-                <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" />
-                </th>
-                <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales
-                  <p-sortIcon field="bienesnacionales" />
-                </th>
-                <th style="width:200px; text-align: center;" pSortableColumn="entrada">Fecha de descargo-BN<p-sortIcon
-                    field="entrada" /></th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-Appcontraloria>
-              <tr>
-                <td style="width:200px" pFrozenColumn class="font-bold">{{Appcontraloria.dispositivo}}</td>
-                <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
-                  [ngClass]="{'font-bold': idFrozen}">{{Appcontraloria.modelo}}</td>
-                <td style="width:200px">{{Appcontraloria.serial}}</td>
-                <td style="width:200px">{{Appcontraloria.placa}}</td>
-                <td style="width:200px">{{Appcontraloria.bienes_nacionales}}</td>
-                <td style="width:200px">{{Appcontraloria.fecha_de_descargoBN}}</td>
-              </tr>
-            </ng-template>
-          </p-table>
-          <i class="bi bi-printer imprimir" *ngIf="descargoBN" title="Imprimir" (click)="onImprimirdescargoBN()"></i>
-        </div> -->
       </div>
       <!-- solicitudes -->
       <div class="checkbox">
@@ -756,49 +839,6 @@
             </ng-template>
     </p-dialog>
           </div>
-        <!-- <mat-checkbox class="checkbox-container" (change)=" togglesolicitudes($event)">Ver Cambios</mat-checkbox>
-        <div *ngIf="soliciudes || todo">
-          <p-table [value]="appcontraloriasoli" [scrollable]="true" styleClass="p-datatable-gridlines" scrollHeight="400px"
-          [tableStyle]="{'min-width': '40rem'}">
-          <ng-template pTemplate="header">
-            <tr>
-              <th style="width:200px; text-align: center;" pSortableColumn="correo">Correo <p-sortIcon field="correo" />
-              </th>
-              <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="asunto" pFrozenColumn
-                [frozen]="idFrozen">Asunto <p-sortIcon field="asunto" /></th>
-              <th style="width:200px; text-align: center;" pSortableColumn="mensaje">Solicitudes<p-sortIcon
-                  field="mensaje" /></th>
-              <th style="width:200px; text-align: center;" pSortableColumn="comentario">Comentario <p-sortIcon
-                  field="comentario" /></th>
-              <th style="width:200px; text-align: center;" pSortableColumn="solicitud">Fecha solicitud <p-sortIcon
-                  field="solicitud" /></th>
-              <th style="width:200px; text-align: center;" pSortableColumn="respuesta">Fecha respuesta <p-sortIcon
-                  field="respuesta" /></th>
-              <th style="width:200px; text-align: center;" pSortableColumn="estatu" pFrozenColumn alignFrozen="right">
-                Estatu <p-sortIcon field="estatu" /></th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-Correos>
-            <tr>
-              <td style="width:200px" pFrozenColumn class="font-bold">{{Correos.correo}}</td>
-              <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
-                [ngClass]="{'font-bold': idFrozen}">{{Correos.asunto}}</td>
-              <td style="width:200px">
-                <span class="image-text ml-2">{{Correos.mensaje}}</span>
-              </td>
-              <td style="width:200px">{{Correos.comentario}}</td>
-              <td style="width:200px">{{Correos.fecha_solicitud}}</td>
-              <td style="width:200px">
-                <span class="image-text ml-2">{{Correos.fecha_respuesta}}</span>
-              </td>
-              <td style="width:200px">
-                <p-tag [value]="Correos.estatu" [severity]=" getSeverity(Correos.estatu)" />
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
-        <i class="bi bi-printer imprimir" *ngIf="soliciudes" title="Imprimir" (click)="onImprimirsolicitudes()"></i>
-        </div> -->
       </div>
     </div>
   </div>

@@ -152,18 +152,18 @@ input[type=text] {
   font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
   font-size: 14px;
-  background-color: #ff000d;
+  background-color: #f8f8f8;
   border-radius: 5px !important;
   padding: 20px 30px;
-  color: #dfdeee;
+  color:black;
   height: 45px;
   cursor: pointer;
-  border: 0;
+  border: 1;
 }
 .boton1:hover{
-  background: #ffffff;
-  color: #ff000d;
-  border: 0;
+  background:  #e2e1e1;
+  color: black;
+  border: 1;
   font-weight: 600;
 }
 h2{

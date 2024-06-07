@@ -77,15 +77,16 @@ export class ReporteComponent implements OnInit {
     this.todo = event.checked;
   }
 
-  getSeverity(estatu: string): string {
-    if (estatu === 'Aprobado') {
-      return 'success';
-    } else if (estatu === 'En espera') {
-      return 'warning';
-    } else if (estatu === 'Rechazado') {
-      return 'danger';
-    } else {
-      return 'info';
+  getSeverity(estatu: string){
+    switch(estatu) {
+      case 'Aprobado':
+        return 'success';
+      case 'En espera':
+        return 'warning';
+      case 'Rechazado':
+        return 'danger';
+      default:
+        return undefined;
     }
   }
   ngOnInit(): void {
