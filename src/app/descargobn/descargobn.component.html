@@ -21,76 +21,72 @@
     <br>
     <div class="navbar1">
       <span><i class="bi bi-cloud-download salida"></i> Descargo BN</span>
-      <!-- <div>
-        <button class="boton1" (click)="mostrarComponente(appcontraloria)"> <i class="bi bi-envelope-at salida"></i> Descargo BN</button>
-      </div> -->
-      <div class="flex justify-content-center">
+      <div class="button-container">
+        <button class="boton1" (click)="showDialog()"> <i class="bi bi-envelope-at salida"></i> Descargo BN</button>
+      </div>
+      <!-- <div class="boton1">
         <button 
-            class="boton1"
+        class="boton1"
             type="button" 
-            (click)="showDialog()" 
-            pButton 
-            icon="pi pi-external-link" 
-            label="Descargo BN">
-            <i class="bi bi-envelope-at salida"></i>
+            (click)="showDialog()">
+            <i class="bi bi-envelope-at"> Descargo BN</i>
         </button>
-    </div>
-    <p-dialog 
-        header="Enviar correo" 
-        [resizable]="false" 
-        [modal]="true" 
-        [maximizable]="true" 
-        appendTo="body" 
-        [(visible)]="dialogVisible" 
-        [style]="{width: '45vw'}" 
-        [contentStyle]="{height: '400px'}">
-      <div class="container" [formGroup]="datos">
+    </div> -->
+      <p-dialog header="Enviar correo" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body"
+        [(visible)]="dialogVisible" [style]="{width: '45vw'}" [contentStyle]="{height: '650px'}">
+        <div class="container" [formGroup]="datos">
           <br>
           <div class="form-group">
-              <input type="text" id="destinatarios" placeholder="Correo:" formControlName="correo" name="correo">
+            <input type="text" id="destinatarios" placeholder="Correo:" formControlName="correo" name="correo">
           </div>
           <div class="form-group">
-              <input type="text" id="asunto" placeholder="Asunto:" formControlName="asunto" name="asunto">
+            <input type="text" id="asunto" placeholder="Asunto:" formControlName="asunto" name="asunto">
           </div>
           <div class="form-group" fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
-              <textarea id="cuerpo" formControlName="mensaje" name="mensaje">
-                   Estos Dispositivo seran enviados al decargo de bienes:
-                  {{ datos.get('mensaje')?.value }}
-              </textarea>
-            </div>
+            <textarea id="cuerpo" name="mensaje" rows="10" cols="50" readonly [value]="mensajeOriginal">{{ mensajeOriginal }}</textarea>
+          </div>
+          <input type="text" pInputText placeholder="Agregar mas informacion"/>
+          <button (click)="agregarTexto()">Agregar Texto</button>
           <button class="Enviar" (click)="enviarcorreo()"><i class="bi bi-send-check"></i>Enviar</button>
-  </div>
-    </p-dialog>
+        </div>
+      </p-dialog>
     </div>
+
     <div class="search-bar mt-3">
       <input class="form-control" type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
     </div>
-  <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
-    <ng-template pTemplate="header">
-      <tr>
-        <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>
-        <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
-        <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
-        <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
-        <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon field="bienesnacionales" /></th>
-        <th style="width:200px; text-align: center;" pSortableColumn="entrada">Fecha de descargo-BN<p-sortIcon field="entrada" /></th>
-        <th style="width:200px; text-align: center;">Accion</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-appcontraloria>
-      <tr>
-        <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloria.dispositivo}}</td>
-        <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen" [ngClass]="{'font-bold': idFrozen}">{{appcontraloria.modelo}}</td>
-        <td style="width:200px">{{appcontraloria.serial}}</td>
-        <td style="width:200px">{{appcontraloria.placa}}</td>
-        <td style="width:200px">{{appcontraloria.bienes_nacionales}}</td>
-        <td style="width:200px">{{appcontraloria.fecha_de_descargoBN}}</td>
-        <td style="width:200px; text-align: center; vertical-align: middle;" >
+
+    <p-table [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon
+              field="dispositivo" /></th>
+          <th style="width:200px; text-align: center;" alignFrozen="left" pSortableColumn="modelo" pFrozenColumn
+            [frozen]="idFrozen">Modelo <p-sortIcon field="modelo" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="serial">Serial<p-sortIcon field="serial" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="placa">Placa<p-sortIcon field="placa" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="bienesnacionales">Bienes Nacionales <p-sortIcon
+              field="bienesnacionales" /></th>
+          <th style="width:200px; text-align: center;" pSortableColumn="entrada">Fecha de descargo-BN<p-sortIcon
+              field="entrada" /></th>
+          <th style="width:200px; text-align: center;">Accion</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-appcontraloria>
+        <tr>
+          <td style="width:200px" pFrozenColumn class="font-bold">{{appcontraloria.dispositivo}}</td>
+          <td style="width:200px" alignFrozen="left" pFrozenColumn [frozen]="idFrozen"
+            [ngClass]="{'font-bold': idFrozen}">{{appcontraloria.modelo}}</td>
+          <td style="width:200px">{{appcontraloria.serial}}</td>
+          <td style="width:200px">{{appcontraloria.placa}}</td>
+          <td style="width:200px">{{appcontraloria.bienes_nacionales}}</td>
+          <td style="width:200px">{{appcontraloria.fecha_de_descargoBN}}</td>
+          <td style="width:200px; text-align: center; vertical-align: middle;">
             <i class="bi bi-plus-lg editar" (click)="mostrarComponenteagre(appcontraloria)" title="Agregar"
-            style="font-size: 25px; align-items: center;"></i>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+              style="font-size: 25px; align-items: center;"></i>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </body>

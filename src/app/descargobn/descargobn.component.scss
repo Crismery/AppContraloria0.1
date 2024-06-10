@@ -63,15 +63,18 @@ img{
   border: 1px solid #072879;
   font-weight: 600;
 }
+.button-container {
+  margin-left: auto;
+}
 .boton1 {
   display: flex;
   align-items: center;
-  justify-content: flex-end; 
+  justify-content: center; 
   width: 180px;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
   font-size: 14px;
-  background-color:white;
+  background-color: white;
   border-radius: 5px !important;
   padding: 20px 30px;
   color: black;
@@ -79,13 +82,13 @@ img{
   cursor: pointer;
   border: 0;
 }
-.boton1:hover{
+
+.boton1:hover {
   background:  #f8f8f8;
   color: black;
   border: 0;
   font-weight: 600;
 }
-
 .content {
   margin: 0 auto;
   max-width: 1150px;
@@ -142,7 +145,7 @@ margin-right: 5cm;
   background-color:  white;
   border-radius: 5px !important;
   padding: 20px 30px;
-  color: black;
+  color: #072879;
   height: 40px;
   cursor: pointer;
   border: 0;
@@ -205,4 +208,13 @@ input[type="text"], textarea {
 }
 textarea {
   height: 200px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+}
+.disatextarea{
+  height: 100px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
 }

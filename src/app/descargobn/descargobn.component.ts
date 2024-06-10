@@ -30,6 +30,7 @@ export class DescargobnComponent implements OnInit {
   title = 'enviarcorreo';
 
   datos: FormGroup;
+  mensajeOriginal: string ='';
 
   appcontraloriacorreo!: Appcontraloria;
   constructor(private dialog:MatDialog, 
@@ -46,24 +47,24 @@ export class DescargobnComponent implements OnInit {
       });
     }
 
-    async mostrarComponente(registros: Appcontraloria[]): Promise<void> {
-      try {
-        const dialogRef = this.dialog.open(DialogocorreoComponent, {
-          data: registros, // Pasar un array de objetos
-          width: '550px',
-          height: '500px',
-          viewContainerRef: this.viewContainerRef,
-          panelClass: 'dialog-container',
-          disableClose: true
-        });
+    // async mostrarComponente(registros: Appcontraloria[]): Promise<void> {
+    //   try {
+    //     const dialogRef = this.dialog.open(DialogocorreoComponent, {
+    //       data: registros,
+    //       width: '550px',
+    //       height: '500px',
+    //       viewContainerRef: this.viewContainerRef,
+    //       panelClass: 'dialog-container',
+    //       disableClose: true
+    //     });
     
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('Dialogo cerrado:', result);
-        });
-      } catch (error) {
-        console.error('Error al obtener la información del registro:', error);
-      }
-    }    
+    //     dialogRef.afterClosed().subscribe(result => {
+    //       console.log('Dialogo cerrado:', result);
+    //     });
+    //   } catch (error) {
+    //     console.error('Error al obtener la información del registro:', error);
+    //   }
+    // }    
     
   async mostrarComponenteagre(appcontraloria: Appcontraloria): Promise<void> {
     try {
@@ -89,9 +90,9 @@ export class DescargobnComponent implements OnInit {
       this.appcontraloria = appcontraloria.filter(item =>
         item.fecha_de_descargoBN && !item.fecha_de_borrados
       );
+      this.updateTextarea();
     });
     this.construirFormulario();
-
     this.appcontraloriacorreo = { ...this.data };
   }
   showDialog() {
@@ -133,22 +134,17 @@ export class DescargobnComponent implements OnInit {
     this.datos = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
       asunto: ['', Validators.required],
-      mensaje: [this.obtenerInformacion()]
+      mensaje: [this.updateTextarea()]
     });
   }
-
-  obtenerInformacion(): string {
-    if (!Array.isArray(this.data)) {
-      console.error('El objeto "data" no es un array.');
-      return '';
-    }
-
-    const mensajeesta = 'Estos Dispositivo seran enviados al decargo de bienes nacionales:  ';
-    const informacion = this.data.map(registro =>
-      `-Dispositivo: ${registro.dispositivo}, Modelo: ${registro.modelo}, Serial: ${registro.serial}, Placa: ${registro.placa}`
-    );
-
-    return mensajeesta +'\n'+'\n'+ informacion.join('\n');
+  agregarTexto() {
+    this.mensajeOriginal += '\nTexto adicional';
+  }
+  updateTextarea() {
+    console.log(this.appcontraloria); 
+    const dispositivosMensaje = this.appcontraloria.map(item => `-Dispositivo: ${item.dispositivo}, Modelo: ${item.modelo}, Serial: ${item.serial}, Placa: ${item.placa}`).join('\n');
+    this.mensajeOriginal = `Estos Dispositivo serán enviados al descargo de bienes nacionales:\n${dispositivosMensaje}`;
+    console.log(this.mensajeOriginal); 
   }
   enviarcorreo() {
 
@@ -175,12 +171,11 @@ export class DescargobnComponent implements OnInit {
   }
   buscar(): void {
     if (this.query.trim() !== '') {
-      // Filtrar los resultados basados en la búsqueda
+      
       this.appcontraloria = this.appcontraloria.filter(place =>
         place.dispositivo.toLowerCase().includes(this.query.trim().toLowerCase())
       );
     } else {
-      // Restaurar los resultados originales
       this.registrosService.getPlaces().subscribe(appcontraloria => {
         this.appcontraloria = appcontraloria.filter(item =>
           item.fecha_de_descargoBN
