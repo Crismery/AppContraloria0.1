@@ -142,7 +142,7 @@ margin-right: 5cm;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
   font-size: 18px;
-  background-color:  white;
+  background-color:  #f8f8f8;
   border-radius: 5px !important;
   padding: 20px 30px;
   color: #072879;
@@ -151,7 +151,7 @@ margin-right: 5cm;
   border: 0;
 }
 .Enviar:hover{
-  background: #f8f8f8;
+  background: #e4e2e2;
   color:  black;
   border: 0;
   font-weight: 600;
@@ -217,4 +217,25 @@ textarea {
   color: black;
   font-family: 'Times New Roman', Times, serif;
   font-size: 16px;
+}
+.agregar{
+  display: flex;
+  align-items: center;
+  width: 180px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: 18px;
+  background-color:  #f8f8f8;
+  border-radius: 5px !important;
+  padding: 20px 30px;
+  color: #072879;
+  height: 40px;
+  cursor: pointer;
+  border: 0;
+}
+.agregar:hover{
+  background: #e4e2e2;
+  color:  black;
+  border: 0;
+  font-weight: 600;
 }

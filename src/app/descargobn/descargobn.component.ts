@@ -43,7 +43,8 @@ export class DescargobnComponent implements OnInit {
       this.datos = new FormGroup({
         correo: new FormControl('', [Validators.required, Validators.email]),
         asunto: new FormControl('', Validators.required),
-        mensaje: new FormControl('', Validators.required)
+        mensaje: new FormControl(''),
+        textoadicional: new FormControl('')
       });
     }
 
@@ -134,16 +135,21 @@ export class DescargobnComponent implements OnInit {
     this.datos = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
       asunto: ['', Validators.required],
-      mensaje: [this.updateTextarea()]
+      mensaje: [this.mensajeOriginal],
+      textoadicional: ['']
     });
   }
   agregarTexto() {
-    this.mensajeOriginal += '\nTexto adicional';
+    const textoadicional = this.datos.get('textoadicional')?.value;
+    if (textoadicional) {
+      this.mensajeOriginal += `\n  \n${textoadicional}`;
+      this.datos.get('textoAdicional')?.setValue(''); // Limpia el campo de texto adicional
+    }
   }
   updateTextarea() {
     console.log(this.appcontraloria); 
     const dispositivosMensaje = this.appcontraloria.map(item => `-Dispositivo: ${item.dispositivo}, Modelo: ${item.modelo}, Serial: ${item.serial}, Placa: ${item.placa}`).join('\n');
-    this.mensajeOriginal = `Estos Dispositivo serán enviados al descargo de bienes nacionales:\n${dispositivosMensaje}`;
+    this.mensajeOriginal = `Descargo de bienes nacionales de la contraloria general de la republica. \n \n Estos Dispositivo serán enviados al descargo de bienes nacionales:\n${dispositivosMensaje}`;
     console.log(this.mensajeOriginal); 
   }
   enviarcorreo() {
@@ -159,7 +165,7 @@ export class DescargobnComponent implements OnInit {
     let params = {
       email: this.datos.value.correo,
       asunto: this.datos.value.asunto,
-      mensaje: this.datos.value.mensaje
+      mensaje: this.mensajeOriginal
     }
     console.log(params)
     this.httpclient.post('http://localhost:3000/envio', params).subscribe(resp => {

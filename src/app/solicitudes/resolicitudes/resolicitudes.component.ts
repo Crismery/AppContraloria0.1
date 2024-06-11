@@ -3,26 +3,21 @@ import { Correos } from '../../interfaz/correos';
 import { EncorreoService } from '../../servicios/encorreo.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import Notiflix from 'notiflix';
-import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-resolicitudes',
   templateUrl: './resolicitudes.component.html',
-  styleUrl: './resolicitudes.component.scss'
+  styleUrls: ['./resolicitudes.component.scss']
 })
 export class ResolicitudesComponent implements OnInit {
 
   form: FormGroup;
-  correos!: Correos;
 
-  title = 'enviarrespuesta';
-
-  emails: any[] = [];
-
-  constructor(private correo: EncorreoService,
+  constructor(
+    private correo: EncorreoService,
     private formBuilder: FormBuilder,
     private httpclient: HttpClient,
     private snackBar: MatSnackBar,
@@ -30,32 +25,16 @@ export class ResolicitudesComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {
       this.form = this.formBuilder.group({
         correo: [data.from || '', [Validators.required, Validators.email]],
-        asunto: [data.subject ||'', Validators.required ],
+        asunto: [data.subject || '', Validators.required],
         mensaje: [data.snippet || '', Validators.required],
         comentario: ['', Validators.required],
         estatu: ['', Validators.required],
         fecha_solicitud: [''],
-        fecha_respuesta: [''],
+        fecha_respuesta: ['']
       });
-
-    this.form = new FormGroup({
-      correo: new FormControl('', [Validators.required, Validators.email]),
-      asunto: new FormControl('', Validators.required),
-      mensaje: new FormControl('', Validators.required),
-      comentario: new FormControl('', Validators.required),
-      estatu: new FormControl('', Validators.required),
-    });
-
-    this.form = this.formBuilder.group({
-      correo: [{ value: this.data.from, disabled: true }],
-      asunto: [{ value: this.data.subject, disabled: true }],
-      mensaje: [{ value: this.data.snippet, disabled: true }]
-    });
   }
 
-  ngOnInit(): void {
-    // this.getEmails();
-  }
+  ngOnInit(): void {}
 
   enviar() {
     if (this.form.valid) {
@@ -72,15 +51,20 @@ export class ResolicitudesComponent implements OnInit {
       });
       return;
     }
+
     Notiflix.Loading.hourglass('Cargando...');
+
+    // Capturar los valores del formulario, incluyendo los campos deshabilitados
+    const formValue = this.form.getRawValue();
+
     let params = {
-      email: this.form.value.correo,
-      asunto: this.form.value.asunto,
-      mensaje: `${this.form.value.estatu} \n \n - ${this.form.value.comentario}`
+      email: formValue.correo,
+      asunto: formValue.asunto,
+      mensaje: `${formValue.estatu} \n \n ${formValue.comentario}`
     }
-    console.log(params)
+
     this.httpclient.post('http://localhost:3001/solicitudes', params).subscribe(resp => {
-      console.log(resp)
+      console.log(resp);
       Notiflix.Loading.remove();
       Notiflix.Report.success(
         'Correo enviado',
@@ -99,23 +83,6 @@ export class ResolicitudesComponent implements OnInit {
     });
   }
 
-  // getEmails() {
-  //   this.correo.getEmails().subscribe(
-  //     response => {
-  //       this.emails = response;
-  //       if (this.emails.length > 0) {
-  //         this.form.patchValue({
-  //           correo: this.emails[0].from,
-  //           asunto: this.emails[0].subject,
-  //           mensaje: this.emails[0].snippet
-  //         });
-  //       }
-  //     },
-  //     error => {
-  //       console.error('Error al obtener los correos', error);
-  //     }
-  //   );
-  // }
   cerrarCentrado() {
     this.dialogRef.close();
   }

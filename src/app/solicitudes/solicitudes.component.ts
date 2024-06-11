@@ -50,7 +50,7 @@ export class SolicitudesComponent implements OnInit {
   mostrarComponente(email: any): void {
     const dialogRef = this.dialog.open(ResolicitudesComponent, {
       width: '550px',
-      height: '550px',
+      height: '580px',
       viewContainerRef: this.viewContainerRef,
       panelClass: 'dialog-container',
       disableClose: true,

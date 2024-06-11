@@ -62,8 +62,8 @@ export class RegistrosComponent implements OnInit {
       
       const dialogRef = this.dialog.open(DialogousuarioComponent, {
         data: registro, 
-        width: '250px',
-        height: '150px',
+        width: '550px',
+        height: '500px',
         viewContainerRef: this.viewContainerRef,
         panelClass: 'dialog-container',
         disableClose: true

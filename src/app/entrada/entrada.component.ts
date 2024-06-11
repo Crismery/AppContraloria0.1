@@ -38,7 +38,7 @@ export class EntradaComponent implements OnInit {
   mostrarComponente(): void {
     const dialogRef = this.dialog.open(AddEntradaComponent, {
       width: '550px',
-      height: '500px',
+      height: '550px',
       viewContainerRef: this.viewContainerRef,
       panelClass: 'dialog-container',
       disableClose: true

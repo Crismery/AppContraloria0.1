@@ -43,10 +43,10 @@
             <input type="text" id="asunto" placeholder="Asunto:" formControlName="asunto" name="asunto">
           </div>
           <div class="form-group" fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
-            <textarea id="cuerpo" name="mensaje" rows="10" cols="50" readonly [value]="mensajeOriginal">{{ mensajeOriginal }}</textarea>
+            <textarea id="cuerpo" rows="10" cols="50" formControlName="mensaje" name="mensaje" readonly [value]="mensajeOriginal">{{ mensajeOriginal }}</textarea>
           </div>
-          <input type="text" pInputText placeholder="Agregar mas informacion"/>
-          <button (click)="agregarTexto()">Agregar Texto</button>
+          <input type="text" formControlName="textoadicional" name="textoadicional" pInputText placeholder="Agregar mas informacion"/>
+          <button class="agregar" (click)="agregarTexto()">Agregar Texto</button>
           <button class="Enviar" (click)="enviarcorreo()"><i class="bi bi-send-check"></i>Enviar</button>
         </div>
       </p-dialog>
