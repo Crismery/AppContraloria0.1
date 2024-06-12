@@ -75,14 +75,21 @@ export class AsignacionComponent implements OnInit {
   }
   buscar(): void {
     if (this.query.trim() !== '') {
+      const queryLower = this.query.trim().toLowerCase();
       this.appcontraloria = this.appcontraloria.filter(place =>
-        Object.values(place).some(value =>
-          value && typeof value === 'string' && value.toLowerCase().includes(this.query.trim().toLowerCase())
-        )
+        (place.dispositivo && place.dispositivo.toLowerCase().includes(queryLower)) ||
+      (place.os && place.os.toLowerCase().includes(queryLower)) ||
+      (place.serial && place.serial.toLowerCase().includes(queryLower)) ||
+      (place.cpu && place.cpu.toLowerCase().includes(queryLower)) ||
+      (place.memoria && place.memoria.toLowerCase().includes(queryLower)) ||
+      (place.almacenamiento && place.almacenamiento.toLowerCase().includes(queryLower)) ||
+      (place.mantenimiento && place.mantenimiento.toLowerCase().includes(queryLower))
       );
     } else {
-      this.registrosService.getPlaces().subscribe(Correos => {
-        this.appcontraloria = Correos;
+      this.registrosService.getPlaces().subscribe(appcontraloria => {
+        this.appcontraloria = appcontraloria.filter(item =>
+          !item.cedula && !item.usuario && !item.Departamento && !item.fecha_de_borrados && !item.fecha_de_descargoBN
+        );
       });
     }
   }

@@ -86,13 +86,21 @@ export class BorradorComponent implements OnInit {
   }
   buscar(): void {
     if (this.query.trim() !== '') {
-      this.filteredResults = this.appcontraloria.filter(place => {
-        const concatenatedValues = Object.values(place).join(' ').toLowerCase();
-        return concatenatedValues.includes(this.query.trim().toLowerCase());
-      });
+      
+      const queryLower = this.query.trim().toLowerCase();
+      this.appcontraloria = this.appcontraloria.filter(place =>
+        (place.dispositivo && place.dispositivo.toLowerCase().includes(queryLower)) ||
+      (place.modelo && place.modelo.toLowerCase().includes(queryLower)) ||
+      (place.serial && place.serial.toLowerCase().includes(queryLower)) ||
+      (place.placa && place.placa.toLowerCase().includes(queryLower)) ||
+      (place.bienes_nacionales && place.bienes_nacionales.toLowerCase().includes(queryLower)) ||
+      (place.fecha_de_descargoBN && place.fecha_de_descargoBN.toLowerCase().includes(queryLower))
+      );
     } else {
-      this.filteredResults = this.appcontraloria;
+      this.registrosService.getPlaces().subscribe(appcontraloria => {
+        this.appcontraloria = appcontraloria.filter(registro => registro.fecha_de_descargoBN && !registro.fecha_de_borrados);
+      });
     }
-  }  
+  } 
 
 }

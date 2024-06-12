@@ -1,13 +1,57 @@
 <div fxLayout="row" fxLayoutAlign="center center">
     <div class="container">
+        <br>
         <h1>Borrar usuario</h1>
-        <h3>¿Esta seguro/a de que quiere borrar el usuario?</h3>
-        <div class="cardbutton">
-            <i class="bi bi-x-circle no" title="No" (click)="cerrarCentrado()"></i>
-            <i class="bi bi-check-circle si" title="Si" (click)="onClickDeleteFields(data)"></i>
-            <!-- <button (click)="onClickDeleteFields(data)">Si</button> -->
-            <!-- <button (click)="cerrarCentrado()">No</button> -->
-
-          </div>
+        <!-- <h3>¿Esta seguro/a de que quiere borrar el usuario?</h3> -->
+        <div class="row">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputDisabled" disabled
+                    [(ngModel)]="appcontraloriamostrar.dispositivo">
+                <label for="floatingInputDisabled">Dispositivo</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputDisabled" disabled
+                    [(ngModel)]="appcontraloriamostrar.modelo">
+                <label for="floatingInputDisabled">Modelo</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputDisabled" disabled
+                    [(ngModel)]="appcontraloriamostrar.serial">
+                <label for="floatingInputDisabled">Serial</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputDisabled" disabled
+                    [(ngModel)]="appcontraloriamostrar.placa">
+                <label for="floatingInputDisabled">Placa</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputDisabled" disabled
+                    [(ngModel)]="appcontraloriamostrar.usuario">
+                <label for="floatingInputDisabled">Usuario</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInputValue" disabled
+                    [(ngModel)]="appcontraloriamostrar.Departamento" name="email">
+                <label for="floatingInputValue">Departamento</label>
+            </div>
+       
+         <form class="form-floating">
+            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com"
+                [(ngModel)]="appcontraloriamostrar.email" name="email">
+            <label for="floatingInputValue">Correo</label>
+         </form>
+         <h3>¿Por que se esta eliminando el usuario a este registro?</h3>
+         <div class="form-floating">
+            <textarea variant="filled" rows="5" cols="30" pInputTextarea style="width: 400px"
+                [(ngModel)]="appcontraloriamostrar.comentarioeli">
+            </textarea>
+         </div>
+         <div class="cardbutton">
+            <!-- <i class="bi bi-x-circle no" title="No" (click)="cerrarCentrado()"></i>
+            <i class="bi bi-check-circle si" title="Si" (click)="onClickDeleteFields(data)"></i> -->
+            <button (click)="onClickDeleteFields(data)">Guardar</button>
+            <button (click)="cerrarCentrado()">Cancelar</button>
+         </div>
+        </div>
     </div>
 </div>

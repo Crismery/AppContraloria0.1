@@ -35,23 +35,45 @@ export class EditAsignacionComponent implements OnInit{
       this.appcontraloriaedit = {...this.data};
     }
 
-    actualizarLugar() {
+    // actualizarLugar() {
+    //   if (this.appcontraloriaedit) {
+    //     this.appcontraloriaedit.fecha_de_asignacion= new Date().toISOString();
+    //     this.dialogRef.close();
+    //     this.registros.updatePlace(this.appcontraloriaedit)
+    //       .then(() => {
+    //         this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
+    //           duration: 3000,
+    //           horizontalPosition: 'center',
+    //           verticalPosition: 'bottom',
+    //         });
+    //       })
+    //       .catch(error => console.error('Error al actualizar el lugar:', error));
+    //   } else {
+    //     console.error('No hay información para actualizar');
+    //   }
+    // }
+    async actualizarLugar(appcontraloria: Appcontraloria) {
       if (this.appcontraloriaedit) {
         this.appcontraloriaedit.fecha_de_asignacion= new Date().toISOString();
         this.dialogRef.close();
         this.registros.updatePlace(this.appcontraloriaedit)
-          .then(() => {
-            this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
-              duration: 3000,
-              horizontalPosition: 'center',
-              verticalPosition: 'bottom',
-            });
-          })
-          .catch(error => console.error('Error al actualizar el lugar:', error));
-      } else {
-        console.error('No hay información para actualizar');
       }
-    }
+        try {
+    
+          const response = await this.registros.deletecomenusuario(appcontraloria);
+          console.log('¡Guardado exitosamente!');
+          this.dialogRef.close();
+          this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
+              duration: 3000,
+          });
+        } catch (error) {
+          console.error('Error al actualizar el lugar:', error);
+    
+          this._snackbar.open('No hay información para actualizar.', 'Cerrar', {
+              duration: 3000,
+          });
+        }
+      }
     
   cerrarCentrado(){
     this.dialogRef.close();

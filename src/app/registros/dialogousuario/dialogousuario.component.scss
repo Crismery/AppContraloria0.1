@@ -1,51 +1,64 @@
 .dialog-container {
-    z-index: 2000;
-    position: relative;
-    display: flex;
-    justify-content: center;
-  }
-  button {
-    background-color:hsl(0, 82%, 37%);
-    border-radius: 5px!important;
-    font-family: 'Times New Roman', Times, serif;
-    border: 0;
-    color: #dfdeee;
-    margin-right: 10px;
-    width: 90px;
-    height: 30px;
-    font-size: 18px;
-  }
-  h3 {
-    text-align: center;
-    margin-bottom: 50px;
-    font-family: 'Times New Roman', Times, serif;
+  z-index: 2000;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
-.no{
-  font-size: 35px;
-  color: black;
-  align-items: center;
-  float: right;
-  margin-right: 10px;
-}
-.no:hover{
-  color: red;
+button {
+  background-color:hsl(0, 82%, 37%);
+  border-radius: 5px!important;
+  font-family: 'Times New Roman', Times, serif;
   border: 0;
-  font-weight: 600;
-}
-.si{
-  font-size: 35px;
-  color: black;
-  align-items: center;
-  float: right;
+  color: #dfdeee;
   margin-right: 10px;
+  width: 90px;
+  height: 30px;
+  font-size: 18px;
 }
-.si:hover{
-  color: greenyellow;
-  border: 0;
-  font-weight: 600;
+.cardbutton{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 .8em 0;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 20px;
+  padding-left: 20px;
+  margin-right: 20px;
 }
 h1 {
-  text-align: center;
-  margin-bottom: 50px;
+text-align: center;
+margin-bottom: 50px;
+font-family: 'Times New Roman', Times, serif;
+}
+h3 {
+  // text-align: center;
+  // margin-bottom: 50px;
   font-family: 'Times New Roman', Times, serif;
+}
+.no{
+font-size: 35px;
+color: black;
+align-items: center;
+float: right;
+margin-right: 10px;
+}
+.no:hover{
+color: red;
+border: 0;
+font-weight: 600;
+}
+.si{
+font-size: 35px;
+color: black;
+align-items: center;
+float: right;
+margin-right: 10px;
+}
+.si:hover{
+color: greenyellow;
+border: 0;
+font-weight: 600;
 }

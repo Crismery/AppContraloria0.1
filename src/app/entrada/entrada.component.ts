@@ -119,14 +119,20 @@ export class EntradaComponent implements OnInit {
 
   buscar(): void {
     if (this.query.trim() !== '') {
+      const queryLower = this.query.trim().toLowerCase();
       this.appcontraloria = this.appcontraloria.filter(place =>
-        Object.values(place).some(value =>
-          value && typeof value === 'string' && value.toLowerCase().includes(this.query.trim().toLowerCase())
-        )
+        (place.dispositivo && place.dispositivo.toLowerCase().includes(queryLower)) ||
+      (place.modelo && place.modelo.toLowerCase().includes(queryLower)) ||
+      (place.serial && place.serial.toLowerCase().includes(queryLower)) ||
+      (place.placa && place.placa.toLowerCase().includes(queryLower)) ||
+      (place.bienes_nacionales && place.bienes_nacionales.toLowerCase().includes(queryLower)) ||
+      (place.mantenimiento && place.mantenimiento.toLowerCase().includes(queryLower)) ||
+      (place.fecha_de_entrada && place.fecha_de_entrada.toLowerCase().includes(queryLower)) ||
+      (place.fecha_de_actualizacion && place.fecha_de_actualizacion.toLowerCase().includes(queryLower))
       );
     } else {
-      this.registrosService.getPlaces().subscribe(Correos => {
-        this.appcontraloria = Correos;
+      this.registrosService.getPlaces().subscribe(appcontraloria => {
+        this.appcontraloria = appcontraloria.filter(registro => !registro.fecha_de_borrados && !registro.fecha_de_descargoBN);  
       });
     }
   }

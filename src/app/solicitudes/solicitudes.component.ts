@@ -84,10 +84,14 @@ export class SolicitudesComponent implements OnInit {
   }
   buscar(): void {
     if (this.query.trim() !== '') {
+      const queryLower = this.query.trim().toLowerCase();
       this.Correos = this.Correos.filter(place =>
-        Object.values(place).some(value =>
-          value && typeof value === 'string' && value.toLowerCase().includes(this.query.trim().toLowerCase())
-        )
+        (place.correo && place.correo.toLowerCase().includes(queryLower)) ||
+      (place.asunto && place.asunto.toLowerCase().includes(queryLower)) ||
+      (place.mensaje && place.mensaje.toLowerCase().includes(queryLower)) ||
+      (place.comentario && place.comentario.toLowerCase().includes(queryLower)) ||
+      (place.fecha_solicitud && place.fecha_solicitud.toLowerCase().includes(queryLower)) ||
+      (place.fecha_respuesta && place.fecha_respuesta.toLowerCase().includes(queryLower))
       );
     } else {
       this.correo.getPlaces().subscribe(Correos => {

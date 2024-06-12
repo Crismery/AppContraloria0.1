@@ -1,4 +1,4 @@
-import { Component,Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RegistrosService } from '../../../servicios/registros.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,7 +9,7 @@ import { Appcontraloria } from '../../../interfaz/appcontraloria';
   templateUrl: './sinodialogo.component.html',
   styleUrl: './sinodialogo.component.scss'
 })
-export class SinodialogoComponent implements OnInit{
+export class SinodialogoComponent implements OnInit {
 
   appcontraloriamostrar!: Appcontraloria;
 
@@ -35,7 +35,7 @@ export class SinodialogoComponent implements OnInit{
   //   }
   // }
   ngOnInit(): void {
-    this.appcontraloriamostrar = {...this.data};
+    this.appcontraloriamostrar = { ...this.data };
   }
   actualizarLugar() {
     if (this.appcontraloriamostrar) {
@@ -55,7 +55,7 @@ export class SinodialogoComponent implements OnInit{
       console.error('No hay información para eliminar');
     }
   }
-  cerrarCentrado(){
+  cerrarCentrado() {
     this.dialogRef.close();
   }
 }

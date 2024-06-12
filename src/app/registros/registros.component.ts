@@ -62,8 +62,8 @@ export class RegistrosComponent implements OnInit {
       
       const dialogRef = this.dialog.open(DialogousuarioComponent, {
         data: registro, 
-        width: '550px',
-        height: '500px',
+        width: '560px',
+        height: '580px',
         viewContainerRef: this.viewContainerRef,
         panelClass: 'dialog-container',
         disableClose: true
@@ -108,12 +108,25 @@ export class RegistrosComponent implements OnInit {
 
   buscar(): void {
     if (this.query.trim() !== '') {
-      this.filteredResults = this.appcontraloria.filter(place => {
-        const concatenatedValues = Object.values(place).join(' ').toLowerCase();
-        return concatenatedValues.includes(this.query.trim().toLowerCase());
-      });
+      const queryLower = this.query.trim().toLowerCase();
+      this.appcontraloria = this.appcontraloria.filter(place =>
+        (place.dispositivo && place.dispositivo.toLowerCase().includes(queryLower)) ||
+      (place.modelo && place.modelo.toLowerCase().includes(queryLower)) ||
+      (place.serial && place.serial.toLowerCase().includes(queryLower)) ||
+      (place.placa && place.placa.toLowerCase().includes(queryLower)) ||
+      (place.bienes_nacionales && place.bienes_nacionales.toLowerCase().includes(queryLower)) ||
+      (place.usuario && place.usuario.toLowerCase().includes(queryLower))||
+      (place.Departamento && place.Departamento.toLowerCase().includes(queryLower))||
+      (place.mantenimiento && place.mantenimiento.toLowerCase().includes(queryLower))||
+      (place.fecha_de_actualizacion && place.fecha_de_actualizacion.toLowerCase().includes(queryLower))||
+      (place.fecha_de_asignacion && place.fecha_de_asignacion.toLowerCase().includes(queryLower))
+      );
     } else {
-      this.filteredResults = this.appcontraloria;
+      this.registrosService.getPlaces().subscribe(appcontraloria => {
+        this.appcontraloria = appcontraloria.filter(item =>
+          item.cedula && item.usuario && item.Departamento && !item.fecha_de_descargoBN && !item.fecha_de_borrados
+        );
+      });
     }
-  }  
+  } 
 }

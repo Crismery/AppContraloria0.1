@@ -59,14 +59,29 @@ export class MantenimientoComponent  implements OnInit{
 
   buscar(): void {
     if (this.query.trim() !== '') {
-      this.filteredResults = this.appcontraloria.filter(place => {
-        const concatenatedValues = Object.values(place).join(' ').toLowerCase();
-        return concatenatedValues.includes(this.query.trim().toLowerCase());
-      });
+      const queryLower = this.query.trim().toLowerCase();
+      this.appcontraloria = this.appcontraloria.filter(place =>
+        (place.dispositivo && place.dispositivo.toLowerCase().includes(queryLower)) ||
+      (place.modelo && place.modelo.toLowerCase().includes(queryLower)) ||
+      (place.serial && place.serial.toLowerCase().includes(queryLower)) ||
+      (place.placa && place.placa.toLowerCase().includes(queryLower)) ||
+      (place.version && place.version.toLowerCase().includes(queryLower)) ||
+      (place.tipo_de_mantenimiento && place.tipo_de_mantenimiento.toLowerCase().includes(queryLower)) ||
+      (place.mantenimiento && place.mantenimiento.toLowerCase().includes(queryLower)) ||
+      (place.memoria && place.memoria.toLowerCase().includes(queryLower)) ||
+      (place.almacenamiento && place.almacenamiento.toLowerCase().includes(queryLower)) ||
+      (place.limpieza && place.limpieza.toLowerCase().includes(queryLower)) ||
+      (place.os && place.os.toLowerCase().includes(queryLower)) ||
+      (place.defragmentacion&& place.defragmentacion.toLowerCase().includes(queryLower)) ||
+      (place.fecha_de_mantenimiento && place.fecha_de_mantenimiento.toLowerCase().includes(queryLower))
+      );
     } else {
-      this.filteredResults = this.appcontraloria;
+      this.registrosService.getPlaces().subscribe(appcontraloria => {
+        this.appcontraloria = appcontraloria.filter(registro => 
+          !registro.fecha_de_borrados && !registro.fecha_de_descargoBN);
+      });
     }
-  }  
+  }
 
   loadData(): void {
     this.totalItems = this.filteredResults.length; 

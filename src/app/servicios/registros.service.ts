@@ -50,6 +50,17 @@ export class RegistrosService {
     };
     await updateDoc(placeRef, updateData);
 }
+async deletecomenusuario(appcontraloria: Appcontraloria) {
+  const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);
+  
+  const fecha_de_elimusuario = new Date().toISOString();
+  const updateData = {
+    comentarioeliusuario: null, 
+      fecha_de_elimusuario: null, 
+      email:null,
+  };
+  await updateDoc(placeRef, updateData);
+}
 //editar
 updatePlace(appcontraloria: Appcontraloria){
   const { id, ...dataToUpdate } = appcontraloria; 
