@@ -48,4 +48,8 @@ export class EncorreoService {
   getEmails(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+
+  responderCorreo(data: { emailId: string, asunto: string, mensaje: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/respond`, data);
+  }
 }

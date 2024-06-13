@@ -91,7 +91,8 @@ export class SolicitudesComponent implements OnInit {
       (place.mensaje && place.mensaje.toLowerCase().includes(queryLower)) ||
       (place.comentario && place.comentario.toLowerCase().includes(queryLower)) ||
       (place.fecha_solicitud && place.fecha_solicitud.toLowerCase().includes(queryLower)) ||
-      (place.fecha_respuesta && place.fecha_respuesta.toLowerCase().includes(queryLower))
+      (place.fecha_respuesta && place.fecha_respuesta.toLowerCase().includes(queryLower)) ||
+      (place.estatu && place.estatu.toLowerCase().includes(queryLower))
       );
     } else {
       this.correo.getPlaces().subscribe(Correos => {

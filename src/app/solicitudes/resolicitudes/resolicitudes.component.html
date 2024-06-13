@@ -3,11 +3,11 @@
 </div>
 <div class="container">
     <div fxLayout="row" fxLayoutAlign="center center">
-        <form [formGroup]="form">
+        <form [formGroup]="form" (ngSubmit)="enviarRespuesta()">
             <div class="encabezado">
                 <h2>Solicitudes</h2>
                 <p class="gmail">{{ data.from }}</p>
-                <p class="fecha" formControlName="fecha_solicitud" name="fecha_solicitud">{{data.date}}</p>
+                <p class="fecha">{{data.date}}</p>
             </div>
             <br>
             <div class="input-group mb-3">
@@ -42,6 +42,7 @@
                 <input type="text" class="form-control half-width" placeholder="Comentario" aria-label="Username"
                     formControlName="comentario" name="comentario">
             </div>
+        
             <div>
                 <button class="button" (click)="enviar()">Enviar</button>
             </div>
