@@ -6,7 +6,6 @@ import { HomeComponent } from './home/home.component';
 import { EntradaComponent } from './entrada/entrada.component';
 import { AsignacionComponent } from './asignacion/asignacion.component';
 import { AlmacenComponent } from './almacen/almacen.component';
-import { DescargoComponent } from './descargo/descargo.component';
 import { DescargobnComponent } from './descargobn/descargobn.component';
 import { MantenimientoComponent } from './mantenimiento/mantenimiento.component';
 import { ReporteComponent } from './reporte/reporte.component';
@@ -31,7 +30,6 @@ const routes: Routes = [
   { path: 'entrada', component: EntradaComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
   { path: 'asignacion', component: AsignacionComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
   { path: 'almacen', component: AlmacenComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
-  { path: 'descargo', component: DescargoComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
   { path: 'descargobn', component: DescargobnComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
   { path: 'mantenimiento', component: MantenimientoComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
   { path: 'reporte', component: ReporteComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },

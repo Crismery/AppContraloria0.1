@@ -3,7 +3,7 @@
 </div>
 <div class="container">
     <div fxLayout="row" fxLayoutAlign="center center">
-        <form [formGroup]="form" (ngSubmit)="enviarRespuesta()">
+        <form [formGroup]="form">
             <div class="encabezado">
                 <h2>Solicitudes</h2>
                 <p class="gmail">{{ data.from }}</p>
@@ -12,19 +12,19 @@
             <br>
             <div class="input-group mb-3">
                 <input type="text" class="form-control half-width" placeholder="Correo" aria-label="Username"
-         formControlName="correo" name="correo">
+         formControlName="correo" name="correo" readonly>
                 </div>
             <div class="input-group mb-3 half-width">
                 <span class="input-group-text">Asunto</span>
                 <div class="form-floating">
-                  <input type="text" class="form-control half-width"  formControlName="asunto" name="asunto">
+                  <input type="text" class="form-control half-width"  formControlName="asunto" name="asunto" readonly>
                   <label for="floatingInputGroup1">Asunto</label>
                 </div>
               </div>
             <div fxLayout="row" fxLayoutAlign="center center" style="overflow-y: auto; max-height: 260px;">
                 <div class="form-floating">
                     <textarea class="form-control text" id="floatingTextarea2"
-                        style="height: 100px" formControlName="mensaje" name="mensaje"></textarea>
+                        style="height: 200px" formControlName="mensaje" name="mensaje" readonly></textarea>
                     <label for="floatingTextarea2" class="text">Solicitud</label>
                 </div>
             </div>

@@ -54,7 +54,7 @@ export class DialogocorreoComponent implements OnInit {
       return '';
     }
 
-    const mensajeesta = 'Estos Dispositivo seran enviados al decargo de bienes nacionales:  ';
+    const mensajeesta = 'Estos Dispositivo serán enviados al descargo de bienes nacionales:  ';
     const informacion = this.data.map(registro =>
       `-Dispositivo: ${registro.dispositivo}, Modelo: ${registro.modelo}, Serial: ${registro.serial}, Placa: ${registro.placa}`
     );

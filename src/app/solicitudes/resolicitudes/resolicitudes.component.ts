@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
-import { Correos } from '../../interfaz/correos';
+import { Component, OnInit, Inject} from '@angular/core';
 import { EncorreoService } from '../../servicios/encorreo.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import Notiflix from 'notiflix';
@@ -24,7 +23,7 @@ export class ResolicitudesComponent implements OnInit {
     private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<ResolicitudesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.emailId= '';
+      this.emailId= data.id;
       this.form = this.formBuilder.group({
         correo: [data.from || '', [Validators.required, Validators.email]],
         asunto: [data.subject || '', Validators.required],
@@ -37,19 +36,6 @@ export class ResolicitudesComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  enviarRespuesta() {
-    const formValue = this.form.value;
-    this.correo.responderCorreo({
-      emailId: this.emailId,
-      asunto: formValue.asunto,
-      mensaje: formValue.mensaje
-    }).subscribe(response => {
-      console.log('Correo enviado', response);
-    }, error => {
-      console.error('Error al enviar correo', error);
-    });
-  }
 
   enviar() {
     if (this.form.valid) {
@@ -70,9 +56,8 @@ export class ResolicitudesComponent implements OnInit {
     Notiflix.Loading.hourglass('Cargando...');
 
     const formValue = this.form.getRawValue();
-
     let params = {
-      emailId: this.emailId, // ID del correo al que se está respondiendo
+      emailId: this.emailId,
       asunto: formValue.asunto,
       mensaje: `${formValue.estatu} \n \n ${formValue.comentario}`
     };
@@ -95,7 +80,6 @@ export class ResolicitudesComponent implements OnInit {
       );
       console.error('Error al enviar el correo:', error);
     });
-    
   }
 
   cerrarCentrado() {

@@ -15,7 +15,6 @@ import { RegistrosComponent } from './registros/registros.component';
 import { EntradaComponent } from './entrada/entrada.component';
 import { AsignacionComponent } from './asignacion/asignacion.component';
 import { AlmacenComponent } from './almacen/almacen.component';
-import { DescargoComponent } from './descargo/descargo.component';
 import { MantenimientoComponent } from './mantenimiento/mantenimiento.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
@@ -54,6 +53,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ResolicitudesComponent } from './solicitudes/resolicitudes/resolicitudes.component';
 import { TabViewModule } from 'primeng/tabview';
 import { InputTextModule } from 'primeng/inputtext';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 
 
@@ -67,7 +67,6 @@ import { InputTextModule } from 'primeng/inputtext';
     EntradaComponent,
     AsignacionComponent,
     AlmacenComponent,
-    DescargoComponent,
     MantenimientoComponent,
     ReporteComponent,
     SolicitudesComponent,
@@ -111,6 +110,7 @@ import { InputTextModule } from 'primeng/inputtext';
     DialogModule,
     TabViewModule,
     InputTextModule,
+    ScrollPanelModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp({"projectId":"app-contraloria-4e461","appId":"1:773014821815:web:25693680a61efc7fe0a632","storageBucket":"app-contraloria-4e461.appspot.com","apiKey":"AIzaSyDQ-4H7L3V8acBlSqClBLPeXasvpSQ2p8c","authDomain":"app-contraloria-4e461.firebaseapp.com","messagingSenderId":"773014821815"})),
     provideAuth(() => getAuth()),
