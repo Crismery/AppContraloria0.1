@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { Appcontraloria } from '../../interfaz/appcontraloria';
 import { RegistrosService } from '../../servicios/registros.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Notiflix from 'notiflix';
 
 @Component({
   selector: 'app-dialogo-bn',
@@ -19,6 +20,17 @@ export class DialogoBNComponent {
   ){}
 
   agregarFechaMomento(appcontraloria: Appcontraloria) {
+    // Notiflix.Confirm.show(
+    //   'Notiflix Confirm',
+    //   'Do you agree with me?',
+    //   'Yes',
+    //   'No',
+    //   () => {
+    //   alert('Thank you.');
+    //   },
+    //   () => {
+    //   alert('If you say so...');
+    //   });
     if (appcontraloria) {
       
     appcontraloria.fecha_de_descargoBN = new Date().toISOString();

@@ -3,6 +3,7 @@ import { Firestore, collection, addDoc, collectionData, doc, getDoc} from '@angu
 import { Observable } from 'rxjs';
 import {Correos} from "../interfaz/correos";
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,10 @@ import { HttpClient } from '@angular/common/http';
 export class EncorreoService {
 
   private apiUrl = 'http://localhost:3002/api/emails';
+
+  private correoActualizadoSource = new Subject<void>();
+
+  correoActualizado$ = this.correoActualizadoSource.asObservable();
 
   constructor(private firestore:Firestore,
     private http: HttpClient
@@ -55,5 +60,8 @@ export class EncorreoService {
 
   addPlacecorreo(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/emails`, data);
+  }
+  notifyCorreoActualizado() {
+    this.correoActualizadoSource.next();
   }
 }

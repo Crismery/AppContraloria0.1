@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Inject, ViewContainerRef, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Correos } from '../interfaz/correos';
 import { EncorreoService } from '../servicios/encorreo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import Notiflix from 'notiflix';
 import { ResolicitudesComponent } from './resolicitudes/resolicitudes.component';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-solicitudes',
@@ -28,6 +29,7 @@ export class SolicitudesComponent implements OnInit {
   title = 'enviarrespuesta';
   //resivir correo
   emails: any[] = [];
+  // private pollingSubscription?: Subscription;
 
   constructor(private correo: EncorreoService,
     private dialog:MatDialog, 
@@ -68,6 +70,12 @@ export class SolicitudesComponent implements OnInit {
       this.filteredResults = this.Correos;
     });
     this.getEmails();
+    this.correo.correoActualizado$.subscribe(() => {
+      this.cargarCorreos();
+    });
+    // this.pollingSubscription = interval(30000).subscribe(() => {
+    //   this.cargarCorreos();
+    // });
   }
   
   getSeverity(estatu: string){
@@ -100,6 +108,19 @@ export class SolicitudesComponent implements OnInit {
       });
     }
   }
+
+  cargarCorreos() {
+    this.correo.getEmails().subscribe((emails: any) => {
+      this.emails = emails;
+      console.log('Correos cargados:', this.emails);
+    });
+  }
+
+  // ngOnDestroy(): void {
+  //   if (this.pollingSubscription) {
+  //     this.pollingSubscription.unsubscribe();
+  //   }
+  // }
   getEmails() {
     this.correo.getEmails().subscribe(
       response => {

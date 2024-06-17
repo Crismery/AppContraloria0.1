@@ -59,7 +59,7 @@ export class ResolicitudesComponent implements OnInit {
     let params = {
       emailId: this.emailId,
       asunto: formValue.asunto,
-      mensaje: `${formValue.estatu} \n \n ${formValue.comentario}`
+      mensaje: `${formValue.estatu}. \n \n ${formValue.comentario}`
     };
     
     this.httpclient.post('http://localhost:3002/api/respond', params).subscribe(resp => {
@@ -71,6 +71,7 @@ export class ResolicitudesComponent implements OnInit {
         'Aceptar'
       );
       this.dialogRef.close();
+      this.correo.notifyCorreoActualizado();
     }, error => {
       Notiflix.Loading.remove();
       Notiflix.Report.failure(
@@ -81,6 +82,11 @@ export class ResolicitudesComponent implements OnInit {
       console.error('Error al enviar el correo:', error);
     });
   }
+  // actualizarCorreos() {
+  //   this.correo.getEmails().subscribe((emails: any) => {
+  //     console.log('Lista de correos actualizada:', emails);
+  //   });
+  // }
 
   cerrarCentrado() {
     this.dialogRef.close();
