@@ -2,13 +2,12 @@ import { Component, OnInit, Inject, ViewContainerRef, OnDestroy } from '@angular
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Correos } from '../interfaz/correos';
 import { EncorreoService } from '../servicios/encorreo.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import Notiflix from 'notiflix';
 import { ResolicitudesComponent } from './resolicitudes/resolicitudes.component';
 import { Subscription, interval } from 'rxjs';
+import { WebSocketService } from '../servicios/web-socket.service';
 
 @Component({
   selector: 'app-solicitudes',
@@ -27,15 +26,19 @@ export class SolicitudesComponent implements OnInit {
   filteredResults: Correos[] = [];
 
   title = 'enviarrespuesta';
+
   //resivir correo
   emails: any[] = [];
-  // private pollingSubscription?: Subscription;
+  private pollingSubscription?: Subscription;
+   private websocketSubscription?: Subscription;
+   private messagesSubscription!: Subscription;
 
   constructor(private correo: EncorreoService,
     private dialog:MatDialog, 
     private viewContainerRef: ViewContainerRef,
     private formBuilder: FormBuilder,
     private httpclient: HttpClient,
+    private websocket: WebSocketService,
     @Inject(MAT_DIALOG_DATA) public data: Correos
   ) {
     this.form = this.formBuilder.group({
@@ -69,15 +72,52 @@ export class SolicitudesComponent implements OnInit {
       this.loaded = true;
       this.filteredResults = this.Correos;
     });
-    this.getEmails();
-    this.correo.correoActualizado$.subscribe(() => {
-      this.cargarCorreos();
+    // this.getEmails();
+    this.cargarCorreos();
+    this.websocket.connect('ws://localhost:3002');
+
+    this.messagesSubscription = this.websocket.messages$.subscribe(msg => {
+      this.emails.push(msg);
+      console.log('Received message:', msg);
     });
+
     // this.pollingSubscription = interval(30000).subscribe(() => {
     //   this.cargarCorreos();
     // });
+
+    this.correo.correoActualizado$.subscribe(() => {
+      this.cargarCorreos();
+    });
   }
-  
+  // getEmails() {
+  //   this.correo.getEmails().subscribe(
+  //     response => {
+  //       this.emails = response;
+  //     },
+  //     error => {
+  //       console.error('Error al obtener los correos', error);
+  //     }
+  //   );
+  // }
+  sendMessage(message: string) {
+    this.websocket.sendMessage({ message });
+  }
+
+  ngOnDestroy() {
+    if (this.messagesSubscription) {
+      this.messagesSubscription.unsubscribe();
+    }
+    this.websocket.close();
+  }
+
+  cargarCorreos() {
+    this.correo.getEmails().subscribe((emails: any) => {
+      this.emails = emails;
+      console.log('Correos cargados:', this.emails);
+    }, error => {
+      console.error('Error al cargar correos:', error);
+    });
+  }  
   getSeverity(estatu: string){
     switch(estatu) {
       case 'Aprobado':
@@ -107,28 +147,5 @@ export class SolicitudesComponent implements OnInit {
         this.Correos = Correos;
       });
     }
-  }
-
-  cargarCorreos() {
-    this.correo.getEmails().subscribe((emails: any) => {
-      this.emails = emails;
-      console.log('Correos cargados:', this.emails);
-    });
-  }
-
-  // ngOnDestroy(): void {
-  //   if (this.pollingSubscription) {
-  //     this.pollingSubscription.unsubscribe();
-  //   }
-  // }
-  getEmails() {
-    this.correo.getEmails().subscribe(
-      response => {
-        this.emails = response;
-      },
-      error => {
-        console.error('Error al obtener los correos', error);
-      }
-    );
   }
 }
