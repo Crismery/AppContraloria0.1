@@ -3,7 +3,7 @@ import { Firestore, collection, addDoc, collectionData, doc, getDoc} from '@angu
 import { Observable } from 'rxjs';
 import {Correos} from "../interfaz/correos";
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

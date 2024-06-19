@@ -27,7 +27,7 @@ export class ResolicitudesComponent implements OnInit {
       this.form = this.formBuilder.group({
         correo: [data.from || '', [Validators.required, Validators.email]],
         asunto: [data.subject || '', Validators.required],
-        mensaje: [data.snippet || '', Validators.required],
+        mensaje: [data.snippet|| '', Validators.required],
         comentario: ['', Validators.required],
         estatu: ['', Validators.required],
         fecha_solicitud: [data.date || '', Validators.required],
@@ -82,12 +82,6 @@ export class ResolicitudesComponent implements OnInit {
       console.error('Error al enviar el correo:', error);
     });
   }
-  // actualizarCorreos() {
-  //   this.correo.getEmails().subscribe((emails: any) => {
-  //     console.log('Lista de correos actualizada:', emails);
-  //   });
-  // }
-
   cerrarCentrado() {
     this.dialogRef.close();
   }

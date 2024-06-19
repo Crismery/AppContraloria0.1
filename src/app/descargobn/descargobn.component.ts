@@ -100,36 +100,76 @@ export class DescargobnComponent implements OnInit {
     this.dialogVisible = true;
 }
   agregarFechaMomento(appcontraloria: Appcontraloria) {
-    if (appcontraloria) {
+    Notiflix.Confirm.show(
+      'Agregar nuevamente a registro.',
+      '¿Esta seguro/a de que quiere agregar nuevamente este registro?',
+      'Si',
+      'No',
+      () => {
+        if (appcontraloria) {
       
-      appcontraloria.fecha_de_descargoBN = '';
-  
-      appcontraloria.fecha_de_reingreso = new Date().toISOString();
+          appcontraloria.fecha_de_descargoBN = '';
       
-      this.registrosService.updatePlace(appcontraloria)
-        .then(() => {
-          this.snackBar.open('Registro agregado nuevamente', 'Cerrar', {
+          appcontraloria.fecha_de_reingreso = new Date().toISOString();
+          
+          this.registrosService.updatePlace(appcontraloria)
+            .then(() => {
+              this.snackBar.open('Registro agregado nuevamente', 'Cerrar', {
+                duration: 3000,
+                horizontalPosition: 'center',
+                verticalPosition: 'bottom'
+              });
+            })
+            .catch(error => {
+              console.error('Error al agregar la fecha del momento al registro:', error);
+              this.snackBar.open('Error al actualizar el registro', 'Cerrar', {
+                duration: 3000,
+                horizontalPosition: 'center',
+                verticalPosition: 'bottom'
+              });
+            });
+        } else {
+          console.error('Registro no válido.');
+          this.snackBar.open('Registro no válido', 'Cerrar', {
             duration: 3000,
             horizontalPosition: 'center',
             verticalPosition: 'bottom'
           });
-        })
-        .catch(error => {
-          console.error('Error al agregar la fecha del momento al registro:', error);
-          this.snackBar.open('Error al actualizar el registro', 'Cerrar', {
-            duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'bottom'
-          });
-        });
-    } else {
-      console.error('Registro no válido.');
-      this.snackBar.open('Registro no válido', 'Cerrar', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
+        }
+      },
+      () => {
+      alert('If you say so...');
       });
-    }
+    // if (appcontraloria) {
+      
+    //   appcontraloria.fecha_de_descargoBN = '';
+  
+    //   appcontraloria.fecha_de_reingreso = new Date().toISOString();
+      
+    //   this.registrosService.updatePlace(appcontraloria)
+    //     .then(() => {
+    //       this.snackBar.open('Registro agregado nuevamente', 'Cerrar', {
+    //         duration: 3000,
+    //         horizontalPosition: 'center',
+    //         verticalPosition: 'bottom'
+    //       });
+    //     })
+    //     .catch(error => {
+    //       console.error('Error al agregar la fecha del momento al registro:', error);
+    //       this.snackBar.open('Error al actualizar el registro', 'Cerrar', {
+    //         duration: 3000,
+    //         horizontalPosition: 'center',
+    //         verticalPosition: 'bottom'
+    //       });
+    //     });
+    // } else {
+    //   console.error('Registro no válido.');
+    //   this.snackBar.open('Registro no válido', 'Cerrar', {
+    //     duration: 3000,
+    //     horizontalPosition: 'center',
+    //     verticalPosition: 'bottom'
+    //   });
+    // }
   }
   private construirFormulario(): void {
     this.datos = this.fb.group({

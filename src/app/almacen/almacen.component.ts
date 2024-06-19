@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { Observable } from 'rxjs';
 import { DialogoBNComponent } from './dialogo-bn/dialogo-bn.component';
-
+import Notiflix from 'notiflix';
 
 
 @Component({
@@ -60,6 +60,74 @@ export class AlmacenComponent implements OnInit {
       });
     }
 
+    agregarFechaMomento(appcontraloria: Appcontraloria) {
+      Notiflix.Confirm.show(
+        'Enviar a descargo de bienes nacionales.',
+        '¿Esta seguro/a de que quiere enviar este dispositivo a descargo de bienes nacionales?',
+        'Si',
+        'No',
+        () => {
+          if (appcontraloria) {
+        
+            appcontraloria.fecha_de_descargoBN = new Date().toISOString();
+            // this.dialogRef.close();
+              this.registrosService.updatePlace(appcontraloria)
+                .then(() => {
+                  this._snackbar.open('Registro enviado a descargo de bienes nacionales', 'Cerrar', {
+                    duration: 3000,
+                    horizontalPosition: 'center',
+                    verticalPosition: 'bottom'
+                  });
+                })
+                .catch(error => {
+                  console.error('Error al agregar la fecha del momento al registro:', error);
+                  this._snackbar.open('Error al actualizar el registro', 'Cerrar', {
+                    duration: 3000,
+                    horizontalPosition: 'center',
+                    verticalPosition: 'bottom'
+                  });
+                });
+            } else {
+              console.error('Registro no válido.');
+              this._snackbar.open('Registro no válido', 'Cerrar', {
+                duration: 3000,
+                horizontalPosition: 'center',
+                verticalPosition: 'bottom'
+              });
+            }
+        },
+        () => {
+        alert('If you say so...');
+        });
+      // if (appcontraloria) {
+        
+      // appcontraloria.fecha_de_descargoBN = new Date().toISOString();
+      // // this.dialogRef.close();
+      //   this.registrosService.updatePlace(appcontraloria)
+      //     .then(() => {
+      //       this._snackbar.open('Registro enviado a descargo de bienes nacionales', 'Cerrar', {
+      //         duration: 3000,
+      //         horizontalPosition: 'center',
+      //         verticalPosition: 'bottom'
+      //       });
+      //     })
+      //     .catch(error => {
+      //       console.error('Error al agregar la fecha del momento al registro:', error);
+      //       this._snackbar.open('Error al actualizar el registro', 'Cerrar', {
+      //         duration: 3000,
+      //         horizontalPosition: 'center',
+      //         verticalPosition: 'bottom'
+      //       });
+      //     });
+      // } else {
+      //   console.error('Registro no válido.');
+      //   this._snackbar.open('Registro no válido', 'Cerrar', {
+      //     duration: 3000,
+      //     horizontalPosition: 'center',
+      //     verticalPosition: 'bottom'
+      //   });
+      // }
+    }
     buscar(): void {
       if (this.query.trim() !== '') {
         
