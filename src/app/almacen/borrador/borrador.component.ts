@@ -5,7 +5,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appcontraloria } from '../../interfaz/appcontraloria';
 import { Observable } from 'rxjs';
 import { SinodialogoComponent } from './sinodialogo/sinodialogo.component';
-import { DialogoagregarComponent } from './dialogoagregar/dialogoagregar.component';
 import Notiflix from 'notiflix';
 
 @Component({
@@ -46,25 +45,6 @@ export class BorradorComponent implements OnInit {
         data: registro, 
         width: '550px',
         height: '500px',
-        viewContainerRef: this.viewContainerRef,
-        panelClass: 'dialog-container',
-        disableClose: true
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialogo cerrado:', result);
-      });
-    } catch (error) {
-      console.error('Error al obtener la información del registro:', error);
-    }
-  }
-  async mostrarComponenteagregar(appcontraloria: Appcontraloria): Promise<void> {
-    try {
-      const registro = await this.registrosService.getPlaceById(appcontraloria);
-    
-      const dialogRef = this.dialog.open(DialogoagregarComponent, {
-        data: registro, 
-        width: '250px',
-        height: '150px',
         viewContainerRef: this.viewContainerRef,
         panelClass: 'dialog-container',
         disableClose: true
@@ -143,5 +123,4 @@ export class BorradorComponent implements OnInit {
       });
     }
   } 
-
 }

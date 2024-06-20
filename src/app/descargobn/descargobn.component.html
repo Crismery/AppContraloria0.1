@@ -4,16 +4,9 @@
       <h5> CONTRALORIA | DESCARGO-BN</h5>
     </div>
     <div class="user-info">
-      <!--button class="p-link layout-topbar-button">
-            <i class="pi pi-user"></i>
-            <span>Profile</span>
-        </button-->
       <button [routerLink]="'/home'" class="boton" title="Home">
-        <!-- <img src="assets/salir.png"> -->
         <i class="bi bi-box-arrow-right  salida" title="Home"></i>
-        <!-- <span>Home</span> -->
       </button>
-      <!-- Iconos y nombre del usuario aquí -->
     </div>
   </div>
 
@@ -24,14 +17,6 @@
       <div class="button-container">
         <button class="boton1" (click)="showDialog()"> <i class="bi bi-envelope-at salida"></i> Descargo BN</button>
       </div>
-      <!-- <div class="boton1">
-        <button 
-        class="boton1"
-            type="button" 
-            (click)="showDialog()">
-            <i class="bi bi-envelope-at"> Descargo BN</i>
-        </button>
-    </div> -->
       <p-dialog header="Enviar correo" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body"
         [(visible)]="dialogVisible" [style]="{width: '45vw'}" [contentStyle]="{height: '650px'}">
         <div class="container" [formGroup]="datos">

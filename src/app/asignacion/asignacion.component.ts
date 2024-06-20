@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddAsignacionComponent } from './add-asignacion/add-asignacion.component';
 import { RegistrosService } from '../servicios/registros.service';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { EditAsignacionComponent } from './edit-asignacion/edit-asignacion.component';
@@ -30,20 +29,6 @@ export class AsignacionComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private registrosService: RegistrosService) { }
 
-  mostrarComponente(): void {
-    const dialogRef = this.dialog.open(AddAsignacionComponent, {
-      width: '500px',
-      height: '380px',
-      viewContainerRef: this.viewContainerRef,
-      panelClass: 'dialog-container',
-      disableClose: true
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialogo cerrado:', result);
-    });
-  }
-
   async mostrarComponenteedit(appcontraloria: Appcontraloria): Promise<void> {
     try {
       const registro = await this.registrosService.getPlaceById(appcontraloria);
@@ -69,8 +54,6 @@ export class AsignacionComponent implements OnInit {
         !item.cedula && !item.usuario && !item.Departamento && !item.fecha_de_borrados && !item.fecha_de_descargoBN
       );
       this.filteredResults = this.appcontraloria;
-
-      this.loadData();
     });
   }
   buscar(): void {
@@ -92,28 +75,5 @@ export class AsignacionComponent implements OnInit {
         );
       });
     }
-  }
-  loadData(): void {
-    this.totalItems = this.filteredResults.length;
-    this.endIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems);
-  }
-
-  changeItemsPerPage(event: any): void {
-    const value = (event.target as HTMLSelectElement).value;
-    if (value !== null && value !== undefined) {
-      this.itemsPerPage = +value;
-      this.startIndex = 0;
-      this.filteredResults = this.appcontraloria.slice(0, this.itemsPerPage);
-
-      this.loadData();
-    }
-  }
-  prevPage(): void {
-    this.startIndex = Math.max(0, this.startIndex - this.itemsPerPage);
-    this.loadData();
-  }
-  nextPage(): void {
-    this.startIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems - this.itemsPerPage);
-    this.loadData();
   }
 }

@@ -27,7 +27,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { AddEntradaComponent } from './entrada/add-entrada/add-entrada.component';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AddAsignacionComponent } from './asignacion/add-asignacion/add-asignacion.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AddRegistrosComponent } from './registros/add-registros/add-registros.component';
 import { EditEntradaComponent } from './entrada/edit-entrada/edit-entrada.component';
@@ -39,12 +38,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { SinodialogoComponent } from './almacen/borrador/sinodialogo/sinodialogo.component';
-import { DialogoentradaComponent } from './entrada/dialogoentrada/dialogoentrada.component';
-import { DialogoregistroComponent } from './registros/dialogoregistro/dialogoregistro.component';
 import { DialogousuarioComponent } from './registros/dialogousuario/dialogousuario.component';
-import { DialogocorreoComponent } from './descargobn/dialogocorreo/dialogocorreo.component';
-import { DialogoBNComponent } from './almacen/dialogo-bn/dialogo-bn.component';
-import { DialogoagregarComponent } from './almacen/borrador/dialogoagregar/dialogoagregar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
@@ -72,19 +66,13 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     SolicitudesComponent,
     DescargobnComponent,
     AddEntradaComponent,
-    AddAsignacionComponent,
     AddRegistrosComponent,
     EditEntradaComponent,
     EditAsignacionComponent,
     AddMantenimientoComponent,
     BorradorComponent,
     SinodialogoComponent,
-    DialogoentradaComponent,
-    DialogoregistroComponent,
     DialogousuarioComponent,
-    DialogocorreoComponent,
-    DialogoBNComponent,
-    DialogoagregarComponent,
     ResolicitudesComponent
   ],
   imports: [

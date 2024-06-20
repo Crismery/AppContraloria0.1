@@ -7,7 +7,6 @@ import { RegistrosService } from '../servicios/registros.service';
 import { EditEntradaComponent } from './edit-entrada/edit-entrada.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { DialogoentradaComponent } from './dialogoentrada/dialogoentrada.component';
 
 @Component({
   selector: 'app-entrada',
@@ -67,26 +66,6 @@ export class EntradaComponent implements OnInit {
       console.error('Error al obtener la información del registro:', error);
     }
   }
-  async dialogoregistro(appcontraloria: Appcontraloria): Promise<void> {
-    try {
-      const registro = await this.registrosService.getPlaceById(appcontraloria);
-      
-      const dialogRef = this.dialog.open(DialogoentradaComponent, {
-        data: registro, 
-        width: '250px',
-        height: '150px',
-        viewContainerRef: this.viewContainerRef,
-        panelClass: 'dialog-container',
-        disableClose: true
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialogo cerrado:', result);
-      });
-    } catch (error) {
-      console.error('Error al obtener la información del registro:', error);
-    }
-  }
 
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
@@ -97,25 +76,6 @@ export class EntradaComponent implements OnInit {
       this.loadData();
     });
   } 
-
-  // agregarFechaMomento(appcontraloria: Appcontraloria) {
-  //   if (appcontraloria) {
-  //     appcontraloria.fecha_de_borrados = new Date().toISOString();
-  //     this.registrosService.updatePlace(appcontraloria)
-  //       .then(() => {
-  //         this._snackbar.open('Registro eliminado con éxito', 'Cerrar', {
-  //           duration: 3000,
-  //           horizontalPosition: 'center',
-  //           verticalPosition: 'bottom'
-  //         });
-  //       })
-  //       .catch(error => {
-  //         console.error('Error al agregar la fecha del momento al registro:', error);
-  //       });
-  //   } else {
-  //     console.error('Registro no válido.');
-  //   }
-  // }
 
   buscar(): void {
     if (this.query.trim() !== '') {

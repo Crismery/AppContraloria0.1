@@ -34,19 +34,7 @@
                         <mat-checkbox class="checkbox-container" [(ngModel)]="defragmentacionChecked"
                             name="defragmentacion">Desfragmentacion</mat-checkbox>
                     </div>
-                    <!-- <div *ngIf="tipomantenimiento === 'Logico' || tipomantenimiento === 'Ambos'"
-                        class="select-container">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Actulizacion</mat-label>
-                            <mat-select placeholder="Seleccione Actualizacion">
-                                <mat-option>Ninguno</mat-option>
-                                <mat-option value="OS">Sistema Operativo</mat-option>
-                                <mat-option value="Software">Software</mat-option>
-                                <mat-option value="Otros">Otros</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div> -->
-
+                    
                     <h3 *ngIf="tipomantenimiento === 'Ambos'">Mantenimiento Fisico</h3>
                     <div *ngIf="tipomantenimiento === 'Fisico' || tipomantenimiento === 'Ambos'">
                         <mat-checkbox (change)="toggleMemoria($event)" class="checkbox-container">Memoria</mat-checkbox>

@@ -72,7 +72,6 @@ export class SolicitudesComponent implements OnInit {
       this.loaded = true;
       this.filteredResults = this.Correos;
     });
-    // this.getEmails();
     this.cargarCorreos();
     this.websocket.connect('ws://localhost:3002');
 
@@ -81,24 +80,11 @@ export class SolicitudesComponent implements OnInit {
       console.log('Received message:', msg);
     });
 
-    // this.pollingSubscription = interval(30000).subscribe(() => {
-    //   this.cargarCorreos();
-    // });
-
     this.correo.correoActualizado$.subscribe(() => {
       this.cargarCorreos();
     });
   }
-  // getEmails() {
-  //   this.correo.getEmails().subscribe(
-  //     response => {
-  //       this.emails = response;
-  //     },
-  //     error => {
-  //       console.error('Error al obtener los correos', error);
-  //     }
-  //   );
-  // }
+  
   sendMessage(message: string) {
     this.websocket.sendMessage({ message });
   }

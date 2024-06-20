@@ -81,27 +81,4 @@ export class MantenimientoComponent  implements OnInit{
       });
     }
   }
-
-  loadData(): void {
-    this.totalItems = this.filteredResults.length; 
-    this.endIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems);
-  }
-  changeItemsPerPage(event: any): void {
-    const value = (event.target as HTMLSelectElement).value;
-    if (value !== null && value !== undefined) {
-      this.itemsPerPage = +value;
-      this.startIndex = 0; 
-      this.filteredResults = this.appcontraloria.slice(0, this.itemsPerPage);
-  
-      this.loadData();
-    }
-  }
-  prevPage(): void {
-    this.startIndex = Math.max(0, this.startIndex - this.itemsPerPage);
-    this.loadData();
-  }
-  nextPage(): void {
-    this.startIndex = Math.min(this.startIndex + this.itemsPerPage, this.totalItems - this.itemsPerPage);
-    this.loadData();
-  }
 }

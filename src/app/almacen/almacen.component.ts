@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { Observable } from 'rxjs';
-import { DialogoBNComponent } from './dialogo-bn/dialogo-bn.component';
 import Notiflix from 'notiflix';
 
 
@@ -32,25 +31,6 @@ export class AlmacenComponent implements OnInit {
     private _snackbar: MatSnackBar,
     private dialog: MatDialog,) { }
 
-    async mostrarComponente(appcontraloria: Appcontraloria): Promise<void> {
-      try {
-        const registro = await this.registrosService.getPlaceById(appcontraloria);
-      
-        const dialogRef = this.dialog.open(DialogoBNComponent, {
-          data: registro, 
-          width: '300px',
-          height: '200px',
-          viewContainerRef: this.viewContainerRef,
-          panelClass: 'dialog-container',
-          disableClose: true
-        });
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('Dialogo cerrado:', result);
-        });
-      } catch (error) {
-        console.error('Error al obtener la información del registro:', error);
-      }
-    }
     ngOnInit() {
       this.registrosService.getPlaces().subscribe(appcontraloria => {
         this.appcontraloria = appcontraloria.filter(item =>
@@ -70,7 +50,6 @@ export class AlmacenComponent implements OnInit {
           if (appcontraloria) {
         
             appcontraloria.fecha_de_descargoBN = new Date().toISOString();
-            // this.dialogRef.close();
               this.registrosService.updatePlace(appcontraloria)
                 .then(() => {
                   this._snackbar.open('Registro enviado a descargo de bienes nacionales', 'Cerrar', {

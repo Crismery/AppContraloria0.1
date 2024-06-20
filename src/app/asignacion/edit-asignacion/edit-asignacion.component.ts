@@ -34,24 +34,6 @@ export class EditAsignacionComponent implements OnInit{
     ngOnInit(): void {
       this.appcontraloriaedit = {...this.data};
     }
-
-    // actualizarLugar() {
-    //   if (this.appcontraloriaedit) {
-    //     this.appcontraloriaedit.fecha_de_asignacion= new Date().toISOString();
-    //     this.dialogRef.close();
-    //     this.registros.updatePlace(this.appcontraloriaedit)
-    //       .then(() => {
-    //         this._snackbar.open('¡Guardado exitosamente!', 'Cerrar', {
-    //           duration: 3000,
-    //           horizontalPosition: 'center',
-    //           verticalPosition: 'bottom',
-    //         });
-    //       })
-    //       .catch(error => console.error('Error al actualizar el lugar:', error));
-    //   } else {
-    //     console.error('No hay información para actualizar');
-    //   }
-    // }
     async actualizarLugar(appcontraloria: Appcontraloria) {
       if (this.appcontraloriaedit) {
         this.appcontraloriaedit.fecha_de_asignacion= new Date().toISOString();

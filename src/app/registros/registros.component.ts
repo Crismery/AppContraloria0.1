@@ -7,7 +7,6 @@ import { AddRegistrosComponent } from './add-registros/add-registros.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DialogoregistroComponent } from './dialogoregistro/dialogoregistro.component';
 import { DialogousuarioComponent } from './dialogousuario/dialogousuario.component';
 
 @Component({
@@ -76,26 +75,7 @@ export class RegistrosComponent implements OnInit {
       console.error('Error al obtener la información del registro:', error);
     }
   }
-  async dialogoregistro(appcontraloria: Appcontraloria): Promise<void> {
-    try {
-      const registro = await this.registrosService.getPlaceById(appcontraloria);
-      
-      const dialogRef = this.dialog.open(DialogoregistroComponent, {
-        data: registro, 
-        width: '250px',
-        height: '150px',
-        viewContainerRef: this.viewContainerRef,
-        panelClass: 'dialog-container',
-        disableClose: true
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialogo cerrado:', result);
-      });
-    } catch (error) {
-      console.error('Error al obtener la información del registro:', error);
-    }
-  }
+
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item =>

@@ -26,7 +26,6 @@ ngOnInit(): void {
   if (this.appcontraloriamostrar) {
 
     this.appcontraloriamostrar.fecha_de_elimusuario = new Date().toISOString();
-    // this.dialogRef.close();
     this.registrosService.updatePlace(this.appcontraloriamostrar)
   }
     try {
@@ -45,24 +44,6 @@ ngOnInit(): void {
       });
     }
   }
-  // actualizarLugar() {
-  //   if (this.appcontraloriamostrar) {
-
-  //     this.appcontraloriamostrar.fecha_de_elimusuario = new Date().toISOString();
-  //     this.dialogRef.close();
-  //     this.registrosService.updatePlace(this.appcontraloriamostrar)
-  //       .then(() => {
-  //         this._snackbar.open('La eliminacion ocurrio adecuadamente.', 'Cerrar', {
-  //           duration: 3000,
-  //           horizontalPosition: 'center',
-  //           verticalPosition: 'bottom',
-  //         });
-  //       })
-  //       .catch(error => console.error('Error al eliminar el lugar:', error));
-  //   } else {
-  //     console.error('No hay información para eliminar');
-  //   }
-  // }
 cerrarCentrado(){
   this.dialogRef.close();
 }

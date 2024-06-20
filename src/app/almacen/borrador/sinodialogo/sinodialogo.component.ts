@@ -20,20 +20,6 @@ export class SinodialogoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Appcontraloria
   ) {
   }
-  // async onClickDelete(appcontraloria: Appcontraloria) {
-  //   const response = await this.registrosService.deletePlaces(appcontraloria);
-  //   console.log(response);
-  //   this.dialogRef.close();
-  //   if (response.success) {
-  //     this._snackbar.open('Registro eliminado', 'Cerrar', {
-  //       duration: 3000,
-  //     });
-  //   } else {
-  //     this._snackbar.open('Error al eliminar el registro', 'Cerrar', {
-  //       duration: 3000,
-  //     });
-  //   }
-  // }
   ngOnInit(): void {
     this.appcontraloriamostrar = { ...this.data };
   }

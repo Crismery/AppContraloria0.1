@@ -4,8 +4,6 @@ import { RegistrosService } from '../servicios/registros.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appcontraloria } from '../interfaz/appcontraloria';
 import { Observable } from 'rxjs';
-import { DialogocorreoComponent } from './dialogocorreo/dialogocorreo.component';
-import { DialogoBNComponent } from './dialogo-bn/dialogo-bn.component';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import Notiflix from 'notiflix';
 import { HttpClient } from '@angular/common/http';
@@ -19,9 +17,7 @@ import { HttpClient } from '@angular/common/http';
 export class DescargobnComponent implements OnInit {
 
   query: string = '';
-  // resultados$!: Observable<Appcontraloria[]>;
 
-  // filteredResults: Appcontraloria[] = [];
   appcontraloria: Appcontraloria[] = [];
   idFrozen: boolean = false;
 
@@ -47,45 +43,7 @@ export class DescargobnComponent implements OnInit {
         textoadicional: new FormControl('')
       });
     }
-
-    // async mostrarComponente(registros: Appcontraloria[]): Promise<void> {
-    //   try {
-    //     const dialogRef = this.dialog.open(DialogocorreoComponent, {
-    //       data: registros,
-    //       width: '550px',
-    //       height: '500px',
-    //       viewContainerRef: this.viewContainerRef,
-    //       panelClass: 'dialog-container',
-    //       disableClose: true
-    //     });
-    
-    //     dialogRef.afterClosed().subscribe(result => {
-    //       console.log('Dialogo cerrado:', result);
-    //     });
-    //   } catch (error) {
-    //     console.error('Error al obtener la información del registro:', error);
-    //   }
-    // }    
-    
-  async mostrarComponenteagre(appcontraloria: Appcontraloria): Promise<void> {
-    try {
-      const registro = await this.registrosService.getPlaceById(appcontraloria);
-    
-      const dialogRef = this.dialog.open(DialogoBNComponent, {
-        data: registro, 
-        width: '300px',
-        height: '150px',
-        viewContainerRef: this.viewContainerRef,
-        panelClass: 'dialog-container',
-        disableClose: true
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialogo cerrado:', result);
-      });
-    } catch (error) {
-      console.error('Error al obtener la información del registro:', error);
-    }
-  }
+       
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item =>
@@ -152,7 +110,7 @@ export class DescargobnComponent implements OnInit {
     const textoadicional = this.datos.get('textoadicional')?.value;
     if (textoadicional) {
       this.mensajeOriginal += `\n  \n${textoadicional}`;
-      this.datos.get('textoAdicional')?.setValue(''); // Limpia el campo de texto adicional
+      this.datos.get('textoAdicional')?.setValue(''); 
     }
   }
   updateTextarea() {

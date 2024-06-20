@@ -34,11 +34,8 @@ export class LoginComponent {
         })
         .catch(error => {
           console.log(error);
-          // Maneja el error del inicio de sesión aquí
-          // Puedes mostrar un mensaje de error adecuado al usuario
         });
     } else {
-      // Formulario inválido, muestra un mensaje de error al usuario
       alert('Por favor complete todos los campos correctamente.');
     }
   }  

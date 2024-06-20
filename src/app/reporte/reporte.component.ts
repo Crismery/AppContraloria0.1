@@ -275,10 +275,7 @@ export class ReporteComponent implements OnInit {
           solicitud.fecha_respuesta
         ];
       });
-    // const htmlContent = `
-    // -Sean enviado ${this.registroelim} registros al Descargo de BN.
-    // `;
-
+   
     this.imprimir.imprimir(encabezado, cuerpo, "Reporte de las solicitudes", true);
   }
 

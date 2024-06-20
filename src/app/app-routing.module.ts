@@ -17,7 +17,6 @@ import { AddRegistrosComponent } from './registros/add-registros/add-registros.c
 import { EditEntradaComponent } from './entrada/edit-entrada/edit-entrada.component';
 import { EditAsignacionComponent } from './asignacion/edit-asignacion/edit-asignacion.component';
 import { BorradorComponent } from './almacen/borrador/borrador.component';
-import { DialogocorreoComponent } from './descargobn/dialogocorreo/dialogocorreo.component';
 
 
 
@@ -39,7 +38,6 @@ const routes: Routes = [
   { path: 'edit-entrada/:id', component: EditEntradaComponent },
   { path: 'edit-asignacion/:id', component: EditAsignacionComponent },
   { path: 'borrador', component: BorradorComponent, ...canActivate(() => redirectUnauthorizedTo(['/registro'])) },
-  {path: 'dialogocorreo', component: DialogocorreoComponent,}
 
 ];
 

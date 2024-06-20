@@ -105,10 +105,6 @@ export class AddEntradaComponent {
           duration: 2000,
         });
       }
-      // } else {
-      //   this._snackbar.open('Por favor complete todos los campos obligatorios', 'Cerrar', {
-      //     duration: 2000,
-      //   });
     }
   }
   cerrarCentrado() {
