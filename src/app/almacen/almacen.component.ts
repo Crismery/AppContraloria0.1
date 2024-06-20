@@ -97,36 +97,7 @@ export class AlmacenComponent implements OnInit {
             }
         },
         () => {
-        alert('If you say so...');
         });
-      // if (appcontraloria) {
-        
-      // appcontraloria.fecha_de_descargoBN = new Date().toISOString();
-      // // this.dialogRef.close();
-      //   this.registrosService.updatePlace(appcontraloria)
-      //     .then(() => {
-      //       this._snackbar.open('Registro enviado a descargo de bienes nacionales', 'Cerrar', {
-      //         duration: 3000,
-      //         horizontalPosition: 'center',
-      //         verticalPosition: 'bottom'
-      //       });
-      //     })
-      //     .catch(error => {
-      //       console.error('Error al agregar la fecha del momento al registro:', error);
-      //       this._snackbar.open('Error al actualizar el registro', 'Cerrar', {
-      //         duration: 3000,
-      //         horizontalPosition: 'center',
-      //         verticalPosition: 'bottom'
-      //       });
-      //     });
-      // } else {
-      //   console.error('Registro no válido.');
-      //   this._snackbar.open('Registro no válido', 'Cerrar', {
-      //     duration: 3000,
-      //     horizontalPosition: 'center',
-      //     verticalPosition: 'bottom'
-      //   });
-      // }
     }
     buscar(): void {
       if (this.query.trim() !== '') {

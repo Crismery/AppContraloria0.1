@@ -65,7 +65,6 @@ export class MantenimientoComponent  implements OnInit{
       (place.modelo && place.modelo.toLowerCase().includes(queryLower)) ||
       (place.serial && place.serial.toLowerCase().includes(queryLower)) ||
       (place.placa && place.placa.toLowerCase().includes(queryLower)) ||
-      (place.version && place.version.toLowerCase().includes(queryLower)) ||
       (place.tipo_de_mantenimiento && place.tipo_de_mantenimiento.toLowerCase().includes(queryLower)) ||
       (place.mantenimiento && place.mantenimiento.toLowerCase().includes(queryLower)) ||
       (place.memoria && place.memoria.toLowerCase().includes(queryLower)) ||

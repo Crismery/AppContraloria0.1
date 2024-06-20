@@ -138,38 +138,7 @@ export class DescargobnComponent implements OnInit {
         }
       },
       () => {
-      alert('If you say so...');
       });
-    // if (appcontraloria) {
-      
-    //   appcontraloria.fecha_de_descargoBN = '';
-  
-    //   appcontraloria.fecha_de_reingreso = new Date().toISOString();
-      
-    //   this.registrosService.updatePlace(appcontraloria)
-    //     .then(() => {
-    //       this.snackBar.open('Registro agregado nuevamente', 'Cerrar', {
-    //         duration: 3000,
-    //         horizontalPosition: 'center',
-    //         verticalPosition: 'bottom'
-    //       });
-    //     })
-    //     .catch(error => {
-    //       console.error('Error al agregar la fecha del momento al registro:', error);
-    //       this.snackBar.open('Error al actualizar el registro', 'Cerrar', {
-    //         duration: 3000,
-    //         horizontalPosition: 'center',
-    //         verticalPosition: 'bottom'
-    //       });
-    //     });
-    // } else {
-    //   console.error('Registro no válido.');
-    //   this.snackBar.open('Registro no válido', 'Cerrar', {
-    //     duration: 3000,
-    //     horizontalPosition: 'center',
-    //     verticalPosition: 'bottom'
-    //   });
-    // }
   }
   private construirFormulario(): void {
     this.datos = this.fb.group({

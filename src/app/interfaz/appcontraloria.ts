@@ -9,7 +9,6 @@ export interface Appcontraloria {
     usuario: string;
     Departamento: string;
     os: string;
-    version: string; 
     cpu: string; 
     memoria: string;
     almacenamiento: string;

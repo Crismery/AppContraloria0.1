@@ -51,7 +51,7 @@ export class AsignacionComponent implements OnInit {
       const dialogRef = this.dialog.open(EditAsignacionComponent, {
         data: registro,
         width: '550px',
-        height: '500px',
+        height: '450px',
         viewContainerRef: this.viewContainerRef,
         panelClass: 'dialog-container',
         disableClose: true
