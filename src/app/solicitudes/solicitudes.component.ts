@@ -75,10 +75,10 @@ export class SolicitudesComponent implements OnInit {
     this.cargarCorreos();
     this.websocket.connect('ws://localhost:3002');
 
-    this.messagesSubscription = this.websocket.messages$.subscribe(msg => {
-      this.emails.push(msg);
-      console.log('Received message:', msg);
-    });
+    // this.messagesSubscription = this.websocket.messages$.subscribe(msg => {
+    //   this.emails.push(msg);
+    //   console.log('Received message:', msg);
+    // });
 
     this.correo.correoActualizado$.subscribe(() => {
       this.cargarCorreos();
