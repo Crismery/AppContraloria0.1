@@ -4,7 +4,7 @@
          <h1>Editar Registro/s</h1>
          <div class="row">
  
-           <mat-form-field appearance="outline">
+           <mat-form-field appearance="outline" class="form-element">
              <mat-label>Dispositivo</mat-label>
              <mat-select  placeholder="Seleccione un Dispositivo"  name="opciones" [(ngModel)]="appcontraloriaedit.dispositivo" disabled>
                  <mat-option value="Desktop">Desktop</mat-option>
@@ -15,32 +15,32 @@
              </mat-select>
          </mat-form-field>
  
-           <mat-form-field appearance="outline">
+           <mat-form-field appearance="outline" class="form-element">
              <mat-label>Modelo</mat-label>
              <input matInput type="text" placeholder="ej. Pro Desk" [(ngModel)]="appcontraloriaedit.modelo" disabled>
          </mat-form-field>
-         <mat-form-field appearance="outline">
+         <mat-form-field appearance="outline" class="form-element">
            <mat-label>Serial</mat-label>
            <input matInput type="text" placeholder="ej. 1xcs45" [(ngModel)]="appcontraloriaedit.serial" disabled>
        </mat-form-field>
-       <mat-form-field appearance="outline">
+       <mat-form-field appearance="outline" class="form-element">
          <mat-label>Placa</mat-label>
          <input matInput type="text" placeholder="ej. 1234" [(ngModel)]="appcontraloriaedit.placa" disabled>
      </mat-form-field>
-     <mat-form-field appearance="outline">
+     <mat-form-field appearance="outline" class="form-element">
       <mat-label>Bienes Nacionales</mat-label>
       <input matInput type="text" placeholder="ej. 12548" [(ngModel)]="appcontraloriaedit.bienes_nacionales"disabled>
   </mat-form-field>
-     <mat-form-field appearance="outline">
-        <mat-label>Cedula</mat-label>
-        <input matInput type="text" placeholder="ej. 000-0000000-0" [(ngModel)]="appcontraloriaedit.cedula">
-    </mat-form-field>
-     <mat-form-field appearance="outline">
+  <p-floatLabel class="form-element">
+    <p-inputMask mask="999-9999999-9" [(ngModel)]="appcontraloriaedit.cedula"  aria-placeholder="999-9999999-9" />
+    <label for="ssn_input">Cedula</label>
+  </p-floatLabel>
+     <mat-form-field appearance="outline" class="form-element">
         <mat-label>Usuario</mat-label>
         <input matInput type="text" placeholder="ej. Juansito Perez" [(ngModel)]="appcontraloriaedit.usuario">
     </mat-form-field>
    <ng-container>
-     <mat-form-field appearance="outline">
+     <mat-form-field appearance="outline" class="form-element">
        <mat-label>Departamento</mat-label>
        <mat-select placeholder="Seleccione departamento" [(ngModel)]="appcontraloriaedit.Departamento">
          <mat-option value="Direción Jurídica">Direción Jurídica</mat-option>
@@ -59,7 +59,7 @@
      </mat-form-field>
    </ng-container>
 <h3>-Escriba la razon por la cual se cambiara de usuario:</h3>
-<mat-form-field appearance="outline">
+<mat-form-field appearance="outline" class="form-element">
   <mat-label>Comentario</mat-label>
   <input matInput type="text" placeholder="Comentario" [(ngModel)]="appcontraloriaedit.comentarioeliusuario">
 </mat-form-field>

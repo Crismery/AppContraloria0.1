@@ -4,27 +4,15 @@
       <h5> CONTRALORIA | REPORTE</h5>
     </div>
     <div class="user-info">
-      <!--button class="p-link layout-topbar-button">
-            <i class="pi pi-user"></i>
-            <span>Profile</span>
-        </button-->
       <button [routerLink]="'/home'" class="boton" title="Home">
-        <!-- <img src="assets/salir.png"> -->
         <i class="bi bi-box-arrow-right  salida" title="Home"></i>
-        <!-- <span>Home</span> -->
       </button>
     </div>
   </div>
 
   <div class="content">
-    <!-- <div class="navbar1">
-      <span><i class="bi bi-journal-text salida"></i> Reporte</span>
-      <button  class="boton1" (click)=" onImprimirTodos()"> <i class="bi bi-filetype-pdf salida"></i>Imprimir todo</button>
-      <i class="bi bi-filetype-pdf" (click)=" onImprimirTodos()" title="Imprimir todo"></i>
-    </div> -->
     <br>
     <div class="checkbox">
-      <!-- <h2>Ver todos los cambios</h2> -->
       <div class="card">
         <div class="flex justify-content-center">
             <button 
@@ -246,7 +234,7 @@
       </p-table>
       </p-tabPanel>
       <p-tabPanel header="Descargo Bienes Nacionales">
-        <h3>-Sean enviado {{registroelim}} registros al Descargo de BN.</h3>
+        <h3>-Sean enviado {{registrosBN}} registros al Descargo de BN.</h3>
         <p-table 
                 [value]="appcontraloriaBN" 
                 [scrollable]="true"
@@ -707,7 +695,7 @@
         [(visible)]="dialogVisiblede" 
         [style]="{width: '75vw', backgroundColor: 'white', borderRadius: '10px', padding: '20px'}" 
         [contentStyle]="{height: '300px',padding: '10px'}">
-        <h3>-Sean enviado {{registroelim}} registros al Descargo de BN.
+        <h3>-Sean enviado {{registrosBN}} registros al Descargo de BN.
         </h3>
             <p-table 
                 [value]="appcontraloriaBN" 

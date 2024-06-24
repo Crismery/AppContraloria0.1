@@ -12,13 +12,13 @@ import { Correos } from '../interfaz/correos';
 })
 export class ReporteComponent implements OnInit {
 
-  asignacion: boolean = false;
-  mantenimiento: boolean = false;
-  entrada: boolean = false;
-  registros: boolean = false;
-  descargoBN: boolean = false;
-  soliciudes: boolean = false;
-  todo: boolean = false;
+  // asignacion: boolean = false;
+  // mantenimiento: boolean = false;
+  // entrada: boolean = false;
+  // registros: boolean = false;
+  // descargoBN: boolean = false;
+  // soliciudes: boolean = false;
+  // todo: boolean = false;
 
   appcontraloria: Appcontraloria[] = [];
   registroasignar = 0;
@@ -39,6 +39,7 @@ export class ReporteComponent implements OnInit {
   appcontraloriasoli:Correos[]=[];
 
   appcontraloriaBN: Appcontraloria[] = [];
+  registrosBN =0; 
 
   idFrozen: boolean = false;
 
@@ -55,27 +56,27 @@ export class ReporteComponent implements OnInit {
     private imprimir: ImprimirService
   ) { }
 
-  toggleasignacion(event: any) {
-    this.asignacion = event.checked;
-  }
-  togglematenimiento(event: any) {
-    this.mantenimiento = event.checked;
-  }
-  toggleentrada(event: any) {
-    this.entrada = event.checked;
-  }
-  toggleregistros(event: any) {
-    this.registros = event.checked;
-  }
-  toggledescargo(event: any) {
-    this.descargoBN = event.checked;
-  }
-  togglesolicitudes(event: any) {
-    this.soliciudes = event.checked;
-  }
-  toggletodo(event: any) {
-    this.todo = event.checked;
-  }
+  // toggleasignacion(event: any) {
+  //   this.asignacion = event.checked;
+  // }
+  // togglematenimiento(event: any) {
+  //   this.mantenimiento = event.checked;
+  // }
+  // toggleentrada(event: any) {
+  //   this.entrada = event.checked;
+  // }
+  // toggleregistros(event: any) {
+  //   this.registros = event.checked;
+  // }
+  // toggledescargo(event: any) {
+  //   this.descargoBN = event.checked;
+  // }
+  // togglesolicitudes(event: any) {
+  //   this.soliciudes = event.checked;
+  // }
+  // toggletodo(event: any) {
+  //   this.todo = event.checked;
+  // }
 
   getSeverity(estatu: string){
     switch(estatu) {
@@ -150,6 +151,7 @@ export class ReporteComponent implements OnInit {
     //descargo-BN
     this.registrosService.getPlaces().subscribe(appcontraloriaBN => {
       this.appcontraloriaBN = appcontraloriaBN.filter(item => item.fecha_de_descargoBN && !item.fecha_de_borrados);
+      this.registrosBN = this.appcontraloriaBN.length;
     });
 
     //solicitudes
@@ -256,7 +258,7 @@ export class ReporteComponent implements OnInit {
         ];
       });
     const htmlContent = `
-    -Sean enviado ${this.registroelim} registros al Descargo de BN.
+    -Sean enviado ${this.registrosBN} registros al Descargo de BN.
     `;
 
     this.imprimir.imprimir(encabezado, cuerpo, "Reporte de los registros enviado a descargo de bienes nacionales", true, htmlContent);
@@ -378,11 +380,11 @@ export class ReporteComponent implements OnInit {
 
     -Sean actualizado ${this.registroregistro} dispositivo, se an agregado ${this.registrosent} dispositivo, sean asingando ${this.registroasignar} dispositivos, 
     se le an hecho mantenimiento a ${this.registromatenimiento} dispositivos, quedo libres ${this.registrousu} para asignar nuevamente 
-    y sean enviado ${this.registroelim} registros al Descargo de BN.
+    y sean enviado ${this.registrosBN} registros al Descargo de BN.
     
     `;
 
-    this.imprimir.imprimirTodas(encabezados, cuerpos, ["Reporte de los cambios de Registros", "Reporte de los cambios de las entradas", "Reporte de los cambios de los dispositivos asignados", "Reporte de los cambios de mantenimiento", "Reporte de los registros enviado a descargo de bienes nacionales","Reporte de las solicitudes"], true, htmlContent);
+    this.imprimir.imprimirTodas(encabezados, cuerpos, ["Reporte de los cambios de Registros", "Reporte de los cambios de las entradas", "Reporte de los cambios de los dispositivos asignados", "Reporte de los cambios de mantenimiento", "Registros enviado a descargo de bienes nacionales","Reporte de las solicitudes"], true, htmlContent);
   }
   showDialog() {
     this.dialogVisible = true;

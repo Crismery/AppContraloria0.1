@@ -65,21 +65,9 @@ export class ResolicitudesComponent implements OnInit {
     this.httpclient.post('http://localhost:3002/api/respond', params).subscribe(resp => {
       console.log(resp);
       Notiflix.Loading.remove();
-      Notiflix.Report.success(
-        'Correo enviado',
-        'El correo se envió con éxito',
-        'Aceptar'
-      );
+      Notiflix.Notify.success('Correo enviado correctamente');
       this.dialogRef.close();
       this.correo.notifyCorreoActualizado();
-    }, error => {
-      Notiflix.Loading.remove();
-      Notiflix.Report.failure(
-        'Error',
-        'No se pudo enviar el correo. Inténtalo de nuevo.',
-        'Aceptar'
-      );
-      console.error('Error al enviar el correo:', error);
     });
   }
   cerrarCentrado() {

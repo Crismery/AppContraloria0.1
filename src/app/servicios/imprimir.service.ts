@@ -4,6 +4,7 @@ import { jsPDF } from "jspdf";
 import autoTable from 'jspdf-autotable';
 import 'jspdf-autotable';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -71,7 +72,7 @@ export class ImprimirService {
       head: [encabezado],
       body: cuerpo,
       styles: {
-        font: 'Times New Roman', 
+        // font: 'Times New Roman', 
         fontStyle: 'normal',     
         fontSize: 12,            
         cellPadding: 5,          
@@ -179,7 +180,7 @@ export class ImprimirService {
         startY: yPositionTitulo + 40,
         margin: { top: 10 },
         styles: {
-          font: 'Times New Roman', 
+          // font: 'Times New Roman', 
           fontStyle: 'normal',     
           fontSize: 10,            
           cellPadding: 5,          

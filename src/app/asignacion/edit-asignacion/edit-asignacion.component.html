@@ -1,27 +1,26 @@
 <div fxLayout="row" fxLayoutAlign="center center">
-    <div class="container">
+  <div class="container">
     <br>
-      <h1>Agregar Usuarios</h1>
-     
-      <div class="row">
-    <mat-form-field appearance="outline">
-      <mat-label>Cedula</mat-label>
-      <input matInput type="text" placeholder="ej. 402-1234567-8" [(ngModel)]="appcontraloriaedit.cedula">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Usuario</mat-label>
-    <input matInput type="text" placeholder="ej. Marco Rodrigue" [(ngModel)]="appcontraloriaedit.usuario">
-  </mat-form-field>
-  <mat-form-field >
-  <mat-label>Departamento</mat-label>
-  <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones5" [(ngModel)]="appcontraloriaedit.Departamento">
-    <mat-option *ngFor="let opcion of formData.opciones5" [value]="opcion">{{ opcion }}</mat-option>
-  </mat-select>
-  </mat-form-field>
-      </div>
-      <div class="cardbutton">
-        <button (click)="actualizarLugar(data)">Guardar</button>
-        <button (click)="cerrarCentrado()">Cancelar</button>
-      </div>
-  </div> 
+    <h1>Agregar Usuarios</h1>
+    <div class="row">
+      <p-floatLabel class="form-element">
+        <p-inputMask mask="999-9999999-9" [(ngModel)]="appcontraloriaedit.cedula"  aria-placeholder="999-9999999-9" />
+        <label for="ssn_input">Cedula</label>
+      </p-floatLabel>
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Usuario</mat-label>
+        <input matInput type="text" placeholder="ej. Marco Rodrigue" [(ngModel)]="appcontraloriaedit.usuario">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-element">
+        <mat-label>Departamento</mat-label>
+        <mat-select [(ngModel)]="formData.opcionSeleccionada" name="opciones5" [(ngModel)]="appcontraloriaedit.Departamento">
+          <mat-option *ngFor="let opcion of formData.opciones5" [value]="opcion">{{ opcion }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="cardbutton">
+      <button (click)="actualizarLugar(data)">Guardar</button>
+      <button (click)="cerrarCentrado()">Cancelar</button>
+    </div>
   </div>
+</div>

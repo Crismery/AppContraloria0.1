@@ -6,16 +6,18 @@
       <div class="input-container">
 
         <input type="text" v-model="username" placeholder="Nombre de Usuario" autocomplete="off"
-          formControlName="usuario">
+          formControlName="usuario" class="form-element">
           <div *ngIf="formReg.controls['usuario']?.errors?.['required'] && (formReg.controls['usuario']?.dirty || formReg.controls['usuario']?.touched)">
             El nombre de usuario es requerido.
           </div>
 
         <input type="text" v-model="username" formControlName="email" autocomplete="off"
-          placeholder="Correo Electrónico">
+          placeholder="Correo Electrónico" class="form-element">
 
-        <input type="password" formControlName="password" class="input-field password" v-model="password"
-          placeholder="Contraseña" autocomplete="off">
+        <!-- <input type="password" formControlName="password" class="input-field password" v-model="password"
+          placeholder="Contraseña" autocomplete="off"> -->
+          <p-password type="password" formControlName="password" class="input-field password" v-model="password"
+          placeholder="Contraseña" autocomplete="off" [toggleMask]="true" class="form-element"/>
           <div *ngIf="formReg?.get('password')?.hasError('required') && (formReg?.get('password')?.dirty || formReg?.get('password')?.touched)">
             <div class="alert alert-danger">La contraseña es requerida.</div>
           </div>
@@ -23,8 +25,26 @@
             <div class="alert alert-danger">La contraseña debe contener al menos una letra mayúscula y un símbolo especial (!&#64;#$%^&*.-_+/?\|=()).</div>
           </div>
           
-        <input type="text" v-model="confirmarC" name="confirmarC" id="confirmarC" formControlName="confirmarC"
-          placeholder="Confirmar Contraseña" autocomplete="off">
+            <!-- <p-password formControlName="password" [toggleMask]="true" class="form-element">
+                 <ng-template pTemplate="header">
+                     <h6>Elige una contraseña</h6>
+                 </ng-template>
+                 <ng-template pTemplate="footer">
+                     <p-divider />
+                     <p class="mt-2">Sugerencias</p>
+                     <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                         <li>Al menos una minuscula</li>
+                         <li>Al menos una mayuscula</li>
+                         <li>Al menos un numero</li>
+                         <li>Minimo 8 caracteres</li>
+                     </ul>
+                 </ng-template>
+             </p-password> -->
+
+        <!-- <input type="text" v-model="confirmarC" name="confirmarC" id="confirmarC" formControlName="confirmarC"
+          placeholder="Confirmar Contraseña" autocomplete="off"> -->
+          <p-password type="text" v-model="confirmarC" name="confirmarC" id="confirmarC" formControlName="confirmarC"
+          placeholder="Confirmar Contraseña" autocomplete="off" [toggleMask]="true" class="form-element" />
           <div *ngIf="formReg.controls['confirmarC']?.errors?.['required'] && (formReg.controls['confirmarC']?.dirty || formReg.controls['confirmarC']?.touched)">
             Por favor confirme su contraseña.
           </div>

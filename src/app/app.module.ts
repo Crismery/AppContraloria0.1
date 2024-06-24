@@ -48,6 +48,10 @@ import { ResolicitudesComponent } from './solicitudes/resolicitudes/resolicitude
 import { TabViewModule } from 'primeng/tabview';
 import { InputTextModule } from 'primeng/inputtext';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { InputMaskModule } from 'primeng/inputmask';
+import { FloatLabelModule } from "primeng/floatlabel";
+import { PasswordModule } from 'primeng/password';
+import { DividerModule } from 'primeng/divider';
 
 
 
@@ -99,6 +103,10 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     TabViewModule,
     InputTextModule,
     ScrollPanelModule,
+    InputMaskModule,
+    FloatLabelModule,
+    PasswordModule,
+    DividerModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp({"projectId":"app-contraloria-4e461","appId":"1:773014821815:web:25693680a61efc7fe0a632","storageBucket":"app-contraloria-4e461.appspot.com","apiKey":"AIzaSyDQ-4H7L3V8acBlSqClBLPeXasvpSQ2p8c","authDomain":"app-contraloria-4e461.firebaseapp.com","messagingSenderId":"773014821815"})),
     provideAuth(() => getAuth()),

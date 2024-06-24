@@ -29,8 +29,6 @@ export class SolicitudesComponent implements OnInit {
 
   //resivir correo
   emails: any[] = [];
-  private pollingSubscription?: Subscription;
-   private websocketSubscription?: Subscription;
    private messagesSubscription!: Subscription;
 
   constructor(private correo: EncorreoService,
