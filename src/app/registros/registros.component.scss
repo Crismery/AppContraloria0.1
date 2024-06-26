@@ -131,33 +131,39 @@ input[type=text] {
 }
 .editar{
   font-size: 25px;
-  color: #072879;
+  color: #646464;;
   align-items: center;
 }
 .editar:hover{
-  color: black;
+  color: rgb(26, 25, 25);
   border: 0;
   font-weight: 600;
+  background-color: #f1f1f1;
+  border-radius: 100px;
+  padding: 10px 10px;
 }
-.borrar{
-  font-size: 25px;
-  color: red;
-  align-items: center;
-}
-.borrar:hover{
-  color: black;
-  border: 0;
-  font-weight: 600;
-}
+// .borrar{
+//   font-size: 25px;
+//   color: red;
+//   align-items: center;
+// }
+// .borrar:hover{
+//   color: black;
+//   border: 0;
+//   font-weight: 600;
+// }
 .borrarusuario{
   font-size: 25px;
-  color: darkred;
+  color: #646464;;
   align-items: center;
 }
 .borrarusuario:hover{
-  color: black;
+  color: rgb(26, 25, 25);
   border: 0;
   font-weight: 600;
+  background-color: #f1f1f1;
+  border-radius: 100px;
+  padding: 10px 10px;
 }
 .salida{
   font-size: 30px;

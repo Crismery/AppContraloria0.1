@@ -204,3 +204,16 @@ input[type=text] {
 .gmailes{
   letter-spacing: 0px
 }
+.recargar{
+  font-size: 25px;
+  color:#646464;
+  align-items: center;
+}
+.recargar:hover{
+  color: rgb(26, 25, 25);
+  border: 0;
+  font-weight: 600;
+  background-color: #f1f1f1;
+  border-radius: 100px;
+  padding: 8px 8px;
+}

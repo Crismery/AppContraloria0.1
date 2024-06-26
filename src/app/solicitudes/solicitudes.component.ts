@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { ResolicitudesComponent } from './resolicitudes/resolicitudes.component';
 import { Subscription, interval } from 'rxjs';
 import { WebSocketService } from '../servicios/web-socket.service';
+import Notiflix from 'notiflix';
 
 @Component({
   selector: 'app-solicitudes',

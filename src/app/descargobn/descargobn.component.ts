@@ -128,7 +128,7 @@ export class DescargobnComponent implements OnInit {
       });
       return;
     }
-    Notiflix.Loading.hourglass('Cargando...');
+    Notiflix.Loading.standard('Cargando...');
     let params = {
       email: this.datos.value.correo,
       asunto: this.datos.value.asunto,

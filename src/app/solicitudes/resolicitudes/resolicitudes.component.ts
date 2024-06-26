@@ -53,7 +53,7 @@ export class ResolicitudesComponent implements OnInit {
       return;
     }
 
-    Notiflix.Loading.hourglass('Cargando...');
+    Notiflix.Loading.standard('Cargando...');
 
     const formValue = this.form.getRawValue();
     let params = {

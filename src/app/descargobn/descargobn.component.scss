@@ -186,13 +186,16 @@ input[type=text] {
 }
 .editar{
   font-size: 25px;
-  color:black;
+  color:#646464;;
   align-items: center;
 }
 .editar:hover{
-  color: gray;
+  color: rgb(26, 25, 25);
   border: 0;
   font-weight: 600;
+  background-color: #f1f1f1;
+  border-radius: 100px;
+  padding: 10px 10px;
 }
 .form-group {
   margin-bottom: 20px;
