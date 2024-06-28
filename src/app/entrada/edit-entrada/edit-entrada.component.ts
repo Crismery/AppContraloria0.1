@@ -26,7 +26,6 @@ export class EditEntradaComponent implements OnInit{
 
     actualizarLugar() {
       if (this.appcontraloriaeditar) {
-
         this.appcontraloriaeditar.fecha_de_actualizacion = new Date().toISOString();
         this.dialogRef.close();
         this.registros.updatePlace(this.appcontraloriaeditar)

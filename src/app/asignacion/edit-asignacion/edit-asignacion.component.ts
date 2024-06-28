@@ -36,7 +36,7 @@ export class EditAsignacionComponent implements OnInit{
     }
     async actualizarLugar(appcontraloria: Appcontraloria) {
       if (this.appcontraloriaedit) {
-        this.appcontraloriaedit.fecha_de_asignacion= new Date().toISOString();
+        this.appcontraloriaedit.fecha_de_asignacion= new Date().toISOString().split('T')[0];
         this.dialogRef.close();
         this.registros.updatePlace(this.appcontraloriaedit)
       }

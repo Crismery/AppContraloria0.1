@@ -66,7 +66,7 @@ img{
 
 .content {
   margin: 0 auto;
-  max-width: 1150px;
+  max-width: 1200px;
   padding: 0 20px;
 }
 table{
@@ -147,9 +147,9 @@ input[type=text] {
   width: 30;
 }
 .Asignar{
-  font-size: 25px;
+  font-size: 20px;
   color:#646464;;
-  align-items: center;
+  // align-items: center;
 }
 .Asignar:hover{
   color: rgb(26, 25, 25);
@@ -157,5 +157,5 @@ input[type=text] {
   font-weight: 600;
   background-color: #f1f1f1;
   border-radius: 100px;
-  padding: 10px 10px;
+  // padding: 5px 5px;
 }

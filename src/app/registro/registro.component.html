@@ -5,32 +5,30 @@
       <h4 class="text-gray-600 font-bold">Crear una cuenta</h4>
       <div class="input-container">
 
-        <div class="flex justify-content-start form-element">
-          <p-floatLabel>
-            <input type="text" placeholder="Nombre de Usuario" autocomplete="off"
-              formControlName="usuario" class="form-element" />
-            <label>Nombre de usuario</label>
+        <div class="flex">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre de usuario</mat-label>
+              <input matInput  placeholder="Nombre de usuario" formControlName="usuario" class="input-nu">
+          </mat-form-field>
             <div *ngIf="formReg.controls['usuario']?.errors?.['required'] && (formReg.controls['usuario']?.dirty || formReg.controls['usuario']?.touched)">
               El nombre de usuario es requerido.
             </div>
-          </p-floatLabel>
         </div>
 
-        <div class="flex justify-content-start form-element">
-          <p-floatLabel>
-            <input type="text" formControlName="email" autocomplete="off"
-              class="form-element" />
-            <label >Correo Electrónico</label>
+        <div class="flex">
+            <mat-form-field appearance="outline">
+              <mat-label>Correo Electrónico</mat-label>
+              <input matInput  placeholder="Correo Electrónico" formControlName="email" class="input-nu">
+          </mat-form-field>
             <div *ngIf="formReg.controls['email']?.errors?.['required'] && (formReg.controls['email']?.dirty || formReg.controls['email']?.touched)">
               El correo electrónico es requerido.
             </div>
             <div *ngIf="formReg.controls['email']?.errors?.['email'] && (formReg.controls['email']?.dirty || formReg.controls['email']?.touched)">
               El correo electrónico no es válido.
             </div>
-          </p-floatLabel>
         </div>
 
-        <div class="flex justify-content-start form-element">
+        <div class="flex form-element">
           <p-password type="password" formControlName="password" class="form-element input-field password"
             placeholder="Contraseña" autocomplete="off" [toggleMask]="true">
             <ng-template pTemplate="header">
@@ -55,7 +53,7 @@
           </div>
         </div>
 
-        <div class="flex justify-content-start form-element">
+        <div class="flex  form-element">
           <p-password type="text" formControlName="confirmarC"
             placeholder="Confirmar Contraseña" autocomplete="off" [toggleMask]="true" [feedback]="false" class="form-element input-field password">
           </p-password>

@@ -58,7 +58,7 @@ export class BorradorComponent implements OnInit {
   }
   ngOnInit(): void {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
-      this.appcontraloria = appcontraloria.filter(registro => registro.fecha_de_descargoBN && !registro.fecha_de_borrados);
+      this.appcontraloria = appcontraloria.filter(registro => registro.fechacorreoenviode && !registro.fecha_de_borrados);
 
       this.filteredResults = this.appcontraloria;
     });

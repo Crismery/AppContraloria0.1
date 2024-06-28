@@ -48,7 +48,8 @@ export class AddEntradaComponent {
       fecha_de_reingreso: [''],
       fecha_de_asignacion: [''],
       fecha_de_descargoBN: [''],
-      comentarioeliusuario: ['']
+      comentarioeliusuario: [''],
+      fechacorreoenviode: ['']
     });
 
     this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {

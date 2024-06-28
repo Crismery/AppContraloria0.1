@@ -3,7 +3,6 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { RegistrosService } from '../servicios/registros.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Appcontraloria } from '../interfaz/appcontraloria';
-import { Observable } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import Notiflix from 'notiflix';
 import { HttpClient } from '@angular/common/http';
@@ -29,8 +28,7 @@ export class DescargobnComponent implements OnInit {
   mensajeOriginal: string ='';
 
   appcontraloriacorreo!: Appcontraloria;
-  constructor(private dialog:MatDialog, 
-    private viewContainerRef: ViewContainerRef,
+  constructor(
     private registrosService: RegistrosService,
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
@@ -47,7 +45,7 @@ export class DescargobnComponent implements OnInit {
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item =>
-        item.fecha_de_descargoBN && !item.fecha_de_borrados
+        item.fecha_de_descargoBN && !item.fecha_de_borrados && !item.fechacorreoenviode
       );
       this.updateTextarea();
     });
@@ -120,7 +118,6 @@ export class DescargobnComponent implements OnInit {
     console.log(this.mensajeOriginal); 
   }
   enviarcorreo() {
-
     if (this.datos.invalid) {
       this.snackBar.open('Correo es obligatorio', 'Cerrar', {
         duration: 3000,
@@ -128,20 +125,31 @@ export class DescargobnComponent implements OnInit {
       });
       return;
     }
-    Notiflix.Loading.standard('Cargando...');
-    let params = {
+    this.appcontraloria.forEach(item => {
+      item.fechacorreoenviode = new Date().toISOString().split('T')[0];
+      this.registrosService.updatePlace(item)
+    });
+    const params = {
       email: this.datos.value.correo,
       asunto: this.datos.value.asunto,
       mensaje: this.mensajeOriginal
-    }
-    console.log(params)
-    this.httpclient.post('http://localhost:3000/envio', params).subscribe(resp => {
-      console.log(resp)
-      Notiflix.Loading.remove();
-      Notiflix.Notify.success('Correo enviado correctamente');
-      this.datos.reset();
-    })
-  }
+    };
+    Notiflix.Loading.standard('Cargando...');
+    this.httpclient.post('http://localhost:3000/envio', params).subscribe(
+      resp => {
+        console.log(resp);
+        Notiflix.Loading.remove();
+        Notiflix.Notify.success('Correo enviado correctamente');
+        this.datos.reset();
+        this.dialogVisible = false;
+      },
+      error => {
+        console.error('Error al enviar el correo:', error);
+        Notiflix.Loading.remove();
+        Notiflix.Notify.failure('Error al enviar el correo');
+      }
+    );
+  }  
   buscar(): void {
     if (this.query.trim() !== '') {
       const queryLower = this.query.trim().toLowerCase();
