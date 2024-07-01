@@ -29,4 +29,6 @@ export interface Appcontraloria {
     comentarioeli:string;
     comentarioeliusuario:string;
     fechacorreoenviode: string;
+    comentarioreingresoDE: string;
+    comentariodescargoAlma:string;
 }

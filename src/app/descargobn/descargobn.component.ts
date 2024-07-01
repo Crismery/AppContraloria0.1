@@ -25,7 +25,7 @@ export class DescargobnComponent implements OnInit {
   title = 'enviarcorreo';
 
   datos: FormGroup;
-  mensajeOriginal: string ='';
+  mensajeOriginal: string = '';
 
   appcontraloriacorreo!: Appcontraloria;
   constructor(
@@ -33,15 +33,15 @@ export class DescargobnComponent implements OnInit {
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
     private httpclient: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: Appcontraloria){
-      this.datos = new FormGroup({
-        correo: new FormControl('', [Validators.required, Validators.email]),
-        asunto: new FormControl('', Validators.required),
-        mensaje: new FormControl(''),
-        textoadicional: new FormControl('')
-      });
-    }
-       
+    @Inject(MAT_DIALOG_DATA) public data: Appcontraloria) {
+    this.datos = new FormGroup({
+      correo: new FormControl('', [Validators.required, Validators.email]),
+      asunto: new FormControl('', Validators.required),
+      mensaje: new FormControl(''),
+      textoadicional: new FormControl('')
+    });
+  }
+
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item =>
@@ -54,20 +54,20 @@ export class DescargobnComponent implements OnInit {
   }
   showDialog() {
     this.dialogVisible = true;
-}
+  }
   agregarFechaMomento(appcontraloria: Appcontraloria) {
-    Notiflix.Confirm.show(
+    Notiflix.Confirm.prompt(
       'Agregar nuevamente a registro.',
-      '¿Esta seguro/a de que quiere agregar nuevamente este registro?',
-      'Si',
-      'No',
-      () => {
+      '¿Esta seguro/a de que quiere agregar nuevamente este registro? Escriba la razón.',
+      '',
+      'Aceptar',
+      'Cancelar',
+      (reason) => { 
         if (appcontraloria) {
-      
           appcontraloria.fecha_de_descargoBN = '';
-      
           appcontraloria.fecha_de_reingreso = new Date().toISOString();
-          
+          appcontraloria.comentarioreingresoDE = reason;  
+  
           this.registrosService.updatePlace(appcontraloria)
             .then(() => {
               this.snackBar.open('Registro agregado nuevamente', 'Cerrar', {
@@ -93,9 +93,9 @@ export class DescargobnComponent implements OnInit {
           });
         }
       },
-      () => {
-      });
+    );
   }
+  
   private construirFormulario(): void {
     this.datos = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
@@ -108,14 +108,14 @@ export class DescargobnComponent implements OnInit {
     const textoadicional = this.datos.get('textoadicional')?.value;
     if (textoadicional) {
       this.mensajeOriginal += `\n  \n${textoadicional}`;
-      this.datos.get('textoAdicional')?.setValue(''); 
+      this.datos.get('textoAdicional')?.setValue('');
     }
   }
   updateTextarea() {
-    console.log(this.appcontraloria); 
+    console.log(this.appcontraloria);
     const dispositivosMensaje = this.appcontraloria.map(item => `-Dispositivo: ${item.dispositivo}, Modelo: ${item.modelo}, Serial: ${item.serial}, Placa: ${item.placa}`).join('\n');
     this.mensajeOriginal = `Descargo de bienes nacionales de la contraloria general de la republica. \n \n Estos Dispositivo serán enviados al descargo de bienes nacionales:\n${dispositivosMensaje}`;
-    console.log(this.mensajeOriginal); 
+    console.log(this.mensajeOriginal);
   }
   enviarcorreo() {
     if (this.datos.invalid) {
@@ -149,17 +149,17 @@ export class DescargobnComponent implements OnInit {
         Notiflix.Notify.failure('Error al enviar el correo');
       }
     );
-  }  
+  }
   buscar(): void {
     if (this.query.trim() !== '') {
       const queryLower = this.query.trim().toLowerCase();
       this.appcontraloria = this.appcontraloria.filter(place =>
         (place.dispositivo && place.dispositivo.toLowerCase().includes(queryLower)) ||
-      (place.modelo && place.modelo.toLowerCase().includes(queryLower)) ||
-      (place.serial && place.serial.toLowerCase().includes(queryLower)) ||
-      (place.placa && place.placa.toLowerCase().includes(queryLower)) ||
-      (place.bienes_nacionales && place.bienes_nacionales.toLowerCase().includes(queryLower)) ||
-      (place.fecha_de_descargoBN && place.fecha_de_descargoBN.toLowerCase().includes(queryLower))
+        (place.modelo && place.modelo.toLowerCase().includes(queryLower)) ||
+        (place.serial && place.serial.toLowerCase().includes(queryLower)) ||
+        (place.placa && place.placa.toLowerCase().includes(queryLower)) ||
+        (place.bienes_nacionales && place.bienes_nacionales.toLowerCase().includes(queryLower)) ||
+        (place.fecha_de_descargoBN && place.fecha_de_descargoBN.toLowerCase().includes(queryLower))
       );
     } else {
       this.registrosService.getPlaces().subscribe(appcontraloria => {

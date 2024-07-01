@@ -18,7 +18,7 @@
         <button class="boton1" (click)="showDialog()"> <i class="bi bi-envelope-at salida"></i> Descargo BN</button>
       </div>
       <p-dialog header="Enviar correo" [resizable]="false" [modal]="true" [maximizable]="true" appendTo="body"
-        [(visible)]="dialogVisible" [style]="{width: '45vw'}" [contentStyle]="{height: '650px'}">
+        [(visible)]="dialogVisible" [style]="{width: '45vw'}" scrollHeight="330px">
         <div class="container" [formGroup]="datos">
           <br>
           <div class="form-group">

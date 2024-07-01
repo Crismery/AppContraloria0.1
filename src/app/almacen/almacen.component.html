@@ -28,7 +28,7 @@
       <div class="search-bar mt-3">
         <input class="form-control" type="text" [(ngModel)]="query" (input)="buscar()" placeholder="ej. Laptop">
       </div>
-      <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="350px" [tableStyle]="{'min-width': '45rem'}">
+      <p-table  [value]="appcontraloria" [scrollable]="true" scrollHeight="330px" [tableStyle]="{'min-width': '45rem'}">
         <ng-template pTemplate="header">
           <tr>
             <th style="width:200px; text-align: center;" pSortableColumn="dispositivo">Dispositivo <p-sortIcon field="dispositivo" /></th>

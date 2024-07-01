@@ -49,7 +49,9 @@ export class AddEntradaComponent {
       fecha_de_asignacion: [''],
       fecha_de_descargoBN: [''],
       comentarioeliusuario: [''],
-      fechacorreoenviode: ['']
+      fechacorreoenviode: [''],
+      comentarioreingresoDE: [''],
+      comentariodescargoAlma: ['']
     });
 
     this.form.get('dispositivo')?.valueChanges.subscribe((selectedDispositivo) => {
@@ -88,7 +90,6 @@ export class AddEntradaComponent {
   }
   async onSubmit() {
     if (this.form.valid) {
-      // Asignar la fecha de entrada antes de realizar el reset del formulario
       this.appcontraloriaedit.fecha_de_entrada = new Date().toISOString().split('T')[0];
 
       console.log(this.form.value);

@@ -8,19 +8,19 @@
                 <input type="text" v-model="username" placeholder="Correo Electronico" autocomplete="off"
                     formControlName="email">
                     <div *ngIf="formLogin.get('email')?.errors?.['required'] && (formLogin.get('email')?.dirty || formLogin.get('email')?.touched)">
-                        <div class="alert alert-danger">El correo electrónico es requerido.</div>
+                            El correo electrónico es requerido.
                     </div>
                     <div *ngIf="formLogin.get('email')?.errors?.['email'] && (formLogin.get('email')?.dirty || formLogin.get('email')?.touched)">
-                        <div class="alert alert-danger">El correo electrónico no es válido.</div>
-                      </div>
+                            El correo electrónico no es válido.
+                      </div> 
 
                 <input class="input-field password" type="password"
                     v-model="password" placeholder="Contraseña" autocomplete="off" formControlName="password">
                     <div *ngIf="formLogin.get('password')?.errors?.['required'] && (formLogin.get('password')?.dirty || formLogin.get('password')?.touched)">
-                        <div class="alert alert-danger">La contraseña es requerida.</div>
+                        La contraseña es requerida.
                     </div>
                     <div *ngIf="formLogin.get('password')?.errors?.['minlength'] && (formLogin.get('password')?.dirty || formLogin.get('password')?.touched)">
-                        <div class="alert alert-danger">La contraseña debe tener al menos 6 caracteres.</div>
+                        La contraseña debe tener al menos 6 caracteres.
                     </div>
             </div>
             <input type="submit" value="Iniciar sesión" class="btn1">
