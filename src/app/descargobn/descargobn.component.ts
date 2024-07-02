@@ -117,7 +117,7 @@ export class DescargobnComponent implements OnInit {
     this.mensajeOriginal = `Descargo de bienes nacionales de la contraloria general de la republica. \n \n Estos Dispositivo serán enviados al descargo de bienes nacionales:\n${dispositivosMensaje}`;
     console.log(this.mensajeOriginal);
   }
-  enviarcorreo() {
+  async enviarcorreo() {
     if (this.datos.invalid) {
       this.snackBar.open('Correo es obligatorio', 'Cerrar', {
         duration: 3000,
@@ -125,31 +125,42 @@ export class DescargobnComponent implements OnInit {
       });
       return;
     }
-    this.appcontraloria.forEach(item => {
-      item.fechacorreoenviode = new Date().toISOString().split('T')[0];
-      this.registrosService.updatePlace(item)
-    });
-    const params = {
-      email: this.datos.value.correo,
-      asunto: this.datos.value.asunto,
-      mensaje: this.mensajeOriginal
-    };
+  
     Notiflix.Loading.standard('Cargando...');
-    this.httpclient.post('http://localhost:3000/envio', params).subscribe(
-      resp => {
-        console.log(resp);
-        Notiflix.Loading.remove();
-        Notiflix.Notify.success('Correo enviado correctamente');
-        this.datos.reset();
-        this.dialogVisible = false;
-      },
-      error => {
-        console.error('Error al enviar el correo:', error);
-        Notiflix.Loading.remove();
-        Notiflix.Notify.failure('Error al enviar el correo');
+    
+    try {
+      for (const item of this.appcontraloria) {
+        item.fechacorreoenviode = new Date().toISOString().split('T')[0];
+        await this.registrosService.deletedescargo(item);  
+        await this.registrosService.updatePlace(item);     
       }
-    );
-  }
+      
+      const params = {
+        email: this.datos.value.correo,
+        asunto: this.datos.value.asunto,
+        mensaje: this.mensajeOriginal
+      };
+  
+      this.httpclient.post('http://localhost:3000/envio', params).subscribe(
+        resp => {
+          console.log(resp);
+          Notiflix.Loading.remove();
+          Notiflix.Notify.success('Correo enviado correctamente');
+          this.datos.reset();
+          this.dialogVisible = false;
+        },
+        error => {
+          console.error('Error al enviar el correo:', error);
+          Notiflix.Loading.remove();
+          Notiflix.Notify.failure('Error al enviar el correo');
+        }
+      );
+    } catch (error) {
+      console.error('Error al procesar los registros:', error);
+      Notiflix.Loading.remove();
+      Notiflix.Notify.failure('Error al procesar los registros');
+    }
+  }  
   buscar(): void {
     if (this.query.trim() !== '') {
       const queryLower = this.query.trim().toLowerCase();
@@ -164,7 +175,7 @@ export class DescargobnComponent implements OnInit {
     } else {
       this.registrosService.getPlaces().subscribe(appcontraloria => {
         this.appcontraloria = appcontraloria.filter(item =>
-          item.fecha_de_descargoBN && !item.fecha_de_borrados
+          item.fecha_de_descargoBN && !item.fecha_de_borrados && !item.fechacorreoenviode
         );
       });
     }

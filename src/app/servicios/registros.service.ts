@@ -50,6 +50,16 @@ export class RegistrosService {
     };
     await updateDoc(placeRef, updateData);
 }
+async deletedescargo(appcontraloria: Appcontraloria) {
+  const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);
+  
+  const updateData = {
+    fecha_de_descargoBN: null,
+    comentariodescargoAlma: null
+  };
+  await updateDoc(placeRef, updateData);
+}
+
 async deletecomenusuario(appcontraloria: Appcontraloria) {
   const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);
   
@@ -69,7 +79,7 @@ updatePlace(appcontraloria: Appcontraloria){
 }
 updateplacefecha(appcontraloria: Appcontraloria) {
   if (appcontraloria) {
-    const dataToUpdate = { ...appcontraloria }; // Aquí puedes realizar cualquier transformación necesaria
+    const dataToUpdate = { ...appcontraloria }; 
     
     const placeRef = doc(this.firestore, 'appcontraloria', appcontraloria.id);
     return updateDoc(placeRef, dataToUpdate)
@@ -82,8 +92,7 @@ updateplacefecha(appcontraloria: Appcontraloria) {
       });
   } else {
     console.error('El objeto appcontraloria es undefined');
-    // Aquí puedes manejar el caso en el que appcontraloria es undefined, si es necesario
-    throw new Error('El objeto appcontraloria es undefined'); // Lanza un error si appcontraloria es undefined
+    throw new Error('El objeto appcontraloria es undefined'); 
   }
 }
 async getPlaceById(appcontraloria: Appcontraloria): Promise<Appcontraloria | string> {

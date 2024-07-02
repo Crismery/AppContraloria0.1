@@ -50,7 +50,7 @@ export class MantenimientoComponent  implements OnInit{
   }
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
-      this.appcontraloria = appcontraloria.filter(registro => !registro.fecha_de_borrados && !registro.fecha_de_descargoBN);
+      this.appcontraloria = appcontraloria.filter(registro => !registro.fecha_de_borrados && !registro.fecha_de_descargoBN && !registro.fechacorreoenviode);
 
       this.filteredResults = this.appcontraloria;
     });
@@ -77,7 +77,7 @@ export class MantenimientoComponent  implements OnInit{
     } else {
       this.registrosService.getPlaces().subscribe(appcontraloria => {
         this.appcontraloria = appcontraloria.filter(registro => 
-          !registro.fecha_de_borrados && !registro.fecha_de_descargoBN);
+          !registro.fecha_de_borrados && !registro.fecha_de_descargoBN && !registro.fechacorreoenviode);
       });
     }
   }

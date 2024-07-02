@@ -79,7 +79,7 @@ export class RegistrosComponent implements OnInit {
   ngOnInit() {
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(item =>
-        item.cedula && item.usuario && item.Departamento && !item.fecha_de_descargoBN && !item.fecha_de_borrados
+        item.cedula && item.usuario && item.Departamento && !item.fecha_de_descargoBN && !item.fecha_de_borrados && !item.fechacorreoenviode
       );
       this.filteredResults = this.appcontraloria;
 
@@ -104,7 +104,7 @@ export class RegistrosComponent implements OnInit {
     } else {
       this.registrosService.getPlaces().subscribe(appcontraloria => {
         this.appcontraloria = appcontraloria.filter(item =>
-          item.cedula && item.usuario && item.Departamento && !item.fecha_de_descargoBN && !item.fecha_de_borrados
+          item.cedula && item.usuario && item.Departamento && !item.fecha_de_descargoBN && !item.fecha_de_borrados && !item.fechacorreoenviode
         );
       });
     }

@@ -94,7 +94,7 @@ export class ReporteComponent implements OnInit {
     //asignacion
     this.registrosService.getPlaces().subscribe(appcontraloria => {
       this.appcontraloria = appcontraloria.filter(asig =>
-        asig.cedula && asig.usuario && asig.Departamento
+        asig.cedula && asig.usuario && asig.Departamento && !asig.fechacorreoenviode
       );
 
       this.registroasignar = this.appcontraloria.length;
@@ -104,7 +104,7 @@ export class ReporteComponent implements OnInit {
 
     //matenimiento
     this.registrosService.getPlaces().subscribe(appcontraloriaman => {
-      this.appcontraloriaman = appcontraloriaman.filter(item => item.tipo_de_mantenimiento && item.mantenimiento && item.defragmentacion);
+      this.appcontraloriaman = appcontraloriaman.filter(item => item.tipo_de_mantenimiento && item.mantenimiento && item.defragmentacion && !item.fechacorreoenviode);
 
       this.registromatenimiento = this.appcontraloriaman.length;
     });
@@ -118,7 +118,7 @@ export class ReporteComponent implements OnInit {
         if (this.ultimaCarga) {
           const fechaEntrada = new Date(item.fecha_de_entrada);
 
-          if (fechaEntrada > this.ultimaCarga && !item.fecha_de_descargoBN && item.fecha_de_entrada) {
+          if (fechaEntrada > this.ultimaCarga && !item.fecha_de_descargoBN && item.fecha_de_entrada && !item.fechacorreoenviode) {
             this.registrosent++;
             return true;
           }
@@ -150,7 +150,7 @@ export class ReporteComponent implements OnInit {
     });
     //descargo-BN
     this.registrosService.getPlaces().subscribe(appcontraloriaBN => {
-      this.appcontraloriaBN = appcontraloriaBN.filter(item => item.fecha_de_descargoBN && !item.fecha_de_borrados);
+      this.appcontraloriaBN = appcontraloriaBN.filter(item => item.fecha_de_descargoBN && !item.fecha_de_borrados && !item.fechacorreoenviode);
       this.registrosBN = this.appcontraloriaBN.length;
     });
 
