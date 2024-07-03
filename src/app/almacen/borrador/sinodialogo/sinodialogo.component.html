@@ -1,43 +1,50 @@
 <p-scrollPanel [style]="{ width: '100%', height: '500px' }">
-    <div class="container">
-      <br>
-        <h1>Eliminar Registro/s</h1>
-        <div class="row">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.dispositivo">
-            <label for="floatingInputDisabled">Dispositivo</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.modelo">
-            <label for="floatingInputDisabled">Modelo</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.serial">
-            <label for="floatingInputDisabled">Serial</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.placa">
-            <label for="floatingInputDisabled">Placa</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputDisabled" disabled [(ngModel)]="appcontraloriamostrar.bienes_nacionales">
-            <label for="floatingInputDisabled">Bienes Nacionales</label>
-          </div>
-          <form class="form-floating">
-            <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" [(ngModel)]="appcontraloriamostrar.email" name="email">
-            <label for="floatingInputValue">Correo</label>
-          </form>
-          <h3>¿Por que se esta eliminando este registro?</h3>
-          <div class="form-floating">
-            <textarea  variant="filled" rows="5"cols="30" pInputTextarea style="width: 400px" [(ngModel)]="appcontraloriamostrar.comentarioeli">
+  <div class="container">
+    <br>
+    <h1>Eliminar Registro/s</h1>
+    <div class="row">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInputDisabled" disabled
+          [(ngModel)]="appcontraloriamostrar.dispositivo">
+        <label for="floatingInputDisabled">Dispositivo</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInputDisabled" disabled
+          [(ngModel)]="appcontraloriamostrar.modelo">
+        <label for="floatingInputDisabled">Modelo</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInputDisabled" disabled
+          [(ngModel)]="appcontraloriamostrar.serial">
+        <label for="floatingInputDisabled">Serial</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInputDisabled" disabled
+          [(ngModel)]="appcontraloriamostrar.placa">
+        <label for="floatingInputDisabled">Placa</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInputDisabled" disabled
+          [(ngModel)]="appcontraloriamostrar.bienes_nacionales">
+        <label for="floatingInputDisabled">Bienes Nacionales</label>
+      </div>
+      <form class="form-floating">
+        <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com"
+          [(ngModel)]="appcontraloriamostrar.email" name="email">
+        <label for="floatingInputValue">Correo</label>
+      </form>
+      <h3>¿Por que se esta eliminando este registro?</h3>
+      <div class="form-floating">
+        <textarea variant="filled" class="form-control" rows="5" cols="30" pInputTextarea style="width: 400px"
+          [(ngModel)]="appcontraloriamostrar.comentarioeli">
             </textarea>
-        </div>
-          <br>
-          <div class="cardbutton" >
-            <button (click)="actualizarLugar()">Guardar</button>
-            <button (click)="cerrarCentrado()">Cancelar</button>
-          </div>
-          <br>
-          </div>
+            <br>
+      </div>
+      <br>
+      <div class="cardbutton" >
+        <button (click)="actualizarLugar()">Guardar</button>
+        <button (click)="cerrarCentrado()">Cancelar</button>
+      </div>
     </div>
+  </div>
 </p-scrollPanel>

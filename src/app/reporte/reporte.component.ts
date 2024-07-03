@@ -360,7 +360,7 @@ export class ReporteComponent implements OnInit {
       });
 
       //solicitudes
-      const encabezadosoli = ["Correo", "Asunto", "Solicitudes", "Comentario", "Fecha solicitud", "Fecha resultado"];
+      const encabezadosoli = ["Correo", "Asunto", "Solicitudes", "Comentario", "Fecha solicitud", "Fecha resultado","Estatu"];
     const cuerposoli = this.appcontraloriasoli
       .map(solicitud => {
         return [
@@ -369,7 +369,8 @@ export class ReporteComponent implements OnInit {
           solicitud.mensaje,
           solicitud.comentario,
           solicitud.fecha_solicitud,
-          solicitud.fecha_respuesta
+          solicitud.fecha_respuesta,
+          solicitud.estatu
         ];
       });
 
