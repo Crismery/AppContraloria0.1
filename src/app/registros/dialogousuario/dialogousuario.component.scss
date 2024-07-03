@@ -4,6 +4,10 @@
   display: flex;
   justify-content: center;
 }
+.container {
+  max-width: 800px; 
+margin: auto;
+}
 button {
   background-color:hsl(0, 82%, 37%);
   border-radius: 5px!important;
@@ -11,8 +15,8 @@ button {
   border: 0;
   color: #dfdeee;
   margin-right: 10px;
-  width: 90px;
-  height: 30px;
+  width: 100px;
+  height: 40px;
   font-size: 18px;
 }
 .cardbutton{

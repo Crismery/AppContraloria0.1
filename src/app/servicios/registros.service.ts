@@ -55,11 +55,10 @@ async deletedescargo(appcontraloria: Appcontraloria) {
   
   const updateData = {
     fecha_de_descargoBN: null,
-    comentariodescargoAlma: null
+    comentariodescargoAlma: null,
   };
   await updateDoc(placeRef, updateData);
 }
-
 async deletecomenusuario(appcontraloria: Appcontraloria) {
   const placeRef = doc(this.firestore, `appcontraloria/${appcontraloria.id}`);
   

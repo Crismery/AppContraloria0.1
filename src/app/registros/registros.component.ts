@@ -42,7 +42,7 @@ export class RegistrosComponent implements OnInit {
       const dialogRef = this.dialog.open(AddRegistrosComponent, {
         data: registro, 
         width: '550px',
-        height: '500px',
+        height: '520px',
         viewContainerRef: this.viewContainerRef,
         panelClass: 'dialog-container',
         disableClose: true
@@ -62,7 +62,7 @@ export class RegistrosComponent implements OnInit {
       const dialogRef = this.dialog.open(DialogousuarioComponent, {
         data: registro, 
         width: '560px',
-        height: '580px',
+        height: '560px',
         viewContainerRef: this.viewContainerRef,
         panelClass: 'dialog-container',
         disableClose: true
