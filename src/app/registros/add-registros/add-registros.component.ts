@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RegistrosService } from '../../servicios/registros.service';
 import { Appcontraloria } from '../../interfaz/appcontraloria';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
@@ -18,7 +18,6 @@ export class AddRegistrosComponent implements OnInit{
 
   constructor(public dialogRef: MatDialogRef<AddRegistrosComponent>,
     private registros: RegistrosService,
-    private route: ActivatedRoute,
     private _snackbar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: Appcontraloria){
   }

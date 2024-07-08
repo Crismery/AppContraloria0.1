@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DialogousuarioComponent implements OnInit {
   appcontraloriamostrar!: Appcontraloria;
-  borrarUsuarioForm: FormGroup;
+  borrarUsuarioForm: FormGroup; 
 
   constructor(
     public dialogRef: MatDialogRef<DialogousuarioComponent>,
