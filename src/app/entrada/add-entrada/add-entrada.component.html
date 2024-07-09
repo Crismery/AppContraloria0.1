@@ -13,8 +13,8 @@
                 <mat-option value="Monitor">Monitor</mat-option>
                 <mat-option value="Telefono">Telefono</mat-option>
                 <mat-option value="Printer">Printer</mat-option>
-                <mat-option value="Mouse">Mouse</mat-option>
-                <mat-option value="Teclado">Teclado</mat-option>
+                <!-- <mat-option value="Mouse">Mouse</mat-option>
+                <mat-option value="Teclado">Teclado</mat-option> -->
                 <mat-option value="Proyector">Proyector</mat-option>
                 <mat-option value="Audifonos">Audifonos</mat-option>
                 <mat-option value="Puntero">Puntero</mat-option>
@@ -58,7 +58,7 @@
     </mat-form-field>
   </ng-container>
 
-  <ng-container *ngIf="form.get('dispositivo')?.value === 'Desktop' || form.get('dispositivo')?.value === 'Laptop'">
+  <!-- <ng-container *ngIf="form.get('dispositivo')?.value === 'Desktop' || form.get('dispositivo')?.value === 'Laptop'">
     <mat-form-field appearance="outline">
       <mat-label>CPU</mat-label>
       <mat-select placeholder="Seleccione un CPU" formControlName="cpu">
@@ -67,7 +67,7 @@
         <mat-option value="i7">i7</mat-option>
       </mat-select>
     </mat-form-field>
-  </ng-container>
+  </ng-container> -->
 
   <ng-container *ngIf="form.get('dispositivo')?.value === 'Desktop' || form.get('dispositivo')?.value === 'Laptop'">
     <mat-form-field appearance="outline">
@@ -85,6 +85,7 @@
       <mat-label>Almacenamiento</mat-label>
       <mat-select placeholder="Seleccione almacenamiento" formControlName="almacenamiento">
         <mat-option value="256Gb">256Gb</mat-option>
+        <mat-option value="1Tb">500Gb</mat-option>
         <mat-option value="512Gb">512Gb</mat-option>
         <mat-option value="1Tb">1Tb</mat-option>
       </mat-select>
